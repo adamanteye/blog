@@ -12,9 +12,9 @@ TARGET_DIR := build
 MAGIC_TITLE := 0x8964
 TEX := typst c --root . --features html 2>/dev/null
 
-today: src/$(today)-$(title)/index.typ
+today: draft/$(today)-$(title)/index.typ
 
-src/$(today)-$(title)/index.typ:
+draft/$(today)-$(title)/index.typ:
 	@install -D -m 644 tmpl/index.typ $@
 	@sed -i "s/$(MAGIC_TITLE)/$(title)/g" $@
 
@@ -30,9 +30,9 @@ $(TARGET_DIR)/%/index.html: src/%/index.typ src/%/
 	@$(RM) $(@D)/index.typ
 
 clean:
-	@$(RM) -r build/
+	@$(RM) -r build/*
 
 atom: build
-	@./bin/atom.sh "$(TARGET_DIR)" > "$(TARGET_DIR)/atom.xml"
+	@./bin/atom.sh $(TARGET_DIR) > $(TARGET_DIR)/atom.xml
 
 .DELETE_ON_ERROR:
