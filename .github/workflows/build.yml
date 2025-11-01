@@ -34,7 +34,7 @@ jobs:
     container: node:alpine
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: build-output
           path: build/
