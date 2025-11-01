@@ -15,7 +15,7 @@ echo "  <id>$SITE</id>"
 echo "  <link href=\"$SITE/atom.xml\" rel=\"self\"/>"
 echo "  <link href=\"$SITE/\"/>"
 
-find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort | while read -r file; do
+find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort -r | while read -r file; do
 	title=$(head -n 20 "$file" | grep -m 1 '<title>' | sed -E 's/.*<title>(.*) - adamanteye<\/title>.*/\1/')
 	rel="${file#$BUILD_DIR/}"
 	rel="${rel%/index.html}/"
@@ -24,8 +24,8 @@ find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort | wh
 	id="$(basename "$(dirname "$file")")"
 
 	if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-		created=$(git log --diff-filter=A --follow --format=%aI -1 -- "$src" 2>/dev/null || true)
-		updated=$(git log -1 --format=%aI -- "$src" 2>/dev/null || true)
+		created=$(git log --diff-filter=A --follow --format=%aI -1 -- "$src" || true)
+		updated=$(git log -1 --format=%aI -- "$src" || true)
 	fi
 
 	created="${created:-$(date -Iseconds)}"

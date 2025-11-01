@@ -31,15 +31,13 @@ jobs:
     name: Deploy to Cloudflare Pages
     needs: build
     runs-on: ubuntu-latest
-    container: node:alpine
     steps:
       - name: Download build artifacts
         uses: actions/download-artifact@v6
         with:
           name: build-output
           path: build/
-      - name: Move wrangler.toml
-        run: |
+      - run: |
           mv build/wrangler.toml .
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
