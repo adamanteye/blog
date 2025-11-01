@@ -7,19 +7,16 @@ NAME='adamanteye'
 BUILD_DIR="$1"
 DESC="adamantye's blog"
 
-echo '<feed>'
+echo '<?xml version="1.0" encoding="utf-8"?>'
+echo '<feed xmlns="http://www.w3.org/2005/Atom">'
 echo "  <title>$DESC</title>"
 echo "  <updated>$(date --utc +%Y-%m-%dT%H:%M:%SZ)</updated>"
 echo "  <id>$SITE</id>"
 echo "  <link href=\"$SITE/atom.xml\" rel=\"self\"/>"
 echo "  <link href=\"$SITE/\"/>"
-echo '  <author>'
-echo "    <name>$NAME</name>"
-echo "    <email>$EMAIL</email>"
-echo "  </author>"
 
 find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort | while read -r file; do
-	title=$(head -n 20 "$file" | grep -m 1 '<title>' | sed -E 's/.*<title>(.*)<\/title>.*/\1/')
+	title=$(head -n 20 "$file" | grep -m 1 '<title>' | sed -E 's/.*<title>(.*) - adamanteye<\/title>.*/\1/')
 	rel="${file#$BUILD_DIR/}"
 	rel="${rel%/index.html}/"
 
@@ -36,6 +33,11 @@ find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort | wh
 
 	echo "  <entry>"
 	echo "    <title>$title</title>"
+	echo '    <author>'
+	echo "      <name>$NAME</name>"
+	echo "      <uri>$SITE</uri>"
+	echo "      <email>$EMAIL</email>"
+	echo "    </author>"
 	echo "    <link href=\"$SITE/$rel\"/>"
 	echo "    <id>$id</id>"
 	echo "    <updated>$updated</updated>"

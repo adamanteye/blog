@@ -4,7 +4,7 @@
 SHELL := /bin/bash
 
 title := no-title
-today := $(shell date --iso-8601=date)
+today := $(shell date -Idate)
 list := $(shell ls src/*/index.typ | sort -r)
 targets := $(patsubst src/%/index.typ,build/%/index.html,$(list))
 
@@ -53,7 +53,7 @@ clean:
 
 atom: build $(TARGET_DIR)/atom.xml
 
-$(TARGET_DIR)/atom.xml: $(targets)
+$(TARGET_DIR)/atom.xml: $(targets) bin/atom.sh
 	@echo "generating atom feed -> $@"
 	@./bin/atom.sh $(TARGET_DIR) > $@
 
