@@ -19,11 +19,12 @@ echo "    <email>$EMAIL</email>"
 echo "  </author>"
 
 find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort | while read -r file; do
+	title=$(head -n 20 "$file" | grep -m 1 '<title>' | sed -E 's/.*<title>(.*)<\/title>.*/\1/')
 	rel="${file#$BUILD_DIR/}"
 	rel="${rel%/index.html}/"
 
 	src="src/$rel"
-	title="$(basename "$(dirname "$file")")"
+	id="$(basename "$(dirname "$file")")"
 
 	if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 		created=$(git log --diff-filter=A --follow --format=%aI -1 -- "$src" 2>/dev/null || true)
@@ -36,7 +37,7 @@ find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort | wh
 	echo "  <entry>"
 	echo "    <title>$title</title>"
 	echo "    <link href=\"$SITE/$rel\"/>"
-	echo "    <id>$title</id>"
+	echo "    <id>$id</id>"
 	echo "    <updated>$updated</updated>"
 	echo "    <published>$created</published>"
 	echo "  </entry>"

@@ -1,0 +1,65 @@
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: "Open Sans", Arial;
+  line-height: 1.5em;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+a {
+  color: #0366d6;
+}
+
+p {
+  margin: 0.5em 0;
+}
+
+ul,
+ol {
+  padding-left: 2em;
+}
+
+li {
+  margin-bottom: 1em;
+}
+
+code,
+pre {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+}
+
+header,
+footer {
+  text-align: center;
+  padding: 1rem;
+}
+
+header {
+  border-bottom: 0.0625rem solid #ccc;
+}
+
+footer {
+  border-top: 0.0625rem solid #ccc;
+}
+
+footer img {
+  vertical-align: middle;
+  width: 1.5em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  height: auto;
+}

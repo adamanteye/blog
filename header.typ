@@ -1,0 +1,1 @@
+= adamanteye's blog

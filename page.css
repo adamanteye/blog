@@ -1,0 +1,12 @@
+main {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 2rem;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+nav {
+  border-right: 0.0625rem solid #ccc;
+  padding-right: 1rem;
+}
