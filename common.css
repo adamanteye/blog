@@ -1,9 +1,6 @@
-html {
-  font-size: 14px;
-}
-
 body {
   font-family: "Open Sans", Arial;
+  color: #454545;
   line-height: 1.5em;
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -21,7 +18,11 @@ h4 {
 }
 
 a {
-  color: #0366d6;
+  color: #07a;
+}
+
+a:visited {
+  color: #941352;
 }
 
 p {
