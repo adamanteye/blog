@@ -31,7 +31,7 @@ find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort | wh
 		updated=$(git log -1 --format=%aI -- "$src" 2>/dev/null || true)
 	fi
 
-	created="${created:-$(date --iso-8601=seconds)}"
+	created="${created:-$(date -Iseconds)}"
 	updated="${updated:-$created}"
 
 	echo "  <entry>"
