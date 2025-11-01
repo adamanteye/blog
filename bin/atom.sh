@@ -23,11 +23,8 @@ find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort -r |
 	src="src/$rel"
 	id="$(basename "$(dirname "$file")")"
 
-	if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-		created=$(git log --diff-filter=A --follow --format=%aI -1 -- "$src" || true)
-		updated=$(git log -1 --format=%aI -- "$src" || true)
-	fi
-
+	created=$(git log --reverse --date=iso-strict --format="%cd" -- "$src" | head -n 1 || true)
+	updated=$(git log -1 --date=iso-strict --format="%cd" -- "$src" || true)
 	created="${created:-$(date -Iseconds)}"
 	updated="${updated:-$created}"
 
