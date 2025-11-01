@@ -34,7 +34,7 @@ ol {
 }
 
 li {
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 code,
@@ -45,7 +45,7 @@ pre {
 header,
 footer {
   text-align: center;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 header {
