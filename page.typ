@@ -14,6 +14,7 @@
       )
       html.link(rel: "stylesheet", href: "../page.css")
       html.link(rel: "stylesheet", href: "../common.css")
+      html.link(rel: "icon", type: "image/webp", href: "/favicon.webp")
     })
     html.body({
       html.header({ include "header.typ" })

@@ -1,4 +1,4 @@
-.PHONY: today notoday build clean atom
+.PHONY: today notoday build clean atom assets css
 
 .DEFAULT_GOAL := atom
 SHELL := /bin/bash
@@ -23,17 +23,20 @@ $(DRAFT_DIR)/$(today)-$(title)/meta.typ:
 	@sed -i "s/$(MAGIC_TITLE)/$(title)/g" $@
 
 src/nav.typ: bin/nav.sh $(list)
-	@echo "generating navigation $@"
+	@echo "generating navigation -> $@"
 	@mkdir -p $(TARGET_DIR)
 	@bin/nav.sh $(patsubst src/%/index.typ,%,$(list)) > $@
 
 notoday:
 	@$(RM) -r src/$(today)-*
 
-build: src/nav.typ $(TARGET_DIR)/index.html $(targets) $(TARGET_DIR)/page.css $(TARGET_DIR)/common.css $(TARGET_DIR)/index.css
+build: src/nav.typ $(TARGET_DIR)/index.html $(targets) assets
 
-$(TARGET_DIR)/%.css: %.css
-	@echo "installing stylesheet -> $@"
+assets: css $(TARGET_DIR)/favicon.webp
+css: $(TARGET_DIR)/page.css $(TARGET_DIR)/common.css $(TARGET_DIR)/index.css
+
+$(TARGET_DIR)/%: %
+	@echo "installing assets $< -> $@"
 	@install -D -m 644 $< $@
 
 $(TARGET_DIR)/index.html: index.typ src/nav.typ header.typ footer.typ
