@@ -25,6 +25,10 @@ find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort -r |
 
 	created=$(git log --reverse --date=iso-strict --format="%cd" -- "$src" | head -n 1 || true)
 	updated=$(git log -1 --date=iso-strict --format="%cd" -- "$src" || true)
+	if [ -z "$created" ]; then
+		echo "warning: no git history for $src" >&2
+		created=$(date -Iseconds)
+	fi
 	created="${created:-$(date -Iseconds)}"
 	updated="${updated:-$created}"
 
