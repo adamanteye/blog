@@ -1,1 +1,1 @@
-#{ html.h1("adamanteye's blog") }
+#{ html.h1("Adamanteye's Blog") }

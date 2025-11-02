@@ -1,6 +1,6 @@
 .PHONY: today notoday build clean atom assets css
 
-.DEFAULT_GOAL := atom
+.DEFAULT_GOAL := build
 SHELL := /bin/bash
 
 TARGET_DIR := build
@@ -59,8 +59,8 @@ clean:
 
 atom: build $(TARGET_DIR)/atom.xml
 
-$(TARGET_DIR)/atom.xml: $(targets) bin/atom.sh
-	@echo "  ATOM  $@"
+$(TARGET_DIR)/atom.xml: bin/atom.sh $(targets)
+	@echo "  FEED  $@"
 	@./bin/atom.sh $(TARGET_DIR) > $@
 
 .DELETE_ON_ERROR:

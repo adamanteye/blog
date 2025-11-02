@@ -3,9 +3,9 @@ set -euo pipefail
 
 SITE='https://blog.adamanteye.cc'
 EMAIL='adamanteye@disroot.org'
-NAME='adamanteye'
+NAME='Xuelin Yang'
 BUILD_DIR="$1"
-DESC="adamantye's blog"
+DESC="Adamantye's Blog"
 
 VOID_ELEM="area base br col embed hr img input link meta param source track wbr"
 
