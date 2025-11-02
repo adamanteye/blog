@@ -7,6 +7,8 @@ NAME='adamanteye'
 BUILD_DIR="$1"
 DESC="adamantye's blog"
 
+VOID_ELEM="area base br col embed hr img input link meta param source track wbr"
+
 echo '<?xml version="1.0" encoding="utf-8"?>'
 echo '<feed xmlns="http://www.w3.org/2005/Atom">'
 echo "  <title>$DESC</title>"
@@ -17,7 +19,10 @@ echo "  <link href=\"$SITE/\"/>"
 
 find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort -r | while read -r file; do
 	title=$(head -n 20 "$file" | grep -m 1 '<title>' | sed -E 's/.*<title>(.*) - adamanteye<\/title>.*/\1/')
-	content=$(awk '/<article>/,/<\/article>/' "$file" | sed '1d;$d')
+	content=$(awk '/<article>/,/<\/article>/' "$file")
+	for tag in $VOID_ELEM; do
+		content=$(echo "$content" | sed -E "s|<$tag\b([^>]*)>|<$tag\1 />|g")
+	done
 	rel="${file#$BUILD_DIR/}"
 	rel="${rel%/index.html}/"
 
