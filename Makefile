@@ -52,7 +52,8 @@ $(TARGET_DIR)/%/index.html: src/%/index.typ src/nav.typ src/%/ page.typ header.t
 	@$(RM) $(@D)/*.typ
 
 clean:
-	@$(RM) -r build/*
+	@$(RM) -r $(TARGET_DIR)/*
+	@$(RM) src/nav.typ
 
 atom: build $(TARGET_DIR)/atom.xml
 
