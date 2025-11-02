@@ -19,6 +19,7 @@ jobs:
           fetch-depth: 0
       - name: Build
         run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
           make atom
           mv wrangler.toml build/
       - name: Upload build artifacts
