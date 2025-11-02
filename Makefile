@@ -3,15 +3,15 @@
 .DEFAULT_GOAL := atom
 SHELL := /bin/bash
 
-title := no-title
-today := $(shell date -Idate)
-list := $(shell ls src/*/index.typ | sort -r)
-targets := $(patsubst src/%/index.typ,build/%/index.html,$(list))
-
 TARGET_DIR := build
 DRAFT_DIR := draft
 MAGIC_TITLE := 0x8964
 TEX := typst c --root . --features html 2>/dev/null
+
+title := no-title
+today := $(shell date -Idate)
+list := $(shell ls src/*/index.typ | sort -r)
+targets := $(patsubst src/%/index.typ,$(TARGET_DIR)/%/index.html,$(list))
 
 today: $(DRAFT_DIR)/$(today)-$(title)/index.typ $(DRAFT_DIR)/$(today)-$(title)/meta.typ
 
@@ -23,7 +23,7 @@ $(DRAFT_DIR)/$(today)-$(title)/meta.typ:
 	@sed -i "s/$(MAGIC_TITLE)/$(title)/g" $@
 
 src/nav.typ: bin/nav.sh $(list)
-	@echo "generating navigation -> $@"
+	@echo "  NAV   $@"
 	@mkdir -p $(TARGET_DIR)
 	@bin/nav.sh $(patsubst src/%/index.typ,%,$(list)) > $@
 
@@ -35,30 +35,32 @@ build: src/nav.typ $(TARGET_DIR)/index.html $(targets) assets
 assets: css $(TARGET_DIR)/favicon.webp
 css: $(TARGET_DIR)/page.css $(TARGET_DIR)/common.css $(TARGET_DIR)/index.css
 
-$(TARGET_DIR)/%: %
-	@echo "installing assets $< -> $@"
+$(TARGET_DIR)/%: assets/%
+	@echo "  INST  $<"
 	@install -D -m 644 $< $@
 
 $(TARGET_DIR)/index.html: index.typ src/nav.typ header.typ footer.typ
 	@mkdir -p $(@D)
-	@echo "compiling $< -> $@"
+	@echo "  TEX   $<"
 	@$(TEX) $< $@
 
 $(TARGET_DIR)/%/index.html: src/%/index.typ src/nav.typ src/%/ page.typ header.typ footer.typ
 	@mkdir -p $(@D)
 	@cp -r $(<D) $(TARGET_DIR)
-	@echo "compiling $< -> $@"
+	@echo "  TEX   $<"
 	@$(TEX) $< $@
 	@$(RM) $(@D)/*.typ
 
 clean:
+	@echo "  RM    $(TARGET_DIR)/*"
 	@$(RM) -r $(TARGET_DIR)/*
+	@echo "  RM    src/nav.typ"
 	@$(RM) src/nav.typ
 
 atom: build $(TARGET_DIR)/atom.xml
 
 $(TARGET_DIR)/atom.xml: $(targets) bin/atom.sh
-	@echo "generating atom feed -> $@"
+	@echo "  ATOM  $@"
 	@./bin/atom.sh $(TARGET_DIR) > $@
 
 .DELETE_ON_ERROR:

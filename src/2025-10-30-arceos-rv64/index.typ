@@ -15,8 +15,10 @@ As I am taking the OS course this semester, my job is to continue #link(
 )[Ming Yang's work]. He had implemented an async runtime for arceos and tested
 DWMAC on #link(
   "https://doc-en.rvspace.org/VisionFive2/Product_Brief/VisionFive_2/introduction.html",
-)[StarFive VisionFive 2 board]. And I am going to absruct his implemenation,
-move them into separate crate, possily merge the async runtime for ArceOS too.
+)[StarFive VisionFive 2 board].
+
+And I am going to absruct his implemenation, move them into separate crate,
+possily merge the async runtime for ArceOS too.
 
 = StarFive VisionFive 2
 
@@ -37,9 +39,10 @@ kernel image onto the board.
 
 The initial challenge I encountered was that Cargo crates failed to download,
 even though policy routing was correctly configured on my software router along
-with DNS zones and `static.crates.io` was reachable with a stable ping. After
-tracing the connection using `curl`, I discovered that the issue was once again
-related to the *MTU*. Having it set to `1420`, the problem solves.
+with DNS zones and `static.crates.io` was reachable with a stable ping.
+
+After tracing the connection using `curl`, I discovered that the issue was once
+again related to the *MTU*. Having it set to `1420`, the problem solves.
 
 As Ming Yang implemented an #link(
   "https://github.com/mingyang91/arceos/tree/main/modules/axasync",
@@ -258,7 +261,7 @@ QEMU: Terminated
 
 Boot procedure on RISC-V follows:
 
-SPL -> SBI -> U-Boot -> OS
+BootROM -> SPL -> SBI -> U-Boot -> OS
 
 SPL (Secondary Program Loader) is a minimal bootloader that initializes the DDR
 memory and basic hardware required to load the next stage.
@@ -309,7 +312,7 @@ sgdisk --clear \
 mkfs.vfat -F32 /dev/sda3
 ```
 
-Now just rogram the SD card as #link(
+Now program the SD card as #link(
   "https://docs.u-boot.org/en/latest/board/starfive/visionfive2.html",
 )[mentioned above]. Under ArceOS there is Makefile to generate kernel image:
 
@@ -321,7 +324,7 @@ make A=examples/async_server ARCH=riscv64 PLATFORM=riscv64-starfive \
   APP_FEATURES=default,starfive starfive
 ```
 
-After then, copy all files to partition 3.
+Copy all files to partition 3.
 
 ```sh
 ls /mnt/

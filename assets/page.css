@@ -6,6 +6,10 @@ main {
   margin: 0 auto;
 }
 
+article {
+  overflow-x: auto;
+}
+
 nav {
   border-right: 0.0625rem solid #ccc;
   padding-right: 1rem;
