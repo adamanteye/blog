@@ -30,7 +30,7 @@ as:
 - 2 RJ45 gigabit ethernet ports
 - M.2 M-key
 
-= ArceOS Module axasync
+= ArceOS module axasync
 
 The first step is to #link(
   "https://github.com/adamanteye/arceos-mingyang",
@@ -257,7 +257,7 @@ smp = 1
 QEMU: Terminated
 ```
 
-= Booting ArceOS on StarFive VisionFive 2
+= Booting ArceOS on VisionFive 2
 
 Boot procedure on RISC-V follows:
 
@@ -283,7 +283,7 @@ Then just as stated in #link(
 )[VisionFive2 U-Boot Documentation], I cloned U-Boot and OpenSBI to build the
 SPL image.
 
-== Flash to SD Card
+== Flash to SD card
 
 Finally it comes to flashing. Package `disk` provides `sdisk` on debian. Just
 install it. However, it's always harmless to backup:

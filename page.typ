@@ -19,7 +19,7 @@
     html.body({
       html.header({ include "header.typ" })
       html.main({
-        html.nav({ include "src/nav.typ" })
+        html.nav({ include "src/nav-side.typ" })
         html.article({
           html.h1(title)
           doc

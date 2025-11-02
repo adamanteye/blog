@@ -5,7 +5,7 @@
   desc: desc,
 )
 
-= What Are Kubernetes Addons
+= What are kubernetes addons
 
 Kubernetes addons are a collection of utilities that make life easier for
 cluster operators. They often include networking plugins (CNI), metrics servers,
@@ -21,7 +21,7 @@ And a real production environment usually requires more than the defaults:
 components for ingress, observability, storage, and automation are often added
 to support day-to-day workloads.
 
-= Core Infrastructure
+= Core infrastructure
 
 *Traefik* and *Traefik CRDs* serve as the main ingress controller in the
 cluster. Instead of using traditional Ingress objects, I adopt the experimental
@@ -44,7 +44,7 @@ any workload or operator depending on CRDs such as `ServiceMonitor`. This
 ensures that custom monitoring resources are recognized and registered properly
 during subsequent deployments.
 
-= Operational Utilities
+= Operational utilities
 
 A common pitfall when starting out is treating the CNCF landscape like a
 supermarket: grabbing every shiny graduated project and asking 'do I need this?'
@@ -55,7 +55,7 @@ utilities remain truly valuable in daily operations. One such tool is #link(
 )[Headlamp] a lightweight Kubernetes dashboard that integrates smoothly with
 RBAC.
 
-= GitOps Controller
+= GitOps controller
 
 FluxCD is the backbone of my operational workflow and usually the first
 component I deploy after the pod network is up. It continuously reconciles

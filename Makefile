@@ -27,6 +27,11 @@ src/nav.typ: bin/nav.sh $(list)
 	@mkdir -p $(TARGET_DIR)
 	@bin/nav.sh $(patsubst src/%/index.typ,%,$(list)) > $@
 
+src/nav-side.typ: bin/nav.sh $(list)
+	@echo "  NAV   $@"
+	@mkdir -p $(TARGET_DIR)
+	@bin/nav.sh $(patsubst src/%/index.typ,%,$(list)) | sed 's|"\./|"\.\./|g' > $@
+
 notoday:
 	@$(RM) -r src/$(today)-*
 
@@ -39,7 +44,7 @@ $(TARGET_DIR)/%: assets/%
 	@echo "  INST  $<"
 	@install -D -m 644 $< $@
 
-$(TARGET_DIR)/index.html: index.typ src/nav.typ header.typ footer.typ
+$(TARGET_DIR)/index.html: index.typ src/nav-side.typ header.typ footer.typ
 	@mkdir -p $(@D)
 	@echo "  TEX   $<"
 	@$(TEX) $< $@
@@ -56,6 +61,8 @@ clean:
 	@$(RM) -r $(TARGET_DIR)/*
 	@echo "  RM    src/nav.typ"
 	@$(RM) src/nav.typ
+	@echo "  RM    src/nav-side.typ"
+	@$(RM) src/nav-side.typ
 
 atom: build $(TARGET_DIR)/atom.xml
 
