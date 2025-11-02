@@ -17,6 +17,7 @@ echo "  <link href=\"$SITE/\"/>"
 
 find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort -r | while read -r file; do
 	title=$(head -n 20 "$file" | grep -m 1 '<title>' | sed -E 's/.*<title>(.*) - adamanteye<\/title>.*/\1/')
+	content=$(awk '/<article>/,/<\/article>/' "$file" | sed '1d;$d')
 	rel="${file#$BUILD_DIR/}"
 	rel="${rel%/index.html}/"
 
@@ -41,6 +42,11 @@ find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort -r |
 	echo "    </author>"
 	echo "    <link href=\"$SITE/$rel\"/>"
 	echo "    <id>$id</id>"
+	echo '    <content type="xhtml">'
+	echo '      <div xmlns="http://www.w3.org/1999/xhtml">'
+	echo "        $content"
+	echo '      </div>'
+	echo '    </content>'
 	echo "    <updated>$updated</updated>"
 	echo "    <published>$created</published>"
 	echo "  </entry>"
