@@ -1,28 +1,28 @@
 #link(
   "/",
   html.img(
-    src: "https://api.iconify.design/lucide:house.svg",
+    src: "https://api.iconify.design/lucide:house.svg?color=%23454545",
     alt: "homepage",
   ),
 )
 #link(
   "https://github.com/adamanteye/blog",
   html.img(
-    src: "https://api.iconify.design/lucide:github.svg",
+    src: "https://api.iconify.design/lucide:github.svg?color=%23454545",
     alt: "repo",
   ),
 )
 #link(
   "mailto:adamanteye@disroot.org",
   html.img(
-    src: "https://api.iconify.design/lucide:mail-plus.svg",
+    src: "https://api.iconify.design/lucide:mail-plus.svg?color=%23454545",
     alt: "email",
   ),
 )
 #link(
   "/atom.xml",
   html.img(
-    src: "https://api.iconify.design/lucide:rss.svg",
+    src: "https://api.iconify.design/lucide:rss.svg?color=%23454545",
     alt: "feed",
   ),
 )

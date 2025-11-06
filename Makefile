@@ -22,15 +22,15 @@ $(DRAFT_DIR)/$(today)-$(title)/meta.typ:
 	@install -D -m 644 tmpl/meta.typ $@
 	@sed -i "s/$(MAGIC_TITLE)/$(title)/g" $@
 
-src/nav.typ: bin/nav.sh $(list)
+src/nav.typ: bin/nav.sh $(patsubst %/index.typ,%/meta.typ,$(list))
 	@echo "  NAV   $@"
 	@mkdir -p $(TARGET_DIR)
 	@bin/nav.sh $(patsubst src/%/index.typ,%,$(list)) > $@
 
-src/nav-side.typ: bin/nav.sh $(list)
+src/nav-side.typ: src/nav.typ
 	@echo "  NAV   $@"
 	@mkdir -p $(TARGET_DIR)
-	@bin/nav.sh $(patsubst src/%/index.typ,%,$(list)) | sed 's|"\./|"\.\./|g' > $@
+	@cat $< | sed 's|"\./|"\.\./|g' > $@
 
 notoday:
 	@$(RM) -r src/$(today)-*

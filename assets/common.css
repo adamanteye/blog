@@ -1,17 +1,17 @@
 body {
-  font-family: "Open Sans", Arial;
+  font-family: "Libertinus Serif", serif;
+  font-weight: 600;
   color: #454545;
   line-height: 1.5em;
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-  max-width: 80rem;
+  max-width: 72rem;
   margin: 0 auto;
 }
 
 @media (max-width: 768px) {
   main {
-    max-width: 20rem;
     overflow-x: auto;
   }
 }

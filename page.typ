@@ -6,15 +6,13 @@
   html.html({
     html.head({
       html.title(title + " - adamanteye")
-      html.meta(name: "description", content: desc)
-      html.meta(charset: "utf-8")
       html.meta(
-        name: "viewport",
-        content: "width=device-width, initial-scale=1.0",
+        name: "description",
+        content: desc,
       )
-      html.link(rel: "stylesheet", href: "../page.css")
+      include "meta.typ"
       html.link(rel: "stylesheet", href: "../common.css")
-      html.link(rel: "icon", type: "image/webp", href: "/favicon.webp")
+      html.link(rel: "stylesheet", href: "../page.css")
     })
     html.body({
       html.header({ include "header.typ" })
