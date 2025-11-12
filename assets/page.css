@@ -11,7 +11,7 @@ article {
 }
 
 nav {
-  border-right: 0.0625rem solid #ccc;
+  border-right: 0.0625rem solid var(--gruvbox-border);
   padding-right: 1rem;
 }
 
@@ -22,7 +22,7 @@ nav {
 
   nav {
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--gruvbox-border);
     padding: 0.5rem 1rem;
   }
 }
