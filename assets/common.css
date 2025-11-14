@@ -11,7 +11,7 @@
 
 body {
   font-family: "Libertinus Serif", serif;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--gruvbox-fg);
   background-color: var(--gruvbox-bg);
   line-height: 1.5em;
@@ -24,6 +24,7 @@ body {
 
 @media (max-width: 768px) {
   main {
+    max-width: 360px;
     overflow-x: auto;
   }
 }

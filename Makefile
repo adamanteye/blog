@@ -81,12 +81,12 @@ $(TARGET_DIR)/%: $(ASSET_DIR)/%
 	$(call log,ASSET,$@)
 	$(Q)$(INSTALL) $< $@
 
-$(TARGET_DIR)/index.html: index.typ $(NAV_SIDE_SRC) header.typ footer.typ
+$(TARGET_DIR)/index.html: index.typ $(NAV_SIDE_SRC) header.typ footer.typ meta.typ
 	$(call log,TEX,$<)
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
 
-$(TARGET_DIR)/%/index.html: $(SRC_DIR)/%/index.typ $(NAV_SRC) page.typ header.typ footer.typ
+$(TARGET_DIR)/%/index.html: $(SRC_DIR)/%/index.typ $(NAV_SRC) page.typ header.typ footer.typ meta.typ
 	$(call log,COPY,$(@D))
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(CP_R) $(<D)/. $(@D)/
