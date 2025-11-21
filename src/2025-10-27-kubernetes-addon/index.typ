@@ -46,8 +46,10 @@ during subsequent deployments.
 
 = Operational utilities
 
-A common pitfall when starting out is treating the CNCF landscape like a
-supermarket: grabbing every shiny graduated project and asking 'do I need this?'
+A common pitfall when starting out is treating the #link(
+  "https://landscape.cncf.io/",
+)[CNCF landscape] like a supermarket: grabbing every shiny graduated project and
+asking 'do I need this?'
 
 In practice, most of them end up unused. After several iterations, only a few
 utilities remain truly valuable in daily operations. One such tool is #link(

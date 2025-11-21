@@ -456,4 +456,180 @@ Based on VisionFive 2 reference manual #link(
   "https://doc.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf",
 )[VisionFive2_QSG.pdf], I found that StarFive maintains their own forks of
 U-Boot and OpenSBI. The next task is to investigate into their forks and find
-the reason why the SPL binary I built was incorrect.
+the reason why the SPL cannot load U-Boot.
+
+= Debugging
+
+== Boot mode
+
+After reading #link(
+  "https://wiki.debian.org/InstallingDebianOn/StarFive/VisionFiveV2",
+)[Installing Debian On StarFive VisionFiveV2], I found that I should switch the
+boot method to *1-bit QSPI Nor Flash*.
+
+Now U-Boot loads:
+
+```
+U-Boot SPL 2021.10 (Feb 28 2023 - 21:44:53 +0800)
+DDR version: dc2e84f0.
+Trying to boot from SPI
+
+OpenSBI v1.2
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name             : StarFive VisionFive V2
+Platform Features         : medeleg
+Platform HART Count       : 5
+Platform IPI Device       : aclint-mswi
+Platform Timer Device     : aclint-mtimer @ 4000000Hz
+Platform Console Device   : uart8250
+Platform HSM Device       : jh7110-hsm
+Platform PMU Device       : ---
+Platform Reboot Device    : pm-reset
+Platform Shutdown Device  : pm-reset
+Firmware Base             : 0x40000000
+Firmware Size             : 292 KB
+Runtime SBI Version       : 1.0
+
+Domain0 Name              : root
+Domain0 Boot HART         : 1
+Domain0 HARTs             : 0*,1*,2*,3*,4*
+Domain0 Region00          : 0x0000000002000000-0x000000000200ffff (I)
+Domain0 Region01          : 0x0000000040000000-0x000000004007ffff ()
+Domain0 Region02          : 0x0000000000000000-0xffffffffffffffff (R,W,X)
+Domain0 Next Address      : 0x0000000040200000
+Domain0 Next Arg1         : 0x0000000042200000
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+
+Boot HART ID              : 1
+Boot HART Domain          : root
+Boot HART Priv Version    : v1.11
+Boot HART Base ISA        : rv64imafdcbx
+Boot HART ISA Extensions  : none
+Boot HART PMP Count       : 8
+Boot HART PMP Granularity : 4096
+Boot HART PMP Address Bits: 34
+Boot HART MHPM Count      : 2
+Boot HART MIDELEG         : 0x0000000000000222
+Boot HART MEDELEG         : 0x000000000000b109
+
+
+U-Boot 2021.10 (Feb 28 2023 - 21:44:53 +0800), Build: jenkins-VF2_515_Branch_SDK_Release-31
+
+CPU:   rv64imacu
+Model: StarFive VisionFive V2
+DRAM:  4 GiB
+MMC:   sdio0@16010000: 0, sdio1@16020000: 1
+Loading Environment from SPIFlash... SF: Detected gd25lq128 with page size 256 Bytes, erase size 4 KiB, B
+OK
+StarFive EEPROM format v2
+
+--------EEPROM INFO--------
+Vendor : StarFive Technology Co., Ltd.
+Product full SN: VF7110B1-2310-D004E000-00002814
+data version: 0x2
+PCB revision: 0xb2
+BOM revision: A
+Ethernet MAC0 address: 6c:cf:39:00:5a:6a
+Ethernet MAC1 address: 6c:cf:39:00:5a:6b
+--------EEPROM INFO--------
+
+In:    serial@10000000
+Out:   serial@10000000
+Err:   serial@10000000
+Model: StarFive VisionFive V2
+Net:   eth0: ethernet@16030000, eth1: ethernet@16040000
+switch to partitions #0, OK
+mmc1 is current device
+found device 1
+bootmode flash device 1
+Failed to load 'uEnv.txt'
+Can't set block device
+Hit any key to stop autoboot:  0
+Failed to load '/uEnv.txt'
+## Warning: defaulting to text format
+Failed to load '/dtbs/starfive/jh7110-starfive-visionfive-2-v1.3b.dtb'
+libfdt fdt_check_header(): FDT_ERR_BADMAGIC
+/dtbs/starfive: doesn't exist (-2)
+** Unable to write file /dtbs/starfive/jh7110-starfive-visionfive-2-v1.3b.dtb **
+Retrieving file: /extlinux/extlinux.conf
+Failed to load '/extlinux/extlinux.conf'
+Error reading config file
+StarFive #
+```
+
+So I have now verified that my SQL configuration and U-Boot firmware function
+correctly.
+
+== Debian image
+
+I downloaded newest debian image release from #link(
+  "https://rvspace.org/en/project/VisionFive2_Debian_User_Guide",
+)[starfive debian user guide]. And then wrote the extracted image to SD card.
+
+Finally, I booted into linux and could login to shell.
+
+```
+root@starfive:~# iperf3 -c 192.168.0.2
+Connecting to host 192.168.0.2, port 5201
+[  5] local 192.168.0.1 port 57704 connected to 192.168.0.2 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.01   sec  77.5 MBytes   642 Mbits/sec    0    228 KBytes
+[  5]   1.01-2.02   sec  63.8 MBytes   531 Mbits/sec    0    281 KBytes
+[  5]   2.02-3.01   sec  55.0 MBytes   466 Mbits/sec    0    297 KBytes
+[  5]   3.01-4.00   sec   111 MBytes   941 Mbits/sec    0    365 KBytes
+[  5]   4.00-5.00   sec   112 MBytes   940 Mbits/sec    0    365 KBytes
+[  5]   5.00-6.00   sec   113 MBytes   955 Mbits/sec    0    382 KBytes
+[  5]   6.00-7.00   sec   112 MBytes   939 Mbits/sec    0    382 KBytes
+[  5]   7.00-8.00   sec   113 MBytes   944 Mbits/sec    0    382 KBytes
+[  5]   8.00-9.00   sec   112 MBytes   942 Mbits/sec    0    382 KBytes
+[  5]   9.00-10.00  sec   112 MBytes   938 Mbits/sec    0    382 KBytes
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec   982 MBytes   824 Mbits/sec    0             sender
+[  5]   0.00-10.01  sec   980 MBytes   821 Mbits/sec                  receiver
+
+iperf Done.
+root@starfive:~# iperf3 -s
+-----------------------------------------------------------
+Server listening on 5201 (test #1)
+-----------------------------------------------------------
+Accepted connection from 192.168.0.2, port 44764
+[  5] local 192.168.0.1 port 5201 connected to 192.168.0.2 port 44780
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec  91.8 MBytes   770 Mbits/sec
+[  5]   1.00-2.00   sec   103 MBytes   865 Mbits/sec
+[  5]   2.00-3.00   sec   101 MBytes   845 Mbits/sec
+[  5]   3.00-4.00   sec   103 MBytes   866 Mbits/sec
+[  5]   4.00-5.00   sec   104 MBytes   872 Mbits/sec
+[  5]   5.00-6.00   sec   104 MBytes   875 Mbits/sec
+[  5]   6.00-7.00   sec   105 MBytes   877 Mbits/sec
+[  5]   7.00-8.00   sec   104 MBytes   875 Mbits/sec
+[  5]   8.00-9.00   sec   111 MBytes   934 Mbits/sec
+[  5]   9.00-10.00  sec   111 MBytes   934 Mbits/sec
+[  5]  10.00-10.00  sec   288 KBytes   899 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-10.00  sec  1.01 GBytes   871 Mbits/sec                  receiver
+```
+
+And it's normal to observe that systemd remounted `/` as read-only during
+shutdown.
+
+```
+[ 4000.792275] (sd-remount)[15359]: Remounting '/' read-only with options ''.
+[ 4000.973043] EXT4-fs (mmcblk1p4): re-mounted a1242b99-a75f-46e6-92ab-64c5b3c7a316 ro. Quota mode: disab.
+```
+
+This happens because systemd-shutdown ensures all data is safely written to disk
+before powering off or rebooting. It first sends `SIGTERM` and `SIGKILL` to
+remaining processes, then synchronizes filesystems (`sync`), and finally
+remounts the root filesystem `/` as read-only.
