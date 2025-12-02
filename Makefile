@@ -31,7 +31,6 @@ DRAFT_DIR := draft
 TEMPLATE_INDEX := tmpl/index.typ
 TEMPLATE_META := tmpl/meta.typ
 NAV_SRC := $(SRC_DIR)/nav.typ
-NAV_SIDE_SRC := $(SRC_DIR)/nav-side.typ
 MAGIC_TITLE := 0x8964
 
 TITLE ?= no-title
@@ -67,10 +66,6 @@ $(NAV_SRC): bin/nav.sh $(SRC_META)
 	$(Q)$(MKDIR_P) $(TARGET_DIR)
 	$(Q)bin/nav.sh $(SRC_SECTIONS) > $@
 
-$(NAV_SIDE_SRC): $(NAV_SRC)
-	$(call log,NAV,$@)
-	$(Q)sed 's|"\./|"\.\./|g' $< > $@
-
 notoday:
 	$(call log,RM,$(SRC_DIR)/$(TODAY)-*)
 	$(Q)$(RM_RF) $(SRC_DIR)/$(TODAY)-*
@@ -81,7 +76,7 @@ $(TARGET_DIR)/%: $(ASSET_DIR)/%
 	$(call log,ASSET,$@)
 	$(Q)$(INSTALL) $< $@
 
-$(TARGET_DIR)/index.html: index.typ $(NAV_SIDE_SRC) header.typ footer.typ meta.typ
+$(TARGET_DIR)/index.html: index.typ header.typ footer.typ meta.typ
 	$(call log,TEX,$<)
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)

@@ -1,27 +1,8 @@
-main {
-  display: grid;
-  grid-template-columns: 14rem 1fr;
-  gap: 1rem;
+main,
+header {
   padding: 1rem;
   margin: 0 auto;
-}
-
-article {
+  max-width: 72rem;
+  width: 100%;
   overflow-x: auto;
-}
-
-nav {
-  border-right: 0.0625rem solid var(--gruvbox-border);
-  padding-right: 1rem;
-}
-
-@media (max-width: 768px) {
-  main {
-    display: block;
-  }
-  nav {
-    border: none;
-    border-bottom: 1px solid var(--gruvbox-border);
-    padding: 0.5rem 1rem;
-  }
 }

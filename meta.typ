@@ -5,13 +5,8 @@
     content: "width=device-width, initial-scale=1.0",
   )
   html.link(rel: "icon", type: "image/webp", href: "./favicon.webp")
-  html.link(rel: "preconnect", href: "https://fonts.googleapis.com")
-  html.link(
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-  )
   html.link(
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;1,400&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap",
   )
 }
