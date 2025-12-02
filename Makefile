@@ -94,8 +94,6 @@ clean:
 	$(Q)$(RM_RF) $(TARGET_DIR)
 	$(call log,RM,$(NAV_SRC))
 	$(Q)$(RM_F) $(NAV_SRC)
-	$(call log,RM,$(NAV_SIDE_SRC))
-	$(Q)$(RM_F) $(NAV_SIDE_SRC)
 
 atom: build $(TARGET_DIR)/atom.xml
 

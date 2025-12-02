@@ -1,3 +1,3 @@
 #{
-  html.p("Adamanteye's Blog")
+  html.p()[Adamanteye's Blog]
 }
