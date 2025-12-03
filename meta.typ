@@ -7,6 +7,6 @@
   html.link(rel: "icon", type: "image/webp", href: "./favicon.webp")
   html.link(
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500&display=swap",
   )
 }

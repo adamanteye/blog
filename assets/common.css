@@ -6,24 +6,46 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+  max-width: 60rem;
   width: 100vw;
   margin: 0 auto;
 }
 
-header p {
+header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+main {
+  overflow-x: auto;
+}
+
+header p.nav {
+  margin-top: auto;
+  margin-left: auto;
+}
+
+header p.header {
   font-size: 2em;
 }
 
 h1,
 h2,
 h3,
-h4 {
-  margin-top: 1.2em;
-  margin-bottom: 0.5em;
+h4,
+h5,
+h6 {
+  margin-bottom: 1em;
 }
 
-p {
-  margin: 0.5em 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-weight: 500;
 }
 
 ul,
@@ -31,12 +53,7 @@ ol {
   padding-left: 2em;
 }
 
-li {
-  margin-bottom: 0.5em;
-}
-
-code,
-pre {
+code {
   font-family: Inconsolata;
 }
 
@@ -51,28 +68,18 @@ code:not(pre code) {
   border-radius: 0.25rem;
 }
 
-footer {
-  text-align: center;
-  padding: 0.5rem;
-}
-
 a {
   color: #dc3545;
 }
 
+a:visited {
+  color: #f19cbb;
+}
+
 header {
-  padding: 1rem;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 
 footer {
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.08);
-}
-
-footer img {
-  vertical-align: middle;
-  width: 1.5em;
-  padding-right: 0.5em;
-  padding-left: 0.5em;
-  height: auto;
 }
