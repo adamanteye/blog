@@ -5,12 +5,12 @@
 ) = {
   html.html({
     html.head({
-      html.title(title + " - adamanteye")
+      include "meta.typ"
+      html.title()[#title]
       html.meta(
         name: "description",
         content: desc,
       )
-      include "meta.typ"
       html.link(rel: "stylesheet", href: "../common.css")
     })
     html.body({

@@ -2,6 +2,10 @@
 #import "meta.typ": desc, title
 #show: conf.with(title: title, desc: desc)
 
+= GNU Radio
+
+#link("https://youtu.be/enLbgn1qBS4")[Intro to GNU Radio Companion]
+
 ```python
 """
 Keyboard CW keyer block

@@ -9,11 +9,7 @@ body {
   max-width: 60rem;
   width: 100vw;
   margin: 0 auto;
-}
-
-header {
-  display: grid;
-  grid-template-columns: auto 1fr;
+  padding: 1rem;
 }
 
 main {
@@ -26,7 +22,7 @@ header p.nav {
 }
 
 header p.header {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 h1,
@@ -61,6 +57,7 @@ pre {
   padding: 0.75rem;
   border-radius: 0.25rem;
   overflow-x: auto;
+  font-size: 12pt;
 }
 
 code:not(pre code) {
