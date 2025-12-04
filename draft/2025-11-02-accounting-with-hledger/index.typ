@@ -38,22 +38,25 @@ Here you may still find it ambigious. What is an account though? The short
 answer is that an account is basically a named container that keeps track of
 changes in value related to a specific thing.
 
-== Classify your accounts
+== Accounts and financial statements overview
 
-To make sense of the chaos, we group accounts into five major categories. This
-convention is universal, used by both multinational corporations and individuals
-tracking their daily expenses.
+We group accounts into five major categories. This convention is universal, used
+by both multinational corporations and individuals tracking their daily
+expenses.
 
 - *Assets*: Resources you own that have economic value. In a personal context,
   this means your bank accounts (`assets:cash:boc:debit`, a debit card, for
-  example) and perhaps significant items like your computer that generate
-  revenues.
+  example) and perhaps items like computers that generate revenues. Recorded
+  permanently.
 - *Liabilities*: Obligations you owe to others. Credit card balances
-  (`liabilities:credit-card`) are the most common example here.
+  (`liabilities:credit-card`) are the most common example here. Recorded
+  permanently.
 - *Equity*: Your net worth. It bridges the gap between what you own and what you
-  owe (`Assets - Liabilities = Equity`).
-- *Revenues*: Value flowing in. Salary, gifts, or interest.
+  owe (`Assets - Liabilities = Equity`). Recorded permanently.
+- *Revenues*: Value flowing in. Salary, gifts, or interest. Recorded
+  periodically.
 - *Expenses*: Value flowing out. Food, rent, transportation, and subscriptions.
+  Recorded periodically.
 
 By organizing transactions into these buckets, we can generate powerful reports.
 Below is an example of a *Balance Sheet*, which captures the state of your

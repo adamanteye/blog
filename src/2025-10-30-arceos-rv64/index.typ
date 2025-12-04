@@ -22,7 +22,7 @@ possily merge the async runtime for ArceOS too.
 
 = StarFive VisionFive 2
 
-StarFive VisionFive 2 is a 4 core, 64 bit, RV64GC SoC, with highest freq to 1.5
+StarFive VisionFive 2 is a 4 core, 64 bit, RV64GC SBC, with highest freq to 1.5
 GHz.
 
 The board includes LPDDR4 memory (up to 8 Gi) and onboard SD card slot, as well
@@ -259,7 +259,9 @@ QEMU: Terminated
 
 = Booting ArceOS on VisionFive 2
 
-Boot procedure on RISC-V follows:
+#link(
+  "https://doc-en.rvspace.org/VisionFive2/Boot_UG/JH7110_SDK/boot_process_memory_map.html",
+)[Boot procedure] on RISC-V follows:
 
 BootROM -> SPL -> SBI -> U-Boot -> OS
 
@@ -566,8 +568,7 @@ Error reading config file
 StarFive #
 ```
 
-So I have now verified that my SQL configuration and U-Boot firmware function
-correctly.
+So I have now verified that my SPL and U-Boot firmware function correctly.
 
 == Debian image
 
