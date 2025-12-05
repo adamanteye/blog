@@ -6,7 +6,7 @@ body {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-  max-width: 60rem;
+  max-width: 50rem;
   width: 100vw;
   margin: 0 auto;
   padding: 1rem;
@@ -14,11 +14,6 @@ body {
 
 main {
   overflow-x: auto;
-}
-
-header p.nav {
-  margin-top: auto;
-  margin-left: auto;
 }
 
 header p.header {
@@ -74,9 +69,11 @@ a:visited {
 }
 
 header {
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  padding-bottom: 0.5em;
+  box-shadow: 0 0.1em 0 rgba(0, 0, 0, 0.08);
 }
 
 footer {
-  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.08);
+  padding-top: 0.5em;
+  box-shadow: 0 -0.1em 0 rgba(0, 0, 0, 0.08);
 }
