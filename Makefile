@@ -8,9 +8,11 @@ SHELL := /bin/bash
 ifeq ($(V),1)
   Q :=
   TYPST_SILENT :=
+  MINIFY_CMD := minify
 else
   Q := @
   TYPST_SILENT := 2>/dev/null
+  MINIFY_CMD := minify -q
 endif
 
 define log
@@ -32,6 +34,8 @@ TEMPLATE_INDEX := tmpl/index.typ
 TEMPLATE_META := tmpl/meta.typ
 NAV_SRC := $(SRC_DIR)/nav.typ
 MAGIC_TITLE := 0x8964
+
+MINIFY ?= n
 
 TITLE ?= no-title
 TODAY ?= $(shell date -Idate)
@@ -80,6 +84,10 @@ $(TARGET_DIR)/index.html: index.typ meta.typ
 	$(call log,TEX,$<)
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
+ifeq ($(MINIFY), y)
+	$(call log,MINI,$@)
+	$(Q)$(MINIFY_CMD) -a -i $@
+endif
 
 $(TARGET_DIR)/%/index.html: $(SRC_DIR)/%/index.typ $(NAV_SRC) page.typ meta.typ
 	$(call log,COPY,$(@D))
@@ -87,6 +95,10 @@ $(TARGET_DIR)/%/index.html: $(SRC_DIR)/%/index.typ $(NAV_SRC) page.typ meta.typ
 	$(Q)$(CP_R) $(<D)/. $(@D)/
 	$(call log,TEX,$<)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
+ifeq ($(MINIFY), y)
+	$(call log,MINI,$@)
+	$(Q)$(MINIFY_CMD) -a -i $@
+endif
 	$(Q)$(RM_F) $(@D)/*.typ
 
 clean:
