@@ -14,10 +14,20 @@
       html.link(rel: "stylesheet", href: "../common.css")
     })
     html.body({
-      html.header({ include "header.typ" })
+      html.header({
+        html.h1(class: "header")[#title - adamanteye's blog]
+        html.nav([
+          #link(
+            "../",
+          )[Home]
+          \/
+          #link(
+            "https://github.com/adamanteye/blog",
+          )[Source]
+        ])
+      })
       html.main({
         html.article({
-          html.h1(title)
           doc
         })
       })
@@ -32,7 +42,7 @@
           )[Source]
           \/
           #link(
-            "mailto:adamanteye@disroot.org",
+            "mailto:xuelin@adamanteye.cc",
           )[Email]
           \/
           #link(
