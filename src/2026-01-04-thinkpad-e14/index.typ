@@ -64,8 +64,10 @@ Here's my consolidated choice:
     "https://drewdevault.com/2019/01/23/Why-I-use-old-hardware.html",
   )[sway]
 - Terminal emulator: foot
+- Container: podman
 - Browser: firefox
-- Email: neomutt
+- Pass manager: pass, pass-otp
+- Email: neomutt, ibsync, msmtp
 - RSS: newsboat
 - AUR package downloader: paru
 

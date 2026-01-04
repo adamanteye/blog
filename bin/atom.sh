@@ -2,10 +2,11 @@
 set -euo pipefail
 
 SITE='https://blog.adamanteye.cc'
-EMAIL='adamanteye@disroot.org'
+EMAIL='xuelin@adamanteye.cc'
 NAME='Xuelin Yang'
 BUILD_DIR="$1"
 DESC="Adamantye's Blog"
+REGEX_ARTICLE='(<article>.+</article>)'
 
 VOID_ELEM="area base br col embed hr img input link meta param source track wbr"
 
@@ -19,7 +20,9 @@ echo "  <link href=\"$SITE/\"/>"
 
 find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort -r | while read -r file; do
 	title=$(head -n 20 "$file" | grep -m 1 '<title>' | sed -E 's/.*<title>(.*)<\/title>.*/\1/')
-	content=$(awk '/<article>/,/<\/article>/' "$file")
+	content=$(cat $file)
+	[[ $content =~ $REGEX_ARTICLE ]]
+	content=${BASH_REMATCH[1]}
 	for tag in $VOID_ELEM; do
 		content=$(echo "$content" | sed -E "s|<$tag\b([^>]*)>|<$tag\1 />|g")
 	done

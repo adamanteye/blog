@@ -8,11 +8,11 @@ SHELL := /bin/bash
 ifeq ($(V),1)
   Q :=
   TYPST_SILENT :=
-  MINIFY_CMD := minify
+  MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags
 else
   Q := @
   TYPST_SILENT := 2>/dev/null
-  MINIFY_CMD := minify -q
+  MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags -q
 endif
 
 define log
@@ -112,3 +112,7 @@ atom: build $(TARGET_DIR)/atom.xml
 $(TARGET_DIR)/atom.xml: bin/atom.sh $(TARGET_POSTS)
 	$(call log,FEED,$@)
 	$(Q)./bin/atom.sh $(TARGET_DIR) > $@
+ifeq ($(MINIFY), y)
+	$(call log,MINI,$@)
+	$(Q)$(MINIFY_CMD) -a -i $@
+endif
