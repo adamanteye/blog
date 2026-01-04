@@ -18,7 +18,7 @@ echo "  <link href=\"$SITE/atom.xml\" rel=\"self\"/>"
 echo "  <link href=\"$SITE/\"/>"
 
 find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort -r | while read -r file; do
-	title=$(head -n 20 "$file" | grep -m 1 '<title>' | sed -E 's/.*<title>(.*) - adamanteye<\/title>.*/\1/')
+	title=$(head -n 20 "$file" | grep -m 1 '<title>' | sed -E 's/.*<title>(.*)<\/title>.*/\1/')
 	content=$(awk '/<article>/,/<\/article>/' "$file")
 	for tag in $VOID_ELEM; do
 		content=$(echo "$content" | sed -E "s|<$tag\b([^>]*)>|<$tag\1 />|g")
