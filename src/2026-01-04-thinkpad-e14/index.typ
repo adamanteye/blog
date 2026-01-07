@@ -86,3 +86,43 @@ and there.
 "640K ought to be enough for anybody."
 
 It's astonishing how far we've come since then.
+
+= User experience
+
+The following statistics are measured under typical idle-to-light workloads of
+one active sway instance, tens of firefox tabs open, several tmux sessions, and
+one mpv instance streaming over a wiregurad tunnel with WiFi and bluetootch on:
+
+```sh
+sudo tlp-stat -b
+```
+
+```
+--- TLP 1.9.0 --------------------------------------------
+
++++ Battery Care
+Plugin: thinkpad
+Supported features: charge thresholds, chargeonce, discharge, recalibrate
+Driver usage:
+* natacpi (thinkpad_acpi) = active (charge thresholds, force-discharge)
+Parameter value ranges:
+* START_CHARGE_THRESH_BAT0/1:  0(off)..96(default)..99
+* STOP_CHARGE_THRESH_BAT0/1:   1..100(default)
+
++++ ThinkPad Battery Status: BAT0 (Main / Internal)
+/sys/class/power_supply/BAT0/manufacturer                   = SMP
+/sys/class/power_supply/BAT0/model_name                     = L24M3PG3
+/sys/class/power_supply/BAT0/cycle_count                    =      7
+/sys/class/power_supply/BAT0/energy_full_design             =  48000 [mWh]
+/sys/class/power_supply/BAT0/energy_full                    =  48000 [mWh]
+/sys/class/power_supply/BAT0/energy_now                     =  17330 [mWh]
+/sys/class/power_supply/BAT0/power_now                      =   4990 [mW]
+/sys/class/power_supply/BAT0/status                         = Discharging
+
+/sys/class/power_supply/BAT0/charge_control_start_threshold =     75 [%]
+/sys/class/power_supply/BAT0/charge_control_end_threshold   =     85 [%]
+/sys/class/power_supply/BAT0/charge_behaviour               = [auto] inhibit-charge force-discharge
+
+Charge                                                      =   36.1 [%]
+Capacity                                                    =  100.0 [%]
+```
