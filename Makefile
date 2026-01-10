@@ -84,6 +84,10 @@ $(TARGET_DIR)/%: $(ASSET_DIR)/%
 $(TARGET_DIR)/sitemap.xml: $(TARGET_DIR)/index.html
 	$(call log,MAP,$@)
 	$(Q)bin/sitemap.sh $(@D) > $@
+ifeq ($(MINIFY), y)
+	$(call log,MINI,$@)
+	$(Q)$(MINIFY_CMD) -a -i $@
+endif
 
 $(TARGET_DIR)/index.html: index.typ meta.typ
 	$(call log,TEX,$<)
