@@ -16,7 +16,7 @@ else
 endif
 
 define log
-	$(Q)printf '  %-6s %s\n' "$(1)" "$(2)"
+	@printf '  %-6s %s\n' "$(1)" "$(2)"
 endef
 
 TYPST := typst c --root . --features html
@@ -48,7 +48,8 @@ TARGET_POSTS := $(addprefix $(TARGET_DIR)/,$(addsuffix /index.html,$(SRC_SECTION
 
 ASSET_CSS := $(notdir $(wildcard $(ASSET_DIR)/*.css))
 
-build: assets $(NAV_SRC) $(TARGET_DIR)/index.html $(TARGET_POSTS)
+build: assets $(NAV_SRC) $(TARGET_DIR)/sitemap.xml \
+	$(TARGET_DIR)/index.html $(TARGET_POSTS)
 
 assets: css $(TARGET_DIR)/favicon.webp
 
@@ -79,6 +80,10 @@ notoday:
 $(TARGET_DIR)/%: $(ASSET_DIR)/%
 	$(call log,ASSET,$@)
 	$(Q)$(INSTALL) $< $@
+
+$(TARGET_DIR)/sitemap.xml: $(TARGET_DIR)/index.html
+	$(call log,MAP,$@)
+	$(Q)bin/sitemap.sh $(@D) > $@
 
 $(TARGET_DIR)/index.html: index.typ meta.typ
 	$(call log,TEX,$<)
