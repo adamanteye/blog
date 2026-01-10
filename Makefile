@@ -58,7 +58,7 @@ today: $(TODAY_DIR)/index.typ $(TODAY_DIR)/meta.typ
 
 atom: build $(TARGET_DIR)/atom.xml
 
-sitemap: $(TARGET_DIR)/sitemap.xml
+sitemap: $(TARGET_DIR)/sitemap.xml $(TARGET_DIR)/robots.txt
 
 notoday:
 	$(call log,RM,$(SRC_DIR)/$(TODAY)-*)
