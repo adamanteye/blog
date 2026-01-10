@@ -2,7 +2,7 @@ MAKEFLAGS += --no-builtin-rules
 SHELL := /bin/bash
 .DELETE_ON_ERROR:
 
-.PHONY: build clean assets css sitemap atom today notoday
+.PHONY: build clean assets css seo atom today notoday
 .DEFAULT_GOAL := build
 
 ifeq ($(V),1)
@@ -58,7 +58,7 @@ today: $(TODAY_DIR)/index.typ $(TODAY_DIR)/meta.typ
 
 atom: build $(TARGET_DIR)/atom.xml
 
-sitemap: atom $(TARGET_DIR)/sitemap.xml $(TARGET_DIR)/robots.txt
+seo: build $(TARGET_DIR)/sitemap.xml $(TARGET_DIR)/robots.txt
 
 notoday:
 	$(call log,RM,$(SRC_DIR)/$(TODAY)-*)

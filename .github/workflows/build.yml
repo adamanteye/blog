@@ -20,7 +20,7 @@ jobs:
       - name: Build
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          make MINIFY=y sitemap
+          make MINIFY=y seo
           mv wrangler.toml build/
       - name: Upload build artifacts
         uses: actions/upload-artifact@v6
