@@ -21,6 +21,8 @@ emit_url() {
 	echo "  <url>"
 	echo "    <loc>$loc</loc>"
 	echo "    <lastmod>$lastmod</lastmod>"
+	echo "    <priority>0.8</priority>"
+	echo "    <changefreq>monthly</changefreq>"
 	echo "  </url>"
 }
 
