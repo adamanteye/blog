@@ -30,7 +30,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>'
 echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
 
 find "$BUILD_DIR" -type f -name "index.html" | sort -r | while read -r file; do
-	rel="${file#$BUILD_DIR/}"
+	rel="${file#"$BUILD_DIR"/}"
 	rel="${rel%/index.html}/"
 
 	if [[ "$rel" =~ $EXCLUDE_REGEX ]]; then
