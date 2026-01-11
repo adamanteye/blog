@@ -5,7 +5,7 @@
 TL;DR:
 
 ```sh
-systemctl enable --now keyd
+sudo systemctl enable --now keyd
 ```
 
 With the following configuration:
