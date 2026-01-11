@@ -20,6 +20,8 @@ jobs:
       - name: Build
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          make -j$(nproc) MINIFY=y build
+          make MINIFY=y atom
           make MINIFY=y seo
           mv wrangler.toml build/
       - name: Upload build artifacts

@@ -84,7 +84,7 @@ $(TARGET_DIR)/%: $(ASSET_DIR)/%
 	$(call log,ASSET,$@)
 	$(Q)$(INSTALL) $< $@
 
-$(TARGET_DIR)/sitemap.xml: $(TARGET_DIR)/atom.xml
+$(TARGET_DIR)/sitemap.xml:
 	$(call log,MAP,$@)
 	$(Q)bin/sitemap.sh $(@D) > $@
 ifeq ($(MINIFY), y)
