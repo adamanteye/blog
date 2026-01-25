@@ -18,7 +18,7 @@ echo "  <id>$SITE</id>"
 echo "  <link href=\"$SITE/atom.xml\" rel=\"self\"/>"
 echo "  <link href=\"$SITE/\"/>"
 
-find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort -r | while read -r file; do
+find "$BUILD_DIR" -mindepth 2 -type f -name "index.html" | sort -r | while read -r file; do
 	title=$(head -n 20 "$file" | grep -m 1 '<title>' | sed -E 's/.*<title>(.*)<\/title>.*/\1/')
 	content=$(<"$file")
 	[[ $content =~ $REGEX_ARTICLE ]]
@@ -30,7 +30,7 @@ find "$BUILD_DIR" -mindepth 2 -maxdepth 2 -type f -name "index.html" | sort -r |
 	rel="${rel%/index.html}/"
 
 	src="src/$rel"
-	id="$(basename "$(dirname "$file")")"
+	id="${rel%/}"
 
 	created=$(git log --reverse --date=iso-strict --format="%cd" -- "$src" | head -n 1 || true)
 	updated=$(git log -1 --date=iso-strict --format="%cd" -- "$src" || true)

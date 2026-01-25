@@ -1,4 +1,4 @@
-#import "../../page.typ": conf
+#import "/page.typ": conf
 #import "meta.typ": desc, title
 #show: conf.with(title: title, desc: desc)
 
@@ -126,3 +126,5 @@ Parameter value ranges:
 Charge                                                      =   36.1 [%]
 Capacity                                                    =  100.0 [%]
 ```
+
+And it's actually lower when it's idle, usually 2700 mW.

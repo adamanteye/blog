@@ -11,7 +11,7 @@
         name: "description",
         content: desc,
       )
-      html.link(rel: "stylesheet", href: "../common.css")
+      html.link(rel: "stylesheet", href: "../../../common.css")
     })
     html.body({
       html.header({
@@ -34,7 +34,7 @@
       html.footer({
         html.nav([
           #link(
-            "../",
+            "../../../",
           )[Home]
           \/
           #link(
@@ -46,7 +46,7 @@
           )[Email]
           \/
           #link(
-            "../atom.xml",
+            "../../../atom.xml",
           )[Feed]
         ])
 

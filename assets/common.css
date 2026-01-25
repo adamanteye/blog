@@ -4,6 +4,14 @@
   --link: #c72538;
   --link-visited: #a8486c;
   --border: rgba(0, 0, 0, 0.08);
+  --font-main: Inconsolata;
+  --font-code: Inconsolata;
+  --size-body: 14pt;
+  --size-pre: 12pt;
+  --line-body: 1.2em;
+  --content-max: 50rem;
+  --space-body: 1rem;
+  --radius: 0.25rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,18 +24,24 @@
   }
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Inconsolata;
+  font-family: var(--font-main);
   font-weight: 400;
-  font-size: 14pt;
-  line-height: 1.2em;
+  font-size: var(--size-body);
+  line-height: var(--line-body);
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-  max-width: 50rem;
-  width: 100vw;
+  max-width: var(--content-max);
+  width: 100%;
   margin: 0 auto;
-  padding: 1rem;
+  padding: var(--space-body);
   background: var(--bg);
   color: var(--text);
 }
@@ -41,22 +55,11 @@ header h1.header {
   font-size: 1.5em;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+:is(h1, h2, h3, h4, h5, h6) {
   margin-bottom: 1em;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong {
+:is(h1, h2, h3, h4, h5, h6, strong) {
   font-weight: 500;
 }
 
@@ -66,19 +69,19 @@ ol {
 }
 
 code {
-  font-family: Inconsolata;
+  font-family: var(--font-code);
 }
 
 pre {
   padding: 0.75rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius);
   overflow-x: auto;
-  font-size: 12pt;
+  font-size: var(--size-pre);
 }
 
 code:not(pre code) {
   padding: 0.1rem 0.25rem;
-  border-radius: 0.25rem;
+  border-radius: var(--radius);
 }
 
 a {
@@ -97,4 +100,15 @@ header {
 footer {
   padding-top: 0.5em;
   box-shadow: 0 -0.1em 0 var(--border);
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 0.75rem;
+    font-size: 13pt;
+  }
+
+  pre {
+    font-size: 11pt;
+  }
 }

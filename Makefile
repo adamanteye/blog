@@ -41,7 +41,7 @@ TITLE ?= no-title
 TODAY ?= $(shell date -Idate)
 TODAY_DIR := $(DRAFT_DIR)/$(TODAY)-$(TITLE)
 
-SRC_PAGES := $(shell ls -d $(SRC_DIR)/*/index.typ | sort -r)
+SRC_PAGES := $(shell find $(SRC_DIR) -mindepth 4 -maxdepth 4 -type f -name index.typ | sort -r)
 SRC_SECTIONS := $(patsubst $(SRC_DIR)/%/index.typ,%,$(SRC_PAGES))
 SRC_META := $(patsubst %,$(SRC_DIR)/%/meta.typ,$(SRC_SECTIONS))
 TARGET_POSTS := $(addprefix $(TARGET_DIR)/,$(addsuffix /index.html,$(SRC_SECTIONS)))
@@ -78,7 +78,7 @@ $(TODAY_DIR)/meta.typ:
 $(NAV_SRC): bin/nav.sh $(SRC_META)
 	$(call log,NAV,$@)
 	$(Q)$(MKDIR_P) $(TARGET_DIR)
-	$(Q)bin/nav.sh $(SRC_SECTIONS) > $@
+	$(Q)bin/nav.sh $(SRC_DIR) > $@
 
 $(TARGET_DIR)/%: $(ASSET_DIR)/%
 	$(call log,ASSET,$@)
