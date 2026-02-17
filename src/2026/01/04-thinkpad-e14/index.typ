@@ -74,7 +74,7 @@ Here's my consolidated choice:
 KDE? KDE is great of course. But using a lightweight desktop will help extend
 battery life even longer.
 
-= Why not Panther Lake
+= Why Not Panther Lake
 
 Panther Lake is expected to be released in Q2 2026. But as mentioned above,
 performance is not my primary concern.
@@ -87,7 +87,7 @@ and there.
 
 It's astonishing how far we've come since then.
 
-= User experience
+= User Experience
 
 The following statistics are measured under typical idle-to-light workloads of
 one active sway instance, tens of firefox tabs open, several tmux sessions, and

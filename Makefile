@@ -6,19 +6,22 @@ SHELL := /bin/bash
 .DEFAULT_GOAL := build
 
 ifeq ($(V),1)
-  Q :=
-  TYPST_SILENT :=
-  MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags
+	Q :=
+	TYPST_SILENT :=
+	MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags
 else
-  Q := @
-  TYPST_SILENT := 2>/dev/null
-  MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags -q
+	Q := @
+	TYPST_SILENT := 2>/dev/null
+	MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags -q
 endif
 
 define log
 	@printf '  %-6s %s\n' "$(1)" "$(2)"
 endef
 
+OBJS :=
+include mk/lily.mk
+OBJS += $(LILY_OBJS)
 TYPST := typst c --root . --features html
 INSTALL := install -D -m 0644
 MKDIR_P := mkdir -p
@@ -38,7 +41,7 @@ MAGIC_TITLE := 0x8964
 MINIFY ?= n
 
 TITLE ?= no-title
-TODAY ?= $(shell date -Idate)
+TODAY ?= $(shell date +%Y/%m/%d)
 TODAY_DIR := $(DRAFT_DIR)/$(TODAY)-$(TITLE)
 
 SRC_PAGES := $(shell find $(SRC_DIR) -mindepth 4 -maxdepth 4 -type f -name index.typ | sort -r)
@@ -50,7 +53,7 @@ ASSET_CSS := $(notdir $(wildcard $(ASSET_DIR)/*.css))
 
 build: assets $(NAV_SRC) $(TARGET_DIR)/index.html $(TARGET_POSTS)
 
-assets: css $(TARGET_DIR)/favicon.webp
+assets: css $(TARGET_DIR)/favicon.webp $(OBJS)
 
 css: $(addprefix $(TARGET_DIR)/,$(ASSET_CSS))
 

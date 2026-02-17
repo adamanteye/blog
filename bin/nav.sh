@@ -7,7 +7,6 @@ find "$SRC_DIR" -mindepth 4 -maxdepth 4 -type f -name meta.typ | sort -r | while
 	name="${meta#"$SRC_DIR"/}"
 	name="${name%/meta.typ}"
 	date="${name:0:10}"
-	date="${date//\//-}"
 	echo "#{"
 	echo "  import \"../src/$name/meta.typ\": title"
 	echo "  [- $date #link(\"./$name\")[#title]]"

@@ -1,2 +1,2 @@
 #let title = "Trying ArceOS"
-#let desc = "learn RISC-V toolchains and boot procedure"
+#let desc = "Learn RISC-V Toolchains and Boot Procedure"

@@ -30,7 +30,7 @@ as:
 - 2 RJ45 gigabit ethernet ports
 - M.2 M-key
 
-= ArceOS module axasync
+= ArceOS Module Axasync
 
 The first step is to #link(
   "https://github.com/adamanteye/arceos-mingyang",
@@ -285,7 +285,7 @@ Then just as stated in #link(
 )[VisionFive2 U-Boot Documentation], I cloned U-Boot and OpenSBI to build the
 SPL image.
 
-== Flash to SD card
+== Flash to SD Card
 
 Finally it comes to flashing. Package `disk` provides `sdisk` on debian. Just
 install it. However, it's always harmless to backup:
@@ -462,7 +462,7 @@ the reason why the SPL cannot load U-Boot.
 
 = Debugging
 
-== Boot mode
+== Boot Mode
 
 After reading #link(
   "https://wiki.debian.org/InstallingDebianOn/StarFive/VisionFiveV2",
@@ -570,7 +570,7 @@ StarFive #
 
 So I have now verified that my SPL and U-Boot firmware function correctly.
 
-== Debian image
+== Debian Image
 
 I downloaded newest debian image release from #link(
   "https://rvspace.org/en/project/VisionFive2_Debian_User_Guide",

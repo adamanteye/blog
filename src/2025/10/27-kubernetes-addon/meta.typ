@@ -1,2 +1,2 @@
-#let title = "Overview of kubernetes addons"
-#let desc = "An overview of kubernetes addons and their role in my cluster."
+#let title = "Overview of Kubernetes Addons"
+#let desc = "An Overview of Kubernetes Addons and Their Role in My Cluster."

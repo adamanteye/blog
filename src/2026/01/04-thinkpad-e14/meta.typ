@@ -1,2 +1,2 @@
-#let title = "In praise of ThinkPad"
-#let desc = "I bought a laptop: ThinkPad E14 Ultra 228V, the best laptop I ever met"
+#let title = "In Praise of ThinkPad"
+#let desc = "I Bought a Laptop: ThinkPad E14 Ultra 228V, the Best Laptop I Ever Met"

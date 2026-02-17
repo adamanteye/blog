@@ -1,2 +1,2 @@
 #let title = "Remap Copilot Key"
-#let desc = "My new laptop has a Copilot key, which can be remapped as Capslock"
+#let desc = "My New Laptop Has a Copilot Key, Which Can Be Remapped as Capslock"

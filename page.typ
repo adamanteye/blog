@@ -28,6 +28,8 @@
       })
       html.main({
         html.article({
+          show math.equation: html.frame
+          outline()
           doc
         })
       })
