@@ -21,6 +21,7 @@ jobs:
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
           make -j$(nproc) MINIFY=y full
+          rm -f $(find build/ -name '*.typ')
       - name: Upload build artifacts
         uses: actions/upload-artifact@v6
         with:

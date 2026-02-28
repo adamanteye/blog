@@ -1,3 +1,11 @@
+#let home = link(
+  "../../../",
+)[Home]
+
+#let source = link(
+  "https://github.com/adamanteye/blog",
+)[Source]
+
 #{
   html.html({
     html.head({
@@ -13,13 +21,9 @@
       html.header({
         html.p(class: "header")[Adamanteye's Blog]
         html.nav([
-          #link(
-            "../",
-          )[Home]
+          #home
           \/
-          #link(
-            "https://github.com/adamanteye/blog",
-          )[Source]
+          #source
         ])
       })
       html.main({
@@ -27,13 +31,9 @@
       })
       html.footer({
         html.nav([
-          #link(
-            "./",
-          )[Home]
+          #home
           \/
-          #link(
-            "https://github.com/adamanteye/blog",
-          )[Source]
+          #source
           \/
           #link(
             "mailto:xuelin@adamanteye.cc",

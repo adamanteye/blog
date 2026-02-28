@@ -1,6 +1,7 @@
 MAKEFLAGS += --no-builtin-rules
 SHELL := /bin/bash
 .DELETE_ON_ERROR:
+.SECONDARY:
 
 .PHONY: build clean assets css seo atom today notoday full
 .DEFAULT_GOAL := build
