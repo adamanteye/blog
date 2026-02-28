@@ -20,9 +20,7 @@ jobs:
       - name: Build
         run: |
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          make -j$(nproc) MINIFY=y build
-          make MINIFY=y atom
-          make MINIFY=y seo
+          make -j$(nproc) MINIFY=y full
       - name: Upload build artifacts
         uses: actions/upload-artifact@v6
         with:

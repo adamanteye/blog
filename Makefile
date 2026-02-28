@@ -2,7 +2,7 @@ MAKEFLAGS += --no-builtin-rules
 SHELL := /bin/bash
 .DELETE_ON_ERROR:
 
-.PHONY: build clean assets css seo atom today notoday
+.PHONY: build clean assets css seo atom today notoday full
 .DEFAULT_GOAL := build
 
 ifeq ($(V),1)
@@ -16,7 +16,7 @@ else
 endif
 
 define log
-	@printf '  %-6s %s\n' "$(1)" "$(2)"
+	@printf '%-6s %s\n' "$(1)" "$(2)"
 endef
 
 OBJS :=
@@ -26,7 +26,6 @@ TYPST := typst c --root . --features html
 INSTALL := install -D -m 0644
 MKDIR_P := mkdir -p
 CP_R := cp -r
-RM_F := rm -f
 RM_RF := rm -rf
 
 TARGET_DIR := build
@@ -35,7 +34,7 @@ SRC_DIR := src
 DRAFT_DIR := draft
 TEMPLATE_INDEX := tmpl/index.typ
 TEMPLATE_META := tmpl/meta.typ
-NAV_SRC := $(SRC_DIR)/nav.typ
+NAV_SRC := $(TARGET_DIR)/nav.typ
 MAGIC_TITLE := 0x8964
 
 MINIFY ?= n
@@ -51,7 +50,7 @@ TARGET_POSTS := $(addprefix $(TARGET_DIR)/,$(addsuffix /index.html,$(SRC_SECTION
 
 ASSET_CSS := $(notdir $(wildcard $(ASSET_DIR)/*.css))
 
-build: assets $(NAV_SRC) $(TARGET_DIR)/index.html $(TARGET_POSTS)
+build: assets .WAIT $(NAV_SRC) $(TARGET_DIR)/index.html $(TARGET_POSTS)
 
 assets: css $(TARGET_DIR)/favicon.webp $(OBJS)
 
@@ -59,9 +58,11 @@ css: $(addprefix $(TARGET_DIR)/,$(ASSET_CSS))
 
 today: $(TODAY_DIR)/index.typ $(TODAY_DIR)/meta.typ
 
-atom: build $(TARGET_DIR)/atom.xml
+atom: build .WAIT $(TARGET_DIR)/atom.xml
 
-seo: build $(TARGET_DIR)/sitemap.xml $(TARGET_DIR)/robots.txt
+seo: build .WAIT $(TARGET_DIR)/sitemap.xml $(TARGET_DIR)/robots.txt
+
+full: atom seo
 
 notoday:
 	$(call log,RM,$(SRC_DIR)/$(TODAY)-*)
@@ -104,23 +105,24 @@ ifeq ($(MINIFY), y)
 	$(Q)$(MINIFY_CMD) -a -i $@
 endif
 
-$(TARGET_DIR)/%/index.html: $(SRC_DIR)/%/index.typ $(NAV_SRC) page.typ meta.typ
+$(TARGET_DIR)/%/index.typ: $(SRC_DIR)/%/index.typ
 	$(call log,COPY,$(@D))
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(CP_R) $(<D)/. $(@D)/
+
+$(TARGET_DIR)/%/index.html: $(TARGET_DIR)/%/index.typ $(NAV_SRC) page.typ meta.typ
 	$(call log,TEX,$<)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
 ifeq ($(MINIFY), y)
 	$(call log,MINI,$@)
 	$(Q)$(MINIFY_CMD) -a -i $@
 endif
-	$(Q)$(RM_F) $(@D)/*.typ
 
 clean:
 	$(call log,RM,$(TARGET_DIR))
 	$(Q)$(RM_RF) $(TARGET_DIR)
 	$(call log,RM,$(NAV_SRC))
-	$(Q)$(RM_F) $(NAV_SRC)
+	$(Q)$(RM_RF) $(NAV_SRC)
 
 $(TARGET_DIR)/atom.xml: bin/atom.sh $(TARGET_POSTS)
 	$(call log,FEED,$@)

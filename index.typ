@@ -23,7 +23,7 @@
         ])
       })
       html.main({
-        html.nav({ include "src/nav.typ" })
+        html.nav({ include "build/nav.typ" })
       })
       html.footer({
         html.nav([

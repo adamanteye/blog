@@ -1,4 +1,4 @@
-LILY_OBJS := $(patsubst %.ly,%.ly.svg,$(shell find . -name '*.ly'))
+LILY_OBJS := $(patsubst src/%,build/%,$(patsubst %.ly,%.ly.svg,$(shell find src/ -name '*.ly')))
 
 ifeq ($(V),1)
 	LILY := lilypond
@@ -8,9 +8,11 @@ else
 	LILY_S := 2>/dev/null
 endif
 
-%.ly.svg: %.ly
+build/%.ly.svg: src/%.ly
 	$(call log,LILY,$@)
-	$(Q)$(LILY) -o $< --svg $< $(LILY_S)
+	$(Q)$(MKDIR_P) $(@D)
+	$(Q)$(CP_R) $< $(@D)
+	$(Q)$(LILY) -o $(@D)/$(<F) --svg $(@D)/$(<F) $(LILY_S)
 ifeq ($(MINIFY), y)
 	$(call log,MINI,$@)
 	$(Q)$(MINIFY_CMD) -a -i $@
