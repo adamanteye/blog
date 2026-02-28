@@ -38,13 +38,13 @@ right = \fixed c' {
 }
 
 var = {
-  e4 c' a g |
-  g4 e' d' b |
-  d4 e' d' b |
-  g4 b a g | \break
+  c4 g e g |
+  g,4 e d c |
+  a,4 d c a, |
+  c4 e d c | \break
 }
 
-left = \fixed c, {
+left = \fixed c {
   \global
   \clef bass
   \var

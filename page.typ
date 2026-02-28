@@ -23,7 +23,7 @@
     })
     html.body({
       html.header({
-        html.h1(class: "header")[#title - Adamanteye's Blog]
+        html.h1(class: "header")[#title]
         html.nav([
           #home
           \/
