@@ -3,7 +3,6 @@
   title = "南洋航路"
   subtitle = "(ラバウル小唄)"
   composer = "島口駒夫"
-  poet = "若杉雄三郎"
 }
 
 global = {
