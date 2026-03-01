@@ -28,11 +28,18 @@
           #home
           \/
           #source
+
+          #desc
         ])
       })
       html.main({
         html.article({
           show math.equation: html.frame
+          show math.equation.where(block: false): box
+          set image(width: 90%)
+          import "@preview/physica:0.9.8": *
+          set bibliography(style: "american-physics-society")
+          show bibliography: set text(lang: "en")
           doc
         })
       })

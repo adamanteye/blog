@@ -3,25 +3,22 @@ SHELL := /bin/bash
 .DELETE_ON_ERROR:
 .SECONDARY:
 
-.PHONY: build clean assets css seo atom today notoday full
+.PHONY: build clean assets css seo atom today notoday full optipng
 .DEFAULT_GOAL := build
 
+include mk/log.mk
+
 ifeq ($(V),1)
-	Q :=
 	TYPST_SILENT :=
 	MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags
 else
-	Q := @
 	TYPST_SILENT := 2>/dev/null
 	MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags -q
 endif
 
-define log
-	@printf '%-6s %s\n' "$(1)" "$(2)"
-endef
-
 OBJS :=
 include mk/lily.mk
+include mk/optipng.mk
 OBJS += $(LILY_OBJS)
 TYPST := typst c --root . --features html
 INSTALL := install -D -m 0644
@@ -106,7 +103,7 @@ ifeq ($(MINIFY), y)
 	$(Q)$(MINIFY_CMD) -a -i $@
 endif
 
-$(TARGET_DIR)/%/index.typ: $(SRC_DIR)/%/index.typ
+$(TARGET_DIR)/%/index.typ: $(SRC_DIR)/%/index.typ $(SRC_DIR)/%
 	$(call log,COPY,$(@D))
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(CP_R) $(<D)/. $(@D)/
@@ -132,3 +129,5 @@ ifeq ($(MINIFY), y)
 	$(call log,MINI,$@)
 	$(Q)$(MINIFY_CMD) -a -i $@
 endif
+
+optipng: $(OPTIPNG_OBJS)

@@ -1,8 +1,8 @@
 :root {
-  --bg: #f8f8f8;
-  --text: #1f2933;
-  --link: #c72538;
-  --link-visited: #a8486c;
+  --bg: #fffefa;
+  --text: rgb(24, 20, 16);
+  --link: rgb(222, 84, 130);
+  --link-visited: rgb(194, 129, 0);
   --border: rgba(0, 0, 0, 0.08);
   --font-main: Inconsolata;
   --font-code: Inconsolata;
@@ -12,16 +12,6 @@
   --content-max: 50rem;
   --space-body: 1rem;
   --radius: 0.25rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f1720;
-    --text: #e6edf3;
-    --link: #ff6b6b;
-    --link-visited: #ffa0c0;
-    --border: rgba(255, 255, 255, 0.12);
-  }
 }
 
 *,
@@ -63,9 +53,10 @@ header h1.header {
   font-weight: 500;
 }
 
-ul,
-ol {
-  padding-left: 2em;
+ol,
+ul {
+  padding: 0.75rem;
+  margin: 0.25em;
 }
 
 p {
@@ -115,4 +106,18 @@ footer {
   pre {
     font-size: 11pt;
   }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+}
+
+tr:last-child td {
+  border-bottom: 2px solid #000;
 }
