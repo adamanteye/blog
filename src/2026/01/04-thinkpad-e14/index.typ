@@ -14,7 +14,7 @@ for around 4,600 CNY and had been using it for more than three years.
 However, the HP ZBook is marketed as a mobile workstation, and it weighs 2.63
 kg. Back then, I was too young and too naive to really know what kind of laptop
 I needed. By no means am I implying that HP ZBooks are bad. They are extremely
-easy to maintain: just flip a swtich and you can open its back panel to the
+easy to maintain: just flip a switch and you can open its back panel to the
 replace battery, SSD, or RAM. I installed 2x32G RAMs modules on it.
 
 Now I've known better what laptop fits me:
@@ -37,7 +37,7 @@ due to its limited network stack.
 
 In the end, after surfing for 2 hours, I decided that it should be #link(
   "https://www.reddit.com/r/hardware/comments/1mqprou/thinkpad_e14_long_battery_life_edition/",
-)[ThinkPad]. Luckliy, there are officially refurbished products (官翻机, items
+)[ThinkPad]. Luckily, there are officially refurbished products (官翻机, items
 returned within 7 days and resold by Lenovo agents), which saved me 1,000 CNY
 more.
 
@@ -45,7 +45,7 @@ more.
 
 I tried #link("https://www.vixalien.com/blog/an-alpine-setup")[Alpine Linux].
 However their `linux-lts` kernel seems to lack many of the compiling options for
-modern lattops. No `CONFIG_HID_MUIITOUCH`, no `CONFIG_DRM_ACCEL` ... and my
+modern laptops. No `CONFIG_HID_MULTITOUCH`, no `CONFIG_DRM_ACCEL` ... and my
 GXTP5400:00 27C6:0F91 touchpad didn't work. So rather than compiling and
 updating my own kernel image, I just use Arch.
 
