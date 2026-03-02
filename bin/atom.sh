@@ -6,6 +6,7 @@ EMAIL='xuelin@adamanteye.cc'
 NAME='Xuelin Yang'
 BUILD_DIR="$1"
 DESC="Adamantye's Blog"
+REGEX_ARTICLE='(<article>.+</article>)'
 
 echo '<?xml version="1.0" encoding="utf-8"?>'
 echo '<feed xmlns="http://www.w3.org/2005/Atom">'
@@ -18,7 +19,8 @@ echo "  <link href=\"$SITE/\"/>"
 find "$BUILD_DIR" -mindepth 2 -type f -name "index.html" | sort -r | while read -r file; do
 	title=$(head -n 20 "$file" | grep -m 1 '<title>' | sed -E 's/.*<title>(.*)<\/title>.*/\1/')
 	content=$(<"$file")
-	content=$(awk 'BEGIN{p=0}/<article[ >]/{p=1}p{print}/<\/article>/{exit}' "$file")
+	[[ $content =~ $REGEX_ARTICLE ]]
+	content=${BASH_REMATCH[1]}
 	content=$(
 		printf '%s' "$content" | perl -pe 's{<(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)\b([^>]*)/?>}{<$1$2 />}gi'
 	)
