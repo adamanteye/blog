@@ -9,10 +9,8 @@ SHELL := /bin/bash
 include mk/log.mk
 
 ifeq ($(V),1)
-	TYPST_SILENT :=
 	MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags
 else
-	TYPST_SILENT := 2>/dev/null
 	MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags -q
 endif
 
@@ -20,7 +18,6 @@ OBJS :=
 include mk/lily.mk
 include mk/optipng.mk
 OBJS += $(LILY_OBJS)
-TYPST := typst c --root . --features html
 INSTALL := install -D -m 0644
 MKDIR_P := mkdir -p
 CP_R := cp -r
@@ -47,6 +44,8 @@ SRC_META := $(patsubst %,$(SRC_DIR)/%/meta.typ,$(SRC_SECTIONS))
 TARGET_POSTS := $(addprefix $(TARGET_DIR)/,$(addsuffix /index.html,$(SRC_SECTIONS)))
 
 ASSET_CSS := $(notdir $(wildcard $(ASSET_DIR)/*.css))
+
+include mk/typst.mk
 
 build: assets .WAIT $(NAV_SRC) $(TARGET_DIR)/index.html $(TARGET_POSTS)
 
@@ -107,14 +106,6 @@ $(TARGET_DIR)/%/index.typ: $(SRC_DIR)/%/index.typ $(SRC_DIR)/%
 	$(call log,COPY,$(@D))
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(CP_R) $(<D)/. $(@D)/
-
-$(TARGET_DIR)/%/index.html: $(TARGET_DIR)/%/index.typ $(NAV_SRC) page.typ meta.typ
-	$(call log,TEX,$<)
-	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
-ifeq ($(MINIFY), y)
-	$(call log,MINI,$@)
-	$(Q)$(MINIFY_CMD) -a -i $@
-endif
 
 clean:
 	$(call log,RM,$(TARGET_DIR))
