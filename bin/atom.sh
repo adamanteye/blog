@@ -5,7 +5,7 @@ SITE='https://blog.adamanteye.cc'
 EMAIL='xuelin@adamanteye.cc'
 NAME='Xuelin Yang'
 BUILD_DIR="$1"
-DESC="Adamantye's Blog"
+DESC="Adamanteye's Blog"
 REGEX_ARTICLE='(<article>.+</article>)'
 
 echo '<?xml version="1.0" encoding="utf-8"?>'
