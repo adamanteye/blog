@@ -23,7 +23,7 @@ jobs:
           make -j$(nproc) MINIFY=y full
           rm -f $(find build/ -name '*.typ')
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: build-output
           path: build/
