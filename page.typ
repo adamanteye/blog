@@ -7,6 +7,13 @@
 )[Source]
 
 #import "meta.typ": footer
+#import "@preview/physica:0.9.8": *
+#import "@preview/unify:0.7.1": *
+#let mmev = $unit("MeV/c^2", per: "\\/")$
+#let pmev = $unit("MeV/c", per: "\\/")$
+#let mev = $unit("MeV")$
+#let kev = $unit("keV")$
+#let cm = $unit("cm")$
 
 #let conf(
   title: str,
@@ -14,7 +21,6 @@
   doc,
 ) = context {
   set image(width: 90%)
-  import "@preview/physica:0.9.8": *
   set bibliography(style: "american-physics-society")
   show bibliography: set text(lang: "en")
   if target() == "html" {
