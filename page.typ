@@ -14,6 +14,7 @@
 #let mev = $unit("MeV")$
 #let kev = $unit("keV")$
 #let cm = $unit("cm")$
+#let u235 = $isotope("U", a: 235)$
 
 #let conf(
   title: str,
