@@ -3,7 +3,7 @@ SHELL := /bin/bash
 .DELETE_ON_ERROR:
 .SECONDARY:
 
-.PHONY: build clean assets css seo atom today notoday full optipng
+.PHONY: build clean assets css seo atom today full optipng
 .DEFAULT_GOAL := build
 
 include mk/log.mk
@@ -26,7 +26,6 @@ RM_RF := rm -rf
 TARGET_DIR := build
 ASSET_DIR := assets
 SRC_DIR := src
-DRAFT_DIR := draft
 TEMPLATE_INDEX := tmpl/index.typ
 TEMPLATE_META := tmpl/meta.typ
 NAV_SRC := $(TARGET_DIR)/nav.typ
@@ -36,7 +35,7 @@ MINIFY ?= n
 
 TITLE ?= no-title
 TODAY ?= $(shell date +%Y/%m/%d)
-TODAY_DIR := $(DRAFT_DIR)/$(TODAY)-$(TITLE)
+TODAY_DIR := $(SRC_DIR)/$(TODAY)-$(TITLE)
 
 SRC_PAGES := $(shell find $(SRC_DIR) -mindepth 4 -maxdepth 4 -type f -name index.typ | sort -r)
 SRC_SECTIONS := $(patsubst $(SRC_DIR)/%/index.typ,%,$(SRC_PAGES))
@@ -60,12 +59,6 @@ atom: build .WAIT $(TARGET_DIR)/atom.xml
 seo: build .WAIT $(TARGET_DIR)/sitemap.xml $(TARGET_DIR)/robots.txt
 
 full: atom seo
-
-notoday:
-	$(call log,RM,$(SRC_DIR)/$(TODAY)-*)
-	$(Q)$(RM_RF) $(SRC_DIR)/$(TODAY)-*
-	$(call log,RM,$(DRAFT_DIR)/$(TODAY)-*)
-	$(Q)$(RM_RF) $(DRAFT_DIR)/$(TODAY)-*
 
 $(TODAY_DIR)/index.typ:
 	$(call log,NEW,$@)
