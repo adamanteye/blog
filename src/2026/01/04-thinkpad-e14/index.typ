@@ -15,7 +15,7 @@ However, the HP ZBook is marketed as a mobile workstation, and it weighs 2.63
 kg. Back then, I was too young and too naive to really know what kind of laptop
 I needed. By no means am I implying that HP ZBooks are bad. They are extremely
 easy to maintain: just flip a switch and you can open its back panel to the
-replace battery, SSD, or RAM. I installed 2x32G RAMs modules on it.
+replace battery, SSD, or RAM. I installed two of 32G RAMs modules on it.
 
 Now I've known better what laptop fits me:
 
