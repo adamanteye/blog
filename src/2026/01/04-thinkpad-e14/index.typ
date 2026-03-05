@@ -7,9 +7,11 @@ TL;DR: I got a ThinkPad laptop (E14 gen7, ultra 228V, 32G RAM, 512G SSD) for
 
 = Why ThinkPad
 
-Before this, my daily laptop was an HP ZBook 15 G5 (8850H, 64GB RAM, dual M.2
-slots plus another 2.5 HDD slot). I purchased this second-hand laptop in 2022
-for around 4,600 CNY and had been using it for more than three years.
+Before this, my daily laptop was an #link(
+  "https://www.ifixit.com/Device/HP_ZBOOK_15_G5",
+)[HP ZBook 15 G5] (8850H, 64GB RAM, dual M.2 slots plus another 2.5 HDD slot). I
+purchased this second-hand laptop in 2022 for around 4,600 CNY and had been
+using it for more than three years.
 
 However, the HP ZBook is marketed as a mobile workstation, and it weighs 2.63
 kg. Back then, I was too young and too naive to really know what kind of laptop
@@ -128,3 +130,9 @@ Capacity                                                    =  100.0 [%]
 ```
 
 And it's actually lower when it's idle, usually 2700 mW.
+
+= Update
+
+ThinkPad T14 gen 7 has a #link(
+  "https://www.ifixit.com/News/115827/new-thinkpads-score-perfect-10-repairability",
+)[reparability of 10/10].

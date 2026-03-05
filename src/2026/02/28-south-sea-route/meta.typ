@@ -1,2 +1,2 @@
-#let title = "South Sea Route Music Sheet"
-#let desc = "南洋航路 (ラバウル小唄) (lilypond 乐谱)"
+#let title = "南洋航路 (ラバウル小唄)"
+#let desc = "lilypond music sheet"

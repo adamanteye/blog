@@ -1,2 +1,2 @@
-#let title = "That Beloved Star Music Sheet"
-#let desc = "いとしあの星"
+#let title = "いとしあの星"
+#let desc = "lilypond music sheet"

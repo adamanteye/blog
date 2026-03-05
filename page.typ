@@ -9,13 +9,14 @@
 #import "meta.typ": footer
 #import "@preview/physica:0.9.8": *
 #import "@preview/unify:0.7.1": *
+#import "@preview/lilaq:0.5.0" as lq
+
 #let mmev = $unit("MeV/c^2", per: "\\/")$
 #let pmev = $unit("MeV/c", per: "\\/")$
-#let mev = $unit("MeV")$
-#let kev = $unit("keV")$
-#let cm = $unit("cm")$
 #let u235 = $isotope("U", a: 235)$
-
+#let canvas(it) = context {
+  if target() == "html" { html.frame(it) } else { it }
+}
 #let conf(
   title: str,
   desc: str,
