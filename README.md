@@ -8,11 +8,23 @@ Each post is plain text with small metadata files.
 ## Build
 
 ```bash
-make
+make build
 ```
 
 ## Writing a Post
 
 ```bash
-make today TITLE=your-title
+make TITLE=your-title today
+```
+
+## Production Build
+
+```bash
+make -j$(nproc) MINIFY=y full
+```
+
+## Build PDF
+
+```bash
+make build/2026/03/03-particles-griffiths-homework/index.pdf
 ```
