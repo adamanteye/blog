@@ -41,6 +41,8 @@ SRC_PAGES := $(shell find $(SRC_DIR) -mindepth 4 -maxdepth 4 -type f -name index
 SRC_SECTIONS := $(patsubst $(SRC_DIR)/%/index.typ,%,$(SRC_PAGES))
 SRC_META := $(patsubst %,$(SRC_DIR)/%/meta.typ,$(SRC_SECTIONS))
 TARGET_POSTS := $(addprefix $(TARGET_DIR)/,$(addsuffix /index.html,$(SRC_SECTIONS)))
+TRASH = $(shell find $(TARGET_DIR) -name '*.bib' -or -name '*.typ')
+TRASH += $(NAV_SRC)
 
 ASSET_CSS := $(notdir $(wildcard $(ASSET_DIR)/*.css))
 
@@ -58,7 +60,7 @@ atom: build .WAIT $(TARGET_DIR)/atom.xml
 
 seo: build .WAIT $(TARGET_DIR)/sitemap.xml $(TARGET_DIR)/robots.txt
 
-full: atom seo
+full: atom seo .WAIT clean
 
 $(TODAY_DIR)/index.typ:
 	$(call log,NEW,$@)
@@ -101,10 +103,8 @@ $(TARGET_DIR)/%/index.typ: $(SRC_DIR)/%/index.typ $(SRC_DIR)/%
 	$(Q)$(CP_R) $(<D)/. $(@D)/
 
 clean:
-	$(call log,RM,$(TARGET_DIR))
-	$(Q)$(RM_RF) $(TARGET_DIR)
-	$(call log,RM,$(NAV_SRC))
-	$(Q)$(RM_RF) $(NAV_SRC)
+	$(call log,RM,$(TRASH))
+	$(Q)$(RM_RF) $(TRASH)
 
 $(TARGET_DIR)/atom.xml: bin/atom.sh $(TARGET_POSTS)
 	$(call log,FEED,$@)

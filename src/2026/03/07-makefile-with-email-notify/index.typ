@@ -18,11 +18,12 @@ SHELL := /bin/bash
 define with_mail
 	@raw_name='$(if $(strip $(CMD_LABEL)),$(CMD_LABEL),$(CMD))'; \
 	jobname="$$(printf '%s' "$$raw_name" \
-		| tr '\n' ' ' \
-		| sed 's/[[:space:]]\+/ /g; s/^ //; s/ $$//' \
-		| cut -c1-20)"; \
+	| tr '\n' ' ' \
+	| sed 's/[[:space:]]\+/ /g; s/^ //; s/ $$//' \
+	| sed 's/[^[:alnum:]._-]/-/g; s/-\{2,\}/-/g; s/^-//; s/-$$//' \
+	| cut -c1-40)"; \
 	started="$$(date +%Y%m%dT%H%M%S%Z)"; \
-	[ -n "$$jobname" ] || name=log; \
+	[ -n "$$jobname" ] || jobname=null; \
 	log="$(PWD)/$$jobname-$$started.log"; \
 	set -o pipefail; \
 	if { $(CMD); } 2>&1 | tee "$$log"; then \
@@ -63,7 +64,7 @@ else
 	Q := @
 endif
 include mail.mk
-.PHONY: test
+.PHONY: ok err
 
 err: CMD_LABEL = test
 err: CMD = echo "hello,world" && exit 42
