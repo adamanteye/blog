@@ -58,15 +58,18 @@ What I took away from this:
   the needle much, so I keep it simple and use 8192.
 
 For the model, I went with a larger embedding model because my inputs are often
-messy and long: commit diffs, big merge requests, and long issue comments. I want
-good recall even if that means larger vectors and more storage.
+messy and long: commit diffs, big merge requests, and long issue comments. I
+want good recall even if that means larger vectors and more storage.
 
 = Serve
 
 The final command is chosen as:
 
 ```bash
-root@Skyworks-GPU ~/llama-build# ./llama-server --model ../models/Qwen3-Embedding-8B-Q6_K.gguf --embedding --host 127.0.0.1 --port 8081 --split-mode none --main-gpu 0 --batch-size 8192 --ubatch-size 8192 --pooling last --parallel 1
+./llama-server --model ../models/Qwen3-Embedding-8B-Q6_K.gguf \
+  --embedding --host 127.0.0.1 --port 8081 \
+  --split-mode none --main-gpu 0 --batch-size 8192 \
+  --ctx-size 8192 --ubatch-size 8192 --pooling last --parallel 1
 ```
 
 This uses only one GPU, by design. My plan is to run one process per GPU and
@@ -74,7 +77,7 @@ load-balance across them. For example:
 
 ```nginx
 upstream qwen {
-	least_conn;
+  least_conn;
 	server 127.0.0.1:8081;
 	server 127.0.0.1:8082;
 	server 127.0.0.1:8083;
@@ -117,3 +120,10 @@ queue is draining.
 
 The only thing I am concerned about is whether a single instance postgres (with
 pgvector support) can handle tens of thousands of vectors.
+
+= Follow-up
+
+I realised the in-memory task queue the LLM has implemented is not best choice I
+have. Actually, the app already has a postgres connection. Why not committing
+tasks to postgres and retrieve from them? And of course, Codex (5.4 xhigh) can
+handle it.
