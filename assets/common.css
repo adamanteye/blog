@@ -1,11 +1,13 @@
 :root {
-  --bg: #fffefa;
-  --text: rgb(24, 20, 16);
-  --link: rgb(222, 84, 130);
-  --link-visited: rgb(194, 129, 0);
-  --border: rgba(0, 0, 0, 0.08);
-  --font-main: Inconsolata;
-  --font-code: Inconsolata;
+  --bg: #fff;
+  --text: #444;
+  --link: #00f;
+  --link-visited: #888;
+  --border: #ccc;
+  --font-main: "Libertinus Serif", "New Computer Modern", serif;
+  --font-math:
+    "New Computer Modern Math", "New Computer Modern", "Libertinus Serif", serif;
+  --font-code: "DejaVu Sans Mono", monospace;
   --size-body: 14pt;
   --size-pre: 12pt;
   --line-body: 1.45em;
@@ -36,6 +38,10 @@ body {
   color: var(--text);
 }
 
+math {
+  font-family: var(--font-math);
+}
+
 main {
   overflow-x: auto;
 }
@@ -50,7 +56,7 @@ header h1.header {
 }
 
 :is(h1, h2, h3, h4, h5, h6, strong) {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 ol,
@@ -120,4 +126,103 @@ th {
 
 tr:last-child td {
   border-bottom: 2px solid #000;
+}
+
+@font-face {
+  font-family: "Libertinus Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/files/libertinus-serif-latin-400-normal.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/files/libertinus-serif-latin-400-normal.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Libertinus Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/files/libertinus-serif-latin-400-italic.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/files/libertinus-serif-latin-400-italic.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "Libertinus Serif";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src:
+    url("https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/files/libertinus-serif-latin-600-normal.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/files/libertinus-serif-latin-600-normal.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "New Computer Modern";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/web-computer-modern@1.1.0-new-cm-7-0-2/woff2/WebCM%20Serif%2010%20Regular.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "New Computer Modern";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/web-computer-modern@1.1.0-new-cm-7-0-2/woff2/WebCM%20Serif%2010%20Italic.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "New Computer Modern";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/web-computer-modern@1.1.0-new-cm-7-0-2/woff2/WebCM%20Serif%2010%20Book.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "New Computer Modern";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/web-computer-modern@1.1.0-new-cm-7-0-2/woff2/WebCM%20Serif%2010%20BookItalic.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "New Computer Modern Math";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/web-computer-modern@1.1.0-new-cm-7-0-2/woff2/WebCM%20Math%20Serif%20Regular.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: "DejaVu Sans Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/maxwell-k/dejavu-sans-mono-web-font@2.37/DejaVuSansMono.woff")
+    format("woff");
+}
+
+@font-face {
+  font-family: "DejaVu Sans Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/gh/maxwell-k/dejavu-sans-mono-web-font@2.37/DejaVuSansMono-Bold.woff")
+    format("woff");
 }
