@@ -9,8 +9,6 @@
 $ x(L) = x(0) + L x'(0) $
 
 #canvas(lq.diagram(
-  width: 6cm,
-  height: 6cm,
   xlabel: [$x$],
   ylabel: [$x'$],
   lq.path((0, 0), (4, 2), (0, 2), (0, -2), (-4, -2), (0, 0)),
@@ -28,16 +26,12 @@ $ gamma = 1+E_k/(m_e c^2), beta=sqrt(1-1/gamma^2) $
     columns: 2,
     lq.diagram(
       xscale: lq.scale.log(base: 10),
-      width: 6cm,
-      height: 6cm,
       xlabel: [$E_k$ /eV],
       ylabel: [$gamma$],
       lq.plot(x, x => (1 + x / 511000)),
     ),
     lq.diagram(
       xscale: lq.scale.log(base: 10),
-      width: 6cm,
-      height: 6cm,
       xlabel: [$E_k$ /eV],
       ylabel: [$beta$],
       lq.plot(x, x => (calc.sqrt(1 - 1 / calc.pow(1 + x / 511000, 2)))),
@@ -62,8 +56,6 @@ $ lambda=1239.84/ sqrt(E_k^2 + 2 E_k m_e c^2) $
   lq.diagram(
     xscale: lq.scale.log(base: 10),
     yscale: lq.scale.log(base: 10),
-    width: 8cm,
-    height: 6cm,
     xlabel: [$E_k$ /eV],
     ylabel: [$lambda$],
     lq.plot(x, Ek => (hc / calc.sqrt(Ek * Ek + 2 * Ek * 511000))),
