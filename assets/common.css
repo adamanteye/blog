@@ -42,7 +42,9 @@ math {
   font-family: var(--font-math);
 }
 
-main {
+main,
+pre,
+figure {
   overflow-x: auto;
 }
 
@@ -76,7 +78,6 @@ code {
 pre {
   padding: 0.75rem;
   border-radius: var(--radius);
-  overflow-x: auto;
   font-size: var(--size-pre);
 }
 

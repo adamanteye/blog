@@ -57,6 +57,12 @@ $
     [$kb^2/((ka-1)^2(ka-2))$],
     [$kb/(ka-1)$],
 
+    [$"LogNormal" (y|ka,kb)$],
+    [$1/(y ks sqrt(2 pi)) exp(-(ln y-mu)^2/(2 ks^2))$],
+    [$exp(mu+ks^2/2)$],
+    [$(exp(ks^2)-1)exp(2mu+ks^2)$],
+    [$exp(mu-ks^2)$],
+
     [$"Possion" (y|kl)$], [$(kl^y e^(-kl))/(y!)$], [$kl$], [$kl$], [],
 
     [$"NegBinomial" (k|r,p)$],

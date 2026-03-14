@@ -22,6 +22,7 @@
 #let kG = $Gamma$
 #let kl = $lambda$
 #let kL = $Lambda$
+#let ks = $sigma$
 #let kS = $Sigma$
 #let ko = $omega$
 #let kO = $Omega$
