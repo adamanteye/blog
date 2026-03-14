@@ -29,6 +29,7 @@
 #let int = $integral$
 #let inft = $infinity$
 #let ol = it => $overline(it)$
+#let istp = it => $isotope(it)$
 
 #let etc(start, end, sym) = $sym_start, sym_2, ..., sym_end$
 
