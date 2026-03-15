@@ -232,5 +232,16 @@
 
 ]
 
-#hw
+// #hw
+
+= 基本粒子动力学
+
+== 2.1
+
+$ F_Q/F_G = 1/(4pi ke_0 G)=num("1.34659e20") $
+
+== 2.2
+
+Delbrunk 散射的最低阶费曼图:
+
 #bibliography("main.bib")

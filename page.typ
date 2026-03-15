@@ -9,8 +9,39 @@
 #import "meta.typ": footer
 #import "@preview/physica:0.9.8": *
 #import "@preview/unify:0.7.1": *
-#import "@preview/lilaq:0.5.0" as lq
+#import "@preview/lilaq:0.6.0" as lq
 #import "@preview/mannot:0.3.2": *
+
+#let hep = it => {
+  show lq.selector(lq.diagram): set text(0.85em)
+  show: lq.set-diagram(
+    fill: none,
+    xaxis: (
+      subticks: 4,
+      mirror: (ticks: true, tick-labels: false),
+    ),
+    yaxis: (
+      subticks: 4,
+      mirror: (ticks: true, tick-labels: false),
+    ),
+  )
+  show: lq.set-grid(stroke: none)
+  show: lq.set-spine(stroke: black + 0.8pt)
+  show: lq.set-tick(
+    stroke: black + 0.8pt,
+    inset: 4pt,
+    outset: 0pt,
+    pad: 0.35em,
+    shorten-sub: 45%,
+  )
+  show: lq.set-legend(
+    stroke: none,
+    fill: none,
+    radius: 0pt,
+    pad: 0.3em,
+  )
+  it
+}
 
 #let ka = $alpha$
 #let kt = $theta$
@@ -18,6 +49,8 @@
 #let kb = $beta$
 #let kd = $delta$
 #let kD = $Delta$
+#let ke = $epsilon$
+#let kE = $Epsilon$
 #let kg = $gamma$
 #let kG = $Gamma$
 #let kl = $lambda$
@@ -31,6 +64,7 @@
 #let inft = $infinity$
 #let ol = it => $overline(it)$
 #let istp = it => $isotope(it)$
+#let cps = $compose$
 
 #let etc(start, end, sym) = $sym_start, sym_2, ..., sym_end$
 
@@ -48,6 +82,7 @@
   set image(width: 90%)
   set bibliography(style: "american-physics-society")
   show bibliography: set text(lang: "en")
+  show: hep
   show: lq.set-diagram(width: 6cm, height: 6cm)
   if target() == "html" {
     html.html({

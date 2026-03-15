@@ -6,13 +6,13 @@
 
 = Bayes Theorem
 
-Bayes theorem:
+== Bayes theorem
 $ p(kt|y)=(p(y|kt)p(kt))/p(y)prop p(y|kt)p(kt) $
 
-Prior predictive distribution:
+== Prior predictive distribution
 $ p(y)=int_kT (y|kt)p(kt) dd(kt) $
 
-Posterior predictive distribution:
+== Posterior predictive distribution
 $
   p(tilde(y)|y) & =int_kT p(tilde(y),kt|y)dd(kt) \
                 & =int_kT p(tilde(y)|kt,y) p(kt|y) dd(kt) \
@@ -58,10 +58,10 @@ $
     [$kb/(ka-1)$],
 
     [$"LogNormal" (y|ka,kb)$],
-    [$1/(y ks sqrt(2 pi)) exp(-(ln y-mu)^2/(2 ks^2))$],
-    [$exp(mu+ks^2/2)$],
-    [$(exp(ks^2)-1)exp(2mu+ks^2)$],
-    [$exp(mu-ks^2)$],
+    [$1/(y ks sqrt(2 pi)) e^(-(ln y-mu)^2/(2 ks^2))$],
+    [$e^(mu+ks^2/2)$],
+    [$(e^(ks^2)-1)e^(2mu+ks^2)$],
+    [$e^(mu-ks^2)$],
 
     [$"Possion" (y|kl)$], [$(kl^y e^(-kl))/(y!)$], [$kl$], [$kl$], [],
 
@@ -76,6 +76,12 @@ $
     [$mu$],
     [$sigma^2$],
     [$mu$],
+
+    [$"Student" (y|nu)$],
+    [$kG((nu+1)/2)/(sqrt(pi nu) kG(nu/2))(1+y^2/nu)^(-(nu+1)/2)$],
+    [$0$],
+    [$nu/(nu-2)$],
+    [$0$],
 
     [$"Uniform" (y|a,b)$], [$1/(b-a)$], [$(a+b)/2$], [$(b-a)^2/12$], [],
   ),
