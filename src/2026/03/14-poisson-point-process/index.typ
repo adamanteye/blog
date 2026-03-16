@@ -16,4 +16,13 @@ $
   N(t)-N(s) & ~"Poisson"(int_s^t kl(u) dd(u)), quad forall 0<=s<t
 $
 
+== Likelihood
+
+Observing events at times ${etc(1, n, t)}$ in a time inteveral $[0,T]$ is:
+
+$
+  L(kl(t))=exp (-int_0^T kl(t) dd(t))
+  product_(i=1)^n kl(t_i)
+$
+
 #bibliography("main.bib")
