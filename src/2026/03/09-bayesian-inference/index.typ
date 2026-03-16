@@ -40,7 +40,7 @@ $
     [],
 
     [$"Exponential" (y|lambda)$],
-    [$lambda e^(-lambda x) = "Gamma"(y|1,lambda)$],
+    [$lambda e^(-lambda x)$],
     [$1/lambda$],
     [$(ln 2)/lambda$],
     [$0$],
@@ -85,7 +85,7 @@ $
 
     [$"Uniform" (y|a,b)$], [$1/(b-a)$], [$(a+b)/2$], [$(b-a)^2/12$], [],
   ),
-  caption: [Fundamental Distributions],
+  caption: [Single Variate Distributions],
 )
 
 = Functions
