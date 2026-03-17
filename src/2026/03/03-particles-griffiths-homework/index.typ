@@ -230,18 +230,21 @@
     caption: [baryons],
   )
 
+  = 基本粒子动力学
+
+  == 2.1
+
+  $ F_q/F_g = e^2/(4pi ke_0 G m_0^2)=num("4.2e42") $
+
+  == 2.2
+
+  Delbrunk 散射的最低阶费曼图:
+
+  == 2.3
+
+  == 2.4
 ]
 
-// #hw
-
-= 基本粒子动力学
-
-== 2.1
-
-$ F_Q/F_G = 1/(4pi ke_0 G)=num("1.34659e20") $
-
-== 2.2
-
-Delbrunk 散射的最低阶费曼图:
+#hw
 
 #bibliography("main.bib")
