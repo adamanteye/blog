@@ -157,6 +157,24 @@ $
 
 In theory, all priors are acceptable, as long as the posterior is proper.
 
+= Fisher Information Matrix
+
+$ I(kt)=E_kt ((dv(, kt) log p(y|kt)) (dv(, kt) log p(y|kt))^TT) $
+
+= Jeffreys' Prior
+
+$ J(kt)=E((dv(, kt) log p(y|kt))^2)=-E(dv(, kt, 2) log p(y|kt)) $
+
+= Predictive Accuracy
+
+People care about the accuracy in two different ways. First to assume that the
+model is all we known and check posterior predictions. The second is to compare
+several candidate models. Even if all of the models being considered have
+mismatches with the data, it can be informative to evaluate their predictive
+accuracy, compare them, and consider where to go next@gelman_understanding_2014.
+
+= KL Divergence
+
 = Linear Algebra
 
 == Convex Combination
@@ -168,3 +186,5 @@ in $[0,1]$.
 Via induction, this can be seen to be equivalent to the requirement that
 $etc(1, n, kl va(x)) in A$ for all vectors $etc(1, n, va(x))in A$, and for all
 scalars $etc(1, n, kl)>=0$ such that $sum k_i=1$.
+
+#bibliography("main.bib")

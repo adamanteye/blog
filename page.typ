@@ -59,7 +59,6 @@
 #let kS = $Sigma$
 #let ko = $omega$
 #let kO = $Omega$
-#let kt = $tau$
 #let int = $integral$
 #let inft = $infinity$
 #let ol = it => $overline(it)$
