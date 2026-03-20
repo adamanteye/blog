@@ -79,7 +79,6 @@
   doc,
 ) = context {
   set image(width: 90%)
-  set bibliography(style: "american-physics-society")
   show bibliography: set text(lang: "en")
   show: hep
   show: lq.set-diagram(width: 6cm, height: 6cm)
