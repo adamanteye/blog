@@ -1,2 +1,2 @@
 #let title = "Bayesian Inference Notes"
-#let desc = "2026 spring semester"
+#let desc = "Statistics learning notes."

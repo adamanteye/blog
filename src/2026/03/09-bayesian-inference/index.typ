@@ -2,8 +2,6 @@
 #import "meta.typ": desc, title
 #show: conf.with(title: title, desc: desc)
 
-#import "@preview/exercise-bank:0.4.0": exo, exo-setup
-
 = Bayes Theorem
 
 == Bayes theorem
@@ -159,11 +157,29 @@ In theory, all priors are acceptable, as long as the posterior is proper.
 
 = Fisher Information Matrix
 
-$ I(kt)=E_kt ((dv(, kt) log p(y|kt)) (dv(, kt) log p(y|kt))^TT) $
+$
+  va(I)(va(kt))=E((grad log p(y|va(kt))) (grad log p(y|va(kt)))^TT)
+  =-E(grad^2 log p(y|va(kt)))
+$
 
 = Jeffreys' Prior
 
-$ J(kt)=E((dv(, kt) log p(y|kt))^2)=-E(dv(, kt, 2) log p(y|kt)) $
+$ pi_J (va(kt))~sqrt(abs(va(I)(va(kt)))^2) $
+
+= Pivotal Quantities
+
+For the binomial and other single-parameter models, different principles give
+(slightly) different noninformative prior distributions. But for two
+cases—location parameters and scale parameters—all principles seem to
+agree@gelman2013bayesian.
+
+== Location Parameter
+
+$ p(kt) ~ 1 $
+
+== Scale Parameter
+
+$ p(kt) ~ 1/kt $
 
 = Predictive Accuracy
 

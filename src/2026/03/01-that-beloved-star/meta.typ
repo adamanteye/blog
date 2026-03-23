@@ -1,2 +1,2 @@
 #let title = "いとしあの星"
-#let desc = "lilypond music sheet"
+#let desc = "昭和十四年, 唄 渡辺はま子, 作詞 サトウハチロ, 作曲 服部良一."

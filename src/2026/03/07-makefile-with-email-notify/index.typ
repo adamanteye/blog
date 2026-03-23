@@ -4,8 +4,10 @@
 
 = Motivation
 
-Submitting jobs often needs more than running scripts in `tmux`. Jobs may fail
-silently or run for a long time, and the user cannot keep polling their status.
+Submitting jobs often needs more than running scripts in `tmux`.
+
+Jobs may fail silently or run for a long time, and the user cannot keep polling
+their status.
 
 = Makefile
 

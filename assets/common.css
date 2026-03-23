@@ -9,7 +9,6 @@
     "New Computer Modern Math", "New Computer Modern", "Libertinus Serif", serif;
   --font-code: "DejaVu Sans Mono", monospace;
   --size-body: 14pt;
-  --size-pre: 12pt;
   --line-body: 1.45em;
   --content-max: 50rem;
   --space-body: 1rem;
@@ -72,13 +71,13 @@ p {
 }
 
 code {
+  font-size: 0.8em;
   font-family: var(--font-code);
 }
 
 pre {
   padding: 0.75rem;
   border-radius: var(--radius);
-  font-size: var(--size-pre);
 }
 
 code:not(pre code) {
@@ -107,11 +106,6 @@ footer {
 @media (max-width: 600px) {
   body {
     padding: 0.75rem;
-    font-size: 13pt;
-  }
-
-  pre {
-    font-size: 11pt;
   }
 }
 
