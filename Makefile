@@ -23,42 +23,42 @@ MKDIR_P := mkdir -p
 CP_R := cp -r
 RM_RF := rm -rf
 
-TARGET_DIR := build
-ASSET_DIR := assets
-SRC_DIR := src
 TEMPLATE_INDEX := tmpl/index.typ
 TEMPLATE_META := tmpl/meta.typ
-NAV_SRC := $(TARGET_DIR)/nav.typ
+NAV_SRC := build/nav.typ
 MAGIC_TITLE := 0x8964
 
 MINIFY ?= n
 
 TITLE ?= no-title
 TODAY ?= $(shell date +%Y/%m/%d)
-TODAY_DIR := $(SRC_DIR)/$(TODAY)-$(TITLE)
+TODAY_DIR := src/$(TODAY)-$(TITLE)
 
-SRC_PAGES := $(shell find $(SRC_DIR) -mindepth 4 -maxdepth 4 -type f -name index.typ | sort -r)
-SRC_SECTIONS := $(patsubst $(SRC_DIR)/%/index.typ,%,$(SRC_PAGES))
-SRC_META := $(patsubst %,$(SRC_DIR)/%/meta.typ,$(SRC_SECTIONS))
-TARGET_POSTS := $(addprefix $(TARGET_DIR)/,$(addsuffix /index.html,$(SRC_SECTIONS)))
-TRASH = $(shell find $(TARGET_DIR) -name '*.bib' -or -name '*.typ')
+SRC_PAGES := $(shell find src -mindepth 4 -maxdepth 4 -type f -name index.typ | sort -r)
+SRC_SECTIONS := $(patsubst src/%/index.typ,%,$(SRC_PAGES))
+SRC_META := $(patsubst %,src/%/meta.typ,$(SRC_SECTIONS))
+TARGET_POSTS := $(addprefix build/,$(addsuffix /index.html,$(SRC_SECTIONS)))
+TRASH = $(shell find build -name '*.bib' -or -name '*.typ')
 TRASH += $(NAV_SRC)
 
-ASSET_CSS := $(notdir $(wildcard $(ASSET_DIR)/*.css))
-
+include mk/assets.mk
 include mk/typst.mk
 
-build: assets .WAIT $(NAV_SRC) $(TARGET_DIR)/index.html $(TARGET_POSTS)
+build: assets .WAIT $(NAV_SRC) build/index.html $(TARGET_POSTS)
 
-assets: css $(TARGET_DIR)/favicon.webp $(OBJS)
+ifeq ($(LIVE), y)
+OBJS += build/live.js
+endif
 
-css: $(addprefix $(TARGET_DIR)/,$(ASSET_CSS))
+assets: css build/favicon.webp $(OBJS)
+
+css: $(addprefix build/,$(ASSET_CSS))
 
 today: $(TODAY_DIR)/index.typ $(TODAY_DIR)/meta.typ
 
-atom: build .WAIT $(TARGET_DIR)/atom.xml
+atom: build .WAIT build/atom.xml
 
-seo: build .WAIT $(TARGET_DIR)/sitemap.xml $(TARGET_DIR)/robots.txt
+seo: build .WAIT build/sitemap.xml build/robots.txt
 
 full: atom seo .WAIT clean
 
@@ -73,14 +73,10 @@ $(TODAY_DIR)/meta.typ:
 
 $(NAV_SRC): bin/nav.sh $(SRC_META)
 	$(call log,NAV,$@)
-	$(Q)$(MKDIR_P) $(TARGET_DIR)
-	$(Q)bin/nav.sh $(SRC_DIR) > $@
+	$(Q)$(MKDIR_P) build
+	$(Q)bin/nav.sh src > $@
 
-$(TARGET_DIR)/%: $(ASSET_DIR)/%
-	$(call log,ASSET,$@)
-	$(Q)$(INSTALL) $< $@
-
-$(TARGET_DIR)/sitemap.xml:
+build/sitemap.xml:
 	$(call log,MAP,$@)
 	$(Q)bin/sitemap.sh $(@D) > $@
 ifeq ($(MINIFY), y)
@@ -88,7 +84,7 @@ ifeq ($(MINIFY), y)
 	$(Q)$(MINIFY_CMD) -a -i $@
 endif
 
-$(TARGET_DIR)/index.html: index.typ meta.typ
+build/index.html: index.typ meta.typ
 	$(call log,TEX,$<)
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
@@ -97,7 +93,7 @@ ifeq ($(MINIFY), y)
 	$(Q)$(MINIFY_CMD) -a -i $@
 endif
 
-$(TARGET_DIR)/%/index.typ: $(SRC_DIR)/%/index.typ $(SRC_DIR)/%
+build/%/index.typ: src/%/index.typ src/%
 	$(call log,COPY,$(@D))
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(CP_R) $(<D)/. $(@D)/
@@ -106,9 +102,9 @@ clean:
 	$(call log,RM,$(TRASH))
 	$(Q)$(RM_RF) $(TRASH)
 
-$(TARGET_DIR)/atom.xml: bin/atom.sh $(TARGET_POSTS)
+build/atom.xml: bin/atom.sh $(TARGET_POSTS)
 	$(call log,FEED,$@)
-	$(Q)./bin/atom.sh $(TARGET_DIR) > $@
+	$(Q)./bin/atom.sh build > $@
 ifeq ($(MINIFY), y)
 	$(call log,MINI,$@)
 	$(Q)$(MINIFY_CMD) -a -i $@
