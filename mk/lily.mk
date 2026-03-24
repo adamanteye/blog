@@ -1,6 +1,6 @@
 LILY_OBJS := $(patsubst %.ly,%.ly.svg,$(shell find src/ -name '*.ly'))
 
-ifeq ($(V),1)
+ifeq ($(V),y)
 	LILY := lilypond
 	LILY_S :=
 else

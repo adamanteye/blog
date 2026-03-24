@@ -1,6 +1,6 @@
 OPTIPNG_OBJS := $(shell find src/ -name '*.png')
 
-ifeq ($(V),1)
+ifeq ($(V),y)
 	OPTI := optipng -o7
 else
 	OPTI := optipng -silent -o7

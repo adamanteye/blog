@@ -1,4 +1,4 @@
-ifeq ($(V),1)
+ifeq ($(V),y)
 	TYPST_SILENT :=
 else
 	TYPST_SILENT := 2>/dev/null

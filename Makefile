@@ -8,7 +8,7 @@ SHELL := /bin/bash
 
 include mk/log.mk
 
-ifeq ($(V),1)
+ifeq ($(V),y)
 	MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags
 else
 	MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags -q

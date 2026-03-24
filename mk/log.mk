@@ -1,4 +1,4 @@
-ifeq ($(V),1)
+ifeq ($(V),y)
 	Q :=
 else
 	Q := @
