@@ -1,5 +1,5 @@
 MAKEFLAGS += --no-builtin-rules
-SHELL := /bin/bash
+SHELL     := /bin/bash
 .DELETE_ON_ERROR:
 .SECONDARY:
 
@@ -17,29 +17,29 @@ endif
 OBJS :=
 include mk/lily.mk
 include mk/optipng.mk
-OBJS += $(LILY_OBJS)
+OBJS    += $(LILY_OBJS)
 INSTALL := install -D -m 0644
 MKDIR_P := mkdir -p
-CP_R := cp -r
-RM_RF := rm -rf
+CP_R    := cp -r
+RM_RF   := rm -rf
 
 TEMPLATE_INDEX := tmpl/index.typ
-TEMPLATE_META := tmpl/meta.typ
-NAV_SRC := build/nav.typ
-MAGIC_TITLE := 0x8964
+TEMPLATE_META  := tmpl/meta.typ
+NAV_SRC        := build/nav.typ
+MAGIC_TITLE    := 0x8964
 
 MINIFY ?= n
 
-TITLE ?= no-title
-TODAY ?= $(shell date +%Y/%m/%d)
+TITLE     ?= no-title
+TODAY     ?= $(shell date +%Y/%m/%d)
 TODAY_DIR := src/$(TODAY)-$(TITLE)
 
-SRC_PAGES := $(shell find src -mindepth 4 -maxdepth 4 -type f -name index.typ | sort -r)
+SRC_PAGES    := $(shell find src -mindepth 4 -maxdepth 4 -type f -name index.typ | sort -r)
 SRC_SECTIONS := $(patsubst src/%/index.typ,%,$(SRC_PAGES))
-SRC_META := $(patsubst %,src/%/meta.typ,$(SRC_SECTIONS))
+SRC_META     := $(patsubst %,src/%/meta.typ,$(SRC_SECTIONS))
 TARGET_POSTS := $(addprefix build/,$(addsuffix /index.html,$(SRC_SECTIONS)))
-TRASH = $(shell find build -name '*.bib' -or -name '*.typ')
-TRASH += $(NAV_SRC)
+TRASH        = $(shell find build -name '*.bib' -or -name '*.typ')
+TRASH        += $(NAV_SRC)
 
 include mk/assets.mk
 include mk/typst.mk
