@@ -64,6 +64,7 @@
 #let ol = it => $overline(it)$
 #let istp = it => $isotope(it)$
 #let cps = $compose$
+#let diff = it => $difference(it)$
 
 #let etc(start, end, sym) = $sym_start, sym_2, ..., sym_end$
 
