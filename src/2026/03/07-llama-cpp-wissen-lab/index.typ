@@ -4,11 +4,11 @@
 
 = Ollama or Llama.cpp?
 
-I am new to both Ollama and llama.cpp.
+I'm new to both Ollama and llama.cpp.
 
-Thanks to #link("https://aajax.top/")[ajax] for the push to look deeper. One
-point that caught my attention is that llama.cpp exposes a lot of knobs, so you
-can tune it for your workload instead of treating it like a black box.
+Thanks to #link("https://aajax.top/")[ajax] for pushing me to look deeper. One
+thing that caught my attention is that llama.cpp exposes a lot of knobs, so you
+can tune it to your workload instead of treating it like a black box.
 
 = Llama Bench
 
@@ -58,12 +58,12 @@ What I took away from this:
   the needle much, so I keep it simple and use 8192.
 
 For the model, I went with a larger embedding model because my inputs are often
-messy and long: commit diffs, big merge requests, and long issue comments. I
+messy and long: commit diffs, large merge requests, and long issue comments. I
 want good recall even if that means larger vectors and more storage.
 
 = Serve
 
-The final command is chosen as:
+The final command I chose is:
 
 ```bash
 ./llama-server --model ../models/Qwen3-Embedding-8B-Q6_K.gguf \
@@ -97,10 +97,10 @@ server {
 
 = Wissen Lab
 
-I have wanted embedding-based search for GitLab for a long time. With help from
+I've wanted embedding-based search for GitLab for a long time. With help from
 Codex (5.4 high), I managed to finish #link(
   "https://github.com/adamanteye/wissen-lab",
-)[Wissen Lab] in about 12 hours. Right now it looks like it works:
+)[Wissen Lab] in about 12 hours. So far, it seems to work:
 
 ```
 kubectl logs -n aire wissen-lab-7cf544dcd7-z5p7d -f
@@ -118,12 +118,12 @@ It is also reasonably resilient. I asked Codex to add an exponential backoff
 policy so bursts of messages do not overwhelm the embedding server while the
 queue is draining.
 
-The only thing I am concerned about is whether a single instance postgres (with
-pgvector support) can handle tens of thousands of vectors.
+The only thing I'm concerned about is whether a single Postgres instance with
+pgvector support can handle tens of thousands of vectors.
 
 = Follow-up
 
-I realised the in-memory task queue the LLM has implemented is not best choice I
-have. Actually, the app already has a postgres connection. Why not committing
-tasks to postgres and retrieve from them? And of course, Codex (5.4 xhigh) can
-handle it.
+I realised the in-memory task queue the LLM implemented is not the best choice
+here. The app already has a Postgres connection, so why not commit tasks to
+Postgres and retrieve them from there? And of course, Codex (5.4 xhigh) can
+handle that too.
