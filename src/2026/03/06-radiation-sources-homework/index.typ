@@ -226,6 +226,251 @@
 
   热发射是电子靠热激发从分布高能尾部越过功函数, 光电发射不同,
   是电子吸收光子能量, 被光激发到更高能量, 从而越过功函数.
+
+  = 第三次作业
+
+  == 重复 Schottky 势垒降低的推导过程
+
+  相对于零场时的功函数 $W$, 外加电场和镜像力给出的附加势能为
+
+  $ V(x)=-e E_a x - e^2/(16pi ke_0 x) $
+
+  故总势垒可写成
+
+  $ U(x)=W+V(x)=W-e E_a x - e^2/(16pi ke_0 x) $
+
+  势垒顶部满足
+
+  $
+    dv(U, x) = -e E_a + e^2/(16pi ke_0 x^2) = 0
+  $
+
+  从而
+
+  $
+    x_m = sqrt(e/(16pi ke_0 E_a))
+  $
+
+  把 $x_m$ 代回势垒, 有
+
+  $
+    U(x_m)-W & = -e E_a x_m - e^2/(16pi ke_0 x_m) \
+             & = -2 e E_a x_m \
+             & = -sqrt(e^3 E_a/(4pi ke_0))
+  $
+
+  故 Schottky 势垒降低量为
+
+  $ Delta W = W-U(x_m) = sqrt(e^3 E_a/(4pi ke_0)) $
+
+  当 $E_a = 100 unit("MV/m") = 10^8 unit("V/m")$ 时,
+
+  $
+    Delta W = sqrt(e^3 E_a/(4pi ke_0))
+    approx num("6.08e-20") text(J)
+    approx 0.38 text("eV")
+  $
+
+  并且势垒顶点位置为
+
+  $ x_m = sqrt(e/(16pi ke_0 E_a)) approx num("1.90e-9") text(m) $
+
+  == 推导光电发射热发射度的表达式
+
+  这里取阴极表面法向为 $z$, 横向为 $x,y$. 设有效功函数为 $W_"eff"$, 光子能量为
+  $h nu$, 则电子逸出后的最大超额能量为
+
+  $ Delta E = h nu - W_"eff" $
+
+  对应的最大动量满足
+
+  $ p_m = sqrt(2m_0 Delta E) $
+
+  在最简单的自由电子模型下, 发射到真空中的电子在动量空间占据半球
+
+  $ p_x^2 + p_y^2 + p_z^2 <= p_m^2, quad p_z > 0 $
+
+  并且穿过表面的粒子流要按法向速度加权, 即
+
+  $ dd(N) = C v_z dd(p, 3) = C p_z/m_0 dd(p, 3) $
+
+  其中 $C$ 为与归一化有关的常数. 在求二阶矩时, 分子分母中的 $C/m_0$ 会相互抵消.
+
+  于是
+
+  $
+    sigma_(p_x)^2 = chevron.l p_x^2 chevron.r - chevron.l p_x chevron.r^2
+  $
+
+  由对称性可知 $chevron.l p_x chevron.r = 0$, 所以
+
+  $
+    sigma_(p_x)^2
+    = int p_x^2 dd(N) \/ int dd(N)
+    = int p_x^2 p_z dd(p, 3) \/ int p_z dd(p, 3)
+  $
+
+  取球坐标, 以 $z$ 为极轴, 有
+
+  $
+    p_x = p sin theta cos phi, quad p_z = p cos theta
+  $
+
+  以及
+
+  $ dd(p, 3) = p^2 sin theta dd(p) dd(theta) dd(phi) $
+
+  故分母为
+
+  $
+    int p_z dd(p, 3) & = int_0^(p_m) p^3 dd(p) int_0^(pi/2) cos theta sin theta dd(theta)
+                       int_0^(2pi) dd(phi) \
+                     & = 2pi (p_m^4/4) (1/2) \
+                     & = (pi p_m^4)/4
+  $
+
+  分子为
+
+  $
+    int p_x^2 p_z dd(p, 3) & = int_0^(p_m) p^5 dd(p) int_0^(pi/2) sin^3 theta cos theta dd(theta)
+                             int_0^(2pi) cos^2 phi dd(phi) \
+                           & = (p_m^6/6) (1/4) pi \
+                           & = (pi p_m^6)/24
+  $
+
+  因此
+
+  $
+    sigma_(p_x)^2 = ((pi p_m^6)/24) \/ ((pi p_m^4)/4) = p_m^2/6
+  $
+
+  再代入 $p_m^2 = 2m_0 Delta E$, 得
+
+  $
+    sigma_(p_x)^2 = (m_0 Delta E) / 3
+  $
+
+  即
+
+  $ sigma_(p_x) = sqrt((m_0 Delta E) / 3) $
+
+  对于归一化热发射度,
+
+  $
+    epsilon_("n",x)
+    = 1/(m_0 c) sqrt(chevron.l x^2 chevron.r chevron.l p_x^2 chevron.r - chevron.l x p_x chevron.r^2)
+  $
+
+  若阴极表面位置与横向动量无关, 即 $chevron.l x p_x chevron.r = 0$, 且
+  $sigma_x^2 = chevron.l x^2 chevron.r$, 则
+
+  $
+    epsilon_("n",x) = (sigma_x sigma_(p_x))/(m_0 c)
+  $
+
+  最终得到
+
+  $
+    epsilon_("n",x) = sigma_x sqrt((Delta E)/(3m_0 c^2))
+  $
+
+  其中 $Delta E = h nu - W_"eff"$
+
+  == 重复 Child-Langmuir 的推导过程
+
+  考虑一维平板真空二极管. 阴极位于 $x=0$, 阳极位于 $x=d$, 阴极电势取为 0,
+  阳极电势为 $V$, 即
+
+  $ phi(0)=0, quad phi(d)=V $
+
+  并假设电子从阴极出发时初速度近似为 0.
+
+  电流密度守恒为
+
+  $ J = e n(x) v(x) $
+
+  其中 $n(x)$ 为电子数密度, $v(x)$ 为电子速度.
+
+  电子在电势 $phi(x)$ 中满足能量守恒
+
+  $ 1/2 m_0 v^2 = e phi(x) $
+
+  故
+
+  $ v(x)=sqrt((2e phi(x))/m_0) $
+
+  Poisson 方程为
+
+  $ phi''(x) = e n(x)/ke_0 $
+
+  利用 $n(x)=J/(e v)$ 代入, 得
+
+  $
+    phi''(x)
+    = J/(ke_0 v)
+    = J/ke_0 sqrt(m_0/(2e)) phi^(-1/2)
+  $
+
+  记
+
+  $ A = J/ke_0 sqrt(m_0/(2e)) $
+
+  则
+
+  $ phi''(x)=A phi^(-1/2) $
+
+  两边同乘 $phi'(x)$:
+
+  $
+    phi'' phi'
+    = A phi^(-1/2) phi'
+  $
+
+  积分得
+
+  $
+    1/2 phi'^2 = 2A sqrt(phi) + C
+  $
+
+  在空间电荷限制发射条件下, 阴极表面电场为 0, 即 $phi'(0)=0$. 再结合 $phi(0)=0$,
+  可得 $C=0$. 因此
+
+  $ phi'^2 = 4A sqrt(phi) $
+
+  取正根并分离变量:
+
+  $
+    d phi/(d x) = 2 sqrt(A) phi^(1/4) \
+    phi^(-1/4) dd(phi) = 2 sqrt(A) dd(x)
+  $
+
+  积分得
+
+  $
+    4/3 phi^(3/4) = 2 sqrt(A) x
+  $
+
+  在 $x=d$ 处取 $phi=V$, 得
+
+  $
+    4/3 V^(3/4) = 2 sqrt(A) d
+  $
+
+  于是
+
+  $ A = 4/9 V^(3/2)/d^2 $
+
+  代回 $A$ 的定义, 最终得到 Child-Langmuir 定律
+
+  $
+    J = (4 ke_0) / 9 sqrt((2e)/m_0) V^(3/2)/d^2
+  $
+
+  并且电势分布为
+
+  $
+    phi(x) = V (x/d)^(4/3)
+  $
 ]
 
 #hw
