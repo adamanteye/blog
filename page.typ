@@ -79,6 +79,7 @@
   desc: str,
   doc,
 ) = context {
+  show figure.where(kind: table): set block(breakable: true)
   set image(width: 90%)
   show bibliography: set text(lang: "en")
   show: hep
@@ -132,6 +133,7 @@
       })
     })
   } else {
+    show link: it => underline(text(fill: olive.lighten(20%), it))
     set document(title: title)
     align(center, text(1.4em)[
       *#title*

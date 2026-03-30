@@ -1,2 +1,2 @@
-#let title = "Plasma Loudspeaker"
-#let desc = "Build a plasma loudspeaker -- spring 2026 semester"
+#let title = "等离子体扬声器前期报告"
+#let desc = "2026 年春季学期, 设计与制作等离子体扬声器"
