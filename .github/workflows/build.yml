@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
     container: ghcr.io/adamanteye/typst:latest
     steps:
       - uses: actions/checkout@v6
