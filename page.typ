@@ -74,17 +74,22 @@
 #let canvas(it) = context {
   if target() == "html" { html.frame(it) } else { it }
 }
+#let html-image(it) = {
+  let fields = it.fields()
+  let alt = fields.at("alt")
+  html.img(src: it.source, alt: if alt == none { "" } else { alt })
+}
 #let conf(
   title: str,
   desc: str,
   doc,
 ) = context {
   show figure.where(kind: table): set block(breakable: true)
-  set image(width: 90%)
   show bibliography: set text(lang: "en")
   show: hep
   show: lq.set-diagram(width: 6cm, height: 6cm)
   if target() == "html" {
+    show image: html-image
     html.html({
       html.head({
         include "meta.typ"
@@ -133,6 +138,7 @@
       })
     })
   } else {
+    set image(width: 90%)
     set text(font: (
       (name: "Libertinus Serif", covers: "latin-in-cjk"),
       "Source Han Serif",

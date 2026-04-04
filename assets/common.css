@@ -43,8 +43,14 @@ math {
 
 main,
 pre,
-figure {
+figure,
+img {
   overflow-x: auto;
+}
+
+figure img {
+  width: 90%;
+  height: auto;
 }
 
 header p.header,
