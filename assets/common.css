@@ -43,12 +43,11 @@ math {
 
 main,
 pre,
-figure,
-img {
+figure {
   overflow-x: auto;
 }
 
-figure img {
+img {
   width: 90%;
   height: auto;
 }
