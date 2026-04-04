@@ -133,6 +133,10 @@
       })
     })
   } else {
+    set text(font: (
+      (name: "Libertinus Serif", covers: "latin-in-cjk"),
+      "Source Han Serif",
+    ))
     show link: it => underline(text(fill: olive.lighten(20%), it))
     set document(title: title)
     align(center, text(1.4em)[
