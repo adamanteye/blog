@@ -321,6 +321,257 @@
 
   因此, 一次淋洗后约等待 21 h 再次淋洗, 可使淋洗得到的 $isotope("Tc", a: 99m)$
   活度达到当时 $isotope("Mo", a: 99)$ 活度的 98%.
+
+
+  = 第三次作业
+
+  == 某纯 $beta$ 放射性核素的半衰期, 衰变常数和核素判断
+
+  设计数率满足指数衰减规律
+  $
+    R(t) = R_0 e^(-lambda t)
+  $
+
+  对表中数据作 $ln R$ 对 $t$ 的线性拟合, 得
+  $
+    ln R = ln R_0 - lambda t
+  $
+  其中
+  $
+    lambda approx qty("0.0493", "d^-1")
+  $
+
+  于是半衰期为
+  $
+    T_(1/2) = (ln 2) / lambda
+    approx (ln 2) / 0.0493
+    approx qty("14.1", "d")
+  $
+
+  若换算成 SI 单位, 则
+  $
+    lambda approx 0.0493 / (24 times 3600)
+    approx qty("5.70e-7", "s^-1")
+  $
+
+  查常见纯 $beta$ 放射性核素, 半衰期最接近的是 $isotope("P", a: 32)$:
+  $
+    T_(1/2)(isotope("P", a: 32)) approx qty("14.3", "d")
+  $
+
+  因此该核素可判断为 $isotope("P", a: 32)$.
+
+  == 5 mg $isotope("Pb", a: 210)$ 样品 10 年后的活度
+
+  已知
+  $
+    m = qty("5", "mg") = qty("5e-3", "g"), quad
+    M = qty("210", "g/mol")
+  $
+
+  样品中原子数为
+  $
+    N_0 = m N_A / M
+    approx 5 times 10^(-3) times 6.02 times 10^23 / 210
+    approx 1.43 times 10^19
+  $
+
+  $isotope("Pb", a: 210)$ 半衰期取
+  $
+    T_(1/2) = qty("22.3", "a")
+  $
+  故衰变常数为
+  $
+    lambda = (ln 2) / T_(1/2)
+  $
+
+  初始活度
+  $
+    A_0 = lambda N_0
+    approx qty("1.41e10", "Bq")
+  $
+
+  10 年后活度
+  $
+    A(10 " a") = A_0 e^(-lambda times 10 " a")
+    = A_0 2^(-10 / 22.3)
+    approx qty("1.03e10", "Bq")
+  $
+
+  因此, 10 年后样品活度约为
+  $
+    A approx qty("10.3", "GBq")
+  $
+
+  == 1 吨 $U_3 O_8$ 含量为 10% 的铀矿中 $isotope("U", a: 234)$ 的比活度
+
+  1 吨矿石中含
+  $
+    m(U_3 O_8) = 0.10 times 1000 = qty("100", "kg")
+  $
+
+  $U_3 O_8$ 中铀的质量分数约为
+  $
+    w_U = (3 times 238) / (3 times 238 + 8 times 16) approx 0.848
+  $
+  所以矿石中铀总质量约为
+  $
+    m_U approx 0.848 times 100 = qty("84.8", "kg")
+  $
+
+  天然铀中 $isotope("U", a: 234)$ 的质量分数约为
+  $
+    w_(234) approx 5.3 times 10^(-5)
+  $
+  故
+  $
+    m_(234) = w_(234) m_U
+    approx 5.3 times 10^(-5) times 84.8 times 10^3
+    approx qty("4.50", "g")
+  $
+
+  $isotope("U", a: 234)$ 的半衰期取
+  $
+    T_(1/2) = 2.455 times 10^5 " a"
+  $
+  其纯核素比活度为
+  $
+    a_(234)^* = (ln 2) N_A / (M T_(1/2))
+    approx qty("2.30e8", "Bq/g")
+  $
+
+  于是这 1 吨矿石中 $isotope("U", a: 234)$ 的总活度约为
+  $
+    A_(234) = a_(234)^* m_(234)
+    approx 2.30 times 10^8 times 4.50
+    approx qty("1.04e9", "Bq")
+  $
+
+  若按矿石质量定义其比活度, 则
+  $
+    a = A_(234) / qty("1000", "kg")
+    approx qty("1.04e6", "Bq/kg")
+  $
+
+  因此, 该铀矿中 $isotope("U", a: 234)$ 的比活度约为
+  $
+    a approx qty("1.04", "MBq/kg")
+  $
+
+  == 0.5 MeV $gamma$ 辐射场中的粒子注量率
+
+  已知能量注量率
+  $
+    dot(Psi) = qty("5", "J/m^2/s")
+  $
+  单个 $gamma$ 光子的能量为
+  $
+    E_gamma = qty("0.5", "MeV")
+    = 0.5 times 1.602 times 10^(-13) " J"
+    approx qty("8.01e-14", "J")
+  $
+
+  粒子注量率为
+  $
+    dot(Phi) = dot(Psi) / E_gamma
+    approx 5 / (8.01 times 10^(-14))
+    approx qty("6.24e13", "m^-2 s^-1")
+  $
+
+  因此该处的粒子注量率约为
+  $
+    dot(Phi) approx qty("6.24e13", "m^-2 s^-1")
+  $
+
+  == $isotope("Cs", a: 137)$ 点源在 0.5 m 处的粒子注量率和能量注量率
+
+  已知点源活度
+  $
+    A = qty("1", "Ci") = qty("3.7e10", "s^-1")
+  $
+  取 $isotope("Cs", a: 137)$ 每次衰变平均发出
+  $
+    Y_gamma approx 0.851
+  $
+  个能量为
+  $
+    E_gamma = qty("661.7", "keV")
+  $
+  的 $gamma$ 光子. 对各向同性点源, 在距离 $r = qty("0.5", "m")$ 处, 粒子注量率为
+  $
+    dot(Phi) = A Y_gamma / (4 pi r^2)
+  $
+
+  代入得
+  $
+    dot(Phi)
+    = 3.7 times 10^10 times 0.851 / (4 pi times 0.5^2)
+    approx qty("1.00e10", "m^-2 s^-1")
+  $
+
+  能量注量率为
+  $
+    dot(Psi) = E_gamma dot(Phi)
+  $
+  其中
+  $
+    E_gamma = 661.7 times 10^3 times 1.602 times 10^(-19) " J"
+    approx qty("1.06e-13", "J")
+  $
+  因此
+  $
+    dot(Psi)
+    approx 1.06 times 10^(-13) times 1.00 times 10^10
+    approx qty("1.06e-3", "J/m^2/s")
+  $
+
+  所以距离源 0.5 m 处,
+  $
+    dot(Phi) approx qty("1.00e10", "m^-2 s^-1"), quad
+    dot(Psi) approx qty("1.06e-3", "J/m^2/s")
+  $
+
+  == 辐射损失率之比与电子在铅中的辐射损失比
+
+  对于同一介质中的带电粒子, 轫致辐射损失率近似满足
+  $
+    S_"rad" ∝ z^2 E / m^2
+  $
+
+  对于 10 MeV 氘核和 10 MeV 电子, 二者电荷数都为 1, 且动能相同, 因而
+  $
+    (S_"rad")_d / (S_"rad")_e = (m_e / m_d)^2
+  $
+
+  取
+  $
+    m_e c^2 = qty("0.511", "MeV"), quad
+    m_d c^2 = qty("1875.6", "MeV")
+  $
+  则
+  $
+    (S_"rad")_d / (S_"rad")_e
+    = (0.511 / 1875.6)^2
+    approx 7.4 times 10^(-8)
+  $
+
+  因此 10 MeV 氘核在铅中的辐射损失率仅约为 10 MeV 电子的
+  $
+    7.4 times 10^(-8)
+  $
+  倍.
+
+  对于 20 MeV 电子在铅中的情况, 查电子阻止本领表可得
+  $
+    S_"col" approx qty("1.277", "MeV cm^2/g"), quad
+    S_"rad" approx qty("2.554", "MeV cm^2/g")
+  $
+  所以
+  $
+    S_"rad" / S_"col" = 2.554 / 1.277 approx 2.00
+  $
+
+  即 20 MeV 电子穿过铅时, 辐射损失约为电离损失的 2 倍.
 ]
 
 #hw
