@@ -5,7 +5,7 @@ SITE='https://blog.adamanteye.cc'
 BUILD_DIR="$1"
 
 SRC_PREFIX='src'
-DATE_FALLBACK_UTC="$(date --utc +%Y-%m-%dT%H:%M:%SZ)"
+DATE_FALLBACK_UTC="$(date --utc +%Y-%m-%dT%H:%M:%S%z)"
 
 EXCLUDE_REGEX='(^|/)(404|error)(/|\.html$)'
 
