@@ -72,6 +72,7 @@
 #let pmev = $unit("MeV/c", per: "\\/")$
 #let u235 = $isotope("U", a: 235)$
 #let canvas(it) = context {
+  set align(center)
   if target() == "html" { html.frame(it) } else { it }
 }
 #let html-image(it) = {
@@ -87,6 +88,9 @@
   show figure.where(kind: table): set block(breakable: true)
   show bibliography: set text(lang: "en")
   show: hep
+  set heading(numbering: "1.")
+  set page(numbering: "1")
+  set math.equation(numbering: "(1)")
   show: lq.set-diagram(width: 6cm, height: 6cm)
   if target() == "html" {
     show image: html-image
@@ -144,6 +148,9 @@
       "Source Han Serif",
     ))
     show link: it => underline(text(fill: olive.lighten(20%), it))
+    set par(leading: 1em)
+    set par(spacing: 1.5em)
+    show heading: set block(below: 1.5em)
     set document(title: title)
     align(center, text(1.4em)[
       *#title*
