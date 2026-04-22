@@ -3,7 +3,7 @@ SHELL     := /bin/bash
 .DELETE_ON_ERROR:
 .SECONDARY:
 
-.PHONY: build clean assets css seo atom today full optipng
+.PHONY: build clean assets css seo atom today full optipng pdf
 .DEFAULT_GOAL := build
 
 include mk/log.mk
@@ -38,6 +38,7 @@ SRC_PAGES    := $(shell find src -mindepth 4 -maxdepth 4 -type f -name index.typ
 SRC_SECTIONS := $(patsubst src/%/index.typ,%,$(SRC_PAGES))
 SRC_META     := $(patsubst %,src/%/meta.typ,$(SRC_SECTIONS))
 TARGET_POSTS := $(addprefix build/,$(addsuffix /index.html,$(SRC_SECTIONS)))
+TARGET_PDFS  := $(addprefix build/,$(addsuffix /index.pdf,$(SRC_SECTIONS)))
 TRASH        = $(shell find build -name '*.bib' -or -name '*.typ')
 TRASH        += $(NAV_SRC)
 
@@ -45,6 +46,7 @@ include mk/assets.mk
 include mk/typst.mk
 
 build: assets .WAIT $(NAV_SRC) build/index.html $(TARGET_POSTS)
+pdf: $(TARGET_PDFS)
 
 ifeq ($(LIVE), y)
 OBJS += build/live.js
