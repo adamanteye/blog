@@ -37,7 +37,13 @@ $
     [$n p(1-p)$],
     [],
 
-    [$"Exponential" (y|kl)$], [$kl e^(-kl x)$], [$1/kl$], [$(ln 2)/kl$], [$0$],
+    [$"Exponential" (y|kl)$], [$kl e^(-kl y)$], [$1/kl$], [$(ln 2)/kl$], [$0$],
+
+    [$"Erlang" (y|kl,k)$],
+    [$(kl^k y^(k-1) e^(-kl y))/((k-1)!)$],
+    [$k/kl$],
+    [$k/kl^2$],
+    [$1/kl (k-1)$],
 
     [$"ExGauss" (y|mu, sigma, kl)$],
     [$kl/2 exp(kl/2 (2mu + kl ks^2 -2y)) "erfc" ((mu + kl ks^2 - y)/(sqrt(2) ks)$],
