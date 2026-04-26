@@ -1,6 +1,6 @@
 #import "/page.typ": *
 #import "meta.typ": desc, title
-#set text(lang: "zh", region: "cn")
+#set text(lang: "zh")
 #show: conf.with(title: title, desc: desc)
 
 #let hw = [
@@ -472,399 +472,656 @@
   $
     phi(x) = V (x/d)^(4/3)
   $
+
+  = 第四次作业
+
+  == 重复 Child-Langmuir 的推导过程, 并计算 200 kV, 5 cm 间距极板中的流强密度
+
+  设平板二极管阴极位于 $x = 0$, 阳极位于 $x = d$, 两极板间电压为 $V_0$. 取电势为
+  $phi(x)$, 满足
+
+  $
+    phi(0) = 0, quad phi(d) = V_0
+  $
+
+  设电子从阴极表面近似静止出发, 由能量守恒有
+
+  $
+    1/2 m v^2 = e phi
+  $
+
+  故电子速度为
+
+  $
+    v = sqrt((2 e phi) / m)
+  $
+
+  稳恒条件下, 电流密度 $J$ 为常数. 设电荷密度大小为 $abs(rho)$, 则
+
+  $
+    J = abs(rho) v
+  $
+
+  所以
+
+  $
+    abs(rho) = J / v
+  $
+
+  由 Poisson 方程,
+
+  $
+    (d^2 phi) / (d x^2) = abs(rho) / epsilon_0
+  $
+
+  代入上式得
+
+  $
+    (d^2 phi) / (d x^2)
+    = J / (epsilon_0 v) \
+    = J / epsilon_0 sqrt(m / (2 e phi))
+  $
+
+  即
+
+  $
+    (d^2 phi) / (d x^2)
+    = J / epsilon_0 sqrt(m / (2 e)) phi^(-1/2)
+  $
+
+  令
+
+  $
+    K = J / epsilon_0 sqrt(m / (2 e))
+  $
+
+  则有
+
+  $
+    (d^2 phi) / (d x^2) = K phi^(-1/2)
+  $
+
+  两边同乘 $d phi / d x$, 得
+
+  $
+    (d^2 phi) / (d x^2) (d phi) / (d x)
+    = K phi^(-1/2) (d phi) / (d x)
+  $
+
+  即
+
+  $
+    d/(d x) [1/2 ((d phi) / (d x))^2]
+    = d/(d x) [2 K phi^(1/2)]
+  $
+
+  积分得
+
+  $
+    1/2 ((d phi) / (d x))^2 = 2 K phi^(1/2) + C
+  $
+
+  在空间电荷限制条件下, 阴极表面电场为零, 即
+
+  $
+    phi(0) = 0, quad ((d phi) / (d x))|_(x = 0) = 0
+  $
+
+  故积分常数 $C = 0$. 于是
+
+  $
+    ((d phi) / (d x))^2 = 4 K phi^(1/2)
+  $
+
+  取正根,
+
+  $
+    (d phi) / (d x) = 2 sqrt(K) phi^(1/4)
+  $
+
+  分离变量并积分:
+
+  $
+    phi^(-1/4) d phi = 2 sqrt(K) d x
+  $
+
+  $
+    integral phi^(-1/4) d phi = integral 2 sqrt(K) d x
+  $
+
+  得
+
+  $
+    4/3 phi^(3/4) = 2 sqrt(K) x
+  $
+
+  在 $x = d$ 处有 $phi = V_0$, 所以
+
+  $
+    4/3 V_0^(3/4) = 2 sqrt(K) d
+  $
+
+  从而
+
+  $
+    sqrt(K) = 2/3 V_0^(3/4) / d
+  $
+
+  两边平方得
+
+  $
+    K = 4/9 V_0^(3/2) / d^2
+  $
+
+  再代回
+
+  $
+    K = J / epsilon_0 sqrt(m / (2 e))
+  $
+
+  得到 Child-Langmuir 定律
+
+  $
+    J
+    = 4 epsilon_0 / 9 sqrt((2 e) / m) V_0^(3/2) / d^2
+  $
+
+  代入数值
+
+  $
+    epsilon_0 = 8.854 times 10^(-12) " F/m"
+  $
+
+  $
+    e = 1.602 times 10^(-19) " C"
+  $
+
+  $
+    m = 9.11 times 10^(-31) " kg"
+  $
+
+  $
+    V_0 = 200 times 10^3 " V"
+  $
+
+  $
+    d = 5 times 10^(-2) " m"
+  $
+
+  故
+
+  $
+    J
+    = 4 epsilon_0 / 9 sqrt((2 e) / m) V_0^(3/2) / d^2
+    approx 8.35 times 10^4 " A/m"^2
+  $
+
+  也可写成
+
+  $
+    J approx 8.35 " A/cm"^2
+  $
+
+  因此, 极板中的空间电荷限制流强密度为
+
+  $
+    J approx 8.35 times 10^4 " A/m"^2
+  $
+
+  == 无限长圆柱分布电子束流在 $r = 1 " mm"$ 处电子受到的力
+
+  设电子束半径为 $a = 1 " mm" = 1.0 times 10^(-3) " m"$, 束流流强为
+  $I = 100 " A"$, 且在圆柱内均匀分布.
+
+  设电子束速度为 $v$, 则线电荷密度大小为
+
+  $
+    lambda = I / v
+  $
+
+  体电荷密度大小为
+
+  $
+    abs(rho) = lambda / (pi a^2) = I / (pi a^2 v)
+  $
+
+  对半径为 $a$ 的均匀带电圆柱, 在柱内半径 $r$ 处的电场大小为
+
+  $
+    E(r) = abs(rho) r / (2 epsilon_0)
+  $
+
+  因此在边界 $r = a$ 处,
+
+  $
+    E(a) = I / (2 pi epsilon_0 a v)
+  $
+
+  电场方向指向圆柱轴心, 但电子带负电, 所以电子受到的电场力方向为径向向外.
+  其大小为
+
+  $
+    F_E = e E(a) = e I / (2 pi epsilon_0 a v)
+  $
+
+  均匀电流圆柱在柱内半径 $r$ 处的磁场大小为
+
+  $
+    B(r) = mu_0 I r / (2 pi a^2)
+  $
+
+  故在边界 $r = a$ 处,
+
+  $
+    B(a) = mu_0 I / (2 pi a)
+  $
+
+  电子沿束流方向运动, 所受磁力大小为
+
+  $
+    F_B = e v B(a) = e v mu_0 I / (2 pi a)
+  $
+
+  其方向为径向向内.
+
+  所以电子所受总力大小为
+
+  $
+    F = F_E - F_B
+  $
+
+  即
+
+  $
+    F
+    = e I / (2 pi a) (1 / (epsilon_0 v) - mu_0 v)
+  $
+
+  利用
+
+  $
+    mu_0 epsilon_0 = 1 / c^2
+  $
+
+  并记
+
+  $
+    beta = v / c, quad gamma = 1 / sqrt(1 - beta^2)
+  $
+
+  则
+
+  $
+    F = e I / (2 pi epsilon_0 a v) (1 - beta^2)
+    = e I / (2 pi epsilon_0 a v gamma^2)
+  $
+
+  总力方向为径向向外.
+
+
+  电子静能为
+
+  $
+    m c^2 = 511 " keV"
+  $
+
+  故
+
+  $
+    gamma = 1 + 100 / 511 approx 1.1957
+  $
+
+  $
+    beta = sqrt(1 - 1 / gamma^2) approx 0.5482
+  $
+
+  $
+    v = beta c approx 1.6435 times 10^8 " m/s"
+  $
+
+  于是
+
+  $
+    E(a) = I / (2 pi epsilon_0 a v)
+    approx 1.0937 times 10^7 " V/m"
+  $
+
+  $
+    B(a) = mu_0 I / (2 pi a)
+    = 2.0 times 10^(-2) " T"
+  $
+
+  故电场力大小为
+
+  $
+    F_E = e E(a) approx 1.75 times 10^(-12) " N"
+  $
+
+  方向为径向向外.
+
+  磁力大小为
+
+  $
+    F_B = e v B(a) approx 5.27 times 10^(-13) " N"
+  $
+
+  方向为径向向内.
+
+  因此总力为
+
+  $
+    F = F_E - F_B
+    approx 1.23 times 10^(-12) " N"
+  $
+
+  方向为径向向外.
+
+  当电子动能为 10 MeV 时
+
+  $
+    gamma = 1 + 10000 / 511 approx 20.569
+  $
+
+  $
+    beta = sqrt(1 - 1 / gamma^2) approx 0.99882
+  $
+
+  $
+    v = beta c approx 2.9944 times 10^8 " m/s"
+  $
+
+  于是
+
+  $
+    E(a) = I / (2 pi epsilon_0 a v)
+    approx 6.00 times 10^6 " V/m"
+  $
+
+  $
+    B(a) = mu_0 I / (2 pi a)
+    = 2.0 times 10^(-2) " T"
+  $
+
+  故电场力大小为
+
+  $
+    F_E = e E(a) approx 9.62 times 10^(-13) " N"
+  $
+
+  方向为径向向外.
+
+  磁力大小为
+
+  $
+    F_B = e v B(a) approx 9.60 times 10^(-13) " N"
+  $
+
+  方向为径向向内.
+
+  因此总力为
+
+  $
+    F = F_E - F_B
+    approx 2.27 times 10^(-15) " N"
+  $
+
+  方向仍为径向向外.
+
+  = 第七次作业
+
+  == 当直线加速电场达到多大时, 电子能量不再增加
+
+  电子作直线加速时, 加速度与速度平行. 此时相对论辐射功率可写为
+
+  $
+    P_"rad"
+    = e^2 gamma^6 a^2 / (6 pi epsilon_0 c^3)
+  $
+
+  而平行于速度方向受力时
+
+  $
+    e E = gamma^3 m_e a
+  $
+
+  故
+
+  $
+    a = e E / (gamma^3 m_e)
+  $
+
+  代回得
+
+  $
+    P_"rad"
+    = e^4 E^2 / (6 pi epsilon_0 m_e^2 c^3)
+  $
+
+  电场对电子做功的速率为
+
+  $
+    P_"acc" = e E v = e E beta c
+  $
+
+  当电子能量不再增加时, 有 $P_"rad" = P_"acc"$, 因而
+
+  $
+    e^4 E^2 / (6 pi epsilon_0 m_e^2 c^3) = e E beta c
+  $
+
+  $
+    E = (6 pi epsilon_0 m_e^2 c^4 beta) / e^3
+  $
+
+  对高能电子可取 $beta approx 1$, 于是临界电场为
+
+  $
+    E_"crit" = (6 pi epsilon_0 m_e^2 c^4) / e^3
+  $
+
+  代入
+
+  $
+    epsilon_0 = 8.854 times 10^(-12) " F/m"
+  $
+
+  $
+    m_e = 9.109 times 10^(-31) " kg"
+  $
+
+  $
+    e = 1.602 times 10^(-19) " C"
+  $
+
+  $
+    c = 3.00 times 10^8 " m/s"
+  $
+
+  得
+
+  $
+    E_"crit" approx 2.72 times 10^20 " V/m"
+  $
+
+  因此, 直线加速电场要达到约
+
+  $
+    E_"crit" approx 2.7 times 10^20 " V/m"
+  $
+
+  时, 电子辐射损失才会与加速获得的能量相等. 这个数值极高,
+  远高于通常加速器中的电场.
+
+  == HEPS 参数计算
+
+  已知电子束能量 $E_e = 6 " GeV"$, 束流流强 $I = 200 " mA" = 0.2 " A"$.
+
+  电子的相对论因子为
+
+  $
+    gamma = E_e / (m_e c^2) approx 6000 / 0.511 approx 1.174 times 10^4
+  $
+
+  === A) 弯铁辐射总功率与特征波长
+
+  题给弯铁长度 $L = 0.857 " m"$, 偏转半径 $rho = 20 " m"$.
+
+  同步辐射中, 电子经过长度 $L$ 的弯铁所损失的能量可写为
+
+  $
+    U = 88.5 E_e^4 L / rho^2
+  $
+
+  其中 $U$ 的单位为 keV, $E_e$ 取 GeV, $L$ 与 $rho$ 取 m.
+
+  代入数值
+
+  $
+    U = 88.5 times 6^4 times 0.857 / 20^2
+    approx 245.7 " keV"
+  $
+
+  这就是单个电子经过该偏转磁铁一次损失的辐射能量.
+
+  于是该弯铁对应的总辐射功率为
+
+  $
+    P = U I
+  $
+
+  注意这里 $U = 245.7 " keV"$ 可视作 $245.7 " kV"$ 的等效电压, 故
+
+  $
+    P = 245.7 times 10^3 times 0.2
+    approx 4.91 times 10^4 " W"
+  $
+
+  即
+
+  $
+    P approx 49.1 " kW"
+  $
+
+  弯铁辐射的特征波长取临界波长
+
+  $
+    lambda_c = 4 pi rho / (3 gamma^3)
+  $
+
+  代入 $rho = 20 " m"$, $gamma approx 1.174 times 10^4$, 得
+
+  $
+    lambda_c
+    = 4 pi times 20 / (3 times (1.174 times 10^4)^3)
+    approx 5.18 times 10^(-11) " m"
+  $
+
+  即
+
+  $
+    lambda_c approx 0.0518 " nm"
+  $
+
+  对应的特征光子能量约为
+
+  $
+    E_c = h c / lambda_c approx 24.0 " keV"
+  $
+
+  因此 A 问结果为:
+
+  $
+    P approx 49.1 " kW", quad lambda_c approx 0.0518 " nm"
+  $
+
+  === B) ID19 波荡器基频波长与带宽
+
+  已知波荡器周期长度
+
+  $
+    lambda_u = 22.6 " mm" = 2.26 times 10^(-2) " m"
+  $
+
+  $
+    K = 2.3, quad N = 174
+  $
+
+  波荡器轴线上第 $n$ 次谐波的波长为
+
+  $
+    lambda_n = lambda_u / (2 n gamma^2) (1 + K^2 / 2 + gamma^2 theta^2)
+  $
+
+  基频光对应 $n = 1$, 且取轴上观察方向 $theta = 0$, 因而
+
+  $
+    lambda_1 = lambda_u / (2 gamma^2) (1 + K^2 / 2)
+  $
+
+  代入数值
+
+  $
+    lambda_1
+    = (2.26 times 10^(-2)) / (2 times (1.174 times 10^4)^2)
+    (1 + 2.3^2 / 2)
+    approx 2.99 times 10^(-10) " m"
+  $
+
+  即
+
+  $
+    lambda_1 approx 0.299 " nm"
+  $
+
+  对应光子能量约为
+
+  $
+    E_1 = h c / lambda_1 approx 4.15 " keV"
+  $
+
+  有限周期数 $N$ 导致基频谱线具有自然带宽, 量级可估算为
+
+  $
+    Delta lambda / lambda_1 approx 1 / N
+  $
+
+  故
+
+  $
+    Delta lambda / lambda_1 approx 1 / 174 approx 5.75 times 10^(-3)
+  $
+
+  即相对带宽约为
+
+  $
+    0.575%
+  $
+
+  于是绝对带宽约为
+
+  $
+    Delta lambda
+    approx lambda_1 / N
+    approx 0.299 / 174 " nm"
+    approx 1.72 times 10^(-3) " nm"
+  $
+
+  若取常见的 FWHM 估算, 则
+
+  $
+    Delta lambda / lambda_1 approx 0.89 / N approx 5.11 times 10^(-3)
+  $
+
+  与上面的数量级一致.
+
+  因此 B 问结果为:
+
+  $
+    lambda_1 approx 0.299 " nm", quad
+    Delta lambda / lambda_1 approx 5.7 times 10^(-3)
+  $
+
+  即基频光约为 4.15 keV, 相对带宽约为 $0.5%$ 到 $0.6%$.
 ]
 
-// #hw
-
-= 第四次作业
-
-== 重复 Child-Langmuir 的推导过程, 并计算 200 kV, 5 cm 间距极板中的流强密度
-
-设平板二极管阴极位于 $x = 0$, 阳极位于 $x = d$, 两极板间电压为 $V_0$. 取电势为
-$phi(x)$, 满足
-
-$
-  phi(0) = 0, quad phi(d) = V_0
-$
-
-设电子从阴极表面近似静止出发, 由能量守恒有
-
-$
-  1/2 m v^2 = e phi
-$
-
-故电子速度为
-
-$
-  v = sqrt((2 e phi) / m)
-$
-
-稳恒条件下, 电流密度 $J$ 为常数. 设电荷密度大小为 $abs(rho)$, 则
-
-$
-  J = abs(rho) v
-$
-
-所以
-
-$
-  abs(rho) = J / v
-$
-
-由 Poisson 方程,
-
-$
-  (d^2 phi) / (d x^2) = abs(rho) / epsilon_0
-$
-
-代入上式得
-
-$
-  (d^2 phi) / (d x^2)
-  = J / (epsilon_0 v) \
-  = J / epsilon_0 sqrt(m / (2 e phi))
-$
-
-即
-
-$
-  (d^2 phi) / (d x^2)
-  = J / epsilon_0 sqrt(m / (2 e)) phi^(-1/2)
-$
-
-令
-
-$
-  K = J / epsilon_0 sqrt(m / (2 e))
-$
-
-则有
-
-$
-  (d^2 phi) / (d x^2) = K phi^(-1/2)
-$
-
-两边同乘 $d phi / d x$, 得
-
-$
-  (d^2 phi) / (d x^2) (d phi) / (d x)
-  = K phi^(-1/2) (d phi) / (d x)
-$
-
-即
-
-$
-  d/(d x) [1/2 ((d phi) / (d x))^2]
-  = d/(d x) [2 K phi^(1/2)]
-$
-
-积分得
-
-$
-  1/2 ((d phi) / (d x))^2 = 2 K phi^(1/2) + C
-$
-
-在空间电荷限制条件下, 阴极表面电场为零, 即
-
-$
-  phi(0) = 0, quad ((d phi) / (d x))|_(x = 0) = 0
-$
-
-故积分常数 $C = 0$. 于是
-
-$
-  ((d phi) / (d x))^2 = 4 K phi^(1/2)
-$
-
-取正根,
-
-$
-  (d phi) / (d x) = 2 sqrt(K) phi^(1/4)
-$
-
-分离变量并积分:
-
-$
-  phi^(-1/4) d phi = 2 sqrt(K) d x
-$
-
-$
-  integral phi^(-1/4) d phi = integral 2 sqrt(K) d x
-$
-
-得
-
-$
-  4/3 phi^(3/4) = 2 sqrt(K) x
-$
-
-在 $x = d$ 处有 $phi = V_0$, 所以
-
-$
-  4/3 V_0^(3/4) = 2 sqrt(K) d
-$
-
-从而
-
-$
-  sqrt(K) = 2/3 V_0^(3/4) / d
-$
-
-两边平方得
-
-$
-  K = 4/9 V_0^(3/2) / d^2
-$
-
-再代回
-
-$
-  K = J / epsilon_0 sqrt(m / (2 e))
-$
-
-得到 Child-Langmuir 定律
-
-$
-  J
-  = 4 epsilon_0 / 9 sqrt((2 e) / m) V_0^(3/2) / d^2
-$
-
-代入数值
-
-$
-  epsilon_0 = 8.854 times 10^(-12) " F/m"
-$
-
-$
-  e = 1.602 times 10^(-19) " C"
-$
-
-$
-  m = 9.11 times 10^(-31) " kg"
-$
-
-$
-  V_0 = 200 times 10^3 " V"
-$
-
-$
-  d = 5 times 10^(-2) " m"
-$
-
-故
-
-$
-  J
-  = 4 epsilon_0 / 9 sqrt((2 e) / m) V_0^(3/2) / d^2
-  approx 8.35 times 10^4 " A/m"^2
-$
-
-也可写成
-
-$
-  J approx 8.35 " A/cm"^2
-$
-
-因此, 极板中的空间电荷限制流强密度为
-
-$
-  J approx 8.35 times 10^4 " A/m"^2
-$
-
-== 无限长圆柱分布电子束流在 $r = 1 " mm"$ 处电子受到的力
-
-设电子束半径为 $a = 1 " mm" = 1.0 times 10^(-3) " m"$, 束流流强为
-$I = 100 " A"$, 且在圆柱内均匀分布.
-
-设电子束速度为 $v$, 则线电荷密度大小为
-
-$
-  lambda = I / v
-$
-
-体电荷密度大小为
-
-$
-  abs(rho) = lambda / (pi a^2) = I / (pi a^2 v)
-$
-
-对半径为 $a$ 的均匀带电圆柱, 在柱内半径 $r$ 处的电场大小为
-
-$
-  E(r) = abs(rho) r / (2 epsilon_0)
-$
-
-因此在边界 $r = a$ 处,
-
-$
-  E(a) = I / (2 pi epsilon_0 a v)
-$
-
-电场方向指向圆柱轴心, 但电子带负电, 所以电子受到的电场力方向为径向向外. 其大小为
-
-$
-  F_E = e E(a) = e I / (2 pi epsilon_0 a v)
-$
-
-均匀电流圆柱在柱内半径 $r$ 处的磁场大小为
-
-$
-  B(r) = mu_0 I r / (2 pi a^2)
-$
-
-故在边界 $r = a$ 处,
-
-$
-  B(a) = mu_0 I / (2 pi a)
-$
-
-电子沿束流方向运动, 所受磁力大小为
-
-$
-  F_B = e v B(a) = e v mu_0 I / (2 pi a)
-$
-
-其方向为径向向内.
-
-所以电子所受总力大小为
-
-$
-  F = F_E - F_B
-$
-
-即
-
-$
-  F
-  = e I / (2 pi a) (1 / (epsilon_0 v) - mu_0 v)
-$
-
-利用
-
-$
-  mu_0 epsilon_0 = 1 / c^2
-$
-
-并记
-
-$
-  beta = v / c, quad gamma = 1 / sqrt(1 - beta^2)
-$
-
-则
-
-$
-  F = e I / (2 pi epsilon_0 a v) (1 - beta^2)
-  = e I / (2 pi epsilon_0 a v gamma^2)
-$
-
-总力方向为径向向外.
-
-
-电子静能为
-
-$
-  m c^2 = 511 " keV"
-$
-
-故
-
-$
-  gamma = 1 + 100 / 511 approx 1.1957
-$
-
-$
-  beta = sqrt(1 - 1 / gamma^2) approx 0.5482
-$
-
-$
-  v = beta c approx 1.6435 times 10^8 " m/s"
-$
-
-于是
-
-$
-  E(a) = I / (2 pi epsilon_0 a v)
-  approx 1.0937 times 10^7 " V/m"
-$
-
-$
-  B(a) = mu_0 I / (2 pi a)
-  = 2.0 times 10^(-2) " T"
-$
-
-故电场力大小为
-
-$
-  F_E = e E(a) approx 1.75 times 10^(-12) " N"
-$
-
-方向为径向向外.
-
-磁力大小为
-
-$
-  F_B = e v B(a) approx 5.27 times 10^(-13) " N"
-$
-
-方向为径向向内.
-
-因此总力为
-
-$
-  F = F_E - F_B
-  approx 1.23 times 10^(-12) " N"
-$
-
-方向为径向向外.
-
-当电子动能为 10 MeV 时
-
-$
-  gamma = 1 + 10000 / 511 approx 20.569
-$
-
-$
-  beta = sqrt(1 - 1 / gamma^2) approx 0.99882
-$
-
-$
-  v = beta c approx 2.9944 times 10^8 " m/s"
-$
-
-于是
-
-$
-  E(a) = I / (2 pi epsilon_0 a v)
-  approx 6.00 times 10^6 " V/m"
-$
-
-$
-  B(a) = mu_0 I / (2 pi a)
-  = 2.0 times 10^(-2) " T"
-$
-
-故电场力大小为
-
-$
-  F_E = e E(a) approx 9.62 times 10^(-13) " N"
-$
-
-方向为径向向外.
-
-磁力大小为
-
-$
-  F_B = e v B(a) approx 9.60 times 10^(-13) " N"
-$
-
-方向为径向向内.
-
-因此总力为
-
-$
-  F = F_E - F_B
-  approx 2.27 times 10^(-15) " N"
-$
-
-方向仍为径向向外.
+#hw
