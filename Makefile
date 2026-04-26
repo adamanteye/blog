@@ -34,13 +34,17 @@ TITLE     ?= no-title
 TODAY     ?= $(shell date +%Y/%m/%d)
 TODAY_DIR := src/$(TODAY)-$(TITLE)
 
-SRC_PAGES    := $(shell find src -mindepth 4 -maxdepth 4 -type f -name index.typ | sort -r)
-SRC_SECTIONS := $(patsubst src/%/index.typ,%,$(SRC_PAGES))
-SRC_META     := $(patsubst %,src/%/meta.typ,$(SRC_SECTIONS))
-TARGET_POSTS := $(addprefix build/,$(addsuffix /index.html,$(SRC_SECTIONS)))
-TARGET_PDFS  := $(addprefix build/,$(addsuffix /index.pdf,$(SRC_SECTIONS)))
-TRASH        = $(shell find build -name '*.bib' -or -name '*.typ')
-TRASH        += $(NAV_SRC)
+SRC_PAGES      := $(shell find src -mindepth 4 -maxdepth 4 -type f -name index.typ | sort -r)
+SRC_SLIDES     := $(shell find src -mindepth 4 -maxdepth 4 -type f -name main.typ | sort -r)
+SRC_SECTIONS   := $(patsubst src/%/index.typ,%,$(SRC_PAGES))
+TARGET_POSTS   := $(addprefix build/,$(addsuffix /index.html,$(SRC_SECTIONS)))
+TARGET_PDFS    := $(addprefix build/,$(addsuffix /index.pdf,$(SRC_SECTIONS)))
+SRC_SEC_SLIDES := $(patsubst src/%/main.typ,%,$(SRC_SLIDES))
+SRC_SECTIONS   += $(SRC_SEC_SLIDES)
+TARGET_PDFS    += $(addprefix build/,$(addsuffix /main.pdf,$(SRC_SEC_SLIDES)))
+SRC_META       := $(patsubst %,src/%/meta.typ,$(SRC_SECTIONS))
+TRASH          = $(shell find build -name '*.bib' -or -name '*.typ')
+TRASH          += $(NAV_SRC)
 
 include mk/assets.mk
 include mk/typst.mk
