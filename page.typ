@@ -11,6 +11,13 @@
 #import "@preview/unify:0.7.1": *
 #import "@preview/lilaq:0.6.0" as lq
 #import "@preview/mannot:0.3.2": *
+#import "@preview/typsite:0.1.0": mathyml
+
+#let isotope(element, a: none, z: none) = {
+  let a-content = if type(a) == int { [#a] } else { a }
+  let z-content = if type(z) == int { [#z] } else { z }
+  math.attach(math.op(element), tl: a-content, bl: z-content)
+}
 
 #let hep = it => {
   show lq.selector(lq.diagram): set text(0.85em)
@@ -117,8 +124,7 @@
         })
         html.main({
           html.article({
-            show math.equation: html.frame
-            show math.equation.where(block: false): box
+            show math.equation: mathyml.try-to-mathml
             doc
           })
         })
