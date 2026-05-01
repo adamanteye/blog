@@ -16,7 +16,7 @@ build/%/main.pdf: build/%/main.typ slide.typ page.typ meta.typ
 
 build/%/index.html: build/%/index.typ $(NAV_SRC) page.typ meta.typ
 	$(call log,TEX,$<)
-	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
+	$(Q)$(TYPST) --input src=src/$*/index.typ $< $@ $(TYPST_SILENT)
 ifeq ($(LIVE), y)
 	$(call log,LIVE,$@)
 	$(Q)sed -i '8 i\<script src="../../../live.js"></script>\' $@

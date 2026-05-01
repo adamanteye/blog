@@ -104,6 +104,11 @@ build/%/index.typ: src/%/index.typ src/%
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(CP_R) $(<D)/. $(@D)/
 
+build/%/main.typ: src/%/main.typ src/%
+	$(call log,COPY,$(@D))
+	$(Q)$(MKDIR_P) $(@D)
+	$(Q)$(CP_R) $(<D)/. $(@D)/
+
 clean:
 	$(call log,RM,$(TRASH))
 	$(Q)$(RM_RF) $(TRASH)

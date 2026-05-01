@@ -2,8 +2,14 @@
   "../../../",
 )[Home]
 
+#let source = sys.inputs.at("src", default: none)
+#let source = if source == none {
+  "https://github.com/adamanteye/blog"
+} else {
+  "https://github.com/adamanteye/blog/blob/master/" + source
+}
 #let source = link(
-  "https://github.com/adamanteye/blog",
+  source,
 )[Source]
 
 #import "meta.typ": footer
