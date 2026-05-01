@@ -38,7 +38,9 @@ jobs:
           name: build-output
           path: build/
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3.15.0
+        uses: cloudflare/wrangler-action@v3
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           command: pages deploy build --project-name blog
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
