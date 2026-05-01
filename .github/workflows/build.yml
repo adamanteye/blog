@@ -32,6 +32,9 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '23'
       - name: Download build artifacts
         uses: actions/download-artifact@v8
         with:
@@ -39,8 +42,6 @@ jobs:
           path: build/
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
-        env:
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         with:
           command: pages deploy build --project-name blog
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
