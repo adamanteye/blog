@@ -41,7 +41,7 @@ jobs:
           name: build-output
           path: build/
       - name: Deploy
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           command: pages deploy build --project-name blog
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
