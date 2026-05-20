@@ -124,6 +124,10 @@
             #home
             \/
             #source
+            \/
+            #link(
+              "index.pdf",
+            )[PDF]
 
             #desc
           ])
