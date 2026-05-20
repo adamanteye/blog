@@ -1122,6 +1122,306 @@
   $
 
   即基频光约为 4.15 keV, 相对带宽约为 $0.5%$ 到 $0.6%$.
+
+  = 第八次作业
+
+  == 周期高斯微束列的聚束因子与基频谱宽
+
+  设单个微束团的纵向时间分布为
+
+  $
+    f_0(t) = 1 / (sqrt(2 pi) sigma_e) exp(-t^2 / (2 sigma_e^2))
+  $
+
+  若电子束由 $N$ 个相同微束团组成, 相邻微束团间隔为 $T = 10 sigma_e$,
+  则归一化后的总分布可写为
+
+  $
+    f_N(t) = 1 / N sum_(n=0)^(N-1) f_0(t - n T)
+  $
+
+  即
+
+  $
+    f_N(t)
+    = 1 / (N sqrt(2 pi) sigma_e)
+    sum_(n=0)^(N-1) exp(-(t - n T)^2 / (2 sigma_e^2)).
+  $
+
+  下面给出 $N = 8$, $sigma_e = 1$, $T = 10 sigma_e$ 时的分布示意:
+
+  #let sigma-e = 1
+  #let micro-t = 10 * sigma-e
+  #let g(t, n) = calc.exp(
+    -calc.pow(t - n * micro-t, 2) / (2 * sigma-e * sigma-e),
+  )
+  #let train(t) = (
+    (
+      g(t, 0)
+        + g(t, 1)
+        + g(t, 2)
+        + g(t, 3)
+        + g(t, 4)
+        + g(t, 5)
+        + g(t, 6)
+        + g(t, 7)
+    )
+      / (8 * calc.sqrt(2 * calc.pi) * sigma-e)
+  )
+  #let tt = lq.linspace(-5, 75)
+
+  #canvas(
+    lq.diagram(
+      xlabel: [$t / sigma_e$],
+      ylabel: [$f_N(t)$],
+      lq.plot(tt, train),
+    ),
+  )
+
+  按聚束因子的定义
+
+  $
+    b(omega) = integral_(-infinity)^(infinity) f_N(t) exp(-i omega t) dd(t),
+  $
+
+  代入上式可得
+
+  $
+    b(omega)
+    = exp(-omega^2 sigma_e^2 / 2)
+    1 / N sum_(n=0)^(N-1) exp(-i omega n T).
+  $
+
+  利用有限等比级数,
+
+  $
+    sum_(n=0)^(N-1) exp(-i omega n T)
+    = exp(-i omega T (N - 1) / 2)
+    (sin(N omega T / 2)) / (sin(omega T / 2)).
+  $
+
+  因此聚束因子为
+
+  $
+    b(omega)
+    = exp(-omega^2 sigma_e^2 / 2)
+    exp(-i omega T (N - 1) / 2)
+    (sin(N omega T / 2)) / (N sin(omega T / 2)).
+  $
+
+  通常更关心其模:
+
+  $
+    abs(b(omega))
+    = exp(-omega^2 sigma_e^2 / 2)
+    abs((sin(N omega T / 2)) / (N sin(omega T / 2))).
+  $
+
+  这个结果可以分成两部分理解. 第一项 $exp(-omega^2 sigma_e^2 / 2)$
+  是单个高斯微束团的 form factor, 决定整个频谱的包络; 第二项是长度为 $N$
+  的周期列给出的 Dirichlet 因子, 决定谱线出现在
+
+  $
+    omega_m = 2 pi m / T, quad m = 0, 1, 2, ...
+  $
+
+  附近.
+
+  在第 $m$ 次谐波处,
+
+  $
+    abs(b_m) = exp(-(m omega_0 sigma_e)^2 / 2),
+    quad omega_0 = 2 pi / T.
+  $
+
+  本题中 $T = 10 sigma_e$, 所以基频处
+
+  $
+    abs(b_1)
+    = exp(-1 / 2 (2 pi sigma_e / T)^2)
+    = exp(-1 / 2 (2 pi / 10)^2)
+    approx 0.821.
+  $
+
+  基频附近令 $omega = omega_0 + delta omega$. 当 $abs(delta omega) T << 1$ 时,
+
+  $
+    abs(b(omega))
+    approx exp(-omega_0^2 sigma_e^2 / 2)
+    abs((sin(N delta omega T / 2)) / (N sin(delta omega T / 2))).
+  $
+
+  其第一个零点满足
+
+  $
+    N delta omega T / 2 = pi,
+  $
+
+  故半宽到第一个零点为
+
+  $
+    delta omega_"zero" = 2 pi / (N T).
+  $
+
+  两个一阶零点之间的全宽为
+
+  $
+    Delta omega_"zero" = 4 pi / (N T).
+  $
+
+  若用强度谱 $abs(b)^2$ 的半高全宽估算, sinc 平方函数给出
+
+  $
+    Delta omega_"FWHM" / omega_0 approx 0.89 / N.
+  $
+
+  因此基频谱宽主要由周期数 $N$ 决定: $N$ 越大, 谱线越窄. 微束团宽度 $sigma_e$
+  主要通过高斯包络影响各谐波强度; $sigma_e$ 越小, 高频谐波衰减越慢. 对本题
+  $T = 10 sigma_e$, 基频仍有较强聚束, 但更高谐波会按 $exp(-(m 2 pi / 10)^2 / 2)$
+  快速下降.
+
+  == LCLS 自由电子激光参数估算
+
+  已知 LCLS 自由电子激光装置的辐射波长为
+
+  $
+    lambda_r = 1.5 " Å" = 1.5 times 10^(-10) " m",
+  $
+
+  波荡器周期
+
+  $
+    lambda_u = 3 " cm" = 3.0 times 10^(-2) " m",
+  $
+
+  $K = 3.5$, 周期数 $N_u = 3328$, 归一化发射度
+  $epsilon_n = 0.5 " mm" dot "mrad"$, Pierce 参数 $rho = 5 times 10^(-4)$.
+
+  对平面波荡器, 轴上基频共振条件为
+
+  $
+    lambda_r = lambda_u / (2 gamma^2) (1 + K^2 / 2).
+  $
+
+  所以电子束的相对论因子为
+
+  $
+    gamma
+    = sqrt(lambda_u (1 + K^2 / 2) / (2 lambda_r)).
+  $
+
+  代入数值,
+
+  $
+    gamma
+    = sqrt(
+      (3.0 times 10^(-2)) (1 + 3.5^2 / 2)
+      / (2 times 1.5 times 10^(-10))
+    )
+    approx 2.67 times 10^4.
+  $
+
+  电子束能量为
+
+  $
+    E_e = gamma m_e c^2
+    approx (2.67 times 10^4) times 0.511 " MeV"
+    approx 1.36 times 10^4 " MeV"
+    approx 13.6 " GeV".
+  $
+
+  一维 FEL 功率增益长度可估算为
+
+  $
+    L_g = lambda_u / (4 pi sqrt(3) rho).
+  $
+
+  因此
+
+  $
+    L_g
+    = (3.0 times 10^(-2))
+    / (4 pi sqrt(3) times 5 times 10^(-4))
+    approx 2.76 " m".
+  $
+
+  波荡器总长度为
+
+  $
+    L_u = N_u lambda_u = 3328 times 0.03 " m" approx 99.8 " m".
+  $
+
+  若按 SASE 饱和长度约为 $15--20$ 个增益长度估算, 则
+
+  $
+    L_"sat" approx (15--20) L_g approx 41--55 " m",
+  $
+
+  小于波荡器总长度, 因而该参数下可以达到饱和输出.
+
+  FEL 辐射的相对带宽量级由 Pierce 参数决定:
+
+  $
+    Delta omega / omega approx rho = 5 times 10^(-4).
+  $
+
+  即相对带宽约为
+
+  $
+    5 times 10^(-4) = 0.05%.
+  $
+
+  有限波荡器周期数给出的自然线宽量级为
+
+  $
+    1 / N_u approx 3.0 times 10^(-4),
+  $
+
+  与 $rho$ 同量级但略小, 所以用 $rho$ 作为 SASE 饱和输出带宽估算是合理的.
+
+  SASE 饱和输出的尖峰时间宽度可用相干时间估算. 若取
+
+  $
+    Delta omega approx rho omega_r,
+  $
+
+  则
+
+  $
+    Delta t_"spike" approx 1 / Delta omega
+    = 1 / (rho omega_r)
+    = lambda_r / (2 pi rho c).
+  $
+
+  代入 $lambda_r = 1.5 times 10^(-10) " m"$, $rho = 5 times 10^(-4)$,
+  $c = 3.0 times 10^8 " m/s"$, 得
+
+  $
+    Delta t_"spike"
+    approx (1.5 times 10^(-10))
+    / (2 pi times 5 times 10^(-4) times 3.0 times 10^8)
+    approx 1.6 times 10^(-16) " s".
+  $
+
+  即
+
+  $
+    Delta t_"spike" approx 0.16 " fs".
+  $
+
+  若采用合作长度 $L_c = lambda_r / (4 pi rho)$ 的定义, 对应时间为
+  $L_c / c approx 0.08 " fs"$. 两者只差一个约为 2 的约定因子, 因此 SASE
+  尖峰时间宽度的量级为 $0.1 " fs"$.
+
+  综上,
+
+  $
+    E_e approx 13.6 " GeV", quad
+    L_g approx 2.8 " m", quad
+    Delta omega / omega approx 5 times 10^(-4), quad
+    Delta t_"spike" approx 0.1 " fs".
+  $
+
 ]
 
 #hw
