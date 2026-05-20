@@ -923,18 +923,18 @@
   $
     P'
     = q^2 / (6 pi epsilon_0 c^3)
-      (gamma^6 a_parallel^2 + gamma^4 a_perp^2).
+    (gamma^6 a_parallel^2 + gamma^4 a_perp^2).
   $
 
   对总辐射功率, 可以取 $P = P'$. 原因是: 在瞬时静止系中,
   总辐射动量对角度积分后为零; 辐射四动量变换到实验室系时,
-  辐射能量和时间间隔都乘以同一个 $gamma$ 因子, 因而二者之比,
-  即总功率保持不变. 所以实验室系中的辐射功率为
+  辐射能量和时间间隔都乘以同一个 $gamma$ 因子, 因而二者之比, 即总功率保持不变.
+  所以实验室系中的辐射功率为
 
   $
     P
     = q^2 / (6 pi epsilon_0 c^3)
-      (gamma^6 a_parallel^2 + gamma^4 a_perp^2).
+    (gamma^6 a_parallel^2 + gamma^4 a_perp^2).
   $
 
   这就是 Liénard 公式的一种常用分量形式.
@@ -984,7 +984,7 @@
   $
     P
     = q^2 gamma^6 / (6 pi epsilon_0 c^3)
-      (a^2 - abs(va(v) times va(a))^2 / c^2).
+    (a^2 - abs(va(v) times va(a))^2 / c^2).
   $
 
   这就是 Liénard 公式的矢量形式.
@@ -1025,10 +1025,9 @@
     = q^2 gamma^4 a^2 / (6 pi epsilon_0 c^3).
   $
 
-  因此, 平行加速时辐射功率随 $gamma^6$ 增强,
-  垂直加速时辐射功率随 $gamma^4$ 增强. 关键原因是 Larmor 公式中的加速度应理解为
-  瞬时静止系中的加速度, 而实验室系中的平行加速度和垂直加速度在洛伦兹变换下具有不同的
-  $gamma$ 因子.
+  因此, 平行加速时辐射功率随 $gamma^6$ 增强, 垂直加速时辐射功率随 $gamma^4$
+  增强. 关键原因是 Larmor 公式中的加速度应理解为 瞬时静止系中的加速度,
+  而实验室系中的平行加速度和垂直加速度在洛伦兹变换下具有不同的 $gamma$ 因子.
 
   = 第七次作业
 
@@ -1583,6 +1582,261 @@
     L_g approx 2.8 " m", quad
     Delta omega / omega approx 5 times 10^(-4), quad
     Delta t_"spike" approx 0.1 " fs".
+  $
+
+  = 第九次作业
+
+  == 波荡器辐射产生 100 keV 硬 X 射线所需电子能量
+
+  题给波荡器周期长度
+
+  $
+    lambda_u = 2.5 " cm" = 2.5 times 10^(-2) " m",
+  $
+
+  最大磁场
+
+  $
+    B_0 = 0.45 " T".
+  $
+
+  波荡器参数为
+
+  $
+    K = e B_0 lambda_u / (2 pi m_e c)
+    approx 0.934 B_0["T"] lambda_u["cm"].
+  $
+
+  代入数值有
+
+  $
+    K approx 0.934 times 0.45 times 2.5 approx 1.05.
+  $
+
+  对平面波荡器, 第一次谐波在观察角 $theta = 0$ 方向的波长为
+
+  $
+    lambda_r
+    = lambda_u / (2 gamma^2) (1 + K^2 / 2).
+  $
+
+  100 keV 光子的波长为
+
+  $
+    lambda_r = (h c) / E_gamma
+    = (1239.84 " eV nm") / (1.0 times 10^5 " eV")
+    approx 1.24 times 10^(-2) " nm"
+    = 1.24 times 10^(-11) " m".
+  $
+
+  因此
+
+  $
+    gamma
+    = sqrt(lambda_u (1 + K^2 / 2) / (2 lambda_r)).
+  $
+
+  代入数值,
+
+  $
+    gamma
+    = sqrt(
+      (2.5 times 10^(-2)) (1 + 1.05^2 / 2)
+      / (2 times 1.24 times 10^(-11))
+    )
+    approx 3.96 times 10^4.
+  $
+
+  电子束总能量为
+
+  $
+    E_e = gamma m_e c^2
+    approx (3.96 times 10^4) times 0.511 " MeV"
+    approx 2.02 times 10^4 " MeV"
+    = 20.2 " GeV".
+  $
+
+  因此, 用该波荡器在轴上产生约 100 keV 的基频硬 X 射线, 所需电子能量约为
+
+  $
+    E_e approx 20 " GeV".
+  $
+
+  == 逆康普顿散射产生 100 keV 硬 X 射线所需电子能量
+
+  激光波长为
+
+  $
+    lambda_L = 1064 " nm",
+  $
+
+  光子能量为
+
+  $
+    E_L = h c / lambda_L
+    = (1239.84 " eV nm") / (1064 " nm")
+    approx 1.165 " eV".
+  $
+
+  设入射激光与电子速度方向的夹角为 $alpha$, 散射光沿电子正前方观测, 即
+  $theta = 0$. 在 Thomson 近似下, 散射光能量可写为
+
+  $
+    E_gamma
+    approx E_L (1 - beta cos alpha) / (1 - beta)
+    approx 2 gamma^2 E_L (1 - cos alpha).
+  $
+
+  这里忽略了反冲修正, 因为本题所得电子能量下 $gamma E_L / (m_e c^2) << 1$.
+
+  对 180 度相互作用, 即激光与电子迎头相撞, $alpha = pi$,
+
+  $
+    E_gamma approx 4 gamma^2 E_L.
+  $
+
+  因而
+
+  $
+    gamma = sqrt(E_gamma / (4 E_L))
+    = sqrt((1.0 times 10^5) / (4 times 1.165))
+    approx 146.
+  $
+
+  电子束能量为
+
+  $
+    E_e = gamma m_e c^2
+    approx 146 times 0.511 " MeV"
+    approx 74.8 " MeV".
+  $
+
+  对 90 度垂直相互作用, $alpha = pi / 2$,
+
+  $
+    E_gamma approx 2 gamma^2 E_L.
+  $
+
+  因而
+
+  $
+    gamma = sqrt(E_gamma / (2 E_L))
+    = sqrt((1.0 times 10^5) / (2 times 1.165))
+    approx 207.
+  $
+
+  电子束能量为
+
+  $
+    E_e = gamma m_e c^2
+    approx 207 times 0.511 " MeV"
+    approx 106 " MeV".
+  $
+
+  因此, 1064 nm 激光产生 100 keV X 射线时, 180 度逆康普顿散射所需电子能量约为 75
+  MeV, 90 度散射所需电子能量约为 106 MeV.
+
+  == 逆康普顿散射的 X 射线横向尺寸与脉冲宽度
+
+  题给电子束均方根长度和横向尺寸为
+
+  $
+    sigma_(e,z) = 450 " um",
+    quad sigma_(e,x) = sigma_(e,y) = 60 " um".
+  $
+
+  激光均方根脉冲宽度为
+
+  $
+    sigma_(l,t) = 100 " fs",
+  $
+
+  对应的空间长度为
+
+  $
+    c sigma_(l,t)
+    approx 3.0 times 10^8 times 100 times 10^(-15) " m"
+    approx 30 " um".
+  $
+
+  激光横向尺寸为
+
+  $
+    sigma_(l,r) = 15 " um".
+  $
+
+  两个高斯分布相乘后, 有效相互作用区的均方根尺寸为
+
+  $
+    sigma_"eff"
+    = (1 / sigma_1^2 + 1 / sigma_2^2)^(-1/2).
+  $
+
+  对 180 度迎头散射, 激光沿电子束轴向传播, 因此 X
+  射线横向尺寸主要由电子束横向尺寸与 激光焦斑横向尺寸的重叠决定:
+
+  $
+    sigma_x = sigma_y
+    = (1 / 60^2 + 1 / 15^2)^(-1/2) " um"
+    approx 14.6 " um".
+  $
+
+  轴向前方观测时, X 射线脉宽主要由电子束纵向长度决定. 用
+  $sigma_t approx sigma_(e,z) / c$ 估算,
+
+  $
+    sigma_t
+    approx (450 " um") / c
+    approx 1.5 " ps".
+  $
+
+  对 90 度垂直散射, 设激光沿电子束横向 $x$ 方向传播. 此时 $x$
+  方向相互作用尺寸由电子束横向尺寸和激光脉冲空间长度共同决定:
+
+  $
+    sigma_x
+    = (1 / 60^2 + 1 / 30^2)^(-1/2) " um"
+    approx 26.8 " um".
+  $
+
+  另一个横向方向由电子束横向尺寸与激光焦斑横向尺寸决定:
+
+  $
+    sigma_y
+    = (1 / 60^2 + 1 / 15^2)^(-1/2) " um"
+    approx 14.6 " um".
+  $
+
+  对沿电子正前方的 X 射线脉宽,
+  垂直相互作用时激光横向焦斑会限制电子束纵向上实际参与散射的长度. 因此
+
+  $
+    sigma_z
+    = (1 / 450^2 + 1 / 15^2)^(-1/2) " um"
+    approx 15.0 " um".
+  $
+
+  对应时间宽度为
+
+  $
+    sigma_t = sigma_z / c
+    approx (15.0 " um") / c
+    approx 50 " fs".
+  $
+
+  所以两种散射几何的结果可概括为
+
+  $
+    180 degree:
+    quad sigma_x approx sigma_y approx 14.6 " um",
+    quad sigma_t approx 1.5 " ps";
+  $
+
+  $
+    90 degree:
+    quad sigma_x approx 26.8 " um",
+    quad sigma_y approx 14.6 " um",
+    quad sigma_t approx 50 " fs".
   $
 
 ]
