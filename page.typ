@@ -159,6 +159,7 @@
       (name: "Libertinus Serif", covers: "latin-in-cjk"),
       "Source Han Serif",
     ))
+    show math.equation: set text(font: "TeX Gyre Pagella Math")
     show link: it => underline(text(fill: olive.lighten(20%), it))
     set par(leading: 1em)
     set par(spacing: 1.5em)
