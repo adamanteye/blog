@@ -867,6 +867,169 @@
 
   方向仍为径向向外.
 
+  = 第六次作业
+
+  == 从 Larmor 公式推导辐射表达式
+
+  非相对论情形下, 加速电荷的总辐射功率由 Larmor 公式给出:
+
+  $
+    P = q^2 a^2 / (6 pi epsilon_0 c^3)
+  $
+
+  对相对论运动电子, 不能直接把实验室系中的加速度代入这个式子.
+  正确的做法是在电子的瞬时静止系中使用 Larmor 公式,
+  再把瞬时静止系中的加速度用实验室系中的加速度表示出来.
+
+  设实验室系为 $S$, 电子速度为 $va(v)$, 实验室系加速度为
+
+  $
+    va(a) = (d va(v)) / (d t).
+  $
+
+  在某一瞬间取电子的瞬时静止系 $S'$. 在 $S'$ 中电子瞬时速度为零,
+  因而可以使用非相对论 Larmor 公式:
+
+  $
+    P' = q^2 a'^2 / (6 pi epsilon_0 c^3).
+  $
+
+  这里的 $a'$ 是瞬时静止系中的加速度, 不是实验室系中的 $a$.
+  将实验室系加速度分解为平行于速度和垂直于速度的两部分:
+
+  $
+    va(a) = va(a)_parallel + va(a)_perp,
+    quad va(a)_parallel parallel va(v),
+    quad va(a)_perp perp va(v).
+  $
+
+  洛伦兹变换下, 加速度分量满足
+
+  $
+    a'_parallel = gamma^3 a_parallel,
+    quad a'_perp = gamma^2 a_perp.
+  $
+
+  因此瞬时静止系中的加速度平方为
+
+  $
+    a'^2
+    = a'_parallel^2 + a'_perp^2
+    = gamma^6 a_parallel^2 + gamma^4 a_perp^2.
+  $
+
+  代入 Larmor 公式得到
+
+  $
+    P'
+    = q^2 / (6 pi epsilon_0 c^3)
+      (gamma^6 a_parallel^2 + gamma^4 a_perp^2).
+  $
+
+  对总辐射功率, 可以取 $P = P'$. 原因是: 在瞬时静止系中,
+  总辐射动量对角度积分后为零; 辐射四动量变换到实验室系时,
+  辐射能量和时间间隔都乘以同一个 $gamma$ 因子, 因而二者之比,
+  即总功率保持不变. 所以实验室系中的辐射功率为
+
+  $
+    P
+    = q^2 / (6 pi epsilon_0 c^3)
+      (gamma^6 a_parallel^2 + gamma^4 a_perp^2).
+  $
+
+  这就是 Liénard 公式的一种常用分量形式.
+
+  接下来把它改写为矢量形式. 由于
+
+  $
+    a^2 = a_parallel^2 + a_perp^2,
+  $
+
+  且
+
+  $
+    abs(va(v) times va(a))^2 = v^2 a_perp^2,
+  $
+
+  所以
+
+  $
+    a^2 - abs(va(v) times va(a))^2 / c^2
+    = a_parallel^2 + a_perp^2 - beta^2 a_perp^2
+    = a_parallel^2 + (1 - beta^2) a_perp^2.
+  $
+
+  又因为
+
+  $
+    1 - beta^2 = 1 / gamma^2,
+  $
+
+  因此
+
+  $
+    a^2 - abs(va(v) times va(a))^2 / c^2
+    = a_parallel^2 + a_perp^2 / gamma^2.
+  $
+
+  两边乘以 $gamma^6$, 有
+
+  $
+    gamma^6 (a^2 - abs(va(v) times va(a))^2 / c^2)
+    = gamma^6 a_parallel^2 + gamma^4 a_perp^2.
+  $
+
+  于是总辐射功率可写为
+
+  $
+    P
+    = q^2 gamma^6 / (6 pi epsilon_0 c^3)
+      (a^2 - abs(va(v) times va(a))^2 / c^2).
+  $
+
+  这就是 Liénard 公式的矢量形式.
+
+  下面讨论两个特殊情况.
+
+  若加速度与速度方向平行, 即 $va(a) parallel va(v)$, 则
+
+  $
+    va(v) times va(a) = 0.
+  $
+
+  因此
+
+  $
+    P_parallel = q^2 gamma^6 a^2 / (6 pi epsilon_0 c^3).
+  $
+
+  若加速度与速度方向垂直, 即 $va(a) perp va(v)$, 则
+
+  $
+    abs(va(v) times va(a))^2 = v^2 a^2.
+  $
+
+  因而
+
+  $
+    a^2 - abs(va(v) times va(a))^2 / c^2
+    = a^2 (1 - beta^2)
+    = a^2 / gamma^2.
+  $
+
+  代入 Liénard 公式得
+
+  $
+    P_perp
+    = q^2 gamma^6 / (6 pi epsilon_0 c^3) a^2 / gamma^2
+    = q^2 gamma^4 a^2 / (6 pi epsilon_0 c^3).
+  $
+
+  因此, 平行加速时辐射功率随 $gamma^6$ 增强,
+  垂直加速时辐射功率随 $gamma^4$ 增强. 关键原因是 Larmor 公式中的加速度应理解为
+  瞬时静止系中的加速度, 而实验室系中的平行加速度和垂直加速度在洛伦兹变换下具有不同的
+  $gamma$ 因子.
+
   = 第七次作业
 
   == 当直线加速电场达到多大时, 电子能量不再增加
