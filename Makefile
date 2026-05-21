@@ -82,7 +82,7 @@ $(NAV_SRC): bin/nav.sh $(SRC_META)
 	$(Q)$(MKDIR_P) build
 	$(Q)bin/nav.sh src > $@
 
-build/sitemap.xml:
+build/sitemap.xml: build/index.html
 	$(call log,MAP,$@)
 	$(Q)bin/sitemap.sh $(@D) > $@
 ifeq ($(MINIFY), y)
@@ -90,7 +90,7 @@ ifeq ($(MINIFY), y)
 	$(Q)$(MINIFY_CMD) -a -i $@
 endif
 
-build/index.html: index.typ meta.typ
+build/index.html: index.typ meta.typ $(TARGET_POSTS)
 	$(call log,TEX,$<)
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
@@ -113,7 +113,7 @@ clean:
 	$(call log,RM,$(TRASH))
 	$(Q)$(RM_RF) $(TRASH)
 
-build/atom.xml: bin/atom.sh $(TARGET_POSTS)
+build/atom.xml: bin/atom.sh build/index.html
 	$(call log,FEED,$@)
 	$(Q)./bin/atom.sh build > $@
 ifeq ($(MINIFY), y)
