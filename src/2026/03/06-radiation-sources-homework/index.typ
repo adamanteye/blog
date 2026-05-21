@@ -867,6 +867,151 @@
 
   方向仍为径向向外.
 
+  = 第五次作业
+
+  == Mo 和 W 的 Kα 射线能量与最低激发电子能量
+
+  查 NIST X-ray Transition Energies 数据库可得, Mo 和 W 的 K 系特征线与 K
+  吸收边为:
+
+  #table(
+    columns: 5,
+    [材料],
+    [$K alpha_2$ / keV],
+    [$K alpha_1$ / keV],
+    [$K$ edge / keV],
+    [最低电子能量],
+
+    [Mo], [17.374], [17.479], [20.000], [$E_e >= 20.0 " keV"$],
+    [W], [57.982], [59.319], [69.525], [$E_e >= 69.5 " keV"$],
+  )
+
+  这里 $K alpha_1$ 对应 $K L_3$ 跃迁, $K alpha_2$ 对应 $K L_2$ 跃迁. 产生 Kα
+  特征射线的必要条件是入射电子能量至少能够打出 K 壳层空穴, 因此最低电子能量由 K
+  edge 决定, 而不是由 Kα 光子能量本身决定.
+
+  == 50 keV、100 keV、150 keV 管压下的 X 光管能谱示意
+
+  X 光管能谱由连续轫致辐射和靶材特征线组成. 管压为 $V$ 时, 连续谱最高光子能量为
+
+  $
+    E_"max" = e V.
+  $
+
+  下面用 Kramers 形式作定性示意:
+
+  $
+    I(E) prop (E_"max" - E) / E_"max",
+    quad 0 < E < E_"max".
+  $
+
+  当 $E_"max"$ 超过靶材 K edge 时, 谱中出现 Kα 和 Kβ 特征峰; 否则没有 K
+  系特征线. 示意图中红线为 Kα, 蓝线为 Kβ.
+
+  #let energy = lq.linspace(0.1, 150)
+  #let brem(e, emax) = if e < emax { (emax - e) / emax } else { 0 }
+  #let peak(e, edge, h) = if e > edge { h } else { 0 }
+  #let spectrum(emax, edge, ka, kb, title) = {
+    lq.diagram(
+      xlabel: [$E_gamma$ / keV],
+      ylabel: [相对强度],
+      lq.plot(energy, e => brem(e, emax), mark: none, label: [连续谱]),
+      lq.path(
+        (ka, 0),
+        (ka, peak(emax, edge, 1.25)),
+        stroke: red + 0.9pt,
+        label: [$K alpha$],
+      ),
+      lq.path(
+        (kb, 0),
+        (kb, peak(emax, edge, 0.75)),
+        stroke: blue + 0.9pt,
+        label: [$K beta$],
+      ),
+      lq.path(
+        (emax, 0),
+        (emax, 1.05),
+        stroke: gray + 0.5pt,
+        label: [$E_"max"$],
+      ),
+    )
+  }
+
+  #canvas(
+    grid(
+      columns: 2,
+      row-gutter: 1em,
+      [
+        *Mo, 50 kV*
+
+        #spectrum(50, 20.000, 17.479, 19.608, [Mo 50 kV])
+      ],
+      [
+        *W, 50 kV*
+
+        #spectrum(50, 69.525, 59.319, 67.245, [W 50 kV])
+      ],
+
+      [
+        *Mo, 100 kV*
+
+        #spectrum(100, 20.000, 17.479, 19.608, [Mo 100 kV])
+      ],
+      [
+        *W, 100 kV*
+
+        #spectrum(100, 69.525, 59.319, 67.245, [W 100 kV])
+      ],
+
+      [
+        *Mo, 150 kV*
+
+        #spectrum(150, 20.000, 17.479, 19.608, [Mo 150 kV])
+      ],
+      [
+        *W, 150 kV*
+
+        #spectrum(150, 69.525, 59.319, 67.245, [W 150 kV])
+      ],
+    ),
+  )
+
+  从图中可以看出: Mo 的 K edge 约为 20.0 keV, 所以在 50 kV、100 kV 和 150 kV
+  下都可激发 Mo 的 Kα 特征线; W 的 K edge 约为 69.5 keV, 所以 50 kV 时不能激发 W
+  的 Kα 特征线, 100 kV 和 150 kV 时可以激发.
+
+  == 考虑靶自吸收后的 X 射线转换效率
+
+  X 光管中电子能量转化为 X 射线能量的经验效率可估算为
+
+  $
+    eta_0 approx 9 times 10^(-10) Z V,
+  $
+
+  其中 $Z$ 为靶材原子序数, $V$ 用伏特计. 若产生的 X 光子约 40% 被靶自吸收,
+  则出射 X 射线效率为
+
+  $
+    eta = 0.6 eta_0.
+  $
+
+  Mo 的原子序数为 $Z = 42$, W 的原子序数为 $Z = 74$. 对不同管压有:
+
+  #table(
+    columns: 5,
+    [材料], [管压], [$eta_0$], [考虑 40% 自吸收后 $eta$], [百分数],
+    [Mo], [50 kV], [0.00189], [0.00113], [0.113%],
+    [Mo], [100 kV], [0.00378], [0.00227], [0.227%],
+    [Mo], [150 kV], [0.00567], [0.00340], [0.340%],
+    [W], [50 kV], [0.00333], [0.00200], [0.200%],
+    [W], [100 kV], [0.00666], [0.00400], [0.400%],
+    [W], [150 kV], [0.00999], [0.00599], [0.599%],
+  )
+
+  因此在 50--150 kV 范围内, 考虑 40% 靶自吸收后, Mo 靶最终电子能量转化为出射 X
+  射线能量的效率约为 $0.11%--0.34%$, W 靶约为 $0.20%--0.60%$. W 的原子序数更高,
+  因而在相同管压下转换效率更高.
+
   = 第六次作业
 
   == 从 Larmor 公式推导辐射表达式
@@ -1028,6 +1173,214 @@
   因此, 平行加速时辐射功率随 $gamma^6$ 增强, 垂直加速时辐射功率随 $gamma^4$
   增强. 关键原因是 Larmor 公式中的加速度应理解为 瞬时静止系中的加速度,
   而实验室系中的平行加速度和垂直加速度在洛伦兹变换下具有不同的 $gamma$ 因子.
+
+  == Compton 散射低能极限下电子反冲角和动能
+
+  设入射光子能量为 $h nu_i$, 沿 $x$ 方向传播; 散射光子能量为 $h nu_s$, 散射角为
+  $theta$; 反冲电子动量与入射方向夹角为 $phi$. 光子动量守恒给出
+
+  $
+    p_e cos phi = h nu_i / c - h nu_s / c cos theta,
+  $
+
+  $
+    p_e sin phi = h nu_s / c sin theta.
+  $
+
+  因而
+
+  $
+    tan phi
+    = (nu_s sin theta) / (nu_i - nu_s cos theta).
+  $
+
+  Compton 散射公式为
+
+  $
+    1 / nu_s - 1 / nu_i = h / (m_e c^2) (1 - cos theta),
+  $
+
+  或写成
+
+  $
+    nu_s = nu_i / (1 + alpha (1 - cos theta)),
+    quad alpha = h nu_i / (m_e c^2).
+  $
+
+  当 $h nu_i << m_e c^2$ 时, 有 $alpha << 1$, 因而可取 $nu_s approx nu_i$. 于是
+
+  $
+    tan phi
+    approx sin theta / (1 - cos theta).
+  $
+
+  利用三角恒等式
+
+  $
+    sin theta = 2 sin(theta / 2) cos(theta / 2),
+    quad 1 - cos theta = 2 sin^2(theta / 2),
+  $
+
+  得
+
+  $
+    tan phi approx cot(theta / 2).
+  $
+
+  因此
+
+  $
+    cot(theta / 2) approx tan phi.
+  $
+
+  接下来求反冲电子动能. 能量守恒为
+
+  $
+    E_k = h nu_i - h nu_s.
+  $
+
+  由上式
+
+  $
+    h nu_s
+    = (h nu_i) / (1 + alpha (1 - cos theta)).
+  $
+
+  因此
+
+  $
+    E_k
+    = h nu_i (1 - 1 / (1 + alpha (1 - cos theta))).
+  $
+
+  在 $alpha << 1$ 时,
+
+  $
+    E_k approx h nu_i alpha (1 - cos theta)
+    = (h nu_i)^2 / (m_e c^2) (1 - cos theta).
+  $
+
+  由前面的角度关系 $tan phi = cot(theta / 2)$ 可知
+  $phi approx pi / 2 - theta / 2$, 因而
+
+  $
+    cos phi = sin(theta / 2).
+  $
+
+  又
+
+  $
+    1 - cos theta = 2 sin^2(theta / 2) = 2 cos^2 phi.
+  $
+
+  所以
+
+  $
+    E_k approx h nu_i (2 h nu_i) / (m_e c^2) cos^2 phi.
+  $
+
+  即
+
+  $
+    E_k approx ((h nu_i)^2) / (m_e c^2) 2 cos^2 phi.
+  $
+
+  这说明在低能 Compton 散射中, 反冲电子动能相对入射光子能量是二阶小量, 其大小随
+  $cos^2 phi$ 改变.
+
+  == 环形加速器中同步辐射能量损失估算
+
+  带电粒子在环形加速器中作横向加速运动, 单圈同步辐射能量损失可写为
+
+  $
+    U_0 = C_gamma / (2 pi) E^4 integral 1 / rho^2 dd(s).
+  $
+
+  若近似为半径为 $rho$ 的圆形轨道, 则
+
+  $
+    integral 1 / rho^2 dd(s) = (2 pi rho) / rho^2 = 2 pi / rho,
+  $
+
+  因而
+
+  $
+    U_0 = C_gamma E^4 / rho.
+  $
+
+  对电子常用工程公式为
+
+  $
+    U_0["keV"] = 88.5 (E["GeV"])^4 / rho["m"].
+  $
+
+  对 CEPC, 周长约为
+
+  $
+    C = 100 " km",
+  $
+
+  轨道半径近似为
+
+  $
+    rho = C / (2 pi)
+    = 100000 / (2 pi) " m"
+    approx 1.59 times 10^4 " m".
+  $
+
+  当电子能量为 $E = 120 " GeV"$ 时,
+
+  $
+    U_0
+    = 88.5 times 120^4 / (1.59 times 10^4) " keV"
+    approx 1.15 times 10^6 " keV".
+  $
+
+  即
+
+  $
+    U_0 approx 1.15 " GeV".
+  $
+
+  因此, 在这个近似下 CEPC 中 120 GeV 电子每运动一圈约损失 $1.15 " GeV"$ 的能量.
+
+  对质子, 同一能量和弯曲半径下同步辐射能损相对于电子要乘以
+
+  $
+    (m_e / m_p)^4,
+  $
+
+  因为同步辐射强度随粒子质量的四次方反比缩放. 因而可写为
+
+  $
+    U_(0,p)["keV"]
+    = 88.5 (E_p["GeV"])^4 / rho["m"] (m_e / m_p)^4.
+  $
+
+  题给 SPPC 中质子能量为
+
+  $
+    E_p = 75 " TeV" = 7.5 times 10^4 " GeV".
+  $
+
+  仍取周长 100 km 对应的 $rho approx 1.59 times 10^4 " m"$, 且
+  $m_p / m_e approx 1836$. 则
+
+  $
+    U_(0,p)
+    = 88.5 (7.5 times 10^4)^4 / (1.59 times 10^4)
+    (1 / 1836)^4 " keV"
+    approx 1.55 times 10^4 " keV".
+  $
+
+  即
+
+  $
+    U_(0,p) approx 15.5 " MeV".
+  $
+
+  这个结果远小于同周长、同量级能量电子束的同步辐射损失,
+  但对于高流强质子环仍然不是完全可以忽略的工程量.
 
   = 第七次作业
 
@@ -1604,7 +1957,7 @@
 
   $
     K = e B_0 lambda_u / (2 pi m_e c)
-    approx 0.934 B_0["T"] lambda_u["cm"].
+    approx 0.934 B_0["T"] lambda_u ["cm"].
   $
 
   代入数值有
