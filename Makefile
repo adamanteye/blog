@@ -66,7 +66,7 @@ atom: build .WAIT build/atom.xml
 
 seo: build .WAIT build/sitemap.xml build/robots.txt
 
-full: atom seo .WAIT clean
+full: atom seo pdf .WAIT clean
 
 $(TODAY_DIR)/index.typ:
 	$(call log,NEW,$@)
