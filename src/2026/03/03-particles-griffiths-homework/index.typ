@@ -34,10 +34,7 @@
   $ p_e^2=((m_e c^2+p_i c-p_f c)^2-m_e^2c^4)/c^2 $
 
   可以得到:
-
-  $
-    1-cos kt=m_e c (1/p_f - 1/p_i) =>1-cos kt=(m_e c^2)/h (1/nu_f-1/nu_i)
-  $
+  $1-cos kt=m_e c (1/p_f - 1/p_i) =>1-cos kt=(m_e c^2)/h (1/nu_f-1/nu_i)$
 
   == 1.4
 

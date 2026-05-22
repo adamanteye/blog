@@ -67,40 +67,21 @@
     A_2(t) = A_(2,0) e^(-kl_2 t)
   $
 
-  题目给出初始活度占比为 98% 和 2%, 因而
-  $
-    A_(1,0) / A_(2,0) = 98 / 2 = 49
-  $
+  题目给出初始活度占比为 98% 和 2%, 因而 $A_(1,0) / A_(2,0) = 98 / 2 = 49$
 
-  当两者活度相等时,
-  $
-    A_(1,0) e^(-kl_1 t) = A_(2,0) e^(-kl_2 t)
-  $
-  所以
+  当两者活度相等时, $A_(1,0) e^(-kl_1 t) = A_(2,0) e^(-kl_2 t)$ 所以
   $
     49 = e^((kl_1 - kl_2) t), quad
     t = (ln 49) / (kl_1 - kl_2)
   $
 
-  取半衰期
-  $
-    T_(1/2,1) = qty("14.96", "h"), quad
-    T_(1/2,2) = qty("14.3", "d") = qty("343.2", "h")
-  $
-  则
-  $
-    kl_1 = (ln 2) / T_(1/2,1), quad
-    kl_2 = (ln 2) / T_(1/2,2)
-  $
+  取半衰期 $T_(1/2,1) = qty("14.96", "h")$,
+  $T_(1/2,2) = qty("14.3", "d") = qty("343.2", "h")$. 则
+  $kl_1 = (ln 2) / T_(1/2,1)$, $kl_2 = (ln 2) / T_(1/2,2)$.
 
   代入可得
-  $
-    t = (ln 49) / (ln 2 (1 / 14.96 - 1 / 343.2)) approx qty("88.0", "h")
-  $
-  即
-  $
-    t approx qty("3.67", "d")
-  $
+  $t = (ln 49) / (ln 2 (1 / 14.96 - 1 / 343.2)) approx qty("88.0", "h")$ 即
+  $t approx qty("3.67", "d")$
 
   因此, 约经过 3.7 d 后, $isotope("Na", a: 24)$ 和 $isotope("P", a: 32)$
   的活度相同.
@@ -117,35 +98,23 @@
   设氡短寿命子体的 alpha 潜能浓度为 $S$. 对于 $isotope("Po", a: 218)$,
   其后续衰变还会经过 $isotope("Po", a: 214)$ 再放出一个 alpha 粒子, 因而每个
   $isotope("Po", a: 218)$ 原子对应的总 alpha 能量为
-  $
-    ke_1 = 6.00 + 7.69 = qty("13.69", "MeV")
-  $
-  而 $isotope("Pb", a: 214)$ 和 $isotope("Bi", a: 214)$ 最终都只对应
-  $isotope("Po", a: 214)$ 的一次 alpha 衰变, 因而
+  $ke_1 = 6.00 + 7.69 = qty("13.69", "MeV")$ 而 $isotope("Pb", a: 214)$ 和
+  $isotope("Bi", a: 214)$ 最终都只对应 $isotope("Po", a: 214)$ 的一次 alpha
+  衰变, 因而
   $
     ke_2 = qty("7.69", "MeV"), quad
     ke_3 = qty("7.69", "MeV")
   $
 
   若三种子体的原子数浓度分别为 $N_1, N_2, N_3$, 则 alpha 潜能浓度为
-  $
-    S = ke_1 N_1 + ke_2 N_2 + ke_3 N_3
-  $
+  $S = ke_1 N_1 + ke_2 N_2 + ke_3 N_3$
 
-  又因为活度浓度满足
-  $
-    C_i = kl_i N_i, quad N_i = C_i / kl_i
-  $
-  所以
-  $
-    S = ke_1 C_1 / kl_1 + ke_2 C_2 / kl_2 + ke_3 C_3 / kl_3
-  $
+  又因为活度浓度满足 $C_i = kl_i N_i, quad N_i = C_i / kl_i$ 所以
+  $S = ke_1 C_1 / kl_1 + ke_2 C_2 / kl_2 + ke_3 C_3 / kl_3$
 
   设与之等效的平衡氡浓度为 $C_"eq"$. 在平衡状态下,
   三种短寿命子体的活度浓度都等于 $C_"eq"$, 因而
-  $
-    S = C_"eq" (ke_1 / kl_1 + ke_2 / kl_2 + ke_3 / kl_3)
-  $
+  $S = C_"eq" (ke_1 / kl_1 + ke_2 / kl_2 + ke_3 / kl_3)$
 
   于是
   $
@@ -153,26 +122,15 @@
     / (ke_1 / kl_1 + ke_2 / kl_2 + ke_3 / kl_3)
   $
 
-  利用
-  $
-    kl_i = (ln 2) / T_i
-  $
-  可知各项权重正比于 $ke_i T_i$. 取半衰期
-  $
-    T_1 = qty("3.05", "min"), quad
-    T_2 = qty("26.8", "min"), quad
-    T_3 = qty("19.9", "min")
-  $
-  则
+  利用 $kl_i = (ln 2) / T_i$ 可知各项权重正比于 $ke_i T_i$. 取半衰期
+  $T_1 = qty("3.05", "min")$, $T_2 = qty("26.8", "min")$,
+  $T_3 = qty("19.9", "min")$, 则
   $
     C_"eq" = (13.69 times 3.05 C_1 + 7.69 times 26.8 C_2 + 7.69 times 19.9 C_3)
     / (13.69 times 3.05 + 7.69 times 26.8 + 7.69 times 19.9)
   $
 
-  计算得
-  $
-    C_"eq" approx 0.104 C_1 + 0.514 C_2 + 0.382 C_3
-  $
+  计算得 $C_"eq" approx 0.104 C_1 + 0.514 C_2 + 0.382 C_3$
 
   即
   $
@@ -183,135 +141,66 @@
   == 100 g 硝酸钾样品中的放射性强度
 
   $chem("K")chem("N")chem("O")_3$ 的摩尔质量约为
-  $
-    M(chem("K")chem("N")chem("O")_3) = 39.1 + 14.0 + 3 times 16.0 approx qty("101.1", "g/mol")
-  $
+  $M(chem("K")chem("N")chem("O")_3) = 39.1 + 14.0 + 3 times 16.0 approx qty("101.1", "g/mol")$
 
   因而 100 g $chem("K")chem("N")chem("O")_3$ 的物质的量为
-  $
-    n = 100 / 101.1 approx qty("0.989", "mol")
-  $
+  $n = 100 / 101.1 approx qty("0.989", "mol")$
 
   每个 $chem("K")chem("N")chem("O")_3$ 分子含 1 个 K 原子, 所以钾原子总数为
-  $
-    N_K = n N_A approx 0.989 times 6.02 times 10^23 approx 5.95 times 10^23
-  $
+  $N_K = n N_A approx 0.989 times 6.02 times 10^23 approx 5.95 times 10^23$
 
   其中 $isotope("K", a: 40)$ 的天然丰度为 0.0118%, 即
-  $
-    N_(isotope("K", a: 40)) = 1.18 times 10^(-4) N_K approx 7.02 times 10^19
-  $
+  $N_(isotope("K", a: 40)) = 1.18 times 10^(-4) N_K approx 7.02 times 10^19$
 
-  $isotope("K", a: 40)$ 的半衰期取
-  $
-    T_(1/2) = qty("1.248e9", "a")
-  $
-  所以衰变常数为
-  $
-    kl = (ln 2) / T_(1/2)
-  $
+  $isotope("K", a: 40)$ 的半衰期取 $T_(1/2) = qty("1.248e9", "a")$
+  所以衰变常数为 $kl = (ln 2) / T_(1/2)$
 
-  放射性强度为
-  $
-    A = kl N_(isotope("K", a: 40))
-  $
+  放射性强度为 $A = kl N_(isotope("K", a: 40))$
 
-  将半衰期换算成秒后代入, 得
-  $
-    A approx qty("1.24e3", "Bq")
-  $
+  将半衰期换算成秒后代入, 得 $A approx qty("1.24e3", "Bq")$
 
-  因此, 100 g 硝酸钾样品的放射性强度约为
-  $
-    A approx qty("1.24", "kBq")
-  $
+  因此, 100 g 硝酸钾样品的放射性强度约为 $A approx qty("1.24", "kBq")$
 
   == 与 1 g $isotope("Ra", a: 226)$ 处于平衡的 $isotope("Rn", a: 222)$ 体积
 
   1 g $isotope("Ra", a: 226)$ 的活度近似定义为
-  $
-    A_(isotope("Ra", a: 226)) = qty("1", "Ci") = qty("3.7e10", "Bq")
-  $
+  $A_(isotope("Ra", a: 226)) = qty("1", "Ci") = qty("3.7e10", "Bq")$
 
   达到放射性平衡时,
-  $
-    A_(isotope("Rn", a: 222)) = A_(isotope("Ra", a: 226)) = qty("3.7e10", "Bq")
-  $
+  $A_(isotope("Rn", a: 222)) = A_(isotope("Ra", a: 226)) = qty("3.7e10", "Bq")$
 
-  $isotope("Rn", a: 222)$ 的半衰期取
-  $
-    T_(1/2) = qty("3.82", "d")
-  $
-  故其原子数为
-  $
-    N_(isotope("Rn", a: 222)) = A_(isotope("Rn", a: 222)) T_(1/2) / (ln 2)
-  $
-  即
+  $isotope("Rn", a: 222)$ 的半衰期取 $T_(1/2) = qty("3.82", "d")$ 故其原子数为
+  $N_(isotope("Rn", a: 222)) = A_(isotope("Rn", a: 222)) T_(1/2) / (ln 2)$ 即
   $
     N_(isotope("Rn", a: 222)) approx 3.7 times 10^10 times (3.82 times 24 times 3600) / (ln 2)
     approx 1.76 times 10^16
   $
 
   于是物质的量为
-  $
-    n_(isotope("Rn", a: 222)) = N_(isotope("Rn", a: 222)) / N_A approx qty("2.93e-8", "mol")
-  $
+  $n_(isotope("Rn", a: 222)) = N_(isotope("Rn", a: 222)) / N_A approx qty("2.93e-8", "mol")$
   在 0 C, 760 mmHg 下, 1 mol 理想气体体积约为 22.4 L, 所以
-  $
-    V = n_(isotope("Rn", a: 222)) times 22.4 approx qty("6.56e-7", "L")
-  $
+  $V = n_(isotope("Rn", a: 222)) times 22.4 approx qty("6.56e-7", "L")$
 
   因此, 与 1 g $isotope("Ra", a: 226)$ 处于平衡的 $isotope("Rn", a: 222)$
-  体积约为
-  $
-    V approx qty("6.6e-7", "L")
-  $
-  也就是约
-  $
-    V approx qty("0.656", "muL")
-  $
+  体积约为 $V approx qty("6.6e-7", "L")$ 也就是约 $V approx qty("0.656", "muL")$
 
   == $isotope("Mo", a: 99)$-$isotope("Tc", a: 99m)$ 发生器再次淋洗的时间
 
   设 1 对应 $isotope("Mo", a: 99)$, 2 对应 $isotope("Tc", a: 99m)$.
-  一次淋洗后可认为
-  $
-    A_2(0) = 0
-  $
-  母体核素活度随时间变化为
-  $
-    A_1(t) = A_(1,0) e^(-kl_1 t)
-  $
+  一次淋洗后可认为 $A_2(0) = 0$ 母体核素活度随时间变化为
+  $A_1(t) = A_(1,0) e^(-kl_1 t)$
 
   由 Bateman 公式, 子体核素活度为
-  $
-    A_2(t) = A_(1,0) kl_2 / (kl_2 - kl_1) (e^(-kl_1 t) - e^(-kl_2 t))
-  $
+  $A_2(t) = A_(1,0) kl_2 / (kl_2 - kl_1) (e^(-kl_1 t) - e^(-kl_2 t))$
 
   因而二者活度比为
-  $
-    A_2(t) / A_1(t) = kl_2 / (kl_2 - kl_1) (1 - e^(-(kl_2 - kl_1) t))
-  $
+  $A_2(t) / A_1(t) = kl_2 / (kl_2 - kl_1) (1 - e^(-(kl_2 - kl_1) t))$
 
-  题目要求
-  $
-    A_2(t) / A_1(t) = 0.98
-  $
-  所以
-  $
-    0.98 = kl_2 / (kl_2 - kl_1) (1 - e^(-(kl_2 - kl_1) t))
-  $
+  题目要求 $A_2(t) / A_1(t) = 0.98$ 所以
+  $0.98 = kl_2 / (kl_2 - kl_1) (1 - e^(-(kl_2 - kl_1) t))$
 
-  取半衰期
-  $
-    T_(1/2,1) = qty("66.02", "h"), quad
-    T_(1/2,2) = qty("6.02", "h")
-  $
-  即
-  $
-    kl_1 = (ln 2) / 66.02, quad
-    kl_2 = (ln 2) / 6.02
-  $
+  取半衰期 $T_(1/2,1) = qty("66.02", "h")$, $T_(1/2,2) = qty("6.02", "h")$, 即
+  $kl_1 = (ln 2) / 66.02$, $kl_2 = (ln 2) / 6.02$.
 
   解得
   $
@@ -327,19 +216,10 @@
 
   == 某纯 $kb$ 放射性核素的半衰期, 衰变常数和核素判断
 
-  设计数率满足指数衰减规律
-  $
-    R(t) = R_0 e^(-kl t)
-  $
+  设计数率满足指数衰减规律 $R(t) = R_0 e^(-kl t)$
 
-  对表中数据作 $ln R$ 对 $t$ 的线性拟合, 得
-  $
-    ln R = ln R_0 - kl t
-  $
-  其中
-  $
-    kl approx qty("0.0493", "d^-1")
-  $
+  对表中数据作 $ln R$ 对 $t$ 的线性拟合, 得 $ln R = ln R_0 - kl t$ 其中
+  $kl approx qty("0.0493", "d^-1")$
 
   于是半衰期为
   $
@@ -355,9 +235,7 @@
   $
 
   查常见纯 $kb$ 放射性核素, 半衰期最接近的是 $isotope("P", a: 32)$:
-  $
-    T_(1/2)(isotope("P", a: 32)) approx qty("14.3", "d")
-  $
+  $T_(1/2)(isotope("P", a: 32)) approx qty("14.3", "d")$
 
   因此该核素可判断为 $isotope("P", a: 32)$.
 
@@ -376,14 +254,8 @@
     approx 1.43 times 10^19
   $
 
-  $isotope("Pb", a: 210)$ 半衰期取
-  $
-    T_(1/2) = qty("22.3", "a")
-  $
-  故衰变常数为
-  $
-    kl = (ln 2) / T_(1/2)
-  $
+  $isotope("Pb", a: 210)$ 半衰期取 $T_(1/2) = qty("22.3", "a")$ 故衰变常数为
+  $kl = (ln 2) / T_(1/2)$
 
   初始活度
   $
@@ -398,42 +270,25 @@
     approx qty("1.03e10", "Bq")
   $
 
-  因此, 10 年后样品活度约为
-  $
-    A approx qty("10.3", "GBq")
-  $
+  因此, 10 年后样品活度约为 $A approx qty("10.3", "GBq")$
 
   == 1 吨 $chem("U")_3 chem("O")_8$ 含量为 10% 的铀矿中 $isotope("U", a: 234)$ 的比活度
 
-  1 吨矿石中含
-  $
-    m(chem("U")_3 chem("O")_8) = 0.10 times 1000 = qty("100", "kg")
-  $
+  1 吨矿石中含 $m(chem("U")_3 chem("O")_8) = 0.10 times 1000 = qty("100", "kg")$
 
   $chem("U")_3 chem("O")_8$ 中铀的质量分数约为
-  $
-    w_U = (3 times 238) / (3 times 238 + 8 times 16) approx 0.848
-  $
-  所以矿石中铀总质量约为
-  $
-    m_U approx 0.848 times 100 = qty("84.8", "kg")
-  $
+  $w_U = (3 times 238) / (3 times 238 + 8 times 16) approx 0.848$
+  所以矿石中铀总质量约为 $m_U approx 0.848 times 100 = qty("84.8", "kg")$
 
   天然铀中 $isotope("U", a: 234)$ 的质量分数约为
-  $
-    w_(234) approx 5.3 times 10^(-5)
-  $
-  故
+  $w_(234) approx 5.3 times 10^(-5)$ 故
   $
     m_(234) = w_(234) m_U
     approx 5.3 times 10^(-5) times 84.8 times 10^3
     approx qty("4.50", "g")
   $
 
-  $isotope("U", a: 234)$ 的半衰期取
-  $
-    T_(1/2) = qty("2.455e5", "a")
-  $
+  $isotope("U", a: 234)$ 的半衰期取 $T_(1/2) = qty("2.455e5", "a")$
   其纯核素比活度为
   $
     a_(234)^* = (ln 2) N_A / (M T_(1/2))
@@ -454,17 +309,11 @@
   $
 
   因此, 该铀矿中 $isotope("U", a: 234)$ 的比活度约为
-  $
-    a approx qty("1.04", "MBq/kg")
-  $
+  $a approx qty("1.04", "MBq/kg")$
 
   == 0.5 MeV $kg$ 辐射场中的粒子注量率
 
-  已知能量注量率
-  $
-    dot(Psi) = qty("5", "J/m^2/s")
-  $
-  单个 $kg$ 光子的能量为
+  已知能量注量率 $dot(Psi) = qty("5", "J/m^2/s")$ 单个 $kg$ 光子的能量为
   $
     E_kg = qty("0.5", "MeV")
     = 0.5 times qty("1.602e-13", "J")
@@ -478,29 +327,14 @@
     approx qty("6.24e13", "m^-2 s^-1")
   $
 
-  因此该处的粒子注量率约为
-  $
-    dot(Phi) approx qty("6.24e13", "m^-2 s^-1")
-  $
+  因此该处的粒子注量率约为 $dot(Phi) approx qty("6.24e13", "m^-2 s^-1")$
 
   == $isotope("Cs", a: 137)$ 点源在 0.5 m 处的粒子注量率和能量注量率
 
-  已知点源活度
-  $
-    A = qty("1", "Ci") = qty("3.7e10", "s^-1")
-  $
-  取 $isotope("Cs", a: 137)$ 每次衰变平均发出
-  $
-    Y_kg approx 0.851
-  $
-  个能量为
-  $
-    E_kg = qty("661.7", "keV")
-  $
-  的 $kg$ 光子. 对各向同性点源, 在距离 $r = qty("0.5", "m")$ 处, 粒子注量率为
-  $
-    dot(Phi) = A Y_kg / (4 pi r^2)
-  $
+  已知点源活度 $A = qty("1", "Ci") = qty("3.7e10", "s^-1")$ 取
+  $isotope("Cs", a: 137)$ 每次衰变平均发出 $Y_kg approx 0.851$ 个能量为
+  $E_kg = qty("661.7", "keV")$ 的 $kg$ 光子. 对各向同性点源, 在距离
+  $r = qty("0.5", "m")$ 处, 粒子注量率为 $dot(Phi) = A Y_kg / (4 pi r^2)$
 
   代入得
   $
@@ -509,17 +343,11 @@
     approx qty("1.00e10", "m^-2 s^-1")
   $
 
-  能量注量率为
-  $
-    dot(Psi) = E_kg dot(Phi)
-  $
-  其中
+  能量注量率为 $dot(Psi) = E_kg dot(Phi)$ 其中
   $
     E_kg = 661.7 times 10^3 times qty("1.602e-19", "J")
     approx qty("1.06e-13", "J")
-  $
-  因此
-  $
+  $因此$
     dot(Psi)
     approx 1.06 times 10^(-13) times 1.00 times 10^10
     approx qty("1.06e-3", "J/m^2/s")
@@ -533,40 +361,23 @@
 
   == 辐射损失率之比与电子在铅中的辐射损失比
 
-  对于同一介质中的带电粒子, 轫致辐射损失率近似满足
-  $
-    S_"rad" ∝ z^2 E / m^2
-  $
+  对于同一介质中的带电粒子, 轫致辐射损失率近似满足 $S_"rad" ∝ z^2 E / m^2$
 
   对于 10 MeV 氘核和 10 MeV 电子, 二者电荷数都为 1, 且动能相同, 因而
-  $
-    (S_"rad")_d / (S_"rad")_e = (m_e / m_d)^2
-  $
+  $(S_"rad")_d / (S_"rad")_e = (m_e / m_d)^2$
 
-  取
-  $
-    m_e c^2 = qty("0.511", "MeV"), quad
-    m_d c^2 = qty("1875.6", "MeV")
-  $
-  则
+  取 $m_e c^2 = qty("0.511", "MeV")$, $m_d c^2 = qty("1875.6", "MeV")$, 则
   $
     (S_"rad")_d / (S_"rad")_e
     = (0.511 / 1875.6)^2
     approx 7.4 times 10^(-8)
   $
 
-  因此 10 MeV 氘核在铅中的辐射损失率仅约为 10 MeV 电子的
-  $
-    7.4 times 10^(-8)
-  $
-  倍.
+  因此 10 MeV 氘核在铅中的辐射损失率仅约为 10 MeV 电子的 $7.4 times 10^(-8)$ 倍.
 
   对于 20 MeV 电子在铅中的情况, 查电子阻止本领表可得
-  $
-    S_"col" approx qty("1.277", "MeV cm^2/g"), quad
-    S_"rad" approx qty("2.554", "MeV cm^2/g")
-  $
-  所以
+  $S_"col" approx qty("1.277", "MeV cm^2/g")$,
+  $S_"rad" approx qty("2.554", "MeV cm^2/g")$. 所以
   $
     S_"rad" / S_"col" = 2.554 / 1.277 approx 2.00
   $
@@ -579,9 +390,7 @@
 
   设 1 MeV 与 0.1 MeV $kg$ 射线束的注量分别为 $Phi_1$ 和 $Phi_2$.
   单位体积空气吸收的能量相同, 即空气中的吸收剂量相同, 则有
-  $
-    Phi_1 E_1 (mu_"en"/rho)_1 = Phi_2 E_2 (mu_"en"/rho)_2
-  $
+  $Phi_1 E_1 (mu_"en"/rho)_1 = Phi_2 E_2 (mu_"en"/rho)_2$
 
   取空气的质量能量吸收系数
   $
@@ -598,10 +407,8 @@
   $
 
   因此两种射线束注量之比为
-  $
-    Phi_(qty("1", "MeV")) : Phi_(qty("0.1", "MeV")) approx 0.083 : 1
-  $
-  也就是说, 若电离密度相同, 则 0.1 MeV $kg$ 射线束的注量约为 1 MeV 的 $12.0$ 倍.
+  $Phi_(qty("1", "MeV")) : Phi_(qty("0.1", "MeV")) approx 0.083 : 1$ 也就是说,
+  若电离密度相同, 则 0.1 MeV $kg$ 射线束的注量约为 1 MeV 的 $12.0$ 倍.
 
   == 5 Gy 辐射剂量引起的人体温度变化
 
@@ -612,10 +419,7 @@
     = qty("4.186e3", "J/(kg degC)")
   $
 
-  吸收剂量
-  $
-    D = qty("5", "Gy") = qty("5", "J/kg")
-  $
+  吸收剂量 $D = qty("5", "Gy") = qty("5", "J/kg")$
 
   故温度变化为
   $
@@ -624,24 +428,15 @@
     approx qty("1.19e-3", "degC")
   $
 
-  因此 5 Gy 辐射剂量造成的人体温度升高约为
-  $
-    kD T approx qty("1.2e-3", "degC")
-  $
+  因此 5 Gy 辐射剂量造成的人体温度升高约为 $kD T approx qty("1.2e-3", "degC")$
   即约 $0.0012$ C.
 
   == 0.5 MeV $kg$ 射线照射量率对应的组织吸收剂量率
 
   已知照射量率
-  $
-    dot(X) = qty("25.4", "muC/(kg h)") = qty("100", "mR/h") = qty("0.1", "R/h")
-  $
+  $dot(X) = qty("25.4", "muC/(kg h)") = qty("100", "mR/h") = qty("0.1", "R/h")$
 
-  先求空气中的比释动能率. 对光子有
-  $
-    dot(K)_"air" = 0.00876 dot(X)
-  $
-  于是
+  先求空气中的比释动能率. 对光子有 $dot(K)_"air" = 0.00876 dot(X)$ 于是
   $
     dot(K)_"air" = 0.00876 times 0.1
     approx qty("8.76e-4", "Gy/h")
@@ -667,17 +462,11 @@
     approx qty("9.65e-4", "Gy/h")
   $
 
-  因此其对组织的吸收剂量率约为
-  $
-    dot(D)_("tissue") approx qty("0.965", "mGy/h")
-  $
+  因此其对组织的吸收剂量率约为 $dot(D)_("tissue") approx qty("0.965", "mGy/h")$
 
   == $isotope("Am", a: 241)$-Be 中子源照射下眼晶体年当量剂量
 
-  已知中子注量率
-  $
-    dot(Phi) = qty("1e6", "m^-2 s^-1") = qty("100", "cm^-2 s^-1")
-  $
+  已知中子注量率 $dot(Phi) = qty("1e6", "m^-2 s^-1") = qty("100", "cm^-2 s^-1")$
 
   工作人员每年工作时间为
   $
@@ -693,30 +482,21 @@
   $
 
   查 5 MeV 中子在软组织中的比释动能因子, 可取
-  $
-    f_k approx qty("3.7e-11", "Gy cm^2")
-  $
-  又由于题目说明在该能量下 $D$ 与 $K$ 可近似视为相等, 所以
+  $f_k approx qty("3.7e-11", "Gy cm^2")$ 又由于题目说明在该能量下 $D$ 与 $K$
+  可近似视为相等, 所以
   $
     D approx K = Phi f_k
     = 6.48 times 10^7 times 3.7 times 10^(-11)
     approx qty("2.40e-3", "Gy")
   $
 
-  对 2--20 MeV 的中子, 取辐射权重因子
-  $
-    w_R = 10
-  $
-  则眼晶体年当量剂量为
+  对 2--20 MeV 的中子, 取辐射权重因子 $w_R = 10$ 则眼晶体年当量剂量为
   $
     H = w_R D
     approx 10 times 2.40 times 10^(-3)
     = qty("2.40e-2", "Sv")
   $
-  即
-  $
-    H approx qty("24.0", "mSv/a")
-  $
+  即 $H approx qty("24.0", "mSv/a")$
 
   若按我国现行基本标准 GB 18871-2002 中职业照射眼晶体年当量剂量限值 $150$ mSv
   计, 则未超过限值. 若按 ICRP 118 推荐的职业照射眼晶体剂量限值 $20$ mSv/a 计,
@@ -732,16 +512,10 @@
     MeV, 均逃逸
   + 正电子停下后与介质电子湮灭, 产生 $2 times 0.51$ MeV 光子, 亦全部逃逸
 
-  介质质量为
-  $
-    m = qty("100", "g") = qty("0.1", "kg")
-  $
+  介质质量为 $m = qty("100", "g") = qty("0.1", "kg")$
 
   比释动能定义为不带电粒子在该物质中释放出的全部带电粒子的初始动能除以质量.
-  本题中释放出的带电粒子是正负电子, 故
-  $
-    E_"tr" = 4.5 + 4.5 = qty("9.0", "MeV")
-  $
+  本题中释放出的带电粒子是正负电子, 故 $E_"tr" = 4.5 + 4.5 = qty("9.0", "MeV")$
 
   于是比释动能为
   $
@@ -751,14 +525,9 @@
   $
 
   吸收剂量应按真正留在该物质中的能量计算. 逃逸的光子总能量为
-  $
-    E_"esc" = 1.6 + 1.4 + 2.0 + 0.51 + 0.51 = qty("6.02", "MeV")
-  $
+  $E_"esc" = 1.6 + 1.4 + 2.0 + 0.51 + 0.51 = qty("6.02", "MeV")$
 
-  因此物质实际吸收的能量为
-  $
-    E_"abs" = 10.0 - 6.02 = qty("3.98", "MeV")
-  $
+  因此物质实际吸收的能量为 $E_"abs" = 10.0 - 6.02 = qty("3.98", "MeV")$
 
   于是吸收剂量为
   $

@@ -81,9 +81,7 @@
   $ kD t approx 1/dot(N) approx qty("1.60e-9", "s") $
 
   平均纵向间距
-  $
-    kD z approx v kD t = v/dot(N) approx (2.09 times 10^8)/(6.24 times 10^8) approx qty("0.334", "m")
-  $
+  $kD z approx v kD t = v/dot(N) approx (2.09 times 10^8)/(6.24 times 10^8) approx qty("0.334", "m")$
 
   = 第二次作业
 
@@ -113,36 +111,20 @@
   接下来考虑金属表面法向取为 $x$ 方向. 电子若要从金属中逸出, 不仅要朝向表面运动,
   还要有足够大的法向动能克服表面势垒.
 
-  设金属内电子能量为
-
-  $
-    E = (p_x^2 + p_y^2 + p_z^2)/(2m_0)
-  $
+  设金属内电子能量为 $E = (p_x^2 + p_y^2 + p_z^2)/(2m_0)$
 
   其中 $p_x$ 是垂直于表面的动量分量. 真空能级比金属内费米能级高出功函数 $W$,
-  因此若能量以金属内导带底部为零点, 则表面势垒高度为
-
-  $
-    E_v = E_F + W
-  $
+  因此若能量以金属内导带底部为零点, 则表面势垒高度为 $E_v = E_F + W$
 
   由于电子穿越表面时, 平行于表面的动量分量 $p_y, p_z$ 守恒,
-  因此真正用于"翻过势垒"的是法向动能, 即必须满足
-
-  $
-    p_x^2/(2m_0) > E_v = E_F + W
-  $
+  因此真正用于"翻过势垒"的是法向动能, 即必须满足 $p_x^2/(2m_0) > E_v = E_F + W$
 
   并且还要有 $p_x > 0$.
 
   现在计算单位体积, 单位动量空间中的量子态数.
 
   考虑边长为 $L$, 体积为 $V=L^3$ 的立方体, 对电子取周期性边界条件.
-  则允许的波矢为
-
-  $
-    k_i = 2pi n_i/L, quad i = x,y,z
-  $
+  则允许的波矢为 $k_i = 2pi n_i/L, quad i = x,y,z$
 
   因此在波矢空间中, 每个量子态占据的体积为 $(2pi)^3/V$.
 
@@ -155,15 +137,10 @@
   $ 2/((2pi)^3 hbar^3) = 2/h^3 $
 
   故动量在 $va(p)$ 到 $va(p) + dd(va(p))$ 之间的电子数密度为:
-
-  $
-    dd(N) = 2/h^3 f(E) dd(p_x) dd(p_y) dd(p_z)
-  $
+  $dd(N) = 2/h^3 f(E) dd(p_x) dd(p_y) dd(p_z)$
 
   这些电子对表面的电流贡献为:
-  $
-    dd(J) = e v_x dd(N) = e p_x/m_0 2/h^3 f(E) dd(p_x) dd(p_y) dd(p_z)
-  $
+  $dd(J) = e v_x dd(N) = e p_x/m_0 2/h^3 f(E) dd(p_x) dd(p_y) dd(p_z)$
 
   积分 (利用高斯积分公式):
 
@@ -240,17 +217,9 @@
 
   $ U(x)=W+V(x)=W-e E_a x - e^2/(16pi ke_0 x) $
 
-  势垒顶部满足
+  势垒顶部满足 $dv(U, x) = -e E_a + e^2/(16pi ke_0 x^2) = 0$
 
-  $
-    dv(U, x) = -e E_a + e^2/(16pi ke_0 x^2) = 0
-  $
-
-  从而
-
-  $
-    x_m = sqrt(e/(16pi ke_0 E_a))
-  $
+  从而 $x_m = sqrt(e/(16pi ke_0 E_a))$
 
   把 $x_m$ 代回势垒, 有
 
@@ -297,11 +266,7 @@
 
   其中 $C$ 为与归一化有关的常数. 在求二阶矩时, 分子分母中的 $C/m_0$ 会相互抵消.
 
-  于是
-
-  $
-    ks_(p_x)^2 = chevron.l p_x^2 chevron.r - chevron.l p_x chevron.r^2
-  $
+  于是 $ks_(p_x)^2 = chevron.l p_x^2 chevron.r - chevron.l p_x chevron.r^2$
 
   由对称性可知 $chevron.l p_x chevron.r = 0$, 所以
 
@@ -311,11 +276,7 @@
     = int p_x^2 p_z dd(p, 3) \/ int p_z dd(p, 3)
   $
 
-  取球坐标, 以 $z$ 为极轴, 有
-
-  $
-    p_x = p sin kt cos phi, quad p_z = p cos kt
-  $
+  取球坐标, 以 $z$ 为极轴, 有 $p_x = p sin kt cos phi, quad p_z = p cos kt$
 
   以及
 
@@ -345,11 +306,7 @@
     ks_(p_x)^2 = ((pi p_m^6)/24) \/ ((pi p_m^4)/4) = p_m^2/6
   $
 
-  再代入 $p_m^2 = 2m_0 kD E$, 得
-
-  $
-    ks_(p_x)^2 = (m_0 kD E) / 3
-  $
+  再代入 $p_m^2 = 2m_0 kD E$, 得 $ks_(p_x)^2 = (m_0 kD E) / 3$
 
   即
 
@@ -363,17 +320,9 @@
   $
 
   若阴极表面位置与横向动量无关, 即 $chevron.l x p_x chevron.r = 0$, 且
-  $ks_x^2 = chevron.l x^2 chevron.r$, 则
+  $ks_x^2 = chevron.l x^2 chevron.r$, 则 $ke_("n",x) = (ks_x ks_(p_x))/(m_0 c)$
 
-  $
-    ke_("n",x) = (ks_x ks_(p_x))/(m_0 c)
-  $
-
-  最终得到
-
-  $
-    ke_("n",x) = ks_x sqrt((kD E)/(3m_0 c^2))
-  $
+  最终得到 $ke_("n",x) = ks_x sqrt((kD E)/(3m_0 c^2))$
 
   其中 $kD E = h nu - W_"eff"$
 
@@ -427,11 +376,7 @@
     = A phi^(-1/2) phi'
   $
 
-  积分得
-
-  $
-    1/2 phi'^2 = 2A sqrt(phi) + C
-  $
+  积分得 $1/2 phi'^2 = 2A sqrt(phi) + C$
 
   在空间电荷限制发射条件下, 阴极表面电场为 0, 即 $phi'(0)=0$. 再结合 $phi(0)=0$,
   可得 $C=0$. 因此
@@ -445,74 +390,36 @@
     phi^(-1/4) dd(phi) = 2 sqrt(A) dd(x)
   $
 
-  积分得
+  积分得 $4/3 phi^(3/4) = 2 sqrt(A) x$
 
-  $
-    4/3 phi^(3/4) = 2 sqrt(A) x
-  $
-
-  在 $x=d$ 处取 $phi=V$, 得
-
-  $
-    4/3 V^(3/4) = 2 sqrt(A) d
-  $
+  在 $x=d$ 处取 $phi=V$, 得 $4/3 V^(3/4) = 2 sqrt(A) d$
 
   于是
 
   $ A = 4/9 V^(3/2)/d^2 $
 
   代回 $A$ 的定义, 最终得到 Child-Langmuir 定律
+  $J = (4 ke_0) / 9 sqrt((2e)/m_0) V^(3/2)/d^2$
 
-  $
-    J = (4 ke_0) / 9 sqrt((2e)/m_0) V^(3/2)/d^2
-  $
-
-  并且电势分布为
-
-  $
-    phi(x) = V (x/d)^(4/3)
-  $
+  并且电势分布为 $phi(x) = V (x/d)^(4/3)$
 
   = 第四次作业
 
   == 重复 Child-Langmuir 的推导过程, 并计算 200 kV, 5 cm 间距极板中的流强密度
 
   设平板二极管阴极位于 $x = 0$, 阳极位于 $x = d$, 两极板间电压为 $V_0$. 取电势为
-  $phi(x)$, 满足
+  $phi(x)$, 满足 $phi(0) = 0, quad phi(d) = V_0$
 
-  $
-    phi(0) = 0, quad phi(d) = V_0
-  $
+  设电子从阴极表面近似静止出发, 由能量守恒有 $1/2 m v^2 = e phi$
 
-  设电子从阴极表面近似静止出发, 由能量守恒有
-
-  $
-    1/2 m v^2 = e phi
-  $
-
-  故电子速度为
-
-  $
-    v = sqrt((2 e phi) / m)
-  $
+  故电子速度为 $v = sqrt((2 e phi) / m)$
 
   稳恒条件下, 电流密度 $J$ 为常数. 设电荷密度大小为 $abs(rho)$, 则
+  $J = abs(rho) v$
 
-  $
-    J = abs(rho) v
-  $
+  所以 $abs(rho) = J / v$
 
-  所以
-
-  $
-    abs(rho) = J / v
-  $
-
-  由 Poisson 方程,
-
-  $
-    dv(phi, x, 2) = abs(rho) / ke_0
-  $
+  由 Poisson 方程, $dv(phi, x, 2) = abs(rho) / ke_0$
 
   代入上式得
 
@@ -529,17 +436,9 @@
     = J / ke_0 sqrt(m / (2 e)) phi^(-1/2)
   $
 
-  令
+  令 $K = J / ke_0 sqrt(m / (2 e))$
 
-  $
-    K = J / ke_0 sqrt(m / (2 e))
-  $
-
-  则有
-
-  $
-    dv(phi, x, 2) = K phi^(-1/2)
-  $
+  则有 $dv(phi, x, 2) = K phi^(-1/2)$
 
   两边同乘 $dv(phi, x)$, 得
 
@@ -555,69 +454,27 @@
     = dv(2 K phi^(1/2), x)
   $
 
-  积分得
-
-  $
-    1/2 (dv(phi, x))^2 = 2 K phi^(1/2) + C
-  $
+  积分得 $1/2 (dv(phi, x))^2 = 2 K phi^(1/2) + C$
 
   在空间电荷限制条件下, 阴极表面电场为零, 即
+  $phi(0) = 0, quad (dv(phi, x))|_(x = 0) = 0$
 
-  $
-    phi(0) = 0, quad (dv(phi, x))|_(x = 0) = 0
-  $
+  故积分常数 $C = 0$. 于是 $(dv(phi, x))^2 = 4 K phi^(1/2)$
 
-  故积分常数 $C = 0$. 于是
+  取正根, $dv(phi, x) = 2 sqrt(K) phi^(1/4)$
 
-  $
-    (dv(phi, x))^2 = 4 K phi^(1/2)
-  $
+  分离变量并积分: $phi^(-1/4) dd(phi) = 2 sqrt(K) dd(x)$,
+  $int phi^(-1/4) dd(phi) = int 2 sqrt(K) dd(x)$.
 
-  取正根,
+  得 $4/3 phi^(3/4) = 2 sqrt(K) x$
 
-  $
-    dv(phi, x) = 2 sqrt(K) phi^(1/4)
-  $
+  在 $x = d$ 处有 $phi = V_0$, 所以 $4/3 V_0^(3/4) = 2 sqrt(K) d$
 
-  分离变量并积分:
+  从而 $sqrt(K) = 2/3 V_0^(3/4) / d$
 
-  $
-    phi^(-1/4) dd(phi) = 2 sqrt(K) dd(x)
-  $
+  两边平方得 $K = 4/9 V_0^(3/2) / d^2$
 
-  $
-    int phi^(-1/4) dd(phi) = int 2 sqrt(K) dd(x)
-  $
-
-  得
-
-  $
-    4/3 phi^(3/4) = 2 sqrt(K) x
-  $
-
-  在 $x = d$ 处有 $phi = V_0$, 所以
-
-  $
-    4/3 V_0^(3/4) = 2 sqrt(K) d
-  $
-
-  从而
-
-  $
-    sqrt(K) = 2/3 V_0^(3/4) / d
-  $
-
-  两边平方得
-
-  $
-    K = 4/9 V_0^(3/2) / d^2
-  $
-
-  再代回
-
-  $
-    K = J / ke_0 sqrt(m / (2 e))
-  $
+  再代回 $K = J / ke_0 sqrt(m / (2 e))$
 
   得到 Child-Langmuir 定律
 
@@ -626,27 +483,9 @@
     = 4 ke_0 / 9 sqrt((2 e) / m) V_0^(3/2) / d^2
   $
 
-  代入数值
-
-  $
-    ke_0 = qty("8.854e-12", "F/m")
-  $
-
-  $
-    e = qty("1.602e-19", "C")
-  $
-
-  $
-    m = qty("9.11e-31", "kg")
-  $
-
-  $
-    V_0 = qty("200e3", "V")
-  $
-
-  $
-    d = qty("5e-2", "m")
-  $
+  代入数值 $ke_0 = qty("8.854e-12", "F/m")$, $e = qty("1.602e-19", "C")$,
+  $m = qty("9.11e-31", "kg")$, $V_0 = qty("200e3", "V")$,
+  $d = qty("5e-2", "m")$.
 
   故
 
@@ -656,79 +495,36 @@
     approx qty("8.35e4", "A/m^2")
   $
 
-  也可写成
+  也可写成 $J approx qty("8.35", "A/cm^2")$
 
-  $
-    J approx qty("8.35", "A/cm^2")
-  $
-
-  因此, 极板中的空间电荷限制流强密度为
-
-  $
-    J approx qty("8.35e4", "A/m^2")
-  $
+  因此, 极板中的空间电荷限制流强密度为 $J approx qty("8.35e4", "A/m^2")$
 
   == 无限长圆柱分布电子束流在 $r = qty("1", "mm")$ 处电子受到的力
 
   设电子束半径为 $a = qty("1", "mm") = qty("1.0e-3", "m")$, 束流流强为
   $I = qty("100", "A")$, 且在圆柱内均匀分布.
 
-  设电子束速度为 $v$, 则线电荷密度大小为
+  设电子束速度为 $v$, 则线电荷密度大小为 $kl = I / v$
 
-  $
-    kl = I / v
-  $
-
-  体电荷密度大小为
-
-  $
-    abs(rho) = kl / (pi a^2) = I / (pi a^2 v)
-  $
+  体电荷密度大小为 $abs(rho) = kl / (pi a^2) = I / (pi a^2 v)$
 
   对半径为 $a$ 的均匀带电圆柱, 在柱内半径 $r$ 处的电场大小为
+  $E(r) = abs(rho) r / (2 ke_0)$
 
-  $
-    E(r) = abs(rho) r / (2 ke_0)
-  $
-
-  因此在边界 $r = a$ 处,
-
-  $
-    E(a) = I / (2 pi ke_0 a v)
-  $
+  因此在边界 $r = a$ 处, $E(a) = I / (2 pi ke_0 a v)$
 
   电场方向指向圆柱轴心, 但电子带负电, 所以电子受到的电场力方向为径向向外.
-  其大小为
+  其大小为 $F_E = e E(a) = e I / (2 pi ke_0 a v)$
 
-  $
-    F_E = e E(a) = e I / (2 pi ke_0 a v)
-  $
+  均匀电流圆柱在柱内半径 $r$ 处的磁场大小为 $B(r) = mu_0 I r / (2 pi a^2)$
 
-  均匀电流圆柱在柱内半径 $r$ 处的磁场大小为
+  故在边界 $r = a$ 处, $B(a) = mu_0 I / (2 pi a)$
 
-  $
-    B(r) = mu_0 I r / (2 pi a^2)
-  $
-
-  故在边界 $r = a$ 处,
-
-  $
-    B(a) = mu_0 I / (2 pi a)
-  $
-
-  电子沿束流方向运动, 所受磁力大小为
-
-  $
-    F_B = e v B(a) = e v mu_0 I / (2 pi a)
-  $
+  电子沿束流方向运动, 所受磁力大小为 $F_B = e v B(a) = e v mu_0 I / (2 pi a)$
 
   其方向为径向向内.
 
-  所以电子所受总力大小为
-
-  $
-    F = F_E - F_B
-  $
+  所以电子所受总力大小为 $F = F_E - F_B$
 
   即
 
@@ -737,17 +533,9 @@
     = e I / (2 pi a) (1 / (ke_0 v) - mu_0 v)
   $
 
-  利用
+  利用 $mu_0 ke_0 = 1 / c^2$
 
-  $
-    mu_0 ke_0 = 1 / c^2
-  $
-
-  并记
-
-  $
-    kb = v / c, quad kg = 1 / sqrt(1 - kb^2)
-  $
+  并记 $kb = v / c, quad kg = 1 / sqrt(1 - kb^2)$
 
   则
 
@@ -759,51 +547,26 @@
   总力方向为径向向外.
 
 
-  电子静能为
+  电子静能为 $m c^2 = qty("511", "keV")$
 
-  $
-    m c^2 = qty("511", "keV")
-  $
-
-  故
-
-  $
-    kg = 1 + 100 / 511 approx 1.1957
-  $
-
-  $
-    kb = sqrt(1 - 1 / kg^2) approx 0.5482
-  $
-
-  $
-    v = kb c approx qty("1.6435e8", "m/s")
-  $
+  故 $kg = 1 + 100 / 511 approx 1.1957$,
+  $kb = sqrt(1 - 1 / kg^2) approx 0.5482$,
+  $v = kb c approx qty("1.6435e8", "m/s")$.
 
   于是
 
   $
     E(a) = I / (2 pi ke_0 a v)
     approx qty("1.0937e7", "V/m")
-  $
-
-  $
     B(a) = mu_0 I / (2 pi a)
     = qty("2.0e-2", "T")
   $
 
-  故电场力大小为
-
-  $
-    F_E = e E(a) approx qty("1.75e-12", "N")
-  $
+  故电场力大小为 $F_E = e E(a) approx qty("1.75e-12", "N")$
 
   方向为径向向外.
 
-  磁力大小为
-
-  $
-    F_B = e v B(a) approx qty("5.27e-13", "N")
-  $
+  磁力大小为 $F_B = e v B(a) approx qty("5.27e-13", "N")$
 
   方向为径向向内.
 
@@ -816,45 +579,24 @@
 
   方向为径向向外.
 
-  当电子动能为 10 MeV 时
-
-  $
-    kg = 1 + 10000 / 511 approx 20.569
-  $
-
-  $
-    kb = sqrt(1 - 1 / kg^2) approx 0.99882
-  $
-
-  $
-    v = kb c approx qty("2.9944e8", "m/s")
-  $
+  当电子动能为 10 MeV 时 $kg = 1 + 10000 / 511 approx 20.569$,
+  $kb = sqrt(1 - 1 / kg^2) approx 0.99882$,
+  $v = kb c approx qty("2.9944e8", "m/s")$.
 
   于是
 
   $
     E(a) = I / (2 pi ke_0 a v)
     approx qty("6.00e6", "V/m")
-  $
-
-  $
     B(a) = mu_0 I / (2 pi a)
     = qty("2.0e-2", "T")
   $
 
-  故电场力大小为
-
-  $
-    F_E = e E(a) approx qty("9.62e-13", "N")
-  $
+  故电场力大小为 $F_E = e E(a) approx qty("9.62e-13", "N")$
 
   方向为径向向外.
 
-  磁力大小为
-
-  $
-    F_B = e v B(a) approx qty("9.60e-13", "N")
-  $
+  磁力大小为 $F_B = e v B(a) approx qty("9.60e-13", "N")$
 
   方向为径向向内.
 
@@ -893,10 +635,7 @@
   == 50 keV、100 keV、150 keV 管压下的 X 光管能谱示意
 
   X 光管能谱由连续轫致辐射和靶材特征线组成. 管压为 $V$ 时, 连续谱最高光子能量为
-
-  $
-    E_"max" = e V.
-  $
+  $E_"max" = e V.$
 
   下面用 Kramers 形式作定性示意:
 
@@ -983,17 +722,10 @@
   == 考虑靶自吸收后的 X 射线转换效率
 
   X 光管中电子能量转化为 X 射线能量的经验效率可估算为
-
-  $
-    eta_0 approx 9 times 10^(-10) Z V,
-  $
+  $eta_0 approx 9 times 10^(-10) Z V,$
 
   其中 $Z$ 为靶材原子序数, $V$ 用伏特计. 若产生的 X 光子约 40% 被靶自吸收,
-  则出射 X 射线效率为
-
-  $
-    eta = 0.6 eta_0.
-  $
+  则出射 X 射线效率为 $eta = 0.6 eta_0.$
 
   Mo 的原子序数为 $Z = 42$, W 的原子序数为 $Z = 74$. 对不同管压有:
 
@@ -1017,27 +749,16 @@
   == 从 Larmor 公式推导辐射表达式
 
   非相对论情形下, 加速电荷的总辐射功率由 Larmor 公式给出:
-
-  $
-    P = q^2 a^2 / (6 pi ke_0 c^3)
-  $
+  $P = q^2 a^2 / (6 pi ke_0 c^3)$
 
   对相对论运动电子, 不能直接把实验室系中的加速度代入这个式子.
   正确的做法是在电子的瞬时静止系中使用 Larmor 公式,
   再把瞬时静止系中的加速度用实验室系中的加速度表示出来.
 
-  设实验室系为 $S$, 电子速度为 $va(v)$, 实验室系加速度为
-
-  $
-    va(a) = dv(va(v), t).
-  $
+  设实验室系为 $S$, 电子速度为 $va(v)$, 实验室系加速度为 $va(a) = dv(va(v), t).$
 
   在某一瞬间取电子的瞬时静止系 $S'$. 在 $S'$ 中电子瞬时速度为零,
-  因而可以使用非相对论 Larmor 公式:
-
-  $
-    P' = q^2 a'^2 / (6 pi ke_0 c^3).
-  $
+  因而可以使用非相对论 Larmor 公式: $P' = q^2 a'^2 / (6 pi ke_0 c^3).$
 
   这里的 $a'$ 是瞬时静止系中的加速度, 不是实验室系中的 $a$.
   将实验室系加速度分解为平行于速度和垂直于速度的两部分:
@@ -1084,17 +805,9 @@
 
   这就是 Liénard 公式的一种常用分量形式.
 
-  接下来把它改写为矢量形式. 由于
+  接下来把它改写为矢量形式. 由于 $a^2 = a_parallel^2 + a_perp^2,$
 
-  $
-    a^2 = a_parallel^2 + a_perp^2,
-  $
-
-  且
-
-  $
-    abs(va(v) times va(a))^2 = v^2 a_perp^2,
-  $
+  且 $abs(va(v) times va(a))^2 = v^2 a_perp^2,$
 
   所以
 
@@ -1104,11 +817,7 @@
     = a_parallel^2 + (1 - kb^2) a_perp^2.
   $
 
-  又因为
-
-  $
-    1 - kb^2 = 1 / kg^2,
-  $
+  又因为 $1 - kb^2 = 1 / kg^2,$
 
   因此
 
@@ -1136,23 +845,12 @@
 
   下面讨论两个特殊情况.
 
-  若加速度与速度方向平行, 即 $va(a) parallel va(v)$, 则
+  若加速度与速度方向平行, 即 $va(a) parallel va(v)$, 则 $va(v) times va(a) = 0.$
 
-  $
-    va(v) times va(a) = 0.
-  $
-
-  因此
-
-  $
-    P_parallel = q^2 kg^6 a^2 / (6 pi ke_0 c^3).
-  $
+  因此 $P_parallel = q^2 kg^6 a^2 / (6 pi ke_0 c^3).$
 
   若加速度与速度方向垂直, 即 $va(a) perp va(v)$, 则
-
-  $
-    abs(va(v) times va(a))^2 = v^2 a^2.
-  $
+  $abs(va(v) times va(a))^2 = v^2 a^2.$
 
   因而
 
@@ -1178,14 +876,8 @@
 
   设入射光子能量为 $h nu_i$, 沿 $x$ 方向传播; 散射光子能量为 $h nu_s$, 散射角为
   $kt$; 反冲电子动量与入射方向夹角为 $phi$. 光子动量守恒给出
-
-  $
-    p_e cos phi = h nu_i / c - h nu_s / c cos kt,
-  $
-
-  $
-    p_e sin phi = h nu_s / c sin kt.
-  $
+  $p_e cos phi = h nu_i / c - h nu_s / c cos kt$,
+  $p_e sin phi = h nu_s / c sin kt$.
 
   因而
 
@@ -1194,11 +886,7 @@
     = (nu_s sin kt) / (nu_i - nu_s cos kt).
   $
 
-  Compton 散射公式为
-
-  $
-    1 / nu_s - 1 / nu_i = h / (m_e c^2) (1 - cos kt),
-  $
+  Compton 散射公式为 $1 / nu_s - 1 / nu_i = h / (m_e c^2) (1 - cos kt),$
 
   或写成
 
@@ -1221,23 +909,11 @@
     quad 1 - cos kt = 2 sin^2(kt / 2),
   $
 
-  得
+  得 $tan phi approx cot(kt / 2).$
 
-  $
-    tan phi approx cot(kt / 2).
-  $
+  因此 $cot(kt / 2) approx tan phi.$
 
-  因此
-
-  $
-    cot(kt / 2) approx tan phi.
-  $
-
-  接下来求反冲电子动能. 能量守恒为
-
-  $
-    E_k = h nu_i - h nu_s.
-  $
+  接下来求反冲电子动能. 能量守恒为 $E_k = h nu_i - h nu_s.$
 
   由上式
 
@@ -1261,29 +937,13 @@
   $
 
   由前面的角度关系 $tan phi = cot(kt / 2)$ 可知 $phi approx pi / 2 - kt / 2$,
-  因而
+  因而 $cos phi = sin(kt / 2).$
 
-  $
-    cos phi = sin(kt / 2).
-  $
+  又 $1 - cos kt = 2 sin^2(kt / 2) = 2 cos^2 phi.$
 
-  又
+  所以 $E_k approx h nu_i (2 h nu_i) / (m_e c^2) cos^2 phi.$
 
-  $
-    1 - cos kt = 2 sin^2(kt / 2) = 2 cos^2 phi.
-  $
-
-  所以
-
-  $
-    E_k approx h nu_i (2 h nu_i) / (m_e c^2) cos^2 phi.
-  $
-
-  即
-
-  $
-    E_k approx ((h nu_i)^2) / (m_e c^2) 2 cos^2 phi.
-  $
+  即 $E_k approx ((h nu_i)^2) / (m_e c^2) 2 cos^2 phi.$
 
   这说明在低能 Compton 散射中, 反冲电子动能相对入射光子能量是二阶小量, 其大小随
   $cos^2 phi$ 改变.
@@ -1291,34 +951,16 @@
   == 环形加速器中同步辐射能量损失估算
 
   带电粒子在环形加速器中作横向加速运动, 单圈同步辐射能量损失可写为
-
-  $
-    U_0 = C_kg / (2 pi) E^4 int 1 / rho^2 dd(s).
-  $
+  $U_0 = C_kg / (2 pi) E^4 int 1 / rho^2 dd(s).$
 
   若近似为半径为 $rho$ 的圆形轨道, 则
+  $int 1 / rho^2 dd(s) = (2 pi rho) / rho^2 = 2 pi / rho,$
 
-  $
-    int 1 / rho^2 dd(s) = (2 pi rho) / rho^2 = 2 pi / rho,
-  $
+  因而 $U_0 = C_kg E^4 / rho.$
 
-  因而
+  对电子常用工程公式为 $U_0["keV"] = 88.5 (E["GeV"])^4 / rho["m"].$
 
-  $
-    U_0 = C_kg E^4 / rho.
-  $
-
-  对电子常用工程公式为
-
-  $
-    U_0["keV"] = 88.5 (E["GeV"])^4 / rho["m"].
-  $
-
-  对 CEPC, 周长约为
-
-  $
-    C = qty("100", "km"),
-  $
+  对 CEPC, 周长约为 $C = qty("100", "km"),$
 
   轨道半径近似为
 
@@ -1336,20 +978,12 @@
     approx qty("1.15e6", "keV").
   $
 
-  即
-
-  $
-    U_0 approx qty("1.15", "GeV").
-  $
+  即 $U_0 approx qty("1.15", "GeV").$
 
   因此, 在这个近似下 CEPC 中 120 GeV 电子每运动一圈约损失 $qty("1.15", "GeV")$
   的能量.
 
-  对质子, 同一能量和弯曲半径下同步辐射能损相对于电子要乘以
-
-  $
-    (m_e / m_p)^4,
-  $
+  对质子, 同一能量和弯曲半径下同步辐射能损相对于电子要乘以 $(m_e / m_p)^4,$
 
   因为同步辐射强度随粒子质量的四次方反比缩放. 因而可写为
 
@@ -1358,11 +992,7 @@
     = 88.5 (E_p["GeV"])^4 / rho["m"] (m_e / m_p)^4.
   $
 
-  题给 SPPC 中质子能量为
-
-  $
-    E_p = qty("75", "TeV") = qty("7.5e4", "GeV").
-  $
+  题给 SPPC 中质子能量为 $E_p = qty("75", "TeV") = qty("7.5e4", "GeV").$
 
   仍取周长 100 km 对应的 $rho approx qty("1.59e4", "m")$, 且
   $m_p / m_e approx 1836$. 则
@@ -1374,11 +1004,7 @@
     approx qty("1.55e4", "keV").
   $
 
-  即
-
-  $
-    U_(0,p) approx qty("15.5", "MeV").
-  $
+  即 $U_(0,p) approx qty("15.5", "MeV").$
 
   这个结果远小于同周长、同量级能量电子束的同步辐射损失,
   但对于高流强质子环仍然不是完全可以忽略的工程量.
@@ -1394,17 +1020,9 @@
     = e^2 kg^6 a^2 / (6 pi ke_0 c^3)
   $
 
-  而平行于速度方向受力时
+  而平行于速度方向受力时 $e E = kg^3 m_e a$
 
-  $
-    e E = kg^3 m_e a
-  $
-
-  故
-
-  $
-    a = e E / (kg^3 m_e)
-  $
+  故 $a = e E / (kg^3 m_e)$
 
   代回得
 
@@ -1413,57 +1031,21 @@
     = e^4 E^2 / (6 pi ke_0 m_e^2 c^3)
   $
 
-  电场对电子做功的速率为
-
-  $
-    P_"acc" = e E v = e E kb c
-  $
+  电场对电子做功的速率为 $P_"acc" = e E v = e E kb c$
 
   当电子能量不再增加时, 有 $P_"rad" = P_"acc"$, 因而
-
-  $
-    e^4 E^2 / (6 pi ke_0 m_e^2 c^3) = e E kb c
-  $
-
-  $
-    E = (6 pi ke_0 m_e^2 c^4 kb) / e^3
-  $
+  $e^4 E^2 / (6 pi ke_0 m_e^2 c^3) = e E kb c$,
+  $E = (6 pi ke_0 m_e^2 c^4 kb) / e^3$.
 
   对高能电子可取 $kb approx 1$, 于是临界电场为
+  $E_"crit" = (6 pi ke_0 m_e^2 c^4) / e^3$
 
-  $
-    E_"crit" = (6 pi ke_0 m_e^2 c^4) / e^3
-  $
+  代入 $ke_0 = qty("8.854e-12", "F/m")$, $m_e = qty("9.109e-31", "kg")$,
+  $e = qty("1.602e-19", "C")$, $c = qty("3.00e8", "m/s")$.
 
-  代入
+  得 $E_"crit" approx qty("2.72e20", "V/m")$
 
-  $
-    ke_0 = qty("8.854e-12", "F/m")
-  $
-
-  $
-    m_e = qty("9.109e-31", "kg")
-  $
-
-  $
-    e = qty("1.602e-19", "C")
-  $
-
-  $
-    c = qty("3.00e8", "m/s")
-  $
-
-  得
-
-  $
-    E_"crit" approx qty("2.72e20", "V/m")
-  $
-
-  因此, 直线加速电场要达到约
-
-  $
-    E_"crit" approx qty("2.7e20", "V/m")
-  $
+  因此, 直线加速电场要达到约 $E_"crit" approx qty("2.7e20", "V/m")$
 
   时, 电子辐射损失才会与加速获得的能量相等. 这个数值极高,
   远高于通常加速器中的电场.
@@ -1474,20 +1056,14 @@
   $I = qty("200", "mA") = qty("0.2", "A")$.
 
   电子的相对论因子为
-
-  $
-    kg = E_e / (m_e c^2) approx 6000 / 0.511 approx 1.174 times 10^4
-  $
+  $kg = E_e / (m_e c^2) approx 6000 / 0.511 approx 1.174 times 10^4$
 
   === A) 弯铁辐射总功率与特征波长
 
   题给弯铁长度 $L = qty("0.857", "m")$, 偏转半径 $rho = qty("20", "m")$.
 
   同步辐射中, 电子经过长度 $L$ 的弯铁所损失的能量可写为
-
-  $
-    U = 88.5 E_e^4 L / rho^2
-  $
+  $U = 88.5 E_e^4 L / rho^2$
 
   其中 $U$ 的单位为 keV, $E_e$ 取 GeV, $L$ 与 $rho$ 取 m.
 
@@ -1500,11 +1076,7 @@
 
   这就是单个电子经过该偏转磁铁一次损失的辐射能量.
 
-  于是该弯铁对应的总辐射功率为
-
-  $
-    P = U I
-  $
+  于是该弯铁对应的总辐射功率为 $P = U I$
 
   注意这里 $U = qty("245.7", "keV")$ 可视作 $qty("245.7", "kV")$ 的等效电压, 故
 
@@ -1513,17 +1085,9 @@
     approx qty("4.91e4", "W")
   $
 
-  即
+  即 $P approx qty("49.1", "kW")$
 
-  $
-    P approx qty("49.1", "kW")
-  $
-
-  弯铁辐射的特征波长取临界波长
-
-  $
-    kl_c = 4 pi rho / (3 kg^3)
-  $
+  弯铁辐射的特征波长取临界波长 $kl_c = 4 pi rho / (3 kg^3)$
 
   代入 $rho = qty("20", "m")$, $kg approx 1.174 times 10^4$, 得
 
@@ -1533,47 +1097,23 @@
     approx qty("5.18e-11", "m")
   $
 
-  即
+  即 $kl_c approx qty("0.0518", "nm")$
 
-  $
-    kl_c approx qty("0.0518", "nm")
-  $
-
-  对应的特征光子能量约为
-
-  $
-    E_c = h c / kl_c approx qty("24.0", "keV")
-  $
+  对应的特征光子能量约为 $E_c = h c / kl_c approx qty("24.0", "keV")$
 
   因此 A 问结果为:
-
-  $
-    P approx qty("49.1", "kW"), quad kl_c approx qty("0.0518", "nm")
-  $
+  $P approx qty("49.1", "kW"), quad kl_c approx qty("0.0518", "nm")$
 
   === B) ID19 波荡器基频波长与带宽
 
-  已知波荡器周期长度
-
-  $
-    kl_u = qty("22.6", "mm") = qty("2.26e-2", "m")
-  $
-
-  $
-    K = 2.3, quad N = 174
-  $
+  已知波荡器周期长度 $kl_u = qty("22.6", "mm") = qty("2.26e-2", "m")$,
+  $K = 2.3, quad N = 174$.
 
   波荡器轴线上第 $n$ 次谐波的波长为
-
-  $
-    kl_n = kl_u / (2 n kg^2) (1 + K^2 / 2 + kg^2 kt^2)
-  $
+  $kl_n = kl_u / (2 n kg^2) (1 + K^2 / 2 + kg^2 kt^2)$
 
   基频光对应 $n = 1$, 且取轴上观察方向 $kt = 0$, 因而
-
-  $
-    kl_1 = kl_u / (2 kg^2) (1 + K^2 / 2)
-  $
+  $kl_1 = kl_u / (2 kg^2) (1 + K^2 / 2)$
 
   代入数值
 
@@ -1584,35 +1124,16 @@
     approx qty("2.99e-10", "m")
   $
 
-  即
+  即 $kl_1 approx qty("0.299", "nm")$
 
-  $
-    kl_1 approx qty("0.299", "nm")
-  $
-
-  对应光子能量约为
-
-  $
-    E_1 = h c / kl_1 approx qty("4.15", "keV")
-  $
+  对应光子能量约为 $E_1 = h c / kl_1 approx qty("4.15", "keV")$
 
   有限周期数 $N$ 导致基频谱线具有自然带宽, 量级可估算为
+  $kD kl / kl_1 approx 1 / N$
 
-  $
-    kD kl / kl_1 approx 1 / N
-  $
+  故 $kD kl / kl_1 approx 1 / 174 approx 5.75 times 10^(-3)$
 
-  故
-
-  $
-    kD kl / kl_1 approx 1 / 174 approx 5.75 times 10^(-3)
-  $
-
-  即相对带宽约为
-
-  $
-    0.575%
-  $
+  即相对带宽约为 $0.575%$
 
   于是绝对带宽约为
 
@@ -1624,10 +1145,7 @@
   $
 
   若取常见的 FWHM 估算, 则
-
-  $
-    kD kl / kl_1 approx 0.89 / N approx 5.11 times 10^(-3)
-  $
+  $kD kl / kl_1 approx 0.89 / N approx 5.11 times 10^(-3)$
 
   与上面的数量级一致.
 
@@ -1645,17 +1163,10 @@
   == 周期高斯微束列的聚束因子与基频谱宽
 
   设单个微束团的纵向时间分布为
-
-  $
-    f_0(t) = 1 / (sqrt(2 pi) ks_e) exp(-t^2 / (2 ks_e^2))
-  $
+  $f_0(t) = 1 / (sqrt(2 pi) ks_e) exp(-t^2 / (2 ks_e^2))$
 
   若电子束由 $N$ 个相同微束团组成, 相邻微束团间隔为 $T = 10 ks_e$,
-  则归一化后的总分布可写为
-
-  $
-    f_N(t) = 1 / N sum_(n=0)^(N-1) f_0(t - n T)
-  $
+  则归一化后的总分布可写为 $f_N(t) = 1 / N sum_(n=0)^(N-1) f_0(t - n T)$
 
   即
 
@@ -1695,11 +1206,7 @@
     ),
   )
 
-  按聚束因子的定义
-
-  $
-    b(ko) = int_(-inft)^(inft) f_N(t) exp(-i ko t) dd(t),
-  $
+  按聚束因子的定义 $b(ko) = int_(-inft)^(inft) f_N(t) exp(-i ko t) dd(t),$
 
   代入上式可得
 
@@ -1736,11 +1243,7 @@
 
   这个结果可以分成两部分理解. 第一项 $exp(-ko^2 ks_e^2 / 2)$ 是单个高斯微束团的
   form factor, 决定整个频谱的包络; 第二项是长度为 $N$ 的周期列给出的 Dirichlet
-  因子, 决定谱线出现在
-
-  $
-    ko_m = 2 pi m / T, quad m = 0, 1, 2, ...
-  $
+  因子, 决定谱线出现在 $ko_m = 2 pi m / T, quad m = 0, 1, 2, ...$
 
   附近.
 
@@ -1768,29 +1271,14 @@
     abs((sin(N kd ko T / 2)) / (N sin(kd ko T / 2))).
   $
 
-  其第一个零点满足
+  其第一个零点满足 $N kd ko T / 2 = pi,$
 
-  $
-    N kd ko T / 2 = pi,
-  $
+  故半宽到第一个零点为 $kd ko_"zero" = 2 pi / (N T).$
 
-  故半宽到第一个零点为
-
-  $
-    kd ko_"zero" = 2 pi / (N T).
-  $
-
-  两个一阶零点之间的全宽为
-
-  $
-    kD ko_"zero" = 4 pi / (N T).
-  $
+  两个一阶零点之间的全宽为 $kD ko_"zero" = 4 pi / (N T).$
 
   若用强度谱 $abs(b)^2$ 的半高全宽估算, sinc 平方函数给出
-
-  $
-    kD ko_"FWHM" / ko_0 approx 0.89 / N.
-  $
+  $kD ko_"FWHM" / ko_0 approx 0.89 / N.$
 
   因此基频谱宽主要由周期数 $N$ 决定: $N$ 越大, 谱线越窄. 微束团宽度 $ks_e$
   主要通过高斯包络影响各谐波强度; $ks_e$ 越小, 高频谐波衰减越慢. 对本题
@@ -1800,25 +1288,14 @@
   == LCLS 自由电子激光参数估算
 
   已知 LCLS 自由电子激光装置的辐射波长为
+  $kl_r = qty("1.5", "angstrom") = qty("1.5e-10", "m"),$
 
-  $
-    kl_r = qty("1.5", "angstrom") = qty("1.5e-10", "m"),
-  $
-
-  波荡器周期
-
-  $
-    kl_u = qty("3", "cm") = qty("3.0e-2", "m"),
-  $
+  波荡器周期 $kl_u = qty("3", "cm") = qty("3.0e-2", "m"),$
 
   $K = 3.5$, 周期数 $N_u = 3328$, 归一化发射度
   $ke_n = qty("0.5", "mm") dot "mrad"$, Pierce 参数 $rho = 5 times 10^(-4)$.
 
-  对平面波荡器, 轴上基频共振条件为
-
-  $
-    kl_r = kl_u / (2 kg^2) (1 + K^2 / 2).
-  $
+  对平面波荡器, 轴上基频共振条件为 $kl_r = kl_u / (2 kg^2) (1 + K^2 / 2).$
 
   所以电子束的相对论因子为
 
@@ -1847,11 +1324,7 @@
     approx qty("13.6", "GeV").
   $
 
-  一维 FEL 功率增益长度可估算为
-
-  $
-    L_g = kl_u / (4 pi sqrt(3) rho).
-  $
+  一维 FEL 功率增益长度可估算为 $L_g = kl_u / (4 pi sqrt(3) rho).$
 
   因此
 
@@ -1863,44 +1336,23 @@
   $
 
   波荡器总长度为
-
-  $
-    L_u = N_u kl_u = 3328 times qty("0.03", "m") approx qty("99.8", "m").
-  $
+  $L_u = N_u kl_u = 3328 times qty("0.03", "m") approx qty("99.8", "m").$
 
   若按 SASE 饱和长度约为 $15--20$ 个增益长度估算, 则
-
-  $
-    L_"sat" approx (15--20) L_g approx qtyrange("41", "55", "m"),
-  $
+  $L_"sat" approx (15--20) L_g approx qtyrange("41", "55", "m"),$
 
   小于波荡器总长度, 因而该参数下可以达到饱和输出.
 
   FEL 辐射的相对带宽量级由 Pierce 参数决定:
+  $kD ko / ko approx rho = 5 times 10^(-4).$
 
-  $
-    kD ko / ko approx rho = 5 times 10^(-4).
-  $
+  即相对带宽约为 $5 times 10^(-4) = 0.05%.$
 
-  即相对带宽约为
-
-  $
-    5 times 10^(-4) = 0.05%.
-  $
-
-  有限波荡器周期数给出的自然线宽量级为
-
-  $
-    1 / N_u approx 3.0 times 10^(-4),
-  $
+  有限波荡器周期数给出的自然线宽量级为 $1 / N_u approx 3.0 times 10^(-4),$
 
   与 $rho$ 同量级但略小, 所以用 $rho$ 作为 SASE 饱和输出带宽估算是合理的.
 
-  SASE 饱和输出的尖峰时间宽度可用相干时间估算. 若取
-
-  $
-    kD ko approx rho ko_r,
-  $
+  SASE 饱和输出的尖峰时间宽度可用相干时间估算. 若取 $kD ko approx rho ko_r,$
 
   则
 
@@ -1920,11 +1372,7 @@
     approx qty("1.6e-16", "s").
   $
 
-  即
-
-  $
-    kD t_"spike" approx qty("0.16", "fs").
-  $
+  即 $kD t_"spike" approx qty("0.16", "fs").$
 
   若采用合作长度 $L_c = kl_r / (4 pi rho)$ 的定义, 对应时间为
   $L_c / c approx qty("0.08", "fs")$. 两者只差一个约为 2 的约定因子, 因此 SASE
@@ -1943,17 +1391,9 @@
 
   == 波荡器辐射产生 100 keV 硬 X 射线所需电子能量
 
-  题给波荡器周期长度
+  题给波荡器周期长度 $kl_u = qty("2.5", "cm") = qty("2.5e-2", "m"),$
 
-  $
-    kl_u = qty("2.5", "cm") = qty("2.5e-2", "m"),
-  $
-
-  最大磁场
-
-  $
-    B_0 = qty("0.45", "T").
-  $
+  最大磁场 $B_0 = qty("0.45", "T").$
 
   波荡器参数为
 
@@ -1962,11 +1402,7 @@
     approx 0.934 B_0["T"] kl_u ["cm"].
   $
 
-  代入数值有
-
-  $
-    K approx 0.934 times 0.45 times 2.5 approx 1.05.
-  $
+  代入数值有 $K approx 0.934 times 0.45 times 2.5 approx 1.05.$
 
   对平面波荡器, 第一次谐波在观察角 $kt = 0$ 方向的波长为
 
@@ -2012,18 +1448,11 @@
   $
 
   因此, 用该波荡器在轴上产生约 100 keV 的基频硬 X 射线, 所需电子能量约为
-
-  $
-    E_e approx qty("20", "GeV").
-  $
+  $E_e approx qty("20", "GeV").$
 
   == 逆康普顿散射产生 100 keV 硬 X 射线所需电子能量
 
-  激光波长为
-
-  $
-    kl_L = qty("1064", "nm"),
-  $
+  激光波长为 $kl_L = qty("1064", "nm"),$
 
   光子能量为
 
@@ -2044,11 +1473,7 @@
 
   这里忽略了反冲修正, 因为本题所得电子能量下 $kg E_L / (m_e c^2) << 1$.
 
-  对 180 度相互作用, 即激光与电子迎头相撞, $ka = pi$,
-
-  $
-    E_kg approx 4 kg^2 E_L.
-  $
+  对 180 度相互作用, 即激光与电子迎头相撞, $ka = pi$, $E_kg approx 4 kg^2 E_L.$
 
   因而
 
@@ -2066,11 +1491,7 @@
     approx qty("74.8", "MeV").
   $
 
-  对 90 度垂直相互作用, $ka = pi / 2$,
-
-  $
-    E_kg approx 2 kg^2 E_L.
-  $
+  对 90 度垂直相互作用, $ka = pi / 2$, $E_kg approx 2 kg^2 E_L.$
 
   因而
 
@@ -2100,11 +1521,7 @@
     quad ks_(e,x) = ks_(e,y) = qty("60", "um").
   $
 
-  激光均方根脉冲宽度为
-
-  $
-    ks_(l,t) = qty("100", "fs"),
-  $
+  激光均方根脉冲宽度为 $ks_(l,t) = qty("100", "fs"),$
 
   对应的空间长度为
 
@@ -2114,11 +1531,7 @@
     approx qty("30", "um").
   $
 
-  激光横向尺寸为
-
-  $
-    ks_(l,r) = qty("15", "um").
-  $
+  激光横向尺寸为 $ks_(l,r) = qty("15", "um").$
 
   两个高斯分布相乘后, 有效相互作用区的均方根尺寸为
 
@@ -2185,9 +1598,6 @@
     180 degree:
     quad ks_x approx ks_y approx qty("14.6", "um"),
     quad ks_t approx qty("1.5", "ps");
-  $
-
-  $
     90 degree:
     quad ks_x approx qty("26.8", "um"),
     quad ks_y approx qty("14.6", "um"),
