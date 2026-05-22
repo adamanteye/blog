@@ -18,11 +18,11 @@
   即一种照射只有在带来的收益明显大于风险时才是合理的. X
   射线试鞋机娱乐性强于实用性, 属于不必要照射, 最终被淘汰是合理的.
 
-  == $gamma$ 射线检查焊缝是否正当? 为什么?
+  == $kg$ 射线检查焊缝是否正当? 为什么?
 
   正当的.
 
-  原因在于, 工业 $gamma$ 射线探伤能够发现金属焊接内部肉眼看不到的孔隙,
+  原因在于, 工业 $kg$ 射线探伤能够发现金属焊接内部肉眼看不到的孔隙,
   裂纹和未焊透等缺陷, 这对于压力容器, 核设施等设备的安全非常重要.
   它能够预防重大事故, 避免设备失效造成的人员伤亡和经济损失,
   因此具有明确而现实的社会收益. 它所提供的信息是其他方法难以得到的.
@@ -63,8 +63,8 @@
   设 1 对应 $isotope("Na", a: 24)$, 2 对应 $isotope("P", a: 32)$.
   两者活度随时间变化为
   $
-    A_1(t) = A_(1,0) e^(-lambda_1 t), quad
-    A_2(t) = A_(2,0) e^(-lambda_2 t)
+    A_1(t) = A_(1,0) e^(-kl_1 t), quad
+    A_2(t) = A_(2,0) e^(-kl_2 t)
   $
 
   题目给出初始活度占比为 98% 和 2%, 因而
@@ -74,12 +74,12 @@
 
   当两者活度相等时,
   $
-    A_(1,0) e^(-lambda_1 t) = A_(2,0) e^(-lambda_2 t)
+    A_(1,0) e^(-kl_1 t) = A_(2,0) e^(-kl_2 t)
   $
   所以
   $
-    49 = e^((lambda_1 - lambda_2) t), quad
-    t = (ln 49) / (lambda_1 - lambda_2)
+    49 = e^((kl_1 - kl_2) t), quad
+    t = (ln 49) / (kl_1 - kl_2)
   $
 
   取半衰期
@@ -89,8 +89,8 @@
   $
   则
   $
-    lambda_1 = (ln 2) / T_(1/2,1), quad
-    lambda_2 = (ln 2) / T_(1/2,2)
+    kl_1 = (ln 2) / T_(1/2,1), quad
+    kl_2 = (ln 2) / T_(1/2,2)
   $
 
   代入可得
@@ -118,46 +118,46 @@
   其后续衰变还会经过 $isotope("Po", a: 214)$ 再放出一个 alpha 粒子, 因而每个
   $isotope("Po", a: 218)$ 原子对应的总 alpha 能量为
   $
-    epsilon_1 = 6.00 + 7.69 = 13.69 " MeV"
+    ke_1 = 6.00 + 7.69 = qty("13.69", "MeV")
   $
   而 $isotope("Pb", a: 214)$ 和 $isotope("Bi", a: 214)$ 最终都只对应
   $isotope("Po", a: 214)$ 的一次 alpha 衰变, 因而
   $
-    epsilon_2 = 7.69 " MeV", quad
-    epsilon_3 = 7.69 " MeV"
+    ke_2 = qty("7.69", "MeV"), quad
+    ke_3 = qty("7.69", "MeV")
   $
 
   若三种子体的原子数浓度分别为 $N_1, N_2, N_3$, 则 alpha 潜能浓度为
   $
-    S = epsilon_1 N_1 + epsilon_2 N_2 + epsilon_3 N_3
+    S = ke_1 N_1 + ke_2 N_2 + ke_3 N_3
   $
 
   又因为活度浓度满足
   $
-    C_i = lambda_i N_i, quad N_i = C_i / lambda_i
+    C_i = kl_i N_i, quad N_i = C_i / kl_i
   $
   所以
   $
-    S = epsilon_1 C_1 / lambda_1 + epsilon_2 C_2 / lambda_2 + epsilon_3 C_3 / lambda_3
+    S = ke_1 C_1 / kl_1 + ke_2 C_2 / kl_2 + ke_3 C_3 / kl_3
   $
 
   设与之等效的平衡氡浓度为 $C_"eq"$. 在平衡状态下,
   三种短寿命子体的活度浓度都等于 $C_"eq"$, 因而
   $
-    S = C_"eq" (epsilon_1 / lambda_1 + epsilon_2 / lambda_2 + epsilon_3 / lambda_3)
+    S = C_"eq" (ke_1 / kl_1 + ke_2 / kl_2 + ke_3 / kl_3)
   $
 
   于是
   $
-    C_"eq" = (epsilon_1 C_1 / lambda_1 + epsilon_2 C_2 / lambda_2 + epsilon_3 C_3 / lambda_3)
-    / (epsilon_1 / lambda_1 + epsilon_2 / lambda_2 + epsilon_3 / lambda_3)
+    C_"eq" = (ke_1 C_1 / kl_1 + ke_2 C_2 / kl_2 + ke_3 C_3 / kl_3)
+    / (ke_1 / kl_1 + ke_2 / kl_2 + ke_3 / kl_3)
   $
 
   利用
   $
-    lambda_i = (ln 2) / T_i
+    kl_i = (ln 2) / T_i
   $
-  可知各项权重正比于 $epsilon_i T_i$. 取半衰期
+  可知各项权重正比于 $ke_i T_i$. 取半衰期
   $
     T_1 = qty("3.05", "min"), quad
     T_2 = qty("26.8", "min"), quad
@@ -204,38 +204,38 @@
 
   $isotope("K", a: 40)$ 的半衰期取
   $
-    T_(1/2) = 1.248 times 10^9 " a"
+    T_(1/2) = qty("1.248e9", "a")
   $
   所以衰变常数为
   $
-    lambda = (ln 2) / T_(1/2)
+    kl = (ln 2) / T_(1/2)
   $
 
   放射性强度为
   $
-    A = lambda N_(isotope("K", a: 40))
+    A = kl N_(isotope("K", a: 40))
   $
 
   将半衰期换算成秒后代入, 得
   $
-    A approx 1.24 times 10^3 " Bq"
+    A approx qty("1.24e3", "Bq")
   $
 
   因此, 100 g 硝酸钾样品的放射性强度约为
   $
-    A approx 1.24 " kBq"
+    A approx qty("1.24", "kBq")
   $
 
   == 与 1 g $isotope("Ra", a: 226)$ 处于平衡的 $isotope("Rn", a: 222)$ 体积
 
   1 g $isotope("Ra", a: 226)$ 的活度近似定义为
   $
-    A_(isotope("Ra", a: 226)) = 1 " Ci" = 3.7 times 10^10 " Bq"
+    A_(isotope("Ra", a: 226)) = qty("1", "Ci") = qty("3.7e10", "Bq")
   $
 
   达到放射性平衡时,
   $
-    A_(isotope("Rn", a: 222)) = A_(isotope("Ra", a: 226)) = 3.7 times 10^10 " Bq"
+    A_(isotope("Rn", a: 222)) = A_(isotope("Ra", a: 226)) = qty("3.7e10", "Bq")
   $
 
   $isotope("Rn", a: 222)$ 的半衰期取
@@ -254,21 +254,21 @@
 
   于是物质的量为
   $
-    n_(isotope("Rn", a: 222)) = N_(isotope("Rn", a: 222)) / N_A approx 2.93 times 10^(-8) " mol"
+    n_(isotope("Rn", a: 222)) = N_(isotope("Rn", a: 222)) / N_A approx qty("2.93e-8", "mol")
   $
   在 0 C, 760 mmHg 下, 1 mol 理想气体体积约为 22.4 L, 所以
   $
-    V = n_(isotope("Rn", a: 222)) times 22.4 approx 6.56 times 10^(-7) " L"
+    V = n_(isotope("Rn", a: 222)) times 22.4 approx qty("6.56e-7", "L")
   $
 
   因此, 与 1 g $isotope("Ra", a: 226)$ 处于平衡的 $isotope("Rn", a: 222)$
   体积约为
   $
-    V approx 6.6 times 10^(-7) " L"
+    V approx qty("6.6e-7", "L")
   $
   也就是约
   $
-    V approx 0.656 " muL"
+    V approx qty("0.656", "muL")
   $
 
   == $isotope("Mo", a: 99)$-$isotope("Tc", a: 99m)$ 发生器再次淋洗的时间
@@ -280,17 +280,17 @@
   $
   母体核素活度随时间变化为
   $
-    A_1(t) = A_(1,0) e^(-lambda_1 t)
+    A_1(t) = A_(1,0) e^(-kl_1 t)
   $
 
   由 Bateman 公式, 子体核素活度为
   $
-    A_2(t) = A_(1,0) lambda_2 / (lambda_2 - lambda_1) (e^(-lambda_1 t) - e^(-lambda_2 t))
+    A_2(t) = A_(1,0) kl_2 / (kl_2 - kl_1) (e^(-kl_1 t) - e^(-kl_2 t))
   $
 
   因而二者活度比为
   $
-    A_2(t) / A_1(t) = lambda_2 / (lambda_2 - lambda_1) (1 - e^(-(lambda_2 - lambda_1) t))
+    A_2(t) / A_1(t) = kl_2 / (kl_2 - kl_1) (1 - e^(-(kl_2 - kl_1) t))
   $
 
   题目要求
@@ -299,7 +299,7 @@
   $
   所以
   $
-    0.98 = lambda_2 / (lambda_2 - lambda_1) (1 - e^(-(lambda_2 - lambda_1) t))
+    0.98 = kl_2 / (kl_2 - kl_1) (1 - e^(-(kl_2 - kl_1) t))
   $
 
   取半衰期
@@ -309,13 +309,13 @@
   $
   即
   $
-    lambda_1 = (ln 2) / 66.02, quad
-    lambda_2 = (ln 2) / 6.02
+    kl_1 = (ln 2) / 66.02, quad
+    kl_2 = (ln 2) / 6.02
   $
 
   解得
   $
-    t = -1 / (lambda_2 - lambda_1) ln(1 - 0.98 (lambda_2 - lambda_1) / lambda_2)
+    t = -1 / (kl_2 - kl_1) ln(1 - 0.98 (kl_2 - kl_1) / kl_2)
     approx qty("21.1", "h")
   $
 
@@ -325,36 +325,36 @@
 
   = 第三次作业
 
-  == 某纯 $beta$ 放射性核素的半衰期, 衰变常数和核素判断
+  == 某纯 $kb$ 放射性核素的半衰期, 衰变常数和核素判断
 
   设计数率满足指数衰减规律
   $
-    R(t) = R_0 e^(-lambda t)
+    R(t) = R_0 e^(-kl t)
   $
 
   对表中数据作 $ln R$ 对 $t$ 的线性拟合, 得
   $
-    ln R = ln R_0 - lambda t
+    ln R = ln R_0 - kl t
   $
   其中
   $
-    lambda approx qty("0.0493", "d^-1")
+    kl approx qty("0.0493", "d^-1")
   $
 
   于是半衰期为
   $
-    T_(1/2) = (ln 2) / lambda
+    T_(1/2) = (ln 2) / kl
     approx (ln 2) / 0.0493
     approx qty("14.1", "d")
   $
 
   若换算成 SI 单位, 则
   $
-    lambda approx 0.0493 / (24 times 3600)
+    kl approx 0.0493 / (24 times 3600)
     approx qty("5.70e-7", "s^-1")
   $
 
-  查常见纯 $beta$ 放射性核素, 半衰期最接近的是 $isotope("P", a: 32)$:
+  查常见纯 $kb$ 放射性核素, 半衰期最接近的是 $isotope("P", a: 32)$:
   $
     T_(1/2)(isotope("P", a: 32)) approx qty("14.3", "d")
   $
@@ -382,18 +382,18 @@
   $
   故衰变常数为
   $
-    lambda = (ln 2) / T_(1/2)
+    kl = (ln 2) / T_(1/2)
   $
 
   初始活度
   $
-    A_0 = lambda N_0
+    A_0 = kl N_0
     approx qty("1.41e10", "Bq")
   $
 
   10 年后活度
   $
-    A(10 " a") = A_0 e^(-lambda times 10 " a")
+    A(qty("10", "a")) = A_0 e^(-kl times qty("10", "a"))
     = A_0 2^(-10 / 22.3)
     approx qty("1.03e10", "Bq")
   $
@@ -432,7 +432,7 @@
 
   $isotope("U", a: 234)$ 的半衰期取
   $
-    T_(1/2) = 2.455 times 10^5 " a"
+    T_(1/2) = qty("2.455e5", "a")
   $
   其纯核素比活度为
   $
@@ -458,22 +458,22 @@
     a approx qty("1.04", "MBq/kg")
   $
 
-  == 0.5 MeV $gamma$ 辐射场中的粒子注量率
+  == 0.5 MeV $kg$ 辐射场中的粒子注量率
 
   已知能量注量率
   $
     dot(Psi) = qty("5", "J/m^2/s")
   $
-  单个 $gamma$ 光子的能量为
+  单个 $kg$ 光子的能量为
   $
-    E_gamma = qty("0.5", "MeV")
-    = 0.5 times 1.602 times 10^(-13) " J"
+    E_kg = qty("0.5", "MeV")
+    = 0.5 times qty("1.602e-13", "J")
     approx qty("8.01e-14", "J")
   $
 
   粒子注量率为
   $
-    dot(Phi) = dot(Psi) / E_gamma
+    dot(Phi) = dot(Psi) / E_kg
     approx 5 / (8.01 times 10^(-14))
     approx qty("6.24e13", "m^-2 s^-1")
   $
@@ -491,15 +491,15 @@
   $
   取 $isotope("Cs", a: 137)$ 每次衰变平均发出
   $
-    Y_gamma approx 0.851
+    Y_kg approx 0.851
   $
   个能量为
   $
-    E_gamma = qty("661.7", "keV")
+    E_kg = qty("661.7", "keV")
   $
-  的 $gamma$ 光子. 对各向同性点源, 在距离 $r = qty("0.5", "m")$ 处, 粒子注量率为
+  的 $kg$ 光子. 对各向同性点源, 在距离 $r = qty("0.5", "m")$ 处, 粒子注量率为
   $
-    dot(Phi) = A Y_gamma / (4 pi r^2)
+    dot(Phi) = A Y_kg / (4 pi r^2)
   $
 
   代入得
@@ -511,11 +511,11 @@
 
   能量注量率为
   $
-    dot(Psi) = E_gamma dot(Phi)
+    dot(Psi) = E_kg dot(Phi)
   $
   其中
   $
-    E_gamma = 661.7 times 10^3 times 1.602 times 10^(-19) " J"
+    E_kg = 661.7 times 10^3 times qty("1.602e-19", "J")
     approx qty("1.06e-13", "J")
   $
   因此
@@ -575,9 +575,9 @@
 
   = 第四次作业
 
-  == 1 MeV 与 0.1 MeV $gamma$ 射线束注量之比
+  == 1 MeV 与 0.1 MeV $kg$ 射线束注量之比
 
-  设 1 MeV 与 0.1 MeV $gamma$ 射线束的注量分别为 $Phi_1$ 和 $Phi_2$.
+  设 1 MeV 与 0.1 MeV $kg$ 射线束的注量分别为 $Phi_1$ 和 $Phi_2$.
   单位体积空气吸收的能量相同, 即空气中的吸收剂量相同, 则有
   $
     Phi_1 E_1 (mu_"en"/rho)_1 = Phi_2 E_2 (mu_"en"/rho)_2
@@ -585,8 +585,8 @@
 
   取空气的质量能量吸收系数
   $
-    (mu_"en"/rho)_(0.1 " MeV") approx qty("2.325e-2", "cm^2/g"), quad
-    (mu_"en"/rho)_(1 " MeV") approx qty("2.789e-2", "cm^2/g")
+    (mu_"en"/rho)_(qty("0.1", "MeV")) approx qty("2.325e-2", "cm^2/g"), quad
+    (mu_"en"/rho)_(qty("1", "MeV")) approx qty("2.789e-2", "cm^2/g")
   $
 
   于是
@@ -599,16 +599,15 @@
 
   因此两种射线束注量之比为
   $
-    Phi_(1 " MeV") : Phi_(0.1 " MeV") approx 0.083 : 1
+    Phi_(qty("1", "MeV")) : Phi_(qty("0.1", "MeV")) approx 0.083 : 1
   $
-  也就是说, 若电离密度相同, 则 0.1 MeV $gamma$ 射线束的注量约为 1 MeV 的 $12.0$
-  倍.
+  也就是说, 若电离密度相同, 则 0.1 MeV $kg$ 射线束的注量约为 1 MeV 的 $12.0$ 倍.
 
   == 5 Gy 辐射剂量引起的人体温度变化
 
   人体比热取
   $
-    c = 1 " cal/(g degC)"
+    c = qty("1", "cal/(g degC)")
     = qty("4.186", "J/(g degC)")
     = qty("4.186e3", "J/(kg degC)")
   $
@@ -620,22 +619,22 @@
 
   故温度变化为
   $
-    Delta T = D / c
+    kD T = D / c
     = 5 / (4.186 times 10^3)
     approx qty("1.19e-3", "degC")
   $
 
   因此 5 Gy 辐射剂量造成的人体温度升高约为
   $
-    Delta T approx qty("1.2e-3", "degC")
+    kD T approx qty("1.2e-3", "degC")
   $
   即约 $0.0012$ C.
 
-  == 0.5 MeV $gamma$ 射线照射量率对应的组织吸收剂量率
+  == 0.5 MeV $kg$ 射线照射量率对应的组织吸收剂量率
 
   已知照射量率
   $
-    dot(X) = 25.4 " muC/(kg h)" = 100 " mR/h" = qty("0.1", "R/h")
+    dot(X) = qty("25.4", "muC/(kg h)") = qty("100", "mR/h") = qty("0.1", "R/h")
   $
 
   先求空气中的比释动能率. 对光子有
@@ -727,8 +726,8 @@
 
   相互作用过程可简要表示为:
 
-  + 入射光子: $gamma(10 " MeV")$
-  + 电子对效应后: $e^- (4.5 " MeV") + e^+ (4.5 " MeV")$
+  + 入射光子: $kg(qty("10", "MeV"))$
+  + 电子对效应后: $e^- (qty("4.5", "MeV")) + e^+ (qty("4.5", "MeV"))$
   + 正负电子在介质中损失全部动能, 其中产生 3 个轫致辐射光子: $1.6$, $1.4$, $2.0$
     MeV, 均逃逸
   + 正电子停下后与介质电子湮灭, 产生 $2 times 0.51$ MeV 光子, 亦全部逃逸
@@ -741,7 +740,7 @@
   比释动能定义为不带电粒子在该物质中释放出的全部带电粒子的初始动能除以质量.
   本题中释放出的带电粒子是正负电子, 故
   $
-    E_"tr" = 4.5 + 4.5 = 9.0 " MeV"
+    E_"tr" = 4.5 + 4.5 = qty("9.0", "MeV")
   $
 
   于是比释动能为
@@ -753,12 +752,12 @@
 
   吸收剂量应按真正留在该物质中的能量计算. 逃逸的光子总能量为
   $
-    E_"esc" = 1.6 + 1.4 + 2.0 + 0.51 + 0.51 = 6.02 " MeV"
+    E_"esc" = 1.6 + 1.4 + 2.0 + 0.51 + 0.51 = qty("6.02", "MeV")
   $
 
   因此物质实际吸收的能量为
   $
-    E_"abs" = 10.0 - 6.02 = 3.98 " MeV"
+    E_"abs" = 10.0 - 6.02 = qty("3.98", "MeV")
   $
 
   于是吸收剂量为

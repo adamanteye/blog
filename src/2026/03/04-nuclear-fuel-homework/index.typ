@@ -110,19 +110,19 @@
   对于扩散膜, 为保证孔内气体流动属于分子流, 需要满足克努森数判据
 
   $
-    K_n = lambda / L > 10
+    K_n = kl / L > 10
   $
 
   因此膜孔的最大等效孔径应满足
 
   $
-    L < lambda / 10
+    L < kl / 10
   $
 
   其中分子的平均自由程为
 
   $
-    lambda = 1 / (sqrt(2) pi d^2 n)
+    kl = 1 / (sqrt(2) pi d^2 n)
   $
 
   对理想气体，有
@@ -134,7 +134,7 @@
   故可得
 
   $
-    lambda = k_B T / (sqrt(2) pi d^2 P)
+    kl = k_B T / (sqrt(2) pi d^2 P)
   $
 
   下面取室温 $T = 298 K$, 膜前压强为 $100$ mmHg.
@@ -152,20 +152,20 @@
   于是其平均自由程为
 
   $
-    lambda_(istp("U")istp("F")_6)
+    kl_(istp("U")istp("F")_6)
     = k_B T / (sqrt(2) pi d^2 P)
   $
 
   即
 
   $
-    lambda_(istp("U")istp("F")_6) approx qty("0.23", "um")
+    kl_(istp("U")istp("F")_6) approx qty("0.23", "um")
   $
 
   为了保证 $K_n > 10$，最大孔径应满足
 
   $
-    L_0 = lambda_(istp("U")istp("F")_6) / 10
+    L_0 = kl_(istp("U")istp("F")_6) / 10
     approx qty("2.3e-8", "m") = qty("23", "nm")
   $
 
@@ -180,13 +180,13 @@
   即
 
   $
-    lambda_(istp("H")_2) approx qty("0.832", "um")
+    kl_(istp("H")_2) approx qty("0.832", "um")
   $
 
   因此相应的最大孔径为
 
   $
-    L = lambda_(istp("H")_2) / 10
+    L = kl_(istp("H")_2) / 10
     approx qty("8.3e-8", "m") = qty("83", "nm")
   $
 
@@ -207,13 +207,13 @@
   角速度为
 
   $
-    omega = v / a = 600 / 0.06 = qty("1.0e4", "rad/s")
+    ko = v / a = 600 / 0.06 = qty("1.0e4", "rad/s")
   $
 
   气体在径向平衡时满足
 
   $
-    div(p/r) = rho omega^2 r
+    div(p/r) = rho ko^2 r
   $
 
   又因为理想气体有
@@ -225,38 +225,38 @@
   所以
 
   $
-    dd(p)/p=(M omega^2 / (R T))r dd(r)
+    dd(p)/p=(M ko^2 / (R T))r dd(r)
   $
 
   由此积分得压强分布
 
   $
-    p(r) = p(a) exp[-M omega^2 (a^2 - r^2) / (2 R T)]
+    p(r) = p(a) exp[-M ko^2 (a^2 - r^2) / (2 R T)]
   $
 
   离心机内部总滞留量按物质的量计算为
 
   $
-    n = integral_V p / (R T) dd(V)
+    n = int_V p / (R T) dd(V)
   $
 
   采用圆柱坐标 $dif V = 2 pi r h dd(r)$, 则
 
   $
-    n = (2 pi h) / (R T) integral_0^a p(r) r dd(r)
+    n = (2 pi h) / (R T) int_0^a p(r) r dd(r)
   $
 
   代入上式并积分可得
 
   $
-    n = (2 pi h p(a)) / (M omega^2)
-    [1 - exp(-M omega^2 a^2 / (2 R T))]
+    n = (2 pi h p(a)) / (M ko^2)
+    [1 - exp(-M ko^2 a^2 / (2 R T))]
   $
 
   先计算指数项:
 
   $
-    M omega^2 a^2 / (2 R T)
+    M ko^2 a^2 / (2 R T)
     = 0.352 times (10^4)^2 times (0.06)^2 / (2 times 8.314 times 300)
     approx 25.4
   $
@@ -264,7 +264,7 @@
   因而 $exp(-25.4) << 1$, 可近似取
 
   $
-    n approx (2 pi h p(a)) / (M omega^2)
+    n approx (2 pi h p(a)) / (M ko^2)
   $
 
   代入数值:
@@ -288,7 +288,7 @@
 
   离心机直径并不是做得越大越好.
 
-  离心分离的关键因素主要是转子的圆周速度 $v = omega r$. 在材料强度一定时,
+  离心分离的关键因素主要是转子的圆周速度 $v = ko r$. 在材料强度一定时,
   转子所允许的最大应力有限, 因而允许的圆周速度也有限. 这说明即使继续增大直径,
   也不能无限提高分离能力.
 

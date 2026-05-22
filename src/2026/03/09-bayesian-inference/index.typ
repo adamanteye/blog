@@ -26,7 +26,7 @@ $
     columns: 5,
     table.header([Name], [PDF/PMF], [Mean], [Variance], [Mode]),
     [$"Beta" (y|ka,kb)$],
-    [$Gamma(ka+kb)/(Gamma(ka)Gamma(kb)) y^(ka-1) (1-y)^(kb-1)$],
+    [$kG(ka+kb)/(kG(ka)kG(kb)) y^(ka-1) (1-y)^(kb-1)$],
     [$ka/(ka+kb)$],
     [$(ka kb)/((ka+kb)^2(ka+kb+1))$],
     [$(ka-1)/(ka+kb-2)$],
@@ -45,20 +45,20 @@ $
     [$k/kl^2$],
     [$1/kl (k-1)$],
 
-    [$"ExGauss" (y|mu, sigma, kl)$],
+    [$"ExGauss" (y|mu, ks, kl)$],
     [$kl/2 exp(kl/2 (2mu + kl ks^2 -2y)) "erfc" ((mu + kl ks^2 - y)/(sqrt(2) ks)$],
     [],
     [],
     [],
 
     [$"Gamma" (y|ka,kb)$],
-    [$kb^ka /Gamma(ka) y^(ka-1) e^(-kb y)$],
+    [$kb^ka /kG(ka) y^(ka-1) e^(-kb y)$],
     [$ka/kb$],
     [$ka/kb^2$],
     [$(ka-1)/kb$],
 
     [$"InvGamma" (y|ka,kb)$],
-    [$kb^ka /Gamma(ka) y^(-ka-1) e^(-kb\/y)$],
+    [$kb^ka /kG(ka) y^(-ka-1) e^(-kb\/y)$],
     [$kb/(ka-1)$],
     [$kb^2/((ka-1)^2(ka-2))$],
     [$kb/(ka-1)$],
@@ -77,10 +77,10 @@ $
     [$(r(1-p))/p^2$],
     [],
 
-    [$"Normal" (y|mu,sigma^2)$],
-    [$1/(sqrt(2pi)sigma) exp(-(y-mu)^2/(2sigma^2))$],
+    [$"Normal" (y|mu,ks^2)$],
+    [$1/(sqrt(2pi)ks) exp(-(y-mu)^2/(2ks^2))$],
     [$mu$],
-    [$sigma^2$],
+    [$ks^2$],
     [$mu$],
 
     [$"Student" (y|nu)$],
@@ -110,8 +110,8 @@ The idea of *conjugate prior* is that for a give likelihood we choose a prior
 distribution such that, after observing data and applying Bayes' theorem, the
 posterior distribution belongs to the same family as the prior.
 
-That is, if $p(theta)$ and $p(theta | y)$ have the same distributional form,
-then the prior is called a *conjugate prior* for the likelihood model.
+That is, if $p(kt)$ and $p(kt | y)$ have the same distributional form, then the
+prior is called a *conjugate prior* for the likelihood model.
 
 This is useful because it makes Bayesian updating analytically tractable.
 Instead of performing difficult integration or numerical approximation, we can
@@ -121,9 +121,9 @@ often derive the posterior parameters in closed form.
 Note general exponential family:
 
 $
-  p(y_i|theta)=markhl(f(y_i), tag: #<base>, color: #blue) exp(
-    markhl(phi(theta)^TT, color: #red, tag: #<model>) markhl(u(y_i), tag: #<data>)
-    -markhl(g(theta), color: #gray, tag: #<norm>)
+  p(y_i|kt)=markhl(f(y_i), tag: #<base>, color: #blue) exp(
+    markhl(phi(kt)^TT, color: #red, tag: #<model>) markhl(u(y_i), tag: #<data>)
+    -markhl(g(kt), color: #gray, tag: #<norm>)
   )
   #annot(<base>, pos: top + left)[base measure]
   #annot(<model>, pos: bottom + left)[natural parameter]
@@ -134,28 +134,28 @@ $
 Likelihood of a sequence of i.i.d.samples:
 
 $
-  p(y|theta)=markhl(product_(i=1)^n (f(y_i)), color: #blue) exp(
-    markhl(phi(theta)^TT, color: #red,) markhl(sum_(i=1)^n u(y_i), tag: #<data2>)
-    -markhl(n g(theta), color: #gray)
+  p(y|kt)=markhl(product_(i=1)^n (f(y_i)), color: #blue) exp(
+    markhl(phi(kt)^TT, color: #red,) markhl(sum_(i=1)^n u(y_i), tag: #<data2>)
+    -markhl(n g(kt), color: #gray)
   )
   #annot(<data2>, pos: top)[$t(y)=sum_(i=1)^n u(y_i)$]
 $
 
 So conjugate prior for that likelihood is
-$ p(theta)prop exp(phi(theta)^TT nu-n_0 g(theta)) $
+$ p(kt)prop exp(phi(kt)^TT nu-n_0 g(kt)) $
 
 Posterior is
-$ p(theta|y)prop exp(phi(theta)^TT (nu+t(y))-(n_0+n) g(theta)) $
+$ p(kt|y)prop exp(phi(kt)^TT (nu+t(y))-(n_0+n) g(kt)) $
 
 = Proper and Improper Prior Distributions
 A prior is called *proper* if it is a valid probability distribution:
 $
-  p(theta)>=0, forall theta in Theta, integral_(theta in Theta) p(theta) dd(theta) =1
+  p(kt)>=0, forall kt in kT, int_(kt in kT) p(kt) dd(kt) =1
 $
 
 And *improper* if
 $
-  p(theta)>=0, forall theta in Theta, integral_(theta in Theta) p(theta) dd(theta) =infinity
+  p(kt)>=0, forall kt in kT, int_(kt in kT) p(kt) dd(kt) =inft
 $
 
 - If a prior is proper, so must the posterior.
