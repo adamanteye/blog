@@ -5,7 +5,7 @@ SITE='https://blog.adamanteye.cc'
 BUILD_DIR="$1"
 
 SRC_PREFIX='src'
-DATE_FALLBACK_UTC="$(date --utc +%Y-%m-%dT%H:%M:%S%z)"
+DATE_FALLBACK_UTC="$(date --utc +%Y-%m-%dT%H:%M:%SZ)"
 
 EXCLUDE_REGEX='(^|/)(404|error)(/|\.html$)'
 
@@ -31,13 +31,21 @@ echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
 
 find "$BUILD_DIR" -type f -name "index.html" | sort -r | while read -r file; do
 	rel="${file#"$BUILD_DIR"/}"
-	rel="${rel%/index.html}/"
+	if [[ "$rel" == "index.html" ]]; then
+		rel=""
+	else
+		rel="${rel%/index.html}/"
+	fi
 
 	if [[ "$rel" =~ $EXCLUDE_REGEX ]]; then
 		continue
 	fi
 
-	src="$SRC_PREFIX/$rel"
+	if [[ -z "$rel" ]]; then
+		src="index.typ"
+	else
+		src="$SRC_PREFIX/$rel"
+	fi
 	emit_url "$SITE/$rel" "$src"
 done
 
