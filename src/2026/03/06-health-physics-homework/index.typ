@@ -182,17 +182,17 @@
 
   == 100 g 硝酸钾样品中的放射性强度
 
-  $"KNO"_3$ 的摩尔质量约为
+  $chem("K")chem("N")chem("O")_3$ 的摩尔质量约为
   $
-    M("KNO"_3) = 39.1 + 14.0 + 3 times 16.0 approx qty("101.1", "g/mol")
+    M(chem("K")chem("N")chem("O")_3) = 39.1 + 14.0 + 3 times 16.0 approx qty("101.1", "g/mol")
   $
 
-  因而 100 g $"KNO"_3$ 的物质的量为
+  因而 100 g $chem("K")chem("N")chem("O")_3$ 的物质的量为
   $
     n = 100 / 101.1 approx qty("0.989", "mol")
   $
 
-  每个 $"KNO"_3$ 分子含 1 个 K 原子, 所以钾原子总数为
+  每个 $chem("K")chem("N")chem("O")_3$ 分子含 1 个 K 原子, 所以钾原子总数为
   $
     N_K = n N_A approx 0.989 times 6.02 times 10^23 approx 5.95 times 10^23
   $
@@ -403,14 +403,14 @@
     A approx qty("10.3", "GBq")
   $
 
-  == 1 吨 $U_3 O_8$ 含量为 10% 的铀矿中 $isotope("U", a: 234)$ 的比活度
+  == 1 吨 $chem("U")_3 chem("O")_8$ 含量为 10% 的铀矿中 $isotope("U", a: 234)$ 的比活度
 
   1 吨矿石中含
   $
-    m(U_3 O_8) = 0.10 times 1000 = qty("100", "kg")
+    m(chem("U")_3 chem("O")_8) = 0.10 times 1000 = qty("100", "kg")
   $
 
-  $U_3 O_8$ 中铀的质量分数约为
+  $chem("U")_3 chem("O")_8$ 中铀的质量分数约为
   $
     w_U = (3 times 238) / (3 times 238 + 8 times 16) approx 0.848
   $

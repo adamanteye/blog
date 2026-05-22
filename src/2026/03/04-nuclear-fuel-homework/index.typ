@@ -4,7 +4,7 @@
 #let hw = [
   = 第一次作业
 
-  估算一个百万千瓦的压水反应堆每年需要的核燃料质量 ($istp("U")istp("O")_2$,
+  估算一个百万千瓦的压水反应堆每年需要的核燃料质量 ($chem("U")chem("O")_2$,
   假设其中 $u235$ 丰度 5%, 乏燃料中 $u235$ 丰度 1%):
 
   考虑一年发电量为 $qty("3.1536e16", "J")$, 取热效率 33%, 需要能量
@@ -23,7 +23,7 @@
   题设给出新燃料中 $u235$ 丰度为 5%, 乏燃料中为 1%, 即需要的质量为
   $qty("1.16", "t") / 0.04 approx qty("29.0", "t")$.
 
-  最终换成 $istp("U")istp("O")_2$ 的摩尔质量:
+  最终换成 $chem("U")chem("O")_2$ 的摩尔质量:
   $ M = 1.134 M_U approx qty("33.0", "t") $
 
   = 第二次作业
@@ -33,11 +33,11 @@
   已知六氟化铀在空气中与水蒸气发生水解反应:
 
   $
-    istp("U")istp("F")_6 + 2istp("H")_2istp("O")
-    -> istp("U")istp("O")_2istp("F")_2 + 4istp("H")istp("F")
+    chem("U")chem("F")_6 + 2chem("H")_2chem("O")
+    -> chem("U")chem("O")_2chem("F")_2 + 4chem("H")chem("F")
   $
 
-  若产物完全为无水 $istp("U")istp("O")_2istp("F")_2$, 则固体质量为:
+  若产物完全为无水 $chem("U")chem("O")_2chem("F")_2$, 则固体质量为:
 
   $
     m = 2.84 times 308 approx qty("875", "g")
@@ -50,50 +50,50 @@
   若按无水产物计, 其理论质量约为 $qty("875", "g")$.
 
   若将固体产物加热到, 认为其中的吸附水和结晶水基本除去, 最终剩余固体近似为无水
-  $istp("U")istp("O")_2istp("F")_2$, 剩余固体质量为 $qty("875", "g")$.
+  $chem("U")chem("O")_2chem("F")_2$, 剩余固体质量为 $qty("875", "g")$.
 
   == 2
 
   先发生水解反应:
 
   $
-    istp("U")istp("F")_6 + 2istp("H")_2istp("O")
-    -> istp("U")istp("O")_2istp("F")_2 + 4istp("H")istp("F")
+    chem("U")chem("F")_6 + 2chem("H")_2chem("O")
+    -> chem("U")chem("O")_2chem("F")_2 + 4chem("H")chem("F")
   $
 
-  其中生成的 $istp("U")istp("O")_2istp("F")_2$ 还要继续与碳酸钠反应:
+  其中生成的 $chem("U")chem("O")_2chem("F")_2$ 还要继续与碳酸钠反应:
 
   $
-    istp("U")istp("O")_2istp("F")_2 + istp("Na")_2istp("C")istp("O")_3
-    -> istp("U")istp("O")_2istp("C")istp("O")_3 + 2istp("Na")istp("F")
+    chem("U")chem("O")_2chem("F")_2 + chem("Na")_2chem("C")chem("O")_3
+    -> chem("U")chem("O")_2chem("C")chem("O")_3 + 2chem("Na")chem("F")
   $
 
-  同时 $istp("H")istp("F")$ 被碳酸钠中和:
+  同时 $chem("H")chem("F")$ 被碳酸钠中和:
 
   $
-    4istp("H")istp("F") + 2istp("Na")_2istp("C")istp("O")_3
-    -> 4istp("Na")istp("F") + 2istp("C")istp("O")_2 + 2istp("H")_2istp("O")
+    4chem("H")chem("F") + 2chem("Na")_2chem("C")chem("O")_3
+    -> 4chem("Na")chem("F") + 2chem("C")chem("O")_2 + 2chem("H")_2chem("O")
   $
 
   因而总反应可写为
 
   $
-    istp("U")istp("F")_6 + 3istp("Na")_2istp("C")istp("O")_3
-    -> istp("U")istp("O")_2istp("C")istp("O")_3
-    + 6istp("Na")istp("F") + 2istp("C")istp("O")_2
+    chem("U")chem("F")_6 + 3chem("Na")_2chem("C")chem("O")_3
+    -> chem("U")chem("O")_2chem("C")chem("O")_3
+    + 6chem("Na")chem("F") + 2chem("C")chem("O")_2
   $
 
-  若题设 $istp("U")istp("F")_6$ 质量为 $qty("500", "g")$, 则
+  若题设 $chem("U")chem("F")_6$ 质量为 $qty("500", "g")$, 则
 
   $
-    n_(istp("U")istp("F")_6) = 500 / 352 approx qty("1.42", "mol")
+    n_(chem("U")chem("F")_6) = 500 / 352 approx qty("1.42", "mol")
   $
 
   所需碳酸钠的物质的量为
 
   $
-    n_(istp("Na")_2istp("C")istp("O")_3)
-    = 3 n_(istp("U")istp("F")_6)
+    n_(chem("Na")_2chem("C")chem("O")_3)
+    = 3 n_(chem("U")chem("F")_6)
     approx qty("4.26", "mol")
   $
 
@@ -103,7 +103,7 @@
     m = 4.26 times 106 approx qty("452", "g")
   $
 
-  所以至少需要 $qty("452", "g")$ 的 $istp("Na")_2istp("C")istp("O")_3$.
+  所以至少需要 $qty("452", "g")$ 的 $chem("Na")_2chem("C")chem("O")_3$.
 
   = 第三次作业
 
@@ -141,31 +141,31 @@
 
   == 分离铀同位素时的最大孔径 $L_0$
 
-  分离铀同位素时, 考虑气体为 $istp("U")istp("F")_6$.
+  分离铀同位素时, 考虑气体为 $chem("U")chem("F")_6$.
 
-  查得 $istp("U")istp("F")_6$ 的等效分子直径可取
+  查得 $chem("U")chem("F")_6$ 的等效分子直径可取
 
   $
-    d_(istp("U")istp("F")_6) approx qty("5.5e-10", "m")
+    d_(chem("U")chem("F")_6) approx qty("5.5e-10", "m")
   $
 
   于是其平均自由程为
 
   $
-    kl_(istp("U")istp("F")_6)
+    kl_(chem("U")chem("F")_6)
     = k_B T / (sqrt(2) pi d^2 P)
   $
 
   即
 
   $
-    kl_(istp("U")istp("F")_6) approx qty("0.23", "um")
+    kl_(chem("U")chem("F")_6) approx qty("0.23", "um")
   $
 
   为了保证 $K_n > 10$，最大孔径应满足
 
   $
-    L_0 = kl_(istp("U")istp("F")_6) / 10
+    L_0 = kl_(chem("U")chem("F")_6) / 10
     approx qty("2.3e-8", "m") = qty("23", "nm")
   $
 
@@ -174,19 +174,19 @@
   若采用氢气作为介质, 则取氢气分子直径为
 
   $
-    d_(istp("H")_2) approx qty("2.89e-10", "m")
+    d_(chem("H")_2) approx qty("2.89e-10", "m")
   $
 
   即
 
   $
-    kl_(istp("H")_2) approx qty("0.832", "um")
+    kl_(chem("H")_2) approx qty("0.832", "um")
   $
 
   因此相应的最大孔径为
 
   $
-    L = kl_(istp("H")_2) / 10
+    L = kl_(chem("H")_2) / 10
     approx qty("8.3e-8", "m") = qty("83", "nm")
   $
 
@@ -198,7 +198,7 @@
   $v = qty("600", "m/s")$, 侧壁压强 $p(a) = 100$ Torr $= qty("13300", "Pa")$,
   温度 $T = 300 K$.
 
-  取工作气体为 $istp("U")istp("F")_6$, 其摩尔质量为
+  取工作气体为 $chem("U")chem("F")_6$, 其摩尔质量为
 
   $
     M = qty("0.352", "kg/mol")
@@ -240,7 +240,7 @@
     n = int_V p / (R T) dd(V)
   $
 
-  采用圆柱坐标 $dif V = 2 pi r h dd(r)$, 则
+  采用圆柱坐标 $dd(V) = 2 pi r h dd(r)$, 则
 
   $
     n = (2 pi h) / (R T) int_0^a p(r) r dd(r)
@@ -281,7 +281,7 @@
     approx qty("0.40", "g")
   $
 
-  故离心机内部滞留量约为 $qty("1.14e-3", "mol")$, 对应 $istp("U")istp("F")_6$
+  故离心机内部滞留量约为 $qty("1.14e-3", "mol")$, 对应 $chem("U")chem("F")_6$
   质量约为 $qty("0.40", "g")$.
 
   == 3
@@ -318,7 +318,7 @@
 
   已知供料丰度 $x_f = 0.711% = 0.00711$, 产品丰度 $x_p = 5% = 0.05$, 贫料丰度
   $x_w = 0.2% = 0.002$, 供料流量为 $qty("1000", "t/a")$ 的
-  $istp("U")istp("F")_6$.
+  $chem("U")chem("F")_6$.
 
   分离功与物料衡算均应按金属铀质量计, 因此先将六氟化铀流量折算为金属铀流量:
 

@@ -219,7 +219,7 @@
       lq.plot(ts, t => r(t, 4.26), label: [Ag 4.26 eV]),
       lq.plot(ts, t => r(t, 5.1), label: [Au 5.1 eV]),
       lq.plot(ts, t => r(t, 4.5), label: [W 4.5 eV]),
-      lq.plot(ts, t => r(t, 2.6), label: [LaB6 2.6 eV]),
+      lq.plot(ts, t => r(t, 2.6), label: [$chem("La")chem("B")_6$ 2.6 eV]),
     ),
   )
 
@@ -441,7 +441,7 @@
   取正根并分离变量:
 
   $
-    d phi/(d x) = 2 sqrt(A) phi^(1/4) \
+    dv(phi, x) = 2 sqrt(A) phi^(1/4) \
     phi^(-1/4) dd(phi) = 2 sqrt(A) dd(x)
   $
 
@@ -511,13 +511,13 @@
   由 Poisson 方程,
 
   $
-    (d^2 phi) / (d x^2) = abs(rho) / ke_0
+    dv(phi, x, 2) = abs(rho) / ke_0
   $
 
   代入上式得
 
   $
-    (d^2 phi) / (d x^2)
+    dv(phi, x, 2)
     = J / (ke_0 v) \
     = J / ke_0 sqrt(m / (2 e phi))
   $
@@ -525,7 +525,7 @@
   即
 
   $
-    (d^2 phi) / (d x^2)
+    dv(phi, x, 2)
     = J / ke_0 sqrt(m / (2 e)) phi^(-1/2)
   $
 
@@ -538,55 +538,55 @@
   则有
 
   $
-    (d^2 phi) / (d x^2) = K phi^(-1/2)
+    dv(phi, x, 2) = K phi^(-1/2)
   $
 
-  两边同乘 $d phi / d x$, 得
+  两边同乘 $dv(phi, x)$, 得
 
   $
-    (d^2 phi) / (d x^2) (d phi) / (d x)
-    = K phi^(-1/2) (d phi) / (d x)
+    dv(phi, x, 2) dv(phi, x)
+    = K phi^(-1/2) dv(phi, x)
   $
 
   即
 
   $
-    d/(d x) [1/2 ((d phi) / (d x))^2]
-    = d/(d x) [2 K phi^(1/2)]
+    dv(1/2 (dv(phi, x))^2, x)
+    = dv(2 K phi^(1/2), x)
   $
 
   积分得
 
   $
-    1/2 ((d phi) / (d x))^2 = 2 K phi^(1/2) + C
+    1/2 (dv(phi, x))^2 = 2 K phi^(1/2) + C
   $
 
   在空间电荷限制条件下, 阴极表面电场为零, 即
 
   $
-    phi(0) = 0, quad ((d phi) / (d x))|_(x = 0) = 0
+    phi(0) = 0, quad (dv(phi, x))|_(x = 0) = 0
   $
 
   故积分常数 $C = 0$. 于是
 
   $
-    ((d phi) / (d x))^2 = 4 K phi^(1/2)
+    (dv(phi, x))^2 = 4 K phi^(1/2)
   $
 
   取正根,
 
   $
-    (d phi) / (d x) = 2 sqrt(K) phi^(1/4)
+    dv(phi, x) = 2 sqrt(K) phi^(1/4)
   $
 
   分离变量并积分:
 
   $
-    phi^(-1/4) d phi = 2 sqrt(K) d x
+    phi^(-1/4) dd(phi) = 2 sqrt(K) dd(x)
   $
 
   $
-    int phi^(-1/4) d phi = int 2 sqrt(K) d x
+    int phi^(-1/4) dd(phi) = int 2 sqrt(K) dd(x)
   $
 
   得
@@ -1029,7 +1029,7 @@
   设实验室系为 $S$, 电子速度为 $va(v)$, 实验室系加速度为
 
   $
-    va(a) = (d va(v)) / (d t).
+    va(a) = dv(va(v), t).
   $
 
   在某一瞬间取电子的瞬时静止系 $S'$. 在 $S'$ 中电子瞬时速度为零,

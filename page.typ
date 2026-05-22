@@ -76,6 +76,7 @@
 #let inft = $infinity$
 #let ol = it => $overline(it)$
 #let istp = it => $isotope(it)$
+#let chem = it => math.op(it)
 #let cps = $compose$
 #let diff = it => $difference(it)$
 

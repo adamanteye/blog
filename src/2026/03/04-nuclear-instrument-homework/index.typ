@@ -157,7 +157,7 @@
 
   题中系统满足
   $
-    dv(r, t) + 5 r(t) = int_(-inft)^(+inft) e(tau) f(t - tau) d tau - e(t)
+    dv(r, t) + 5 r(t) = int_(-inft)^(+inft) e(tau) f(t - tau) dd(tau) - e(t)
   $
 
   其中
@@ -167,7 +167,7 @@
 
   注意到
   $
-    int_(-inft)^(+inft) e(tau) f(t - tau) d tau = (e * f)(t)
+    int_(-inft)^(+inft) e(tau) f(t - tau) dd(tau) = (e * f)(t)
   $
 
   在零初始条件下取拉氏变换:
@@ -246,7 +246,7 @@
   故
   $
     (f_1 * f_2)(t)
-    = 2 int_(max(0, t - pi))^(min(1, t)) sin(t - tau) d tau
+    = 2 int_(max(0, t - pi))^(min(1, t)) sin(t - tau) dd(tau)
   $
 
   分段计算如下:
@@ -259,21 +259,21 @@
   + 当 $0 <= t < 1$ 时,
     $
       (f_1 * f_2)(t)
-      = 2 int_0^t sin(t - tau) d tau
+      = 2 int_0^t sin(t - tau) dd(tau)
       = 2 (1 - cos t)
     $
 
   + 当 $1 <= t < pi$ 时,
     $
       (f_1 * f_2)(t)
-      = 2 int_0^1 sin(t - tau) d tau
+      = 2 int_0^1 sin(t - tau) dd(tau)
       = 2 (cos(t - 1) - cos t)
     $
 
   + 当 $pi <= t < pi + 1$ 时,
     $
       (f_1 * f_2)(t)
-      = 2 int_(t - pi)^1 sin(t - tau) d tau
+      = 2 int_(t - pi)^1 sin(t - tau) dd(tau)
       = 2 (cos(t - 1) + 1)
     $
 
@@ -652,13 +652,13 @@
   若以左侧背电极为 $x = num("0")$, 右侧 $p^+$ 阳极为 $x = d$, 则电场强度大小满足
 
   $
-    (d |E|) / (d x) = (q N_D) / ke_"Si"
+    dv(abs(E), x) = (q N_D) / ke_"Si"
   $
 
   并且
 
   $
-    int_(num("0"))^d |E(x)| d x = V_R
+    int_(num("0"))^d abs(E(x)) dd(x) = V_R
   $
 
   故有
@@ -701,7 +701,7 @@
   因此阳极权电场为常数
 
   $
-    E_w = (d phi_w) / (d x) = num("1") / d
+    E_w = dv(phi_w, x) = num("1") / d
     = num("1") / qty("3.0e-4", "m")
     approx qty("3.33e3", "m^-1")
   $
@@ -832,7 +832,7 @@
 
   并联 $"RC"$ 电路满足
   $
-    C (d v) / (d t) + v/R = i_s(t)
+    C dv(v, t) + v/R = i_s(t)
   $
 
   因此在脉冲作用期间 $0 < t < t_w$,
@@ -903,7 +903,7 @@
 
   由外特性曲线可直接读出 3 个区间的电压增益, 即各段斜率
   $
-    K = dv_o / d v_i
+    K = dd(v_o) / dd(v_i)
   $
 
   在 $(-b, -a)$ 区间,
@@ -1066,12 +1066,12 @@
   $R C$ 网络满足
   $
     (-A v_i - v_o) / R
-    = C (d v_o) / (d t) + C_f (d (v_o - v_i)) / (d t)
+    = C dv(v_o, t) + C_f dv(v_o - v_i, t)
   $
 
   输入端列 KCL:
   $
-    i(t) = C_i (d v_i) / (d t) + C_f (d (v_i - v_o)) / (d t)
+    i(t) = C_i dv(v_i, t) + C_f dv(v_i - v_o, t)
   $
 
   在拉氏域令 $i(t) = Q kd(t)$, 即 $I(s) = Q$, 可解得
