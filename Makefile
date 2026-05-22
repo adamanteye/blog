@@ -9,9 +9,9 @@ SHELL     := /bin/bash
 include mk/log.mk
 
 ifeq ($(V),y)
-	MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags
+	MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags --html-keep-document-tags
 else
-	MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags -q
+	MINIFY_CMD := minify --html-keep-quotes --html-keep-end-tags --html-keep-document-tags -q
 endif
 
 OBJS :=
