@@ -87,7 +87,7 @@
 
   特征方程为 $kl^2 + 2 kl + 2 = 0$
 
-  解得 $kl_1 = -1 + j, quad kl_2 = -1 - j$
+  解得 $kl_1 = -1 + j$, $kl_2 = -1 - j$.
 
   故零输入响应可写为 $r_"zi"(t) = e^(-t)(C_1 cos t + C_2 sin t) u(t)$
 
@@ -217,11 +217,11 @@
   $
     (f_1 * f_2)(t) =
     cases(
-      0 quad t < 0,
-      2 (1 - cos t) quad 0 <= t < 1,
-      2 (cos(t - 1) - cos t) quad 1 <= t < pi,
-      2 (cos(t - 1) + 1)quad pi <= t < pi + 1,
-      0 quad t >= pi + 1,
+      0 "if" t < 0,
+      2 (1 - cos t) "if" 0 <= t < 1,
+      2 (cos(t - 1) - cos t) "if" 1 <= t < pi,
+      2 (cos(t - 1) + 1) "if" pi <= t < pi + 1,
+      0 "if" t >= pi + 1,
     )
   $
 
@@ -321,7 +321,8 @@
   取阳极感应电流流入前放大器为正. 由沉积能量与平均电离能可得产生的电子-离子对数
 
   $
-    E_"dep" = qty("1", "MeV"), quad w = qty("25", "eV"), quad
+    E_"dep" = qty("1", "MeV") \
+    w = qty("25", "eV") \
     N = num("1e6") / num("25") = num("4.0e4")
   $
 
@@ -335,7 +336,8 @@
   平行板电离室中电场近似均匀, 故
 
   $
-    V = qty("1000", "V"), quad d = qty("10", "mm") = qty("0.01", "m"), quad
+    V = qty("1000", "V") \
+    d = qty("10", "mm") = qty("0.01", "m") \
     E = V/d = num("1000") / num("0.01") approx qty("1.0e5", "V/m")
   $
 
@@ -376,9 +378,9 @@
 
   $
     i_A(t) = cases(
-      i_e + i_i approx qty("1.283e-8", "A") quad num("0") <= t < qty("0.30", "us"),
-      i_i approx qty("1.28e-11", "A") quad qty("0.30", "us") <= t < qty("200", "us"),
-      num("0") quad t >= qty("200", "us"),
+      i_e + i_i approx qty("1.283e-8", "A") "if" num("0") <= t < qty("0.30", "us"),
+      i_i approx qty("1.28e-11", "A") "if" qty("0.30", "us") <= t < qty("200", "us"),
+      num("0") "if" t >= qty("200", "us"),
     )
   $
 
@@ -392,8 +394,8 @@
 
   $
     phi_w(z) = cases(
-      num("0") quad num("0") <= z <= d_1,
-      (z - d_1) / (d - d_1) quad d_1 < z <= d,
+      num("0") "if" num("0") <= z <= d_1,
+      (z - d_1) / (d - d_1) "if" d_1 < z <= d,
     )
   $
 
@@ -401,13 +403,13 @@
 
   $
     E_w(z) = cases(
-      num("0") quad num("0") <= z <= d_1,
-      num("1") / (d - d_1) quad d_1 < z <= d,
+      num("0") "if" num("0") <= z <= d_1,
+      num("1") / (d - d_1) "if" d_1 < z <= d,
     )
   $
 
-  题中
-  $d = qty("10", "mm"), quad d_1 = qty("9", "mm"), quad d - d_1 = qty("1", "mm")$
+  题中 $d = qty("10", "mm")$, $d_1 = qty("9", "mm")$,
+  $d - d_1 = qty("1", "mm")$.
 
   而实际漂移电场在两区都是
 
@@ -417,8 +419,8 @@
     approx qty("1.0e5", "V/m")
   $
 
-  所以载流子漂移速度仍为
-  $v_e approx qty("2.0e4", "m/s"), quad v_i approx qty("20", "m/s")$
+  所以载流子漂移速度仍为 $v_e approx qty("2.0e4", "m/s")$,
+  $v_i approx qty("20", "m/s")$.
 
   === 电离发生在栅极下方
 
@@ -456,9 +458,9 @@
 
   $
     i_A(t) = cases(
-      num("0") quad num("0") <= t < qty("0.25", "us"),
-      qty("1.28e-7", "A") quad qty("0.25", "us") <= t < qty("0.30", "us"),
-      num("0") quad t >= qty("0.30", "us"),
+      num("0") "if" num("0") <= t < qty("0.25", "us"),
+      qty("1.28e-7", "A") "if" qty("0.25", "us") <= t < qty("0.30", "us"),
+      num("0") "if" t >= qty("0.30", "us"),
     )
   $
 
@@ -495,9 +497,9 @@
 
   $
     i_A(t) = cases(
-      i_e + i_i approx qty("1.283e-7", "A") quad num("0") <= t < qty("25", "ns"),
-      i_i approx qty("1.28e-10", "A") quad qty("25", "ns") <= t < qty("25", "us"),
-      num("0") quad t >= qty("25", "us"),
+      i_e + i_i approx qty("1.283e-7", "A") "if" num("0") <= t < qty("25", "ns"),
+      i_i approx qty("1.28e-10", "A") "if" qty("25", "ns") <= t < qty("25", "us"),
+      num("0") "if" t >= qty("25", "us"),
     )
   $
 
@@ -548,8 +550,8 @@
   其中 $V_R = qty("200", "V")$, 所以
 
   $
-    E_0 approx qty("4.35e5", "V/m"), quad
-    S approx qty("1.55e9", "V/m^2"), quad
+    E_0 approx qty("4.35e5", "V/m") \
+    S approx qty("1.55e9", "V/m^2") \
     |E(x)| approx E_0 + S x
   $
 
@@ -637,8 +639,8 @@
     = (num("13") n e) / num("40")
   $
 
-  所以三种情况下阳极输出电荷量分别为
-  $kD Q = n e, quad (num("5") n e) / num("8"), quad (num("13") n e) / num("40")$
+  所以三种情况下阳极输出电荷量分别为 $kD Q = n e$, $(num("5") n e) / num("8")$,
+  $(num("13") n e) / num("40")$.
 
   对应前置放大器输出电压幅度为 $kD V = (kD Q) / C$
 
@@ -659,7 +661,7 @@
   $v(t) = I_0 R (1 - e^(-t_w/(R C))) e^(-(t - t_w)/(R C))$
 
   + 当 $t_w$ 远小于 $R C$ 时, 指数项可展开为 $e^(-t/(R C)) approx 1 - t/(R C)$,
-    因而 $v(t) approx (I_0/C) t, quad 0 < t < t_w$ 即输出近似线性上升到
+    因而在 $0 < t < t_w$ 时 $v(t) approx (I_0/C) t$, 即输出近似线性上升到
     $v_"max" approx I_0 t_w / C = Q/C$ 随后按时间常数 $R C$ 指数衰减.
     这时波形近似为窄三角脉冲.
 
@@ -724,7 +726,7 @@
   若把输入端本身电容 $C_i = qty("10", "pF")$ 也计入, 则 3
   个区间的总等效输入电容分别为
   $
-    C_"in,1" = C_"in,3" = qty("211", "pF"), quad
+    C_"in,1" = C_"in,3" = qty("211", "pF") \
     C_"in,2" = qty("1011", "pF")
   $
 
@@ -741,15 +743,15 @@
 
   == 3
 
-  图中反馈网络为
-  $R_2 = qty("1000", "Mohm"), quad C_2 = qty("1", "pF"), quad A = num("1e4")$
+  图中反馈网络为 $R_2 = qty("1000", "Mohm")$, $C_2 = qty("1", "pF")$,
+  $A = num("1e4")$.
 
-  输入端还并联有 $R_1 = qty("100", "Mohm"), quad C_1 = qty("2000", "pF")$
+  输入端还并联有 $R_1 = qty("100", "Mohm")$, $C_1 = qty("2000", "pF")$.
 
   由于 $v_o = -A v_i$
 
-  反馈电阻和反馈电容在输入端的等效值分别为
-  $R_"f,eq" = R_2 / (1 + A), quad C_"f,eq" = (1 + A) C_2$
+  反馈电阻和反馈电容在输入端的等效值分别为 $R_"f,eq" = R_2 / (1 + A)$,
+  $C_"f,eq" = (1 + A) C_2$.
 
   故整个放大器的等效输入阻抗 $Z_i = R_i parallel (1/(s C_i))$
 
@@ -791,8 +793,8 @@
 
   代入 $A = 1000, kb = 0.01$, $v_o / v_i = 1000 / (1 + 10) approx 90.91$
 
-  故两种电路在有限开环增益下的闭环放大倍数分别为
-  $K_1 approx -90.83, quad K_2 approx 90.91$
+  故两种电路在有限开环增益下的闭环放大倍数分别为 $K_1 approx -90.83$,
+  $K_2 approx 90.91$.
 
   == 5
 
@@ -832,7 +834,7 @@
 
   则
   $
-    C_T approx (1 + A) C_f, quad
+    C_T approx (1 + A) C_f \
     tau approx R C / (1 + A)
   $
 
@@ -840,7 +842,7 @@
 
   故可写成近似形式
   $
-    v_o(t) approx -Q / C_f (1 - e^(-t/tau)) u(t), quad
+    v_o(t) approx -Q / C_f (1 - e^(-t/tau)) u(t) \
     tau approx R C / (1 + A)
   $
 
@@ -894,8 +896,10 @@
 
   图中参数为
   $
-    C_i = qty("100", "pF"), quad C_f = qty("1", "pF"), quad
-    C = qty("10", "pF"), quad R = qty("500", "kohm")
+    C_i = qty("100", "pF") \
+    C_f = qty("1", "pF") \
+    C = qty("10", "pF") \
+    R = qty("500", "kohm")
   $
 
   输入端与输出端列方程可得该系统的主时间常数近似为

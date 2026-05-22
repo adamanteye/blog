@@ -13,7 +13,7 @@ A process $N(t)$ is called inhomogenous poisson process if:
 
 $
        N(0) & =0 \
-  N(t)-N(s) & ~"Poisson"(int_s^t kl(u) dd(u)), quad forall 0<=s<t
+  N(t)-N(s) & ~"Poisson"(int_s^t kl(u) dd(u)) "for" forall 0<=s<t
 $
 
 == Likelihood

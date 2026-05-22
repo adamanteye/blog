@@ -99,7 +99,7 @@
   并不是非常高, 可以在公式中使用 $E_F$):
 
   $
-    f(E) & =1/(1+e^((E-E_F)\/(k_B T))), quad T>0
+    f(E) & =1/(1+e^((E-E_F)\/(k_B T))) "for" T>0
   $
 
   并且 $T->0$ 有:
@@ -124,7 +124,7 @@
   现在计算单位体积, 单位动量空间中的量子态数.
 
   考虑边长为 $L$, 体积为 $V=L^3$ 的立方体, 对电子取周期性边界条件.
-  则允许的波矢为 $k_i = 2pi n_i/L, quad i = x,y,z$
+  则允许的波矢为 $k_i = 2pi n_i/L$, $i = x,y,z$.
 
   因此在波矢空间中, 每个量子态占据的体积为 $(2pi)^3/V$.
 
@@ -258,7 +258,7 @@
 
   在最简单的自由电子模型下, 发射到真空中的电子在动量空间占据半球
 
-  $ p_x^2 + p_y^2 + p_z^2 <= p_m^2, quad p_z > 0 $
+  $ p_x^2 + p_y^2 + p_z^2 <= p_m^2, p_z > 0 $
 
   并且穿过表面的粒子流要按法向速度加权, 即
 
@@ -276,7 +276,7 @@
     = int p_x^2 p_z dd(p, 3) \/ int p_z dd(p, 3)
   $
 
-  取球坐标, 以 $z$ 为极轴, 有 $p_x = p sin kt cos phi, quad p_z = p cos kt$
+  取球坐标, 以 $z$ 为极轴, 有 $p_x = p sin kt cos phi$, $p_z = p cos kt$.
 
   以及
 
@@ -331,7 +331,8 @@
   考虑一维平板真空二极管. 阴极位于 $x=0$, 阳极位于 $x=d$, 阴极电势取为 0,
   阳极电势为 $V$, 即
 
-  $ phi(0)=0, quad phi(d)=V $
+  $ phi(0)=0 $,
+  $ phi(d)=V $.
 
   并假设电子从阴极出发时初速度近似为 0.
 
@@ -408,7 +409,7 @@
   == 重复 Child-Langmuir 的推导过程, 并计算 200 kV, 5 cm 间距极板中的流强密度
 
   设平板二极管阴极位于 $x = 0$, 阳极位于 $x = d$, 两极板间电压为 $V_0$. 取电势为
-  $phi(x)$, 满足 $phi(0) = 0, quad phi(d) = V_0$
+  $phi(x)$, 满足 $phi(0) = 0$, $phi(d) = V_0$.
 
   设电子从阴极表面近似静止出发, 由能量守恒有 $1/2 m v^2 = e phi$
 
@@ -456,8 +457,8 @@
 
   积分得 $1/2 (dv(phi, x))^2 = 2 K phi^(1/2) + C$
 
-  在空间电荷限制条件下, 阴极表面电场为零, 即
-  $phi(0) = 0, quad (dv(phi, x))|_(x = 0) = 0$
+  在空间电荷限制条件下, 阴极表面电场为零, 即 $phi(0) = 0$,
+  $(dv(phi, x))|_(x = 0) = 0$.
 
   故积分常数 $C = 0$. 于是 $(dv(phi, x))^2 = 4 K phi^(1/2)$
 
@@ -535,7 +536,7 @@
 
   利用 $mu_0 ke_0 = 1 / c^2$
 
-  并记 $kb = v / c, quad kg = 1 / sqrt(1 - kb^2)$
+  并记 $kb = v / c$, $kg = 1 / sqrt(1 - kb^2)$.
 
   则
 
@@ -640,8 +641,8 @@
   下面用 Kramers 形式作定性示意:
 
   $
-    I(E) prop (E_"max" - E) / E_"max",
-    quad 0 < E < E_"max".
+    I(E) prop (E_"max" - E) / E_"max" \
+    0 < E < E_"max".
   $
 
   当 $E_"max"$ 超过靶材 K edge 时, 谱中出现 Kα 和 Kβ 特征峰; 否则没有 K
@@ -764,16 +765,16 @@
   将实验室系加速度分解为平行于速度和垂直于速度的两部分:
 
   $
-    va(a) = va(a)_parallel + va(a)_perp,
-    quad va(a)_parallel parallel va(v),
-    quad va(a)_perp perp va(v).
+    va(a) = va(a)_parallel + va(a)_perp \
+    va(a)_parallel parallel va(v) \
+    va(a)_perp perp va(v).
   $
 
   洛伦兹变换下, 加速度分量满足
 
   $
-    a'_parallel = kg^3 a_parallel,
-    quad a'_perp = kg^2 a_perp.
+    a'_parallel = kg^3 a_parallel \
+    a'_perp = kg^2 a_perp.
   $
 
   因此瞬时静止系中的加速度平方为
@@ -891,8 +892,8 @@
   或写成
 
   $
-    nu_s = nu_i / (1 + ka (1 - cos kt)),
-    quad ka = h nu_i / (m_e c^2).
+    nu_s = nu_i / (1 + ka (1 - cos kt)) \
+    ka = h nu_i / (m_e c^2).
   $
 
   当 $h nu_i << m_e c^2$ 时, 有 $ka << 1$, 因而可取 $nu_s approx nu_i$. 于是
@@ -905,8 +906,8 @@
   利用三角恒等式
 
   $
-    sin kt = 2 sin(kt / 2) cos(kt / 2),
-    quad 1 - cos kt = 2 sin^2(kt / 2),
+    sin kt = 2 sin(kt / 2) cos(kt / 2) \
+    1 - cos kt = 2 sin^2(kt / 2)
   $
 
   得 $tan phi approx cot(kt / 2).$
@@ -1101,13 +1102,13 @@
 
   对应的特征光子能量约为 $E_c = h c / kl_c approx qty("24.0", "keV")$
 
-  因此 A 问结果为:
-  $P approx qty("49.1", "kW"), quad kl_c approx qty("0.0518", "nm")$
+  因此 A 问结果为: $P approx qty("49.1", "kW")$,
+  $kl_c approx qty("0.0518", "nm")$.
 
   === B) ID19 波荡器基频波长与带宽
 
   已知波荡器周期长度 $kl_u = qty("22.6", "mm") = qty("2.26e-2", "m")$,
-  $K = 2.3, quad N = 174$.
+  $K = 2.3$, $N = 174$.
 
   波荡器轴线上第 $n$ 次谐波的波长为
   $kl_n = kl_u / (2 n kg^2) (1 + K^2 / 2 + kg^2 kt^2)$
@@ -1152,7 +1153,7 @@
   因此 B 问结果为:
 
   $
-    kl_1 approx qty("0.299", "nm"), quad
+    kl_1 approx qty("0.299", "nm") \
     kD kl / kl_1 approx 5.7 times 10^(-3)
   $
 
@@ -1243,15 +1244,15 @@
 
   这个结果可以分成两部分理解. 第一项 $exp(-ko^2 ks_e^2 / 2)$ 是单个高斯微束团的
   form factor, 决定整个频谱的包络; 第二项是长度为 $N$ 的周期列给出的 Dirichlet
-  因子, 决定谱线出现在 $ko_m = 2 pi m / T, quad m = 0, 1, 2, ...$
+  因子, 决定谱线出现在 $ko_m = 2 pi m / T$, $m = 0, 1, 2, ...$
 
   附近.
 
   在第 $m$ 次谐波处,
 
   $
-    abs(b_m) = exp(-(m ko_0 ks_e)^2 / 2),
-    quad ko_0 = 2 pi / T.
+    abs(b_m) = exp(-(m ko_0 ks_e)^2 / 2) \
+    ko_0 = 2 pi / T.
   $
 
   本题中 $T = 10 ks_e$, 所以基频处
@@ -1381,9 +1382,9 @@
   综上,
 
   $
-    E_e approx qty("13.6", "GeV"), quad
-    L_g approx qty("2.8", "m"), quad
-    kD ko / ko approx 5 times 10^(-4), quad
+    E_e approx qty("13.6", "GeV") \
+    L_g approx qty("2.8", "m") \
+    kD ko / ko approx 5 times 10^(-4) \
     kD t_"spike" approx qty("0.1", "fs").
   $
 
@@ -1517,8 +1518,8 @@
   题给电子束均方根长度和横向尺寸为
 
   $
-    ks_(e,z) = qty("450", "um"),
-    quad ks_(e,x) = ks_(e,y) = qty("60", "um").
+    ks_(e,z) = qty("450", "um") \
+    ks_(e,x) = ks_(e,y) = qty("60", "um").
   $
 
   激光均方根脉冲宽度为 $ks_(l,t) = qty("100", "fs"),$
@@ -1595,13 +1596,13 @@
   所以两种散射几何的结果可概括为
 
   $
-    180 degree:
-    quad ks_x approx ks_y approx qty("14.6", "um"),
-    quad ks_t approx qty("1.5", "ps");
-    90 degree:
-    quad ks_x approx qty("26.8", "um"),
-    quad ks_y approx qty("14.6", "um"),
-    quad ks_t approx qty("50", "fs").
+    "180 degree": \
+    ks_x approx ks_y approx qty("14.6", "um") \
+    ks_t approx qty("1.5", "ps") \
+    "90 degree": \
+    ks_x approx qty("26.8", "um") \
+    ks_y approx qty("14.6", "um") \
+    ks_t approx qty("50", "fs").
   $
 
 ]

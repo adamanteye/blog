@@ -63,7 +63,7 @@
   设 1 对应 $isotope("Na", a: 24)$, 2 对应 $isotope("P", a: 32)$.
   两者活度随时间变化为
   $
-    A_1(t) = A_(1,0) e^(-kl_1 t), quad
+    A_1(t) = A_(1,0) e^(-kl_1 t) \
     A_2(t) = A_(2,0) e^(-kl_2 t)
   $
 
@@ -71,7 +71,7 @@
 
   当两者活度相等时, $A_(1,0) e^(-kl_1 t) = A_(2,0) e^(-kl_2 t)$ 所以
   $
-    49 = e^((kl_1 - kl_2) t), quad
+    49 = e^((kl_1 - kl_2) t) \
     t = (ln 49) / (kl_1 - kl_2)
   $
 
@@ -90,8 +90,8 @@
 
   记
   $
-    C_1 = C(isotope("Po", a: 218)), quad
-    C_2 = C(isotope("Pb", a: 214)), quad
+    C_1 = C(isotope("Po", a: 218)) \
+    C_2 = C(isotope("Pb", a: 214)) \
     C_3 = C(isotope("Bi", a: 214))
   $
 
@@ -102,14 +102,14 @@
   $isotope("Bi", a: 214)$ 最终都只对应 $isotope("Po", a: 214)$ 的一次 alpha
   衰变, 因而
   $
-    ke_2 = qty("7.69", "MeV"), quad
+    ke_2 = qty("7.69", "MeV") \
     ke_3 = qty("7.69", "MeV")
   $
 
   若三种子体的原子数浓度分别为 $N_1, N_2, N_3$, 则 alpha 潜能浓度为
   $S = ke_1 N_1 + ke_2 N_2 + ke_3 N_3$
 
-  又因为活度浓度满足 $C_i = kl_i N_i, quad N_i = C_i / kl_i$ 所以
+  又因为活度浓度满足 $C_i = kl_i N_i$, $N_i = C_i / kl_i$, 所以
   $S = ke_1 C_1 / kl_1 + ke_2 C_2 / kl_2 + ke_3 C_3 / kl_3$
 
   设与之等效的平衡氡浓度为 $C_"eq"$. 在平衡状态下,
@@ -243,7 +243,7 @@
 
   已知
   $
-    m = qty("5", "mg") = qty("5e-3", "g"), quad
+    m = qty("5", "mg") = qty("5e-3", "g") \
     M = qty("210", "g/mol")
   $
 
@@ -347,7 +347,10 @@
   $
     E_kg = 661.7 times 10^3 times qty("1.602e-19", "J")
     approx qty("1.06e-13", "J")
-  $因此$
+  $
+
+  因此
+  $
     dot(Psi)
     approx 1.06 times 10^(-13) times 1.00 times 10^10
     approx qty("1.06e-3", "J/m^2/s")
@@ -355,7 +358,7 @@
 
   所以距离源 0.5 m 处,
   $
-    dot(Phi) approx qty("1.00e10", "m^-2 s^-1"), quad
+    dot(Phi) approx qty("1.00e10", "m^-2 s^-1") \
     dot(Psi) approx qty("1.06e-3", "J/m^2/s")
   $
 
@@ -394,7 +397,7 @@
 
   取空气的质量能量吸收系数
   $
-    (mu_"en"/rho)_(qty("0.1", "MeV")) approx qty("2.325e-2", "cm^2/g"), quad
+    (mu_"en"/rho)_(qty("0.1", "MeV")) approx qty("2.325e-2", "cm^2/g") \
     (mu_"en"/rho)_(qty("1", "MeV")) approx qty("2.789e-2", "cm^2/g")
   $
 
@@ -445,7 +448,7 @@
   再用质量能量吸收系数把空气中的结果换算到软组织. 对 0.5 MeV 光子,
   $
     (mu_"en"/rho)_("air")
-    approx qty("2.966e-2", "cm^2/g"), quad
+    approx qty("2.966e-2", "cm^2/g") \
     (mu_"en"/rho)_("tissue")
     approx qty("3.269e-2", "cm^2/g")
   $
@@ -538,7 +541,7 @@
 
   因此
   $
-    K approx qty("1.44e-11", "Gy"), quad
+    K approx qty("1.44e-11", "Gy") \
     D approx qty("6.38e-12", "Gy")
   $
 
