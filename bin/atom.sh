@@ -17,17 +17,23 @@ echo "  <link href=\"$SITE/atom.xml\" rel=\"self\"/>"
 echo "  <link href=\"$SITE/\"/>"
 
 find "$BUILD_DIR" -mindepth 2 -type f -name "index.html" | sort -r | while read -r file; do
+	rel="${file#"$BUILD_DIR"/}"
+	rel="${rel%/index.html}/"
+	if [[ ! "$rel" =~ ^[0-9]{4}/[0-9]{2}/ ]]; then
+		continue
+	fi
+	src="src/$rel"
+	if [[ ! -e "$src" ]]; then
+		continue
+	fi
+
 	title=$(head -n 20 "$file" | grep -m 1 '<title>' | sed -E 's/.*<title>(.*)<\/title>.*/\1/')
 	content=$(<"$file")
 	[[ $content =~ $REGEX_ARTICLE ]]
 	content=${BASH_REMATCH[1]}
 	content=$(
-		printf '%s' "$content" | perl -pe 's{<(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)\b([^>]*)/?>}{<$1$2 />}gi'
+		printf '%s' "$content" | perl -pe 's{<img\b([^>]*)\salt(?=([\s/>]))([^>]*)>}{<img$1 alt=""$3>}gi; s{<(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)\b([^>]*)/?>}{<$1$2 />}gi'
 	)
-	rel="${file#"$BUILD_DIR"/}"
-	rel="${rel%/index.html}/"
-
-	src="src/$rel"
 	id="${rel%/}"
 
 	created=$(git log --reverse --date=iso-strict --format="%cd" -- "$src" | head -n 1 || true)

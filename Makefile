@@ -22,6 +22,7 @@ INSTALL := install -D -m 0644
 MKDIR_P := mkdir -p
 CP_R    := cp -r
 RM_RF   := rm -rf
+FIND    := find
 
 TEMPLATE_INDEX := tmpl/index.typ
 TEMPLATE_META  := tmpl/meta.typ
@@ -43,8 +44,7 @@ SRC_SEC_SLIDES := $(patsubst src/%/main.typ,%,$(SRC_SLIDES))
 SRC_SECTIONS   += $(SRC_SEC_SLIDES)
 TARGET_PDFS    += $(addprefix build/,$(addsuffix /main.pdf,$(SRC_SEC_SLIDES)))
 SRC_META       := $(patsubst %,src/%/meta.typ,$(SRC_SECTIONS))
-TRASH          = $(shell find build -name '*.bib' -or -name '*.typ')
-TRASH          += $(NAV_SRC)
+TRASH_COUNT    = $(words $(shell find build \( -name '*.bib' -o -name '*.typ' \) 2>/dev/null))
 
 include mk/assets.mk
 include mk/typst.mk
@@ -110,8 +110,9 @@ build/%/main.typ: src/%/main.typ src/%
 	$(Q)$(CP_R) $(<D)/. $(@D)/
 
 clean:
-	$(call log,RM,$(TRASH))
-	$(Q)$(RM_RF) $(TRASH)
+	$(call log,RM,$(TRASH_COUNT) intermediates)
+	$(Q)$(FIND) build \( -name '*.bib' -o -name '*.typ' \) -delete
+	$(Q)$(RM_RF) $(NAV_SRC)
 
 build/atom.xml: bin/atom.sh build/index.html
 	$(call log,FEED,$@)
