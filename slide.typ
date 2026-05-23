@@ -31,7 +31,11 @@
     ),
     config-methods(cover: utils.semi-transparent-cover),
   )
-  set text(size: 17pt)
+  set text(size: 17pt, font: (
+    (name: "Libertinus Serif", covers: "latin-in-cjk"),
+    "Source Han Serif",
+  ))
+  show math.equation: set text(font: "TeX Gyre Pagella Math")
   title-slide()
   doc
 }
