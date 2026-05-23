@@ -155,6 +155,12 @@
     & = (4pi m_0 e k_B^2 T^2)/h^3 exp(-W/(k_B T))
   $
 
+  与经典 Maxwell 分布推导的主要区别在于: 金属内电子是简并费米气体,
+  态密度由量子态计数 $2 / h^3$ 给出, 发射主要来自费米面附近的高能尾部; 因而 R-D
+  公式中的 Richardson 常数 $A = 4pi m_0 e k_B^2 / h^3$ 是量子统计给出的普适常数.
+  经典图像没有 Pauli 不相容和费米能级, 会把电子看作普通 Maxwell 气体,
+  难以得到这个普适前因子.
+
   == 要求热阴极电流密度的稳定性优于百分之一, 对温度和功函数的变化分别有什么要求
 
   $
@@ -325,6 +331,12 @@
   最终得到 $ke_("n",x) = ks_x sqrt((kD E)/(3m_0 c^2))$
 
   其中 $kD E = h nu - W_"eff"$
+
+  因此单位束斑尺寸对应的本征发射度随超额能量 $h nu - W_"eff"$ 的平方根增加.
+  降低光电发射热发射度的主要办法是让驱动光尽量接近发射阈值, 即减小
+  $h nu - W_"eff"$; 也可以在满足电荷量和空间电荷限制的前提下减小激光光斑尺寸
+  $ks_x$. 实际阴极还需要控制表面粗糙、污染和非均匀场,
+  否则会额外引入横向动量和位置相关性.
 
   == 重复 Child-Langmuir 的推导过程
 
@@ -1344,23 +1356,25 @@
 
   小于波荡器总长度, 因而该参数下可以达到饱和输出.
 
-  FEL 辐射的相对带宽量级由 Pierce 参数决定:
-  $kD ko / ko approx rho = 5 times 10^(-4).$
+  按课件中的一维 FEL scaling, SASE 辐射的相对带宽为
 
-  即相对带宽约为 $5 times 10^(-4) = 0.05%.$
+  $ kD ko / ko approx 2 rho = 1.0 times 10^(-3). $
+
+  即相对带宽约为 $0.10%.$
 
   有限波荡器周期数给出的自然线宽量级为 $1 / N_u approx 3.0 times 10^(-4),$
 
-  与 $rho$ 同量级但略小, 所以用 $rho$ 作为 SASE 饱和输出带宽估算是合理的.
+  小于 $2 rho$, 所以 SASE 饱和输出带宽主要由 Pierce 参数决定.
 
-  SASE 饱和输出的尖峰时间宽度可用相干时间估算. 若取 $kD ko approx rho ko_r,$
+  SASE 饱和输出的尖峰时间宽度可用合作长度估算. 课件给出的合作长度为
 
-  则
+  $ L_c = kl_r / (4 pi rho). $
+
+  因而
 
   $
-    kD t_"spike" approx 1 / kD ko
-    = 1 / (rho ko_r)
-    = kl_r / (2 pi rho c).
+    kD t_"spike" approx L_c / c
+    = kl_r / (4 pi rho c).
   $
 
   代入 $kl_r = qty("1.5e-10", "m")$, $rho = 5 times 10^(-4)$,
@@ -1369,22 +1383,18 @@
   $
     kD t_"spike"
     approx (1.5 times 10^(-10))
-    / (2 pi times 5 times 10^(-4) times 3.0 times 10^8)
-    approx qty("1.6e-16", "s").
+    / (4 pi times 5 times 10^(-4) times 3.0 times 10^8)
+    approx qty("8.0e-17", "s").
   $
 
-  即 $kD t_"spike" approx qty("0.16", "fs").$
-
-  若采用合作长度 $L_c = kl_r / (4 pi rho)$ 的定义, 对应时间为
-  $L_c / c approx qty("0.08", "fs")$. 两者只差一个约为 2 的约定因子, 因此 SASE
-  尖峰时间宽度的量级为 $qty("0.1", "fs")$.
+  即 $kD t_"spike" approx qty("0.08", "fs")$, 数量级为 $qty("0.1", "fs")$.
 
   综上,
 
   $
     E_e approx qty("13.6", "GeV") \
     L_g approx qty("2.8", "m") \
-    kD ko / ko approx 5 times 10^(-4) \
+    kD ko / ko approx 1.0 times 10^(-3) \
     kD t_"spike" approx qty("0.1", "fs").
   $
 
@@ -1532,7 +1542,9 @@
     approx qty("30", "um").
   $
 
-  激光横向尺寸为 $ks_(l,r) = qty("15", "um").$
+  记激光纵向空间长度 $ks_(l,z) = c ks_(l,t) approx qty("30", "um")$,
+  并取激光两个横向方向的均方根尺寸为
+  $ks_(l,x) = ks_(l,y) = qty("15", "um").$
 
   两个高斯分布相乘后, 有效相互作用区的均方根尺寸为
 
@@ -1559,13 +1571,17 @@
     approx qty("1.5", "ps").
   $
 
-  对 90 度垂直散射, 设激光沿电子束横向 $x$ 方向传播. 此时 $x$
-  方向相互作用尺寸由电子束横向尺寸和激光脉冲空间长度共同决定:
+  对 90 度垂直散射, 设激光沿电子束横向 $x$ 方向传播.
+  这时不能简单把电子束横向尺寸 与激光纵向长度作二束重叠;
+  按课件给出的高斯重叠积分, $x$ 方向源尺寸为
 
   $
     ks_x
-    = (1 / 60^2 + 1 / 30^2)^(-1/2) unit("um")
-    approx qty("26.8", "um").
+    = (ks_(e,x) sqrt(ks_(l,z)^2 + ks_(e,z)^2 + ks_(l,x)^2))
+    / sqrt(ks_(l,z)^2 + ks_(e,z)^2 + ks_(l,x)^2 + ks_(e,x)^2) \
+    = (60 sqrt(30^2 + 450^2 + 15^2))
+    / sqrt(30^2 + 450^2 + 15^2 + 60^2) unit("um") \
+    approx qty("59.5", "um").
   $
 
   另一个横向方向由电子束横向尺寸与激光焦斑横向尺寸决定:
@@ -1576,21 +1592,22 @@
     approx qty("14.6", "um").
   $
 
-  对沿电子正前方的 X 射线脉宽,
-  垂直相互作用时激光横向焦斑会限制电子束纵向上实际参与散射的长度. 因此
+  对沿电子正前方的 X 射线脉宽, 课件中 90 度对撞的结果为
 
   $
-    ks_z
-    = (1 / 450^2 + 1 / 15^2)^(-1/2) unit("um")
-    approx qty("15.0", "um").
+    ks_t
+    = (ks_(e,z) sqrt(ks_(l,x)^2 + ks_(e,x)^2 + ks_(l,z)^2))
+    / (c sqrt(ks_(l,x)^2 + ks_(e,x)^2 + ks_(l,z)^2 + ks_(e,z)^2)).
   $
 
-  对应时间宽度为
+  代入数值,
 
   $
-    ks_t = ks_z / c
-    approx (qty("15.0", "um")) / c
-    approx qty("50", "fs").
+    ks_t
+    = (450 sqrt(15^2 + 60^2 + 30^2))
+    / sqrt(15^2 + 60^2 + 30^2 + 450^2) unit("um") / c \
+    approx qty("68.0", "um") / c
+    approx qty("0.23", "ps").
   $
 
   所以两种散射几何的结果可概括为
@@ -1600,9 +1617,9 @@
     ks_x approx ks_y approx qty("14.6", "um") \
     ks_t approx qty("1.5", "ps") \
     "90 degree": \
-    ks_x approx qty("26.8", "um") \
+    ks_x approx qty("59.5", "um") \
     ks_y approx qty("14.6", "um") \
-    ks_t approx qty("50", "fs").
+    ks_t approx qty("0.23", "ps").
   $
 
 ]
