@@ -932,6 +932,379 @@
   $t_r approx 2.2 tau approx qty("2.4e-7", "s") = qty("240", "ns")$
 
   因此该跨导前放的输出上升时间约为 $t_r approx qty("0.24", "us")$
+
+
+  = 第十二次作业
+
+  == 1. 带正反馈电压比较器的阈值和回差
+
+  题中比较器的高、低输出电平为
+
+  $
+    V_"OH" = qty("3.2", "V") \
+    V_"OL" = -qty("0.4", "V") \
+    V_"OM" = V_"OH" - V_"OL" = qty("3.6", "V")
+  $
+
+  电压增益 $A = 1500$, 所以输出从高电平到低电平所对应的输入线性范围为
+
+  $
+    V_"iM" = V_"OM" / A = qty("3.6", "V") / 1500 = qty("2.4", "mV")
+  $
+
+  该电路中正反馈系数为
+
+  $
+    F = R_2 / (R_1 + R_2) = 10 / (1 + 10) = 10 / 11 approx 0.909
+  $
+
+  当输出为高电平时, 比较器同相端电压为
+
+  $
+    V_"2H"
+    = V_"OH" R_2 / (R_1 + R_2) + V_"ref" R_1 / (R_1 + R_2) \
+    = qty("3.2", "V") times 10 / 11 + qty("3.0", "V") times 1 / 11
+    approx qty("3.182", "V")
+  $
+
+  输入 $v_1$ 上升时, 阈值电压为
+
+  $
+    V_T = V_"1T" = V_"2H" - V_"iM" / 2
+    approx qty("3.182", "V") - qty("1.2", "mV")
+    approx qty("3.181", "V")
+  $
+
+  当输出为低电平时,
+
+  $
+    V_"2L"
+    = V_"OL" R_2 / (R_1 + R_2) + V_"ref" R_1 / (R_1 + R_2) \
+    = -qty("0.4", "V") times 10 / 11 + qty("3.0", "V") times 1 / 11
+    approx -qty("90.9", "mV")
+  $
+
+  输入下降时的恢复阈值为
+
+  $
+    V_"1R" = V_"2L" + V_"iM" / 2
+    approx -qty("89.7", "mV")
+  $
+
+  所以回差电压为
+
+  $
+    V_H = V_"1T" - V_"1R"
+    = V_"OM" (F - 1 / A)
+    = qty("3.6", "V") (10 / 11 - 1 / 1500)
+    approx qty("3.27", "V")
+  $
+
+  若希望把回差降到 $qty("0.1", "V")$, 应减小反馈系数 $F$. 由
+
+  $
+    V_H' = V_"OM" (F' - 1 / A)
+  $
+
+  得到
+
+  $
+    F' = V_H' / V_"OM" + 1 / A
+    = 0.1 / 3.6 + 1 / 1500
+    approx 0.0284
+  $
+
+  即
+
+  $
+    R_2 / (R_1 + R_2) approx 0.0284
+    ==> R_1 / R_2 = (1 - F') / F' approx 34.2
+  $
+
+  因此需要让 $R_1$ 远大于 $R_2$. 例如保持 $R_2 = 10 k Omega$, 则可取
+  $R_1 approx 342 k Omega$; 或保持 $R_1 = 1 k Omega$, 则需把 $R_2$ 减小到约
+  $29 Omega$.
+
+  == 2. 交流耦合施密特电路
+
+  由于 $V_B = -qty("4", "V")$, 输入端绝对电压为 $v_1 = V_B + V_i$. 复位后 $C_1$
+  隔断直流, $V_2$ 由 $R_1$ 拉到 $qty("0", "V")$. 此时
+  $v_1 = -qty("4", "V") < V_2$, 输出为高电平 $V_"OH" = qty("3.2", "V")$.
+
+  输入脉冲上升时, 第一次翻转条件为 $v_1 = V_2 approx qty("0", "V")$,
+  因此相对于脉冲底部的阈值为
+
+  $
+    V_T = qty("0", "V") - V_B = qty("4", "V")
+  $
+
+  输出从 $V_"OH"$ 跳变到 $V_"OL"$ 时, 由于 $t_"wi" << R_1 C_1$,
+  电容电压近似不变, 所以 $V_2$ 也跟随输出跃变
+
+  $
+    kD V_2 = V_"OL" - V_"OH" = qty("0.2", "V") - qty("3.2", "V")
+    = -qty("3.0", "V")
+  $
+
+  因此 $V_2$ 从 $qty("0", "V")$ 跳到约 $-qty("3.0", "V")$. 输入下降时,
+  输出恢复为高电平的条件为 $v_1 approx -qty("3.0", "V")$,
+  即相对于底部的恢复阈值为
+
+  $
+    V_R = -qty("3.0", "V") - V_B = qty("1.0", "V")
+  $
+
+  故回差为
+
+  $
+    V_H = V_T - V_R = qty("3.0", "V")
+  $
+
+  波形上, $V_O$ 初始为高电平; 当 $V_B + V_i$ 上升越过 $qty("0", "V")$
+  时跳到低电平; 当 $V_B + V_i$ 下降越过 $-qty("3.0", "V")$ 时回到高电平. $V_2$
+  在两个翻转时刻分别从 $qty("0", "V")$ 跳到 $-qty("3.0", "V")$, 再跳回
+  $qty("0", "V")$.
+
+  #let tt-schmitt = lq.linspace(-0.1, 1.15)
+  #let vin-schmitt(t) = if t < 0 {
+    -4
+  } else if t < 0.5 {
+    -4 + 10 * t
+  } else if t < 1 {
+    6 - 10 * t
+  } else {
+    -4
+  }
+  #let vo-schmitt(t) = if t < 0.4 or t >= 0.9 { 3.2 } else { 0.2 }
+  #let v2-schmitt(t) = if t < 0.4 or t >= 0.9 { 0 } else { -3 }
+
+  #canvas(
+    grid(
+      columns: 1,
+      row-gutter: 0.8em,
+      lq.diagram(
+        width: 12cm,
+        height: 3cm,
+        xlabel: [$t/t_"wi"$],
+        ylabel: [$V_B + V_i$ / V],
+        xlim: (-0.1, 1.15),
+        ylim: (-4.5, 1.4),
+        lq.plot(tt-schmitt, vin-schmitt),
+        lq.path((-0.1, 0), (1.15, 0), stroke: gray + 0.6pt),
+        lq.path((-0.1, -3), (1.15, -3), stroke: gray + 0.6pt),
+      ),
+      lq.diagram(
+        width: 12cm,
+        height: 3cm,
+        xlabel: [$t/t_"wi"$],
+        ylabel: [$V_O$ / V],
+        xlim: (-0.1, 1.15),
+        ylim: (0, 3.5),
+        lq.plot(tt-schmitt, vo-schmitt),
+      ),
+      lq.diagram(
+        width: 12cm,
+        height: 3cm,
+        xlabel: [$t/t_"wi"$],
+        ylabel: [$V_2$ / V],
+        xlim: (-0.1, 1.15),
+        ylim: (-3.4, 0.4),
+        lq.plot(tt-schmitt, v2-schmitt),
+      ),
+    ),
+  )
+
+  == 3. 高纯锗探测器的本征能量分辨率
+
+  高纯锗中平均电离能取 $W = qty("2.96", "eV")$, 法诺因子 $F = 0.058$. 对沉积能量
+  $E$, 平均载流子对数和涨落为
+
+  $
+    ol(N) = E / W \
+    ks_N = sqrt(F ol(N))
+  $
+
+  本征能量分辨率取半高宽:
+
+  $
+    omega_P = 2.355 W ks_N = 2.355 sqrt(F E W)
+  $
+
+  对 $E_1 = qty("1173.2", "keV")$:
+
+  $
+    ol(N)_1
+    = (1173.2 times 10^3) / 2.96
+    approx num("3.96e5") \
+    ks_(N,1) = sqrt(0.058 times ol(N)_1) approx num("1.52e2") \
+    omega_(P,1) = 2.355 times qty("2.96", "eV") times ks_(N,1)
+    approx qty("1.06", "keV")
+  $
+
+  对 $E_2 = qty("1332.5", "keV")$:
+
+  $
+    ol(N)_2
+    = (1332.5 times 10^3) / 2.96
+    approx num("4.50e5") \
+    ks_(N,2) = sqrt(0.058 times ol(N)_2) approx num("1.62e2") \
+    omega_(P,2) = 2.355 times qty("2.96", "eV") times ks_(N,2)
+    approx qty("1.13", "keV")
+  $
+
+  电子学噪声 $"ENC" = 100$ 个电子时, 对应的等效能量半高宽为
+
+  $
+    omega_E = 2.355 "ENC" W
+    = 2.355 times 100 times qty("2.96", "eV")
+    approx qty("0.697", "keV")
+  $
+
+  若忽略电荷收集涨落, 总能量分辨率为
+
+  $
+    omega = sqrt(omega_P^2 + omega_E^2)
+  $
+
+  因此
+
+  $
+    omega_1 = sqrt((qty("1.06", "keV"))^2 + (qty("0.697", "keV"))^2)
+    approx qty("1.27", "keV") \
+    omega_2 = sqrt((qty("1.13", "keV"))^2 + (qty("0.697", "keV"))^2)
+    approx qty("1.32", "keV")
+  $
+
+  结果汇总如下:
+
+  #table(
+    columns: 6,
+    [能量], [$ol(N)$], [$ks_N$], [本征 FWHM], [含 ENC 后 FWHM], [相对分辨率],
+    [1173.2 keV],
+    [$3.96 times 10^5$],
+    [$1.52 times 10^2$],
+    [1.06 keV],
+    [1.27 keV],
+    [0.108%],
+
+    [1332.5 keV],
+    [$4.50 times 10^5$],
+    [$1.62 times 10^2$],
+    [1.13 keV],
+    [1.32 keV],
+    [0.099%],
+  )
+
+  == 4. 弹道亏损
+
+  设探测器电流为
+
+  $
+    i(t) = Q / t_D (u(t) - u(t - t_D))
+  $
+
+  若输入为理想冲激 $Q kd(t)$, 则输出峰值为
+
+  $
+    V_M = Q max(h(t)) = Q / C
+  $
+
+  === (a) 矩形冲激响应
+
+  图 (a) 中
+
+  $
+    h_a(t) = 1/C (u(t) - u(t - 2t_D))
+  $
+
+  输出为矩形电流脉冲与矩形冲激响应的卷积. 当两个矩形完全重叠时, 重叠长度为
+  $t_D$, 因而最大输出为
+
+  $
+    V_"OM,a"
+    = Q / t_D dot 1 / C dot t_D
+    = Q / C
+  $
+
+  所以
+
+  $
+    D_(B,a) = (V_M - V_"OM,a") / V_M = 0
+  $
+
+  即图 (a) 不产生弹道亏损.
+
+  === (b) 三角冲激响应
+
+  图 (b) 中
+
+  $
+    h_b(t) = cases(
+      t / (C t_D) "if" num("0") <= t <= t_D,
+      (2 t_D - t) / (C t_D) "if" t_D < t <= 2 t_D,
+      num("0") "otherwise",
+    )
+  $
+
+  卷积的峰值等于宽度为 $t_D$ 的积分窗口扫过三角形时的最大平均值.
+  最大值出现在窗口以 $t_D$ 为中心时, 即积分区间为 $[t_D/2, 3t_D/2]$.
+  该区间内的三角形面积为总面积减去两侧两个小三角形:
+
+  $
+    S = t_D / C - 2 times (1 / 2 dot t_D / 2 dot 1 / (2C))
+    = 3 t_D / (4C)
+  $
+
+  因此
+
+  $
+    V_"OM,b"
+    = Q / t_D dot S
+    = 3 Q / (4C)
+  $
+
+  弹道亏损为
+
+  $
+    D_(B,b)
+    = (Q/C - 3Q/(4C)) / (Q/C)
+    = 1 / 4
+  $
+
+  也就是说图 (b) 的输出幅度为理想冲激输入时的 $75%$.
+
+  === 电流脉宽在 $0.5t_D$ 到 $t_D$ 之间变化时
+
+  设电流脉宽为 $t_s$, 总电荷仍为 $Q$, 则电流幅度为 $Q / t_s$.
+
+  对图 (a), 只要 $t_s <= 2 t_D$, 矩形电流脉冲总能完全放入矩形冲激响应平台中,
+  峰值始终为
+
+  $
+    V_"OM,a"(t_s) = Q / C
+  $
+
+  所以图 (a) 的输出幅度不随 $t_s$ 变化.
+
+  对图 (b), 最大积分窗口仍以三角形峰值为中心. 当 $t_s <= 2t_D$ 时,
+
+  $
+    V_"OM,b"(t_s)
+    = Q / t_s dot int_(t_D - t_s/2)^(t_D + t_s/2) h_b(t) dd(t)
+    = Q / C (1 - t_s / (4t_D))
+  $
+
+  因此
+
+  $
+    V_"OM,b"(0.5t_D) = 7Q/(8C) \
+    V_"OM,b"(t_D) = 3Q/(4C)
+  $
+
+  相应弹道亏损从 $1/8$ 增大到 $1/4$. 也就是说图 (b)
+  的输出幅度会随探测器电流脉宽增加而降低, 从 $0.875 Q/C$ 降到 $0.75 Q/C$,
+  这会把不同收集时间的同一能量事件展宽到不同幅度, 从而恶化能量分辨率.
+
 ]
 
 #hw
