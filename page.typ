@@ -14,7 +14,7 @@
 
 #import "meta.typ": footer
 #import "@preview/physica:0.9.8": *
-#import "@preview/unify:0.7.1": *
+#import "@preview/unify:0.8.1": *
 #import "@preview/lilaq:0.6.0" as lq
 #import "@preview/mannot:0.3.2": *
 #import "@preview/typsite:0.1.0": mathyml
@@ -103,7 +103,6 @@
   show bibliography: set text(lang: "en")
   show: hep
   set heading(numbering: "1.")
-  set page(numbering: "1")
   set math.equation(numbering: "(1)")
   show: lq.set-diagram(width: 6cm, height: 6cm)
   if target() == "html" {
@@ -159,6 +158,7 @@
       })
     })
   } else {
+    set page(numbering: "1")
     set image(width: 90%)
     set text(font: (
       (name: "Libertinus Serif", covers: "latin-in-cjk"),
