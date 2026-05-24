@@ -47,3 +47,92 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: "latest"
+      # https://gagor.pro/2025/08/purge-old-cloudflare-pages-deployments/
+      - name: Purge old Cloudflare Pages deployments
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_PROJECT_NAME: blog
+          RETENTION_DAYS: "2"
+        run: |
+          set -euo pipefail
+
+          api_url="https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/pages/projects/${CLOUDFLARE_PROJECT_NAME}/deployments"
+          cutoff="$(date -u -d "${RETENTION_DAYS} days ago" +%s)"
+          per_page=25
+          deleted=0
+          skipped=0
+
+          fetch_page() {
+            local page="$1"
+            curl -sS \
+              -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+              "${api_url}?page=${page}&per_page=${per_page}"
+          }
+
+          first_response="$(fetch_page 1)"
+          if ! jq -e '.success == true' >/dev/null <<<"$first_response"; then
+            echo "::error::Failed to list Cloudflare Pages deployments"
+            jq -r '.errors[]?.message' <<<"$first_response"
+            exit 1
+          fi
+
+          total_pages="$(jq -r '.result_info.total_pages // 1' <<<"$first_response")"
+          page="$total_pages"
+
+          while [ "$page" -ge 1 ]; do
+            if [ "$page" -eq 1 ]; then
+              response="$first_response"
+            else
+              response="$(fetch_page "$page")"
+            fi
+
+            if ! jq -e '.success == true' >/dev/null <<<"$response"; then
+              echo "::error::Failed to list Cloudflare Pages deployments on page ${page}"
+              jq -r '.errors[]?.message' <<<"$response"
+              exit 1
+            fi
+
+            mapfile -t deployments < <(
+              jq -r --argjson cutoff "$cutoff" '
+                def epoch: sub("\\.[0-9]+Z$"; "Z") | fromdateiso8601;
+                .result[]?
+                | select(.created_on != null)
+                | select((.created_on | epoch) < $cutoff)
+                | [
+                    .id,
+                    .created_on,
+                    (.environment // "unknown"),
+                    (.deployment_trigger.metadata.branch // "unknown")
+                  ]
+                | @tsv
+              ' <<<"$response"
+            )
+
+            for deployment in "${deployments[@]}"; do
+              IFS=$'\t' read -r deployment_id created_on environment branch <<<"$deployment"
+              echo "Deleting ${deployment_id} (${environment}/${branch}, created ${created_on})"
+
+              delete_response="$(
+                curl -sS -X DELETE \
+                  -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+                  "${api_url}/${deployment_id}?force=true"
+              )" || {
+                echo "::warning::Failed to request deletion for ${deployment_id}"
+                skipped=$((skipped + 1))
+                continue
+              }
+
+              if [ "$(jq -r '.success // false' <<<"$delete_response" 2>/dev/null || echo false)" = "true" ]; then
+                deleted=$((deleted + 1))
+              else
+                echo "::warning::Cloudflare refused to delete ${deployment_id}; it may be the latest deployment for a branch"
+                jq -r '.errors[]?.message' <<<"$delete_response" 2>/dev/null || true
+                skipped=$((skipped + 1))
+              fi
+            done
+
+            page=$((page - 1))
+          done
+
+          echo "Deleted ${deleted} old Cloudflare Pages deployment(s); skipped ${skipped}."
