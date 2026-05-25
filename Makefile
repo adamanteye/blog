@@ -50,7 +50,7 @@ include mk/assets.mk
 include mk/typst.mk
 
 build: assets .WAIT $(NAV_SRC) build/index.html $(TARGET_POSTS)
-pdf: $(TARGET_PDFS)
+pdf: assets $(NAV_SRC) .WAIT $(TARGET_PDFS)
 
 ifeq ($(LIVE), y)
 OBJS += build/live.js
