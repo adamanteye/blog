@@ -3,8 +3,10 @@ SHELL     := /bin/bash
 .DELETE_ON_ERROR:
 .SECONDARY:
 
-.PHONY: build clean assets css seo atom today full optipng pdf
+.PHONY: DUMMY build pdf clean assets css seo atom today full optipng jpegoptim
 .DEFAULT_GOAL := build
+
+DUMMY:
 
 include mk/log.mk
 
@@ -17,6 +19,7 @@ endif
 OBJS :=
 include mk/lily.mk
 include mk/optipng.mk
+include mk/jpegoptim.mk
 OBJS    += $(LILY_OBJS)
 INSTALL := install -D -m 0644
 MKDIR_P := mkdir -p
@@ -123,3 +126,4 @@ ifeq ($(MINIFY), y)
 endif
 
 optipng: $(OPTIPNG_OBJS)
+jpegoptim: $(OPTIJPG_OBJS)
