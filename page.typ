@@ -160,10 +160,14 @@
   } else {
     set page(numbering: "1")
     set image(width: 90%)
-    set text(font: (
-      (name: "Libertinus Serif", covers: "latin-in-cjk"),
-      "Source Han Serif",
-    ))
+    set grid(column-gutter: 1em, row-gutter: 1em)
+    set text(
+      font: (
+        (name: "Libertinus Serif", covers: "latin-in-cjk"),
+        "Source Han Serif",
+      ),
+      size: 12pt,
+    )
     show math.equation: set text(font: "TeX Gyre Pagella Math")
     show link: it => underline(text(fill: olive.lighten(20%), it))
     set par(leading: 1em)
