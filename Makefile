@@ -94,7 +94,7 @@ ifeq ($(MINIFY), y)
 endif
 
 build/index.html: index.typ meta.typ $(TARGET_POSTS)
-	$(call log,TEX,$<)
+	$(call log,TYP,$<)
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
 ifeq ($(MINIFY), y)

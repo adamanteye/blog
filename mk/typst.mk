@@ -7,15 +7,15 @@ endif
 TYPST := typst c --root . --features html
 
 build/%/index.pdf: build/%/index.typ page.typ meta.typ
-	$(call log,TEX,$@)
+	$(call log,TYP,$@)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
 
 build/%/main.pdf: build/%/main.typ slide.typ page.typ meta.typ
-	$(call log,TEX,$@)
+	$(call log,TYP,$@)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
 
 build/%/index.html: build/%/index.typ $(NAV_SRC) page.typ meta.typ
-	$(call log,TEX,$<)
+	$(call log,TYP,$<)
 	$(Q)$(TYPST) --input src=src/$*/index.typ $< $@ $(TYPST_SILENT)
 ifeq ($(LIVE), y)
 	$(call log,LIVE,$@)
