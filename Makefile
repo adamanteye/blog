@@ -80,7 +80,7 @@ $(TODAY_DIR)/meta.typ:
 	$(Q)$(INSTALL) $(TEMPLATE_META) $@
 	$(Q)sed -i "s/$(MAGIC_TITLE)/$(TITLE)/g" $@
 
-$(NAV_SRC): bin/nav.sh $(SRC_META)
+$(NAV_SRC): bin/nav.sh $(SRC_META) src/
 	$(call log,NAV,$@)
 	$(Q)$(MKDIR_P) build
 	$(Q)bin/nav.sh src > $@
@@ -93,7 +93,7 @@ ifeq ($(MINIFY), y)
 	$(Q)$(MINIFY_CMD) -a -i $@
 endif
 
-build/index.html: index.typ meta.typ $(TARGET_POSTS)
+build/index.html: index.typ meta.typ $(NAV_SRC) $(TARGET_POSTS)
 	$(call log,TYP,$<)
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
