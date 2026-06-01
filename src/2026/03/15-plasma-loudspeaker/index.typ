@@ -1,7 +1,7 @@
 #import "/page.typ": *
 #import "meta.typ": desc, title
 #set text(lang: "zh", region: "cn")
-#show: conf.with(title: title, desc: desc)
+#show: conf.with(title: title, desc: desc, slide: true)
 
 = 实验内容
 

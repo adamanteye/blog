@@ -97,6 +97,7 @@
 #let conf(
   title: str,
   desc: str,
+  slide: false,
   doc,
 ) = context {
   show figure.where(kind: table): set block(breakable: true)
@@ -127,7 +128,13 @@
             \/
             #link(
               "index.pdf",
-            )[PDF]
+            )[Print]
+            #if slide [
+              \/
+              #link(
+                "main.pdf",
+              )[Slide]
+            ]
 
             #desc
           ])
