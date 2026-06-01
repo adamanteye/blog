@@ -16,7 +16,7 @@ echo "  <id>$SITE</id>"
 echo "  <link href=\"$SITE/atom.xml\" rel=\"self\"/>"
 echo "  <link href=\"$SITE/\"/>"
 
-find "$BUILD_DIR" -mindepth 2 -type f -name "index.html" | sort -r | while read -r file; do
+find "$BUILD_DIR" -mindepth 2 -type f -name "index.html" | sort -r | head -n 10 | while read -r file; do
 	rel="${file#"$BUILD_DIR"/}"
 	rel="${rel%/index.html}/"
 	if [[ ! "$rel" =~ ^[0-9]{4}/[0-9]{2}/ ]]; then
