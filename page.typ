@@ -178,7 +178,7 @@
     show math.equation: set text(font: "TeX Gyre Pagella Math")
     show link: it => underline(text(fill: olive.lighten(20%), it))
     set par(leading: 1em)
-    set par(spacing: 1.5em)
+    set par(spacing: 1.5em, justify: true)
     show heading: set block(below: 1.5em)
     set document(title: title)
     align(center, text(1.4em)[
