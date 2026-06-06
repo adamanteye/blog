@@ -1,15 +1,18 @@
 :root {
   --bg: #fff;
   --text: #111;
-  --link: #00f;
-  --link-visited: #888;
+  --link: #b91c1c;
+  --link-hover: #7f1d1d;
+  --link-visited: #6b7280;
   --border: #ccc;
+  --code-bg: #f4f4f4;
+  --code-border: #d7d7d7;
   --font-main: "Libertinus Serif", serif;
   --font-math: "TeX Gyre Pagella Math", math, serif;
   --font-code: "DejaVu Sans Mono", monospace;
   --size-body: 14pt;
-  --line-body: 1.45em;
-  --content-max: 100ch;
+  --line-body: 1.55;
+  --content-max: 72ch;
   --space-body: 1rem;
   --radius: 0.25rem;
 }
@@ -54,31 +57,64 @@ figure {
 }
 
 img {
-  width: 90%;
+  display: block;
+  max-width: 100%;
   height: auto;
+  margin: 1em auto;
 }
 
-header p.header,
-header h1.header {
+header p.header {
   font-size: 1.5em;
+  line-height: 1.2;
+  margin: 0 0 0.35em;
+}
+
+header h1.header {
+  font-size: 2em;
+  line-height: 1.2;
+  margin: 0 0 0.35em;
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
-  margin-bottom: 1em;
+  line-height: 1.2;
+  margin: 1.4em 0 0.6em;
 }
 
 :is(h1, h2, h3, h4, h5, h6, strong) {
   font-weight: 600;
 }
 
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.45em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
 ol,
 ul {
-  padding: 0;
+  margin: 0.75em 0;
+  padding-left: 1.5em;
+}
+
+nav ol,
+nav ul {
+  list-style: none;
   margin: 0;
+  padding-left: 0;
+}
+
+article li + li {
+  margin-top: 0.25em;
 }
 
 p {
-  margin-bottom: 0.5em;
+  margin: 0 0 0.8em;
 }
 
 article :is(p, li) {
@@ -87,22 +123,36 @@ article :is(p, li) {
 }
 
 code {
-  font-size: 0.8em;
+  font-size: 0.85em;
   font-family: var(--font-code);
 }
 
 pre {
-  padding: 0.75rem;
+  margin: 1em 0;
+  padding: 0.9rem 1rem;
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
   border-radius: var(--radius);
+}
+
+pre code {
+  display: inline-block;
 }
 
 code:not(pre code) {
   padding: 0.1rem 0.25rem;
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
   border-radius: var(--radius);
 }
 
 a {
   color: var(--link);
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hover);
 }
 
 a:visited {
