@@ -7,10 +7,10 @@
   --border: #ccc;
   --code-bg: #f4f4f4;
   --code-border: #d7d7d7;
-  --font-main: "Libertinus Serif", serif;
+  --font-main: "Iosevka", "LXGW WenKai TC CJK", "LXGW WenKai SC CJK", monospace;
   --font-math: "TeX Gyre Pagella Math", math, serif;
-  --font-code: "DejaVu Sans Mono", monospace;
-  --size-body: 14pt;
+  --font-code: "Iosevka", "LXGW WenKai TC CJK", "LXGW WenKai SC CJK", monospace;
+  --size-body: 13pt;
   --line-body: 1.55;
   --content-max: 72ch;
   --space-body: 1rem;
@@ -96,15 +96,13 @@ h3 {
   font-size: 1.2em;
 }
 
-ol,
-ul {
-  margin: 0.75em 0;
-  padding-left: 1.5em;
-}
-
-nav ol,
 nav ul {
   list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+section[role="doc-bibliography"] ul {
   margin: 0;
   padding-left: 0;
 }
@@ -115,11 +113,6 @@ article li + li {
 
 p {
   margin: 0 0 0.8em;
-}
-
-article :is(p, li) {
-  text-align: justify;
-  text-justify: inter-character;
 }
 
 code {
@@ -192,42 +185,6 @@ tr:last-child td {
 }
 
 @font-face {
-  font-family: "Libertinus Serif";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src:
-    url("https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/files/libertinus-serif-latin-400-normal.woff2")
-      format("woff2"),
-    url("https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/files/libertinus-serif-latin-400-normal.woff")
-      format("woff");
-}
-
-@font-face {
-  font-family: "Libertinus Serif";
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src:
-    url("https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/files/libertinus-serif-latin-400-italic.woff2")
-      format("woff2"),
-    url("https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/files/libertinus-serif-latin-400-italic.woff")
-      format("woff");
-}
-
-@font-face {
-  font-family: "Libertinus Serif";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src:
-    url("https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/files/libertinus-serif-latin-600-normal.woff2")
-      format("woff2"),
-    url("https://cdn.jsdelivr.net/npm/@fontsource/libertinus-serif@5.2.1/files/libertinus-serif-latin-600-normal.woff")
-      format("woff");
-}
-
-@font-face {
   font-family: "TeX Gyre Pagella Math";
   font-style: normal;
   font-weight: 400;
@@ -236,19 +193,99 @@ tr:last-child td {
 }
 
 @font-face {
-  font-family: "DejaVu Sans Mono";
+  font-family: "Iosevka";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("https://cdn.jsdelivr.net/gh/maxwell-k/dejavu-sans-mono-web-font@2.37/DejaVuSansMono.woff")
-    format("woff");
+  src: url("./fonts/iosevka-latin-400-normal.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: "DejaVu Sans Mono";
+  font-family: "Iosevka";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/iosevka-latin-400-italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Iosevka";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./fonts/iosevka-latin-600-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Iosevka";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("https://cdn.jsdelivr.net/gh/maxwell-k/dejavu-sans-mono-web-font@2.37/DejaVuSansMono-Bold.woff")
-    format("woff");
+  src: url("./fonts/iosevka-latin-700-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "LXGW WenKai TC CJK";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/lxgw-wenkai-tc-cjk-400-normal.woff2") format("woff2");
+  unicode-range:
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+31C0-31EF, U+3400-4DBF,
+    U+4E00-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF;
+}
+
+@font-face {
+  font-family: "LXGW WenKai TC CJK";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./fonts/lxgw-wenkai-tc-cjk-700-normal.woff2") format("woff2");
+  unicode-range:
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+31C0-31EF, U+3400-4DBF,
+    U+4E00-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF;
+}
+
+@font-face {
+  font-family: "LXGW WenKai TC CJK";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/lxgw-wenkai-tc-cjk-700-normal.woff2") format("woff2");
+  unicode-range:
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+31C0-31EF, U+3400-4DBF,
+    U+4E00-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF;
+}
+
+@font-face {
+  font-family: "LXGW WenKai SC CJK";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/lxgw-wenkai-sc-cjk-400-normal.woff2") format("woff2");
+  unicode-range:
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+31C0-31EF, U+3400-4DBF,
+    U+4E00-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF;
+}
+
+@font-face {
+  font-family: "LXGW WenKai SC CJK";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("./fonts/lxgw-wenkai-sc-cjk-700-normal.woff2") format("woff2");
+  unicode-range:
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+31C0-31EF, U+3400-4DBF,
+    U+4E00-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF;
+}
+
+@font-face {
+  font-family: "LXGW WenKai SC CJK";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/lxgw-wenkai-sc-cjk-700-normal.woff2") format("woff2");
+  unicode-range:
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+31C0-31EF, U+3400-4DBF,
+    U+4E00-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF;
 }

@@ -3,7 +3,7 @@ SHELL     := /bin/bash
 .DELETE_ON_ERROR:
 .SECONDARY:
 
-.PHONY: DUMMY build pdf clean assets css seo atom today full optipng jpegoptim
+.PHONY: DUMMY build pdf clean assets css fonts seo atom today full optipng jpegoptim
 .DEFAULT_GOAL := build
 
 DUMMY:
@@ -59,9 +59,10 @@ ifeq ($(LIVE), y)
 OBJS += build/live.js
 endif
 
-assets: css build/favicon.webp $(OBJS)
+assets: css fonts build/favicon.webp $(OBJS)
 
 css: $(addprefix build/,$(ASSET_CSS))
+fonts: $(addprefix build/,$(ASSET_FONTS))
 
 today: $(TODAY_DIR)/index.typ $(TODAY_DIR)/meta.typ
 
