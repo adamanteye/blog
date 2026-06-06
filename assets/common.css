@@ -78,7 +78,7 @@ ul {
 }
 
 p {
-  margin: 0 0 1em;
+  margin-bottom: 0.5em;
 }
 
 article :is(p, li) {
@@ -112,6 +112,7 @@ a:visited {
 header {
   padding-bottom: 0.5em;
   box-shadow: 0 0.1em 0 var(--border);
+  margin-bottom: 1em;
 }
 
 footer {
