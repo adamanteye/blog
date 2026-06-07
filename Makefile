@@ -52,7 +52,7 @@ TRASH_COUNT    = $(words $(shell find build \( -name '*.bib' -o -name '*.typ' \)
 include mk/assets.mk
 include mk/typst.mk
 
-build: assets .WAIT $(NAV_SRC) build/index.html $(TARGET_POSTS) .WAIT fonts
+build: assets .WAIT $(NAV_SRC) build/index.html $(TARGET_POSTS)
 pdf: assets $(NAV_SRC) .WAIT $(TARGET_PDFS)
 
 ifeq ($(LIVE), y)
@@ -71,7 +71,7 @@ atom: build .WAIT build/atom.xml
 
 seo: build .WAIT build/sitemap.xml build/robots.txt
 
-full: atom seo .WAIT pdf .WAIT clean
+full: atom fonts seo .WAIT pdf .WAIT clean
 
 $(TODAY_DIR)/index.typ:
 	$(call log,NEW,$@)
