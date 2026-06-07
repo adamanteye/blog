@@ -1,5 +1,5 @@
 #import "page.typ": *
-#import "@preview/touying:0.7.3": *
+#import "@preview/touying:0.7.4": *
 #import themes.university: *
 #let conf(
   title: str,
