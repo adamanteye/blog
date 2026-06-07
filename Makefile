@@ -3,7 +3,7 @@ SHELL     := /bin/bash
 .DELETE_ON_ERROR:
 .SECONDARY:
 
-.PHONY: DUMMY build pdf clean assets css fonts seo atom today full optipng jpegoptim
+.PHONY: DUMMY build pdf clean assets css raw-fonts fonts seo atom today full optipng jpegoptim
 .DEFAULT_GOAL := build
 
 DUMMY:
@@ -52,16 +52,17 @@ TRASH_COUNT    = $(words $(shell find build \( -name '*.bib' -o -name '*.typ' \)
 include mk/assets.mk
 include mk/typst.mk
 
-build: assets .WAIT $(NAV_SRC) build/index.html $(TARGET_POSTS)
+build: assets .WAIT $(NAV_SRC) build/index.html $(TARGET_POSTS) .WAIT fonts
 pdf: assets $(NAV_SRC) .WAIT $(TARGET_PDFS)
 
 ifeq ($(LIVE), y)
 OBJS += build/live.js
 endif
 
-assets: css fonts build/favicon.webp $(OBJS)
+assets: css raw-fonts build/favicon.webp $(OBJS)
 
 css: $(addprefix build/,$(ASSET_CSS))
+raw-fonts: $(addprefix assets/,$(ASSET_FONTS))
 fonts: $(addprefix build/,$(ASSET_FONTS))
 
 today: $(TODAY_DIR)/index.typ $(TODAY_DIR)/meta.typ

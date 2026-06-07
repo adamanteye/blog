@@ -9,11 +9,28 @@ ASSET_FONTS := \
 	fonts/lxgw-wenkai-tc-cjk-400-normal.woff2 \
 	fonts/lxgw-wenkai-tc-cjk-700-normal.woff2
 
-CURL ?= curl
+FONT_CHARS := build/font-chars.txt
+FONT_HTML  := build/index.html $(TARGET_POSTS)
+
+CURL       ?= curl
+PYTHON     ?= python3
+PYFTSUBSET ?= pyftsubset
 
 IOSEVKA_TARBALL := https://registry.npmjs.org/@fontsource/iosevka/-/iosevka-5.2.5.tgz
 LXGW_SC_TARBALL := https://registry.npmjs.org/@fontsource/lxgw-wenkai/-/lxgw-wenkai-5.2.5.tgz
 LXGW_TC_TARBALL := https://registry.npmjs.org/@fontsource/lxgw-wenkai-tc/-/lxgw-wenkai-tc-5.2.9.tgz
+
+$(FONT_CHARS): bin/font-chars.py $(FONT_HTML)
+	$(call log,CHAR,$@)
+	$(Q)$(MKDIR_P) $(@D)
+	$(Q)./bin/font-chars.py $(filter %.html,$^) > $@
+
+build/fonts/%.woff2: assets/fonts/%.woff2 $(FONT_CHARS)
+	$(call log,SUB,$@)
+	$(Q)$(MKDIR_P) $(@D)
+	$(Q)rm -f "$@.tmp"
+	$(Q)$(PYFTSUBSET) $< --text-file=$(FONT_CHARS) --flavor=woff2 --layout-features='*' --output-file="$@.tmp" 2>/dev/null
+	$(Q)mv "$@.tmp" "$@"
 
 build/%: assets/%
 	$(call log,ASSET,$@)
