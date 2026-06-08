@@ -1,4 +1,5 @@
 :root {
+  /* Keep the measure tied to glyph width so long-form text stays readable. */
   --bg: #fff;
   --text: #111;
   --link: #b91c1c;
@@ -20,6 +21,7 @@
 *,
 *::before,
 *::after {
+  /* Make width constraints include padding and borders for predictable layout. */
   box-sizing: border-box;
 }
 
@@ -28,6 +30,7 @@ body {
   font-weight: 400;
   font-size: var(--size-body);
   line-height: var(--line-body);
+  /* Keep the footer at the bottom on short pages while content can grow. */
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
@@ -45,6 +48,7 @@ math {
 
 math[display="block"] {
   display: block;
+  /* Display math can exceed the prose width; scroll it instead of clipping. */
   overflow-x: auto;
   margin: 1em 0;
   text-align: center;
@@ -53,6 +57,7 @@ math[display="block"] {
 main,
 pre,
 figure {
+  /* Typst output can contain wide code, figures, and tables. */
   overflow-x: auto;
 }
 
@@ -129,6 +134,7 @@ pre {
 }
 
 pre code {
+  /* Preserve intrinsic code width so the surrounding <pre> can scroll. */
   display: inline-block;
 }
 
@@ -170,14 +176,27 @@ footer {
 }
 
 table {
-  width: 100%;
+  /* Keep wide tables readable by preserving column width and scrolling locally. */
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
   border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.2rem 0.55rem;
+  vertical-align: top;
 }
 
 th {
   text-align: left;
   border-top: 2px solid #000;
   border-bottom: 2px solid #000;
+  /* Avoid compressed multi-line headers in narrow table columns. */
+  white-space: nowrap;
 }
 
 tr:last-child td {
@@ -188,6 +207,7 @@ tr:last-child td {
   font-family: "TeX Gyre Pagella Math";
   font-style: normal;
   font-weight: 400;
+  /* Avoid invisible text while local or subset fonts are loading. */
   font-display: swap;
   src: local("TeX Gyre Pagella Math"), local("texgyrepagella-math");
 }
@@ -230,6 +250,7 @@ tr:last-child td {
   font-weight: 400;
   font-display: swap;
   src: url("./fonts/lxgw-wenkai-tc-cjk-400-normal.woff2") format("woff2");
+  /* Restrict CJK fallbacks so Latin text continues to use Iosevka. */
   unicode-range:
     U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+31C0-31EF, U+3400-4DBF,
     U+4E00-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF;
