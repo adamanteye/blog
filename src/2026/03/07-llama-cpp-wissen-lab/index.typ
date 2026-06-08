@@ -14,7 +14,7 @@ can tune it to your workload instead of treating it like a black box.
 
 After compiling llama.cpp, the first thing I did was run #link(
   "https://github.com/ggml-org/llama.cpp/discussions/7712",
-)[`llama-bench`]. Here are my results:
+)[`llama-bench`] with Qwen3 embedding model@qwen3embedding. Here are my results:
 
 ```
 root@Skyworks-GPU ~/llama-build# ./llama-bench -m ../models/Qwen3-Embedding-8B-Q6_K.gguf -embd 1 -p 8,16,32,64,128,256,512
@@ -127,3 +127,5 @@ I realised the in-memory task queue the LLM implemented is not the best choice
 here. The app already has a Postgres connection, so why not commit tasks to
 Postgres and retrieve them from there? And of course, Codex (5.4 xhigh) can
 handle that too.
+
+#bibliography("main.bib")
