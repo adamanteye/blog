@@ -28,3 +28,9 @@ make -j$(nproc) MINIFY=y full
 ```bash
 make build/2026/03/03-particles-griffiths-homework/index.pdf
 ```
+
+Or
+
+```bash
+make pdf
+```
