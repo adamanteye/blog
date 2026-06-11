@@ -2,11 +2,19 @@
   "../../../",
 )[Home]
 
-#let source = sys.inputs.at("src", default: none)
-#let source = if source == none {
+#let site = "https://blog.adamanteye.cc"
+#let source-path = sys.inputs.at("src", default: none)
+#let canonical = if source-path == none {
+  site + "/"
+} else {
+  // Strip the leading "src/" (4 chars) and trailing "/index.typ" (9 chars).
+  site + "/" + source-path.slice(4, source-path.len() - 9)
+}
+
+#let source = if source-path == none {
   "https://github.com/adamanteye/blog"
 } else {
-  "https://github.com/adamanteye/blog/blob/master/" + source
+  "https://github.com/adamanteye/blog/blob/master/" + source-path
 }
 #let source = link(
   source,
@@ -115,6 +123,7 @@
           name: "description",
           content: desc,
         )
+        html.link(rel: "canonical", href: canonical)
         html.link(rel: "stylesheet", href: "../../../common.css")
       })
       html.body({

@@ -6,6 +6,8 @@
   "https://github.com/adamanteye/blog",
 )[Source]
 
+#let site = "https://blog.adamanteye.cc"
+
 #import "meta.typ": footer
 
 #{
@@ -17,6 +19,7 @@
         content: "",
       )
       include "meta.typ"
+      html.link(rel: "canonical", href: site + "/")
       html.link(rel: "stylesheet", href: "./common.css")
     })
     html.body({
