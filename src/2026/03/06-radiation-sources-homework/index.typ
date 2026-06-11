@@ -663,8 +663,20 @@
     let ymax = if has-k-lines { 1.35 } else { 1.05 }
     let k-lines = if has-k-lines {
       (
-        lq.vlines(ka-energy, min: 0, max: 1.25, stroke: red + 0.9pt, label: [$K ka$]),
-        lq.vlines(kb-energy, min: 0, max: 0.75, stroke: blue + 0.9pt, label: [$K kb$]),
+        lq.vlines(
+          ka-energy,
+          min: 0,
+          max: 1.25,
+          stroke: red + 0.9pt,
+          label: [$K ka$],
+        ),
+        lq.vlines(
+          kb-energy,
+          min: 0,
+          max: 0.75,
+          stroke: blue + 0.9pt,
+          label: [$K kb$],
+        ),
       )
     } else {
       ()
