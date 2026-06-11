@@ -743,10 +743,10 @@
 
   == 3
 
-  图中反馈网络为 $R_2 = qty("1000", "Mohm")$, $C_2 = qty("1", "pF")$,
+  图中反馈网络为 $R_2 = qty("1000", "MO")$, $C_2 = qty("1", "pF")$,
   $A = num("1e4")$.
 
-  输入端还并联有 $R_1 = qty("100", "Mohm")$, $C_1 = qty("2000", "pF")$.
+  输入端还并联有 $R_1 = qty("100", "MO")$, $C_1 = qty("2000", "pF")$.
 
   由于 $v_o = -A v_i$
 
@@ -757,18 +757,18 @@
 
   其中 $R_i = R_1 parallel R_"f,eq"$, $C_i = C_1 + C_"f,eq"$.
 
-  代入数值得
-  $R_"f,eq" = (1000 / 10001) unit("Mohm") approx qty("0.100", "Mohm")$
+  代入数值得:
+  $R_"f,eq" = (1000 / 10001) unit("MO") approx qty("0.100", "MO")$
 
   $
-    R_i = qty("100", "Mohm") parallel qty("0.100", "Mohm")
+    R_i = qty("100", "MO") parallel qty("0.100", "MO")
     approx qty("9.99e4", "ohm")
     C_i = qty("2000", "pF") + num("10001") times qty("1", "pF")
     = qty("12001", "pF") approx qty("12.0", "nF")
   $
 
   所以等效输入阻抗可写为
-  $Z_i approx qty("99.9", "kohm") parallel qty("12.0", "nF")$
+  $Z_i approx qty("99.9", "kO") parallel qty("12.0", "nF")$
 
   == 4
 
@@ -780,7 +780,7 @@
 
   代入 $v_- = -v_o / A$ 后得闭环增益 $v_o / v_i = - A R_1 / (R_1 + (A + 1) R_2)$
 
-  代入 $R_1 = qty("100", "kohm"), R_2 = qty("1", "kohm"), A = 1000$,
+  代入 $R_1 = qty("100", "kO"), R_2 = qty("1", "kO"), A = 1000$,
   $v_o / v_i = -1000 times 100 / (100 + 1001) approx -90.83$
 
   === (2)
@@ -899,7 +899,7 @@
     C_i = qty("100", "pF") \
     C_f = qty("1", "pF") \
     C = qty("10", "pF") \
-    R = qty("500", "kohm")
+    R = qty("500", "kO")
   $
 
   输入端与输出端列方程可得该系统的主时间常数近似为
