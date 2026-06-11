@@ -121,24 +121,19 @@ often derive the posterior parameters in closed form.
 Note general exponential family:
 
 $
-  p(y_i|kt)=markhl(f(y_i), tag: #<base>, color: #blue) exp(
-    markhl(phi(kt)^TT, color: #red, tag: #<model>) markhl(u(y_i), tag: #<data>)
-    -markhl(g(kt), color: #gray, tag: #<norm>)
+  p(y_i|kt)=f(y_i) exp(
+    phi(kt)^TT u(y_i)
+    g(kt)
   )
-  #annot(<base>, pos: top + left)[base measure]
-  #annot(<model>, pos: bottom + left)[natural parameter]
-  #annot(<data>, pos: top + right)[sufficient statistic]
-  #annot(<norm>, pos: bottom + right)[log normalizer]
 $
 
 Likelihood of a sequence of i.i.d.samples:
 
 $
-  p(y|kt)=markhl(product_(i=1)^n (f(y_i)), color: #blue) exp(
-    markhl(phi(kt)^TT, color: #red,) markhl(sum_(i=1)^n u(y_i), tag: #<data2>)
-    -markhl(n g(kt), color: #gray)
+  p(y|kt)=product_(i=1)^n (f(y_i)) exp(
+    phi(kt)^TT sum_(i=1)^n u(y_i)
+    - n g(kt)
   )
-  #annot(<data2>, pos: top)[$t(y)=sum_(i=1)^n u(y_i)$]
 $
 
 So conjugate prior for that likelihood is

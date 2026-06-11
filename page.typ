@@ -16,7 +16,6 @@
 #import "@preview/physica:0.9.8": *
 #import "@preview/unify:0.8.1": *
 #import "@preview/lilaq:0.6.0" as lq
-#import "@preview/mannot:0.3.2": *
 #import "@preview/typsite:0.1.0": mathyml
 
 #let isotope(element, a: none, z: none) = {
