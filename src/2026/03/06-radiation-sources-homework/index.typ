@@ -66,6 +66,76 @@
     ),
   )
 
+  == 均方根发射度与不确定性极限
+
+  横向归一化均方根发射度可写为
+
+  $
+    ke_("n",x)
+    = 1 / (m_e c)
+    sqrt(
+      expval(x^2) expval(p_x^2)
+      - expval(x p_x)^2
+    )
+  $
+
+  若相空间椭圆为正椭圆, 即位置和横向动量没有相关项, $expval(x p_x) = 0$, 且
+  $ks_x^2 = expval(x^2)$, $ks_(p_x)^2 = expval(p_x^2)$, 则
+
+  $
+    ke_("n",x) = (ks_x ks_(p_x)) / (m_e c)
+  $
+
+  由海森堡不确定性关系
+
+  $
+    ks_x ks_(p_x) >= hbar / 2
+  $
+
+  得到归一化均方根发射度的量子下限
+
+  $
+    ke_("n,min") = hbar / (2 m_e c)
+  $
+
+  代入电子质量可得
+
+  $
+    ke_("n,min")
+    = qty("1.93e-13", "m") dot "rad"
+    = qty("0.193", "nm") dot "mrad"
+  $
+
+  若用几何发射度表示, 取参考纵向动量为 $p$, 并用 $x' approx p_x / p$, 则
+
+  $
+    ke_x
+    = 1 / p
+    sqrt(
+      expval(x^2) expval(p_x^2)
+      - expval(x p_x)^2
+    )
+  $
+
+  因而几何均方根发射度的下限为
+
+  $
+    ke_(x,"min") = hbar / (2 p)
+  $
+
+  又因为 de Broglie 波长 $kl_"dB" = h / p = 2 pi hbar / p$, 所以
+
+  $
+    ke_(x,"min") = kl_"dB" / (4 pi)
+  $
+
+  归一化发射度和几何发射度满足 $ke_n = kb kg ke_x$, 且 $p = kb kg m_e c$, 因此
+
+  $
+    ke_("n,min")
+    = kb kg kl_"dB" / (4 pi)
+    = hbar / (2 m_e c)
+  $
 
   == 200 keV 电镜中电子平均纵向间距
 
@@ -274,9 +344,9 @@
   其中 $C$ 为与归一化有关的常数. 在求二阶矩时, 分子分母中的 $C / m_0$
   会相互抵消.
 
-  于是 $ks_(p_x)^2 = chevron.l p_x^2 chevron.r - chevron.l p_x chevron.r^2$
+  于是 $ks_(p_x)^2 = expval(p_x^2) - expval(p_x)^2$
 
-  由对称性可知 $chevron.l p_x chevron.r = 0$, 所以
+  由对称性可知 $expval(p_x) = 0$, 所以
 
   $
     ks_(p_x)^2
@@ -324,11 +394,11 @@
 
   $
     ke_("n",x)
-    = 1 / (m_0 c) sqrt(chevron.l x^2 chevron.r chevron.l p_x^2 chevron.r - chevron.l x p_x chevron.r^2)
+    = 1 / (m_0 c) sqrt(expval(x^2) expval(p_x^2) - expval(x p_x)^2)
   $
 
-  若阴极表面位置与横向动量无关, 即 $chevron.l x p_x chevron.r = 0$, 且
-  $ks_x^2 = chevron.l x^2 chevron.r$, 则
+  若阴极表面位置与横向动量无关, 即 $expval(x p_x) = 0$, 且
+  $ks_x^2 = expval(x^2)$, 则
   $ke_("n",x) = (ks_x ks_(p_x)) / (m_0 c)$
 
   最终得到 $ke_("n",x) = ks_x sqrt(kD E / (3 m_0 c^2))$
@@ -581,34 +651,36 @@
   $
     I(E) prop (E_"max" - E) / E_"max" \
     0 < E < E_"max"
-  $.
+  $
 
   当 $E_"max"$ 超过靶材 K edge 时, 谱中出现 Kα 和 Kβ 特征峰; 否则没有 K
   系特征线. 示意图中红线为 Kα, 蓝线为 Kβ.
 
-  #let energy = lq.linspace(0.1, 150)
   #let brem(e, emax) = if e < emax { (emax - e) / emax } else { 0 }
-  #let peak(e, edge, h) = if e > edge { h } else { 0 }
-  #let spectrum(emax, edge, k-a-energy, k-b-energy, title) = {
+  #let spectrum(emax, edge, ka-energy, kb-energy, title) = {
+    let energy = lq.linspace(0.1, emax)
+    let has-k-lines = emax > edge
+    let ymax = if has-k-lines { 1.35 } else { 1.05 }
+    let k-lines = if has-k-lines {
+      (
+        lq.vlines(ka-energy, min: 0, max: 1.25, stroke: red + 0.9pt, label: [$K ka$]),
+        lq.vlines(kb-energy, min: 0, max: 0.75, stroke: blue + 0.9pt, label: [$K kb$]),
+      )
+    } else {
+      ()
+    }
     lq.diagram(
+      title: title,
+      xlim: (0, emax * 1.05),
+      ylim: (0, ymax),
       xlabel: [$E_kg$ / keV],
       ylabel: [相对强度],
       lq.plot(energy, e => brem(e, emax), mark: none, label: [连续谱]),
-      lq.path(
-        (k-a-energy, 0),
-        (k-a-energy, peak(emax, edge, 1.25)),
-        stroke: red + 0.9pt,
-        label: [$K ka$],
-      ),
-      lq.path(
-        (k-b-energy, 0),
-        (k-b-energy, peak(emax, edge, 0.75)),
-        stroke: blue + 0.9pt,
-        label: [$K kb$],
-      ),
-      lq.path(
-        (emax, 0),
-        (emax, 1.05),
+      ..k-lines,
+      lq.vlines(
+        emax,
+        min: 0,
+        max: 1.05,
         stroke: gray + 0.5pt,
         label: [$E_"max"$],
       ),
@@ -620,35 +692,23 @@
       columns: 2,
       row-gutter: 1em,
       [
-        *Mo, 50 kV*
-
         #spectrum(50, 20.000, 17.479, 19.608, [Mo 50 kV])
       ],
       [
-        *W, 50 kV*
-
         #spectrum(50, 69.525, 59.319, 67.245, [W 50 kV])
       ],
 
       [
-        *Mo, 100 kV*
-
         #spectrum(100, 20.000, 17.479, 19.608, [Mo 100 kV])
       ],
       [
-        *W, 100 kV*
-
         #spectrum(100, 69.525, 59.319, 67.245, [W 100 kV])
       ],
 
       [
-        *Mo, 150 kV*
-
         #spectrum(150, 20.000, 17.479, 19.608, [Mo 150 kV])
       ],
       [
-        *W, 150 kV*
-
         #spectrum(150, 69.525, 59.319, 67.245, [W 150 kV])
       ],
     ),
@@ -1047,7 +1107,7 @@
   $K = 2.3$, $N = 174$.
 
   波荡器轴线上第 $n$ 次谐波的波长为
-  $kl_n = (kl_u (1 + K^2 / 2 + kg^2 kt^2)) / (2 n kg^2)$
+  $ kl_n = (kl_u (1 + K^2 / 2 + kg^2 kt^2)) / (2 n kg^2) $
 
   基频光对应 $n = 1$, 且取轴上观察方向 $kt = 0$, 因而
   $kl_1 = (kl_u (1 + K^2 / 2)) / (2 kg^2)$
@@ -1066,9 +1126,9 @@
   对应光子能量约为 $E_1 = h c / kl_1 approx qty("4.15", "keV")$
 
   有限周期数 $N$ 导致基频谱线具有自然带宽, 量级可估算为
-  $kD kl / kl_1 approx 1 / N$
+  $(kD kl) / kl_1 approx 1 / N$
 
-  故 $kD kl / kl_1 approx 1 / 174 approx 5.75 times 10^(-3)$
+  故 $(kD kl) / kl_1 approx 1 / 174 approx 5.75 times 10^(-3)$
 
   即相对带宽约为 $0.575%$
 
@@ -1082,7 +1142,7 @@
   $
 
   若取常见的 FWHM 估算, 则
-  $kD kl / kl_1 approx 0.89 / N approx 5.11 times 10^(-3)$
+  $(kD kl) / kl_1 approx 0.89 / N approx 5.11 times 10^(-3)$
 
   与上面的数量级一致.
 
@@ -1090,7 +1150,7 @@
 
   $
     kl_1 approx qty("0.299", "nm") \
-    kD kl / kl_1 approx 5.7 times 10^(-3)
+    (kD kl) / kl_1 approx 5.7 times 10^(-3)
   $
 
   即基频光约为 4.15 keV, 相对带宽约为 $0.5%$ 到 $0.6%$.
@@ -1213,7 +1273,7 @@
   两个一阶零点之间的全宽为 $kD ko_"zero" = 4 pi / (N T)$.
 
   若用强度谱 $abs(b)^2$ 的半高全宽估算, sinc 平方函数给出
-  $kD ko_"FWHM" / ko_0 approx 0.89 / N$.
+  $(kD ko_"FWHM") / ko_0 approx 0.89 / N$.
 
   因此基频谱宽主要由周期数 $N$ 决定: $N$ 越大, 谱线越窄. 微束团宽度 $ks_e$
   主要通过高斯包络影响各谐波强度; $ks_e$ 越小, 高频谐波衰减越慢. 对本题
@@ -1274,7 +1334,7 @@
   小于波荡器总长度, 因而该参数下可以达到饱和输出.
 
   按课件中的一维 FEL scaling, SASE 辐射的相对带宽为
-  $ kD ko / ko approx 2 rho = 1.0 times 10^(-3) $
+  $ (kD ko) / ko approx 2 rho = 1.0 times 10^(-3) $
   即相对带宽约为 $0.10%$.
 
   有限波荡器周期数给出的自然线宽量级为 $1 / N_u approx 3.0 times 10^(-4)$, 小于
@@ -1307,7 +1367,7 @@
   $
     E_e approx qty("13.6", "GeV") \
     L_g approx qty("2.8", "m") \
-    kD ko / ko approx 1.0 times 10^(-3) \
+    (kD ko) / ko approx 1.0 times 10^(-3) \
     kD t_"spike" approx qty("0.1", "fs")
   $
 
@@ -1522,17 +1582,16 @@
     approx qty("0.23", "ps")
   $
 
-  所以两种散射几何的结果可概括为
+  所以两种散射几何的结果可概括为:
 
-  $
-    "180 degree": \
-    ks_x approx ks_y approx qty("14.6", "um") \
-    ks_t approx qty("1.5", "ps") \
-    "90 degree": \
-    ks_x approx qty("59.5", "um") \
-    ks_y approx qty("14.6", "um") \
-    ks_t approx qty("0.23", "ps")
-  $
+  / 180 度: $
+      ks_x approx ks_y approx qty("14.6", "um") \
+      ks_t approx qty("1.5", "ps")
+    $
+
+  / 90 度: $
+      ks_x approx qty("59.5", "um") \ ks_y approx qty("14.6", "um") \ ks_t approx qty("0.23", "ps")
+    $
 
 
   = 第十次作业
