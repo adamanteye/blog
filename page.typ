@@ -7,7 +7,7 @@
 #let canonical = if source-path == none {
   site + "/"
 } else {
-  // Strip the leading "src/" (4 chars) and trailing "/index.typ" (9 chars).
+  // Strip the leading "src/" (4 chars) and trailing "index.typ" (9 chars).
   site + "/" + source-path.slice(4, source-path.len() - 9)
 }
 
