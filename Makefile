@@ -3,7 +3,7 @@ SHELL     := /bin/bash
 .DELETE_ON_ERROR:
 .SECONDARY:
 
-.PHONY: DUMMY build pdf clean assets css raw-fonts fonts seo atom today full optipng jpegoptim
+.PHONY: DUMMY build pdf clean assets css raw-fonts fonts seo atom post slide full optipng jpegoptim
 .DEFAULT_GOAL := build
 
 DUMMY:
@@ -28,6 +28,7 @@ RM_RF   := rm -rf
 FIND    := find
 
 TEMPLATE_INDEX := tmpl/index.typ
+TEMPLATE_MAIN  := tmpl/main.typ
 TEMPLATE_META  := tmpl/meta.typ
 NAV_SRC        := build/nav.typ
 MAGIC_TITLE    := 0x8964
@@ -65,7 +66,8 @@ css: $(addprefix build/,$(ASSET_CSS))
 raw-fonts: $(addprefix assets/,$(ASSET_FONTS))
 fonts: $(addprefix build/,$(ASSET_FONTS))
 
-today: $(TODAY_DIR)/index.typ $(TODAY_DIR)/meta.typ
+post: $(TODAY_DIR)/meta.typ $(TODAY_DIR)/index.typ
+slide: $(TODAY_DIR)/meta.typ $(TODAY_DIR)/main.typ
 
 atom: build .WAIT build/atom.xml
 
@@ -76,6 +78,10 @@ full: atom seo fonts .WAIT pdf .WAIT clean
 $(TODAY_DIR)/index.typ:
 	$(call log,NEW,$@)
 	$(Q)$(INSTALL) $(TEMPLATE_INDEX) $@
+
+$(TODAY_DIR)/main.typ:
+	$(call log,NEW,$@)
+	$(Q)$(INSTALL) $(TEMPLATE_MAIN) $@
 
 $(TODAY_DIR)/meta.typ:
 	$(call log,NEW,$@)

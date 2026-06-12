@@ -14,7 +14,8 @@ make build
 ## Writing a Post
 
 ```bash
-make TITLE=your-title today
+make TITLE=your-title post
+make TITLE=your-title slide
 ```
 
 ## Production Build
