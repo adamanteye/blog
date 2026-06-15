@@ -448,10 +448,10 @@
   $R_"f,eq" = (1000 / 10001) unit("MO") approx qty("0.100", "MO")$
 
   $
-    R_i = qty("100", "MO") parallel qty("0.100", "MO")
-    approx qty("9.99e4", "ohm")
-    C_i = qty("2000", "pF") + num("10001") times qty("1", "pF")
-    = qty("12001", "pF") approx qty("12.0", "nF")
+    R_i & = qty("100", "MO") parallel qty("0.100", "MO")
+          approx qty("9.99e4", "ohm") \
+    C_i & = qty("2000", "pF") + num("10001") times qty("1", "pF")
+          = qty("12001", "pF") approx qty("12.0", "nF")
   $
 
   所以等效输入阻抗可写为
@@ -743,7 +743,7 @@
 
   定义: 能量分辨率 $omega_"FWHM"=qty("2", "keV")$. 若取一个 FWHM 作为全能峰能窗,
   本底计数
-  $B=b kD E L_T=qty("1", "cps/keV") times qty("2", "keV") times qty("1000", "s")
+  $B=b kD E L_T=qty("1", "keV/s") times qty("2", "keV") times qty("1000", "s")
   =2000$. 95% 探测限采用 Currie 形式:
 
   $
@@ -961,15 +961,15 @@
   == 两种伽马谱仪对 $isotope("Cs", a: 137)$ 的 MDA
 
   定义: $E_kg=qty("662", "keV")$, 发射分支比 $Y=85.1%=0.851$, 全能峰效率
-  $epsilon=10%=0.10$, 本底谱密度 $b=qty("1", "kcps/keV")
-  =qty("1000", "cps/keV")$, 测量时间 $T=qty("1", "h")=qty("3600", "s")$.
-  能窗宽度取 $kD E=5 omega_"FWHM"$, 本底计数 $B=b kD E T$, Currie 探测限
-  $L_D=2.71+4.65 sqrt(B)$, 因而 $A_"MDA"=L_D/(epsilon T Y)$.
+  $epsilon=10%=0.10$, 本底谱密度 $b=qty("1e3", "keV/s")$, 测量时间
+  $T=qty("1", "h")=qty("3600", "s")$. 能窗宽度取 $kD E=5 omega_"FWHM"$, 本底计数
+  $B=b kD E T$, Currie 探测限 $L_D=2.71+4.65 sqrt(B)$, 因而
+  $A_"MDA"=L_D/(epsilon T Y)$.
 
   HPGe 的相对 FWHM 为 $0.2%=0.002$, 所以
   $omega_"FWHM"=0.002 times qty("662", "keV")=qty("1.324", "keV")$,
   $kD E=qty("6.62", "keV")$,
-  $B=qty("1000", "cps/keV") times qty("6.62", "keV") times qty("3600", "s")
+  $B=qty("1000", "keV/s") times qty("6.62", "keV") times qty("3600", "s")
   approx num("2.38e7")$. 代入得 $L_D approx num("2.27e4")$,
   $A_"MDA" approx qty("74", "Bq")$.
 
@@ -1048,12 +1048,12 @@
   == $isotope("Co", a: 60)$ 的 $qty("1.33", "MeV")$ 伽马射线 MDA
 
   已知 HPGe 能量分辨率 $omega_"FWHM"=qty("2", "keV")$, 能窗宽度取
-  $kD E=qty("2", "keV")$. 本底谱密度 $b=qty("1", "cps/keV")$, 测量时间
+  $kD E=qty("2", "keV")$. 本底谱密度 $b=qty("1", "keV/s")$, 测量时间
   $T=qty("1000", "s")$, 因而能窗内本底计数为:
 
   $
     B = b kD E T
-    = qty("1", "cps/keV") times qty("2", "keV") times qty("1000", "s")
+    = qty("1", "keV/s") times qty("2", "keV") times qty("1000", "s")
     = num("2000")
   $
 
