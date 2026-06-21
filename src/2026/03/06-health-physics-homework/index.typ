@@ -91,13 +91,13 @@
     N_"Rn" = (A_"Rn" T_(1/2)) / (ln 2) approx 1.76 times 10^16.
   $
   物质的量 $n_"Rn"=(N_"Rn")/(N_A) approx qty("2.93e-8", "mol")$. 在
-  $qty("0", "degC")$, 760 mmHg 下, $V=n_"Rn" times qty("22.4", "L")
-  approx qty("6.56e-7", "L") = qty("0.656", "muL")$.
+  $qty("0", "dC")$, 760 mmHg 下, $V=n_"Rn" times qty("22.4", "L")
+  approx qty("6.56e-7", "L") = qty("0.656", "uL")$.
 
   == $isotope("Mo", a: 99)$-$isotope("Tc", a: 99m)$ 发生器再次淋洗的时间
 
   一次淋洗后取 $A_2(0)=0$. 母体 $isotope("Mo", a: 99)$ 活度
-  $A_1=A_(1,0)e^(-kl_1 t)$, 子体 $isotope("Tc", a: 99m)$ 活度由 Bateman
+  $A_1=A_((1,0)) e^(-kl_1 t)$, 子体 $isotope("Tc", a: 99m)$ 活度由 Bateman
   公式给出, 因而
   $
     (A_2)/(A_1) = (kl_2)/(kl_2-kl_1) (1 - e^(-(kl_2-kl_1)t)).
@@ -155,17 +155,19 @@
   $
     dot(Phi)=(A Y_kg)/(4 pi r^2) approx qty("1.00e10", "m^-2 s^-1").
   $
+
   又 $E_kg=661.7 times 10^3 times qty("1.602e-19", "J")
-  approx qty("1.06e-13", "J")$, 故
-  $dot(Psi)=E_kg dot(Phi) approx qty("1.06e-3", "J/m^2/s")$.
+  approx qty("1.06e-13", "J")$, 因此:
+  $ dot(Psi)=E_kg dot(Phi) approx qty("1.06e-3", "J/m^2/s") $
 
   == 辐射损失率之比与电子在铅中的辐射损失比
 
   同一介质中轫致辐射损失率近似 $S_"rad"$ 正比于 $(z^2 E)/(m^2)$. 10 MeV 氘核和
   10 MeV 电子电荷数相同, 动能相同, 所以
-  $((S_"rad")_d)/((S_"rad")_e)=((m_e)/(m_d))^2$. 取
-  $m_e c^2=qty("0.511", "MeV")$, $m_d c^2=qty("1875.6", "MeV")$, 得比值
-  $approx 7.4 times 10^(-8)$. 对 20 MeV 电子在铅中, 查表取
+  $((S_"rad")_d)/((S_"rad")_e)=((m_e)/(m_d))^2$.
+
+  取 $m_e c^2=qty("0.511", "MeV")$, $m_d c^2=qty("1875.6", "MeV")$, 得比值为
+  $7.4 times 10^(-8)$. 对 $qty("20", "MeV")$ 电子在铅中, 查表取
   $S_"col"=qty("1.277", "MeV cm^2/g")$, $S_"rad"=qty("2.554", "MeV cm^2/g")$, 故
   $(S_"rad")/(S_"col") approx 2.00$, 即辐射损失约为电离损失的 2 倍.
 
@@ -175,34 +177,37 @@
 
   空气吸收能量相同意味着
   $Phi_1 E_1 ((mu_"en")/(rho))_1 = Phi_2 E_2 ((mu_"en")/(rho))_2$.
+
   取空气质量能量吸收系数
   $((mu_"en")/(rho))_(0.1 " MeV") approx qty("2.325e-2", "cm^2/g")$,
   $((mu_"en")/(rho))_(1 " MeV") approx qty("2.789e-2", "cm^2/g")$, 则
   $
     (Phi_1)/(Phi_2) = (E_2 ((mu_"en")/(rho))_2)/(E_1 ((mu_"en")/(rho))_1)
-    approx 8.34 times 10^(-2).
+    approx 8.34 times 10^(-2)
   $
-  因而 $Phi_(1 " MeV") : Phi_(0.1 " MeV") approx 0.083 : 1$, 0.1 MeV
-  光子束注量约为 1 MeV 的 12 倍.
+
+  因而 $Phi_(1 " MeV") : Phi_(0.1 " MeV") approx 0.083 : 1$, 光子束注量约为
+  $qty("1", "MeV")$ 的 12 倍.
 
   == 5 Gy 辐射剂量引起的人体温度变化
 
-  人体比热取 $c=qty("1", "cal/(g degC)")=qty("4.186e3", "J/(kg degC)")$.
-  吸收剂量 $D=qty("5", "Gy")=qty("5", "J/kg")$, 所以
-  $kD T=(D)/(c) approx qty("1.19e-3", "degC")$. 因此 5 Gy 只会造成约 $0.0012$ C
-  的温升, 热效应很小.
+  人体比热取 $c=qty("1", "cal/g/dC")=qty("4.186e3", "J/kg/dC")$. 吸收剂量
+  $D=qty("5", "Gy")=qty("5", "J/kg")$, 所以
+  $kD T=(D)/(c) approx qty("1.19e-3", "dC")$. 因此 $qty("5", "Gy")$ 只会造成约
+  $qty("0.0012", "dC")$ 的温升, 热效应很小.
 
   == 0.5 MeV $kg$ 射线照射量率对应的组织吸收剂量率
 
   已知 $dot(X)=qty("25.4", "muC/(kg h)")=qty("100", "mR/h")
   =qty("0.1", "R/h")$. 空气比释动能率
-  $dot(K)_"air"=0.00876 dot(X) approx qty("8.76e-4", "Gy/h")$. 对 0.5 MeV 光子取
+  $dot(K)_"air"=0.00876 dot(X) approx qty("8.76e-4", "Gy/h")$. 对
+  $qty("0.5", "MeV")$ 光子取
   $((mu_"en")/(rho))_"air" approx qty("2.966e-2", "cm^2/g")$,
   $((mu_"en")/(rho))_"tissue" approx qty("3.269e-2", "cm^2/g")$, 则
   $
     dot(D)_"tissue" = dot(K)_"air"
     (((mu_"en")/(rho))_"tissue" / ((mu_"en")/(rho))_"air")
-    approx qty("9.65e-4", "Gy/h").
+    approx qty("9.65e-4", "Gy/h")
   $
   即组织吸收剂量率约 $qty("0.965", "mGy/h")$.
 
@@ -210,11 +215,14 @@
 
   中子注量率 $dot(Phi)=qty("1e6", "m^-2 s^-1")=qty("100", "cm^-2 s^-1")$,
   年工作时间 $t=15.0 times 12=qty("180", "h")=qty("6.48e5", "s")$, 年注量
-  $Phi=dot(Phi)t=qty("6.48e7", "cm^-2")$. 5 MeV 中子在软组织中的 比释动能因子取
-  $f_k approx qty("3.7e-11", "Gy cm^2")$, 且 $D approx K$, 因而
-  $D=Phi f_k approx qty("2.40e-3", "Gy")$. 取 $w_R=10$, 眼晶体当量剂量
+  $Phi=dot(Phi)t=qty("6.48e7", "cm^-2")$.
+
+  5 MeV 中子在软组织中的 比释动能因子取 $f_k approx qty("3.7e-11", "Gy cm^2")$,
+  且 $D approx K$.
+
+  因而 $D=Phi f_k approx qty("2.40e-3", "Gy")$. 取 $w_R=10$, 眼晶体当量剂量
   $H=w_R D approx qty("2.40e-2", "Sv")=qty("24.0", "mSv/a")$. 该值低于 GB
-  18871-2002 的 $150$ mSv/a, 但略高于 ICRP 118 的 20 mSv/a 推荐值.
+  18871-2002 的 $150$ mSv/a, 但略高于 ICRP 118 的 $qty("20", "m Sv/a")$ 推荐值.
 
   == 电子对效应下的比释动能与吸收剂量
 
@@ -265,7 +273,7 @@
   量级电子用质量厚度表示的 CSDA 射程在不同材料中同量级, 取
   $rho_"Pb"=qty("11.35", "g/cm^3")$, 则铅中线射程
   $R("Pb") approx (R_m)/(rho_"Pb")=(1.22)/(11.35) " cm" approx qty("1.08", "mm")$.
-  因而可记为约 1 mm.
+  因而可记为约 $qty("1", "mm")$.
 
   == 含 $isotope("Co", a: 60)$ 溶液直管的照射量率和空气比释动能率
 
@@ -442,7 +450,8 @@
 
   即:
   $ D_"plastic" approx qty("0.095", "Gy") approx qty("9.5", "rad") $
-  = 第八次作业
+
+  = 第九次作业
 
   == 探测限 $L_D$ 的表达式
 
