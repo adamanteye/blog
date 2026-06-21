@@ -80,11 +80,13 @@
 #let kO = $Omega$
 #let int = $integral$
 #let inft = $infinity$
+#let hbar = $planck$
 #let ol = it => $overline(it)$
-#let istp = it => $isotope(it)$
+#let istp = isotope
 #let chem = it => math.op(it)
 #let cps = $compose$
-#let diff = it => $difference(it)$
+#let ts = tensor
+#let mac = it => $macron(it)$
 
 #let etc(start, end, sym) = $sym_start, sym_2, ..., sym_end$
 
@@ -171,7 +173,7 @@
       })
     })
   } else {
-    set page(numbering: "1")
+    set page(numbering: "1", paper: "a4", margin: (y: 1cm, x: 1cm))
     set image(width: 90%)
     set grid(column-gutter: 1em, row-gutter: 1em)
     set text(
@@ -182,7 +184,8 @@
       size: 12pt,
     )
     show math.equation: set text(font: "TeX Gyre Pagella Math")
-    show link: it => underline(text(fill: olive.lighten(20%), it))
+    show link: it => underline(text(fill: rgb("b91c1c"), it))
+    show ref: it => text(fill: rgb("b91c1c"), it)
     set par(leading: 1em)
     set par(spacing: 1.5em, justify: true)
     show heading: set block(below: 1.5em)

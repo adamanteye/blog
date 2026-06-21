@@ -209,7 +209,10 @@ tr:last-child td {
   font-weight: 400;
   /* Avoid invisible text while local or subset fonts are loading. */
   font-display: swap;
-  src: local("TeX Gyre Pagella Math"), local("texgyrepagella-math");
+  src:
+    url("./fonts/texgyrepagella-math.woff2") format("woff2"),
+    local("TeX Gyre Pagella Math"),
+    local("texgyrepagella-math");
 }
 
 @font-face {
