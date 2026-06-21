@@ -1,5 +1,6 @@
 #import "/page.typ": *
 #import "meta.typ": desc, title
+#set text(lang: "zh")
 #show: conf.with(title: title, desc: desc)
 
 #let hw = [
@@ -84,9 +85,8 @@
 
   == 与 1 g $isotope("Ra", a: 226)$ 平衡的 $isotope("Rn", a: 222)$ 体积
 
-  1 g $isotope("Ra", a: 226)$ 近似为 $qty("1", "Ci")=qty("3.7e10", "Bq")$.
-  平衡时 $A_"Rn"=A_"Ra"$. 取 $T_(1/2)(isotope("Rn", a: 222))=qty("3.82", "d")$,
-  则
+  1 g $isotope("Ra", a: 226)$ 近似为 $qty("3.7e10", "Bq")$. 平衡时
+  $A_"Rn"=A_"Ra"$. 取 $T_(1/2)(isotope("Rn", a: 222))=qty("3.82", "d")$, 则
   $
     N_"Rn" = (A_"Rn" T_(1/2)) / (ln 2) approx 1.76 times 10^16.
   $
@@ -150,7 +150,7 @@
 
   == $isotope("Cs", a: 137)$ 点源在 0.5 m 处的粒子注量率和能量注量率
 
-  点源活度 $A=qty("1", "Ci")=qty("3.7e10", "s^-1")$, 取 $Y_kg=0.851$,
+  点源活度 $A=qty("3.7e10", "s^-1")$, 取 $Y_kg=0.851$,
   $E_kg=qty("661.7", "keV")$, $r=qty("0.5", "m")$. 各向同性发射给出
   $
     dot(Phi)=(A Y_kg)/(4 pi r^2) approx qty("1.00e10", "m^-2 s^-1").
@@ -217,7 +217,7 @@
   年工作时间 $t=15.0 times 12=qty("180", "h")=qty("6.48e5", "s")$, 年注量
   $Phi=dot(Phi)t=qty("6.48e7", "cm^-2")$.
 
-  5 MeV 中子在软组织中的 比释动能因子取 $f_k approx qty("3.7e-11", "Gy cm^2")$,
+  5 MeV 中子在软组织中的比释动能因子取 $f_k approx qty("3.7e-11", "Gy cm^2")$,
   且 $D approx K$.
 
   因而 $D=Phi f_k approx qty("2.40e-3", "Gy")$. 取 $w_R=10$, 眼晶体当量剂量
@@ -252,17 +252,17 @@
   有限使用: 在职业防护, 公众防护和法规制定中, LNT 形式简单, 偏保守,
   适合作为剂量限值和优化的工作假设; 在医学实践中, 不应把低剂量线性外推得到的微小
   理论风险当作个体患者的确定伤害. 原因是 $qty("100", "mSv")$ 以下人体证据有限,
-  高剂量外推模型依赖强, 置信区间宽, 且 DNA 修复, 细胞凋亡, 免疫监视和分次效应
-  都说明低剂量生物响应未必是简单线性. 更合适的表述是: 低剂量风险可能存在,
-  量级很小且不确定性大, 因而应优化照射而不应制造不必要恐慌.
+  高剂量外推模型依赖强, 置信区间宽, 且 DNA 修复, 细胞凋亡,
+  免疫监视和分次效应都说明低剂量生物响应未必是简单线性. 更合适的表述是:
+  低剂量风险可能存在, 量级很小且不确定性大, 因而应优化照射而不应制造不必要恐慌.
 
   = 第六次作业
 
   == 4 MeV alpha 粒子在石墨中的剂量率
 
   注量率 $dot(Phi)=qty("1.0e3", "m^-2 s^-1")=qty("0.10", "cm^-2 s^-1")$.
-  对带电粒子, $dot(D)=dot(Phi)((S_"col")/(rho))$. 查 ASTAR 取 4 MeV alpha 在
-  graphite 中 $(S_"col")/(rho) approx qty("6.5e2", "MeV cm^2/g")$, 得
+  对带电粒子, $dot(D)=dot(Phi)((S_"col")/(rho))$. 查 ASTAR 取 4 MeV alpha
+  在石墨中 $(S_"col")/(rho) approx qty("6.5e2", "MeV cm^2/g")$, 得
   $dot(D)=0.10 times 6.5 times 10^2=qty("65", "MeV/g/s")$. 用
   $1 " MeV/g"=1.602 times 10^(-10) " Gy"$, 得
   $dot(D) approx qty("1.04e-8", "Gy/s")=qty("37.5", "uGy/h")$.
@@ -279,8 +279,7 @@
 
   管长 $L=qty("2", "m")=qty("200", "cm")$, 截面积 $S=qty("1", "cm^2")$, 体积
   $V=qty("200", "cm^3")$. 活度浓度 $C_A=qty("2.1e9", "Bq/cm^3")$, 总活度
-  $A=C_A V=qty("4.2e11", "Bq")=qty("11.35", "Ci")$. 取 $isotope("Co", a: 60)$
-  照射量率常数 $Gamma=qty("1.32", "R m^2/(Ci h)")$. 对长 $L$ 的线源,
+  $A=C_A V=qty("4.2e11", "Bq")$. 取 $isotope("Co", a: 60)$. 对长 $L$ 的线源,
   距管轴中点垂直距离 $r=qty("2", "m")$ 处
   $
     dot(X)=Gamma A (2)/(L) arctan((L)/(2 r)).
@@ -313,8 +312,7 @@
 
   == Po-Be 中子源的石蜡屏蔽厚度
 
-  源活度 $A=qty("7.4e11", "Bq")=qty("20", "Ci")$. 取 Po-Be 中子产额
-  $Y_n approx qty("2.5e6", "n/(s Ci)")$, 源强 $S=20 Y_n=qty("5.0e7", "n/s")$. 在
+  源活度 $A=qty("7.4e11", "Bq")$. 源强 $S=qty("5.0e7", "s^-1")$. 在
   $r=qty("1", "m")$ 处
   $dot(Phi)_0=(S)/(4 pi r^2) approx qty("3.98e6", "m^-2 s^-1")$. 题给
   $h_Phi=qty("3.55e-14", "Sv m^2")$, 故
@@ -325,12 +323,11 @@
 
   == $isotope("Cs", a: 137)$ 污染阀门维修所需铅屏蔽
 
-  距阀门 $qty("30", "cm")$ 处 $dot(X)=qty("500", "R/h")$. 维修距离
-  $qty("2", "m")$ 时按反平方关系
-  $dot(X)_2=500 ((0.30)/(2.0))^2 approx qty("11.25", "R/h")$. 对 662 keV 光子取
-  $1 " R" approx 10 " mSv"$, 4 h 未屏蔽剂量当量
-  $H_0=11.25 times 4 times 10 = qty("450", "mSv")$. 要求 $H<=qty("1", "mSv")$,
-  衰减倍数 $B=450$. 对铅取 $mu_"Pb" approx qty("1.25", "cm^-1")$, 即
+  距阀门 $qty("30", "cm")$ 处 $dot(X)=qty("0.13", "C/kg/h")$. 维修距离
+  $qty("2", "m")$ 时按反平方关系 $dot(X)_2=0.13 ((0.30)/(2.0))^2$. 对 662 keV
+  光子, 4 h 未屏蔽剂量当量 $H_0=11.25 times 4 times 10 = qty("450", "mSv")$.
+  要求 $H<=qty("1", "mSv")$, 衰减倍数 $B=450$. 对铅取
+  $mu_"Pb" approx qty("1.25", "cm^-1")$, 即
   $"HVL"=(ln 2)/(mu_"Pb") approx qty("0.55", "cm")$. 窄束指数衰减要求
   $e^(-mu x)<=(1)/(B)$, 故 $x>=(ln 450)/(1.25) approx qty("4.9", "cm")$.
 
