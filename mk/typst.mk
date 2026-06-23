@@ -14,12 +14,12 @@ build/%/main.pdf: build/%/main.typ slide.typ page.typ meta.typ
 	$(call log,TYP,$@)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
 
-build/%/index.html: build/%/index.typ $(NAV_SRC) page.typ meta.typ
+build/%/index.html: build/%/index.typ $(NAV_SRC) page.typ meta.typ $(LIVE_ASSET)
 	$(call log,TYP,$<)
 	$(Q)$(TYPST) --input src=src/$*/index.typ $< $@ $(TYPST_SILENT)
 ifeq ($(LIVE), y)
 	$(call log,LIVE,$@)
-	$(Q)sed -i '8 i\<script src="../../../live.js"></script>\' $@
+	$(Q)sed -i 's#</head>#<script src="../../../live.js"></script></head>#' $@
 endif
 ifeq ($(MINIFY), y)
 	$(call log,MINI,$@)

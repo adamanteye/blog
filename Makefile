@@ -51,14 +51,17 @@ SRC_META       := $(patsubst %,src/%/meta.typ,$(SRC_SECTIONS))
 TRASH_COUNT    = $(words $(shell find build \( -name '*.bib' -o -name '*.typ' \) 2>/dev/null))
 
 include mk/assets.mk
+
+LIVE_ASSET :=
+ifeq ($(LIVE), y)
+LIVE_ASSET := build/live.js
+OBJS       += $(LIVE_ASSET)
+endif
+
 include mk/typst.mk
 
 build: assets .WAIT $(NAV_SRC) build/index.html $(TARGET_POSTS)
 pdf: assets $(NAV_SRC) .WAIT $(TARGET_PDFS)
-
-ifeq ($(LIVE), y)
-OBJS += build/live.js
-endif
 
 assets: css raw-fonts build/favicon.webp $(OBJS)
 
@@ -101,10 +104,14 @@ ifeq ($(MINIFY), y)
 	$(Q)$(MINIFY_CMD) -a -i $@
 endif
 
-build/index.html: index.typ meta.typ $(NAV_SRC) $(TARGET_POSTS)
+build/index.html: index.typ meta.typ $(NAV_SRC) $(TARGET_POSTS) $(LIVE_ASSET)
 	$(call log,TYP,$<)
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
+ifeq ($(LIVE), y)
+	$(call log,LIVE,$@)
+	$(Q)sed -i 's#</head>#<script src="./live.js"></script></head>#' $@
+endif
 ifeq ($(MINIFY), y)
 	$(call log,MINI,$@)
 	$(Q)$(MINIFY_CMD) -a -i $@
