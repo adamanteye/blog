@@ -162,7 +162,7 @@
 
   == 伽马能谱分析
 
-  $isotope("Th", a: 228)$ 主要通过 $ka$ 衰变布居 $isotope("Ra", a: 224)$ 的
+  $istp("Th", a: 228)$ 主要通过 $ka$ 衰变布居 $istp("Ra", a: 224)$ 的
   $num("0")$, $qty("84.43", "keV")$, $qty("215.99", "keV")$,
   $qty("250.78", "keV")$, $qty("290.32", "keV")$ 等能级. 低能 $kg$
   射线由能级差给出:
@@ -743,15 +743,15 @@
   $
     "ENC"^2
     = (e^2)/(8 e_0^2) (
-      (4 k T R_s C_Sigma^2) / tau
+      (4 k T R_s C_kS^2) / tau
       + (4 k T tau) / R_p
     )
-    + (e^2)/(2 e_0^2) A_F C_Sigma^2
+    + (e^2)/(2 e_0^2) A_F C_kS^2
   $
 
   其中前两项分别为串联白噪声和平行白噪声, 最后一项为 $1/f$ 噪声, $e$ 为自然常数,
   $e_0$ 为元电荷. 代入 $R_s=qty("100", "ohm")$, $R_p=qty("100", "MO")$,
-  $A_F=qty("1e-12", "V^2")$, $C_Sigma=qty("10", "pF")$, $T=qty("300", "K")$, 得:
+  $A_F=qty("1e-12", "V^2")$, $C_kS=qty("10", "pF")$, $T=qty("300", "K")$, 得:
 
   #table(
     columns: 5,
@@ -765,7 +765,7 @@
   最佳成形时间由串联项和平行项相等给出:
 
   $
-    tau_"opt" = sqrt((R_s C_Sigma^2 R_p))
+    tau_"opt" = sqrt((R_s C_kS^2 R_p))
     = sqrt(100 times (10 times 10^(-12))^2 times 10^8)
     = qty("1.0", "us")
   $
@@ -1064,16 +1064,16 @@
 
   定义: 平均电离能 $W=qty("2.96", "eV")$, 法诺因子 $F=0.058$. 对沉积能量 $E$,
   平均载流子对数 $ol(N)=E/W$, 涨落 $ks_N=sqrt(F ol(N))$. 本征 FWHM:
-  $omega_P=2.355 W ks_N=2.355 sqrt(F E W)$.
+  $ko_P=2.355 W ks_N=2.355 sqrt(F E W)$.
 
   对 $E_1=qty("1173.2", "keV")$, 有 $ol(N)_1 approx num("3.96e5")$,
-  $ks_(N,1) approx num("1.52e2")$, $omega_(P,1) approx qty("1.06", "keV")$. 对
+  $ks_(N,1) approx num("1.52e2")$, $ko_(P,1) approx qty("1.06", "keV")$. 对
   $E_2=qty("1332.5", "keV")$, 有 $ol(N)_2 approx num("4.50e5")$,
-  $ks_(N,2) approx num("1.62e2")$, $omega_(P,2) approx qty("1.13", "keV")$.
+  $ks_(N,2) approx num("1.62e2")$, $ko_(P,2) approx qty("1.13", "keV")$.
   若电子学噪声 $N_"ENC"=100$, 则
-  $omega_E=2.355 N_"ENC" W approx qty("0.697", "keV")$. 忽略电荷收集涨落时,
-  $omega=sqrt(omega_P^2+omega_E^2)$, 得 $omega_1 approx qty("1.27", "keV")$,
-  $omega_2 approx qty("1.32", "keV")$.
+  $ko_E=2.355 N_"ENC" W approx qty("0.697", "keV")$. 忽略电荷收集涨落时,
+  $ko=sqrt(ko_P^2+ko_E^2)$, 得 $ko_1 approx qty("1.27", "keV")$,
+  $ko_2 approx qty("1.32", "keV")$.
 
   结果汇总如下:
 
@@ -1138,9 +1138,9 @@
 
   = 第十三次作业
 
-  == $isotope("Co", a: 60)$ 的 $qty("1.33", "MeV")$ 伽马射线 MDA
+  == $istp("Co", a: 60)$ 的 $qty("1.33", "MeV")$ 伽马射线 MDA
 
-  定义: 能量分辨率 $omega_"FWHM"=qty("2", "keV")$. 若取一个 FWHM 作为全能峰能窗,
+  定义: 能量分辨率 $ko_"FWHM"=qty("2", "keV")$. 若取一个 FWHM 作为全能峰能窗,
   本底计数
   $B=b kD E L_T=qty("1", "keV/s") times qty("2", "keV") times qty("1000", "s")
   =2000$. 95% 探测限采用 Currie 形式:
@@ -1150,9 +1150,9 @@
   $
 
   代入 $B=2000$ 得 $L_D approx 2.11 times 10^2$. 最小可探测活度定义为
-  $A_"MDA"=L_D/(L_T epsilon P_kg)$. 对 $isotope("Co", a: 60)$ 的
-  $qty("1332.5", "keV")$ 级联伽马线, 取 $P_kg approx 1$,
-  $epsilon=0.04%=4.0 times 10^(-4)$, $L_T=qty("1000", "s")$, 即:
+  $A_"MDA"=L_D/(L_T ke P_kg)$. 对 $istp("Co", a: 60)$ 的 $qty("1332.5", "keV")$
+  级联伽马线, 取 $P_kg approx 1$, $ke=0.04%=4.0 times 10^(-4)$,
+  $L_T=qty("1000", "s")$, 即:
 
   $
     A_"MDA" approx (2.11 times 10^2) / (1000 times 4.0 times 10^(-4))
@@ -1161,27 +1161,25 @@
 
   即: 若题中 $0.04%$ 已是所选能窗内的有效全能峰效率, 则
   $A_"MDA" approx qty("5.3e2", "Bq")$. 若 $0.04%$ 是整个高斯全能峰总效率,
-  而只取中心 $omega_"FWHM"/2$ 能窗, 峰面积比例
-  $f="erf"(sqrt(ln 2)) approx 0.761$, 有效效率为 $f epsilon$, 于是
-  $A_"MDA" approx qty("6.9e2", "Bq")$.
+  而只取中心 $ko_"FWHM"/2$ 能窗, 峰面积比例 $f="erf"(sqrt(ln 2)) approx 0.761$,
+  有效效率为 $f ke$, 于是 $A_"MDA" approx qty("6.9e2", "Bq")$.
 
-  形式: $A_"MDA" prop L_D/(L_T epsilon P_kg)$. 本底主导时 $B=b kD E L_T$,
+  形式: $A_"MDA" prop L_D/(L_T ke P_kg)$. 本底主导时 $B=b kD E L_T$,
   $L_D prop sqrt(B)$, 近似:
 
   $
-    A_"MDA" prop sqrt(b kD E) / (epsilon P_kg sqrt(L_T))
+    A_"MDA" prop sqrt(b kD E) / (ke P_kg sqrt(L_T))
   $
 
   所以降低 MDA 的方向很明确: 降低本底 $b$, 缩小但不过窄的能窗 $kD E$,
-  提高全能峰效率 $epsilon$, 增加计数时间 $L_T$, 并选择发射概率大,
-  干扰少的伽马线. 其中 $L_T$ 的收益只有 $1/sqrt(L_T)$ 量级,
-  屏蔽和效率优化通常更直接.
+  提高全能峰效率 $ke$, 增加计数时间 $L_T$, 并选择发射概率大, 干扰少的伽马线.
+  其中 $L_T$ 的收益只有 $1/sqrt(L_T)$ 量级, 屏蔽和效率优化通常更直接.
 
   == 同轴型高纯锗探测器所需偏压更低的原因
 
-  平面型 HPGe 可近似为一维平板结. 定义: 杂质浓度 $N$, 厚度 $D$, 介电常数
-  $epsilon$. 全耗尽电压数量级为 $V_(D,"plane")=(e N D^2)/(2 epsilon)$.
-  因此探测厚度为 MeV 伽马射线所需的厘米量级时, 偏压按 $D^2$ 快速增大. 例如
+  平面型 HPGe 可近似为一维平板结. 定义: 杂质浓度 $N$, 厚度 $D$, 介电常数 $ke$.
+  全耗尽电压数量级为 $V_(D,"plane")=(e N D^2)/(2 ke)$. 因此探测厚度为 MeV
+  伽马射线所需的厘米量级时, 偏压按 $D^2$ 快速增大. 例如
   $N=qty("1e10", "cm^-3")$, $D=qty("1", "cm")$ 时约需 $qty("565", "V")$.
   若平面厚度增至 $qty("5", "cm")$, 偏压约增大 $25$ 倍, 进入十几 kV 量级.
 
@@ -1191,8 +1189,8 @@
 
   $
     V_(D, "coax")
-    = rho / (4 epsilon) (b^2 - a^2)
-    - (rho a^2) / (2 epsilon) ln(b / a)
+    = rho / (4 ke) (b^2 - a^2)
+    - (rho a^2) / (2 ke) ln(b / a)
   $
 
   即: 探测体积可通过长度和外半径增加, 但关键耗尽距离由径向间隙 $b-a$ 控制,
@@ -1258,17 +1256,17 @@
   点脉冲则先有很短的电子分量, 之后主要表现为较长并逐渐增强的 空穴分量,
   到空穴到达中心电极时结束.
 
-  == 不同 ENC 下 $isotope("Co", a: 60)$ 能峰的能量分辨率
+  == 不同 ENC 下 $istp("Co", a: 60)$ 能峰的能量分辨率
 
   定义: HPGe 平均电离能 $W=qty("2.96", "eV")$, 法诺因子 $F=0.058$.
   若电荷收集完全, 能量分辨率只考虑信号产生涨落和电子学噪声, 本征贡献
-  $omega_P=2.355 sqrt(F E W)$, 电子学噪声贡献 $omega_E=2.355 N_"ENC" W$,
-  总半高宽 $omega=sqrt(omega_P^2+omega_E^2)$.
+  $ko_P=2.355 sqrt(F E W)$, 电子学噪声贡献 $ko_E=2.355 N_"ENC" W$, 总半高宽
+  $ko=sqrt(ko_P^2+ko_E^2)$.
 
   对 $E_1=qty("1173.2", "keV")$,
-  $omega_(P,1)=2.355 sqrt(0.058 times 1173.2 times 10^3 times 2.96) unit("eV")
+  $ko_(P,1)=2.355 sqrt(0.058 times 1173.2 times 10^3 times 2.96) unit("eV")
   approx qty("1.06", "keV")$. 对 $E_2=qty("1332.5", "keV")$,
-  $omega_(P,2)=2.355 sqrt(0.058 times 1332.5 times 10^3 times 2.96) unit("eV")
+  $ko_(P,2)=2.355 sqrt(0.058 times 1332.5 times 10^3 times 2.96) unit("eV")
   approx qty("1.13", "keV")$.
 
   不同 ENC 下的结果为:
@@ -1322,7 +1320,7 @@
 
   == SDD 探测 X 射线能谱时分辨率优于硅 PIN 的原因
 
-  X 射线探测的能量分辨率可写成 $omega=2.355 w sqrt(F E/w+N_"ENC"^2)$,
+  X 射线探测的能量分辨率可写成 $ko=2.355 w sqrt(F E/w+N_"ENC"^2)$,
   其中第一项是电离统计涨落, 第二项是电子学噪声. 对同样的硅材料, $w$ 与 $F$
   基本相同, 差异主要来自 $N_"ENC"$.
 
@@ -1340,7 +1338,7 @@
   $sqrt(F ol(N)) approx 14.0$ 个电子. 若 ENC 以电子数计, 总半高宽为:
 
   $
-    omega = 2.355 w sqrt(F E / w + N_"ENC"^2)
+    ko = 2.355 w sqrt(F E / w + N_"ENC"^2)
   $
 
   代入得:
@@ -1357,23 +1355,23 @@
   即: ENC 从 $4 e$ 增加到 $10 e$ 时, 电子学噪声项明显抬高低能 X 射线峰宽, FWHM
   由约 $qty("124", "eV")$ 增至 $qty("146", "eV")$.
 
-  == 两种伽马谱仪对 $isotope("Cs", a: 137)$ 的 MDA
+  == 两种伽马谱仪对 $istp("Cs", a: 137)$ 的 MDA
 
   定义: $E_kg=qty("662", "keV")$, 发射分支比 $Y=85.1%=0.851$, 全能峰效率
-  $epsilon=10%=0.10$, 本底谱密度 $b=qty("1e3", "keV/s")$, 测量时间
-  $T=qty("1", "h")=qty("3600", "s")$. 能窗宽度取 $kD E=5 omega_"FWHM"$, 本底计数
+  $ke=10%=0.10$, 本底谱密度 $b=qty("1e3", "keV/s")$, 测量时间
+  $T=qty("1", "h")=qty("3600", "s")$. 能窗宽度取 $kD E=5 ko_"FWHM"$, 本底计数
   $B=b kD E T$, Currie 探测限 $L_D=2.71+4.65 sqrt(B)$, 因而
-  $A_"MDA"=L_D/(epsilon T Y)$.
+  $A_"MDA"=L_D/(ke T Y)$.
 
   HPGe 的相对 FWHM 为 $0.2%=0.002$, 所以
-  $omega_"FWHM"=0.002 times qty("662", "keV")=qty("1.324", "keV")$,
+  $ko_"FWHM"=0.002 times qty("662", "keV")=qty("1.324", "keV")$,
   $kD E=qty("6.62", "keV")$,
   $B=qty("1000", "keV/s") times qty("6.62", "keV") times qty("3600", "s")
   approx num("2.38e7")$. 代入得 $L_D approx num("2.27e4")$,
   $A_"MDA" approx qty("74", "Bq")$.
 
   NaI 的相对 FWHM 为 $7%=0.07$, 所以
-  $omega_"FWHM"=0.07 times qty("662", "keV")=qty("46.3", "keV")$,
+  $ko_"FWHM"=0.07 times qty("662", "keV")=qty("46.3", "keV")$,
   $kD E=qty("231.7", "keV")$, $B approx num("8.34e8")$. 代入得
   $L_D approx num("1.34e5")$, $A_"MDA" approx qty("4.38e2", "Bq")$.
 
@@ -1444,9 +1442,9 @@
   长时间累计后得到放射性分布的平面投影图像. 若探头绕对象旋转并采集多角度投影,
   则可进一步用 SPECT 重建三维分布.
 
-  == $isotope("Co", a: 60)$ 的 $qty("1.33", "MeV")$ 伽马射线 MDA
+  == $istp("Co", a: 60)$ 的 $qty("1.33", "MeV")$ 伽马射线 MDA
 
-  已知 HPGe 能量分辨率 $omega_"FWHM"=qty("2", "keV")$, 能窗宽度取
+  已知 HPGe 能量分辨率 $ko_"FWHM"=qty("2", "keV")$, 能窗宽度取
   $kD E=qty("2", "keV")$. 本底谱密度 $b=qty("1", "keV/s")$, 测量时间
   $T=qty("1000", "s")$, 因而能窗内本底计数为:
 
@@ -1468,12 +1466,12 @@
     L_D = 2.71 + 4.65 sqrt(2000) approx num("2.11e2")
   $
 
-  全能峰探测效率 $epsilon=0.04%=4.0 times 10^(-4)$. $isotope("Co", a: 60)$ 的
+  全能峰探测效率 $ke=0.04%=4.0 times 10^(-4)$. $istp("Co", a: 60)$ 的
   $qty("1332.5", "keV")$ 伽马发射概率接近 $1$, 这里取 $P_kg approx 1$.
   因此最低可探测活度为:
 
   $
-    A_"MDA" = L_D / (epsilon P_kg T)
+    A_"MDA" = L_D / (ke P_kg T)
     approx (2.11 times 10^2) / (4.0 times 10^(-4) times 1000)
     approx qty("5.3e2", "Bq")
   $
@@ -1482,7 +1480,7 @@
 
   由
   $
-    A_"MDA" prop sqrt(b kD E) / (epsilon P_kg sqrt(T))
+    A_"MDA" prop sqrt(b kD E) / (ke P_kg sqrt(T))
   $
   可见, 降低 MDA 可以从以下方向入手:
 

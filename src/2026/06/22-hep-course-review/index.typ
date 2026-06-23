@@ -21,7 +21,7 @@
 人们先了解到电子, 质子和中子的存在 (1897 - 1932). 同时普朗克,
 爱因斯坦提出了量子的概念, 揭示了光子的存在 (1900 - 1924). 而后,
 通过介子认识到了强作用 (1934 - 1947). 狄拉克提出他的方程, 随后确实发现了反粒子
-(1930 - 1956). 对 $beta$ 衰变连续谱的深入探究, 直到科温,
+(1930 - 1956). 对 $kb$ 衰变连续谱的深入探究, 直到科温,
 莱因斯通过实验证明中微子存在 (1930 - 1962). 随后发现了弱作用, 奇异粒子 (1947 -
 1960). 最后, 人们总结了夸克模型, 乃至发展了标准模型 (1978 - 2012).
 
@@ -101,16 +101,16 @@ $
 
 $"SU"(2)$ 的基本表示由无迹 Hermitian 的 $2 times 2$ 矩阵生成, 通常取
 $
-  S_j = sigma_j / 2,
+  S_j = ks_j / 2,
   [S_j, S_k] = i ke_(j k l) S_l
 $
 对应群元为
 $
   U_j(ka_j)
   =
-  e^(i ka_j sigma_j / 2)
+  e^(i ka_j ks_j / 2)
   =
-  I cos(ka_j / 2) + i sigma_j sin(ka_j / 2)
+  I cos(ka_j / 2) + i ks_j sin(ka_j / 2)
 $
 $"SU"(2)$ 和 $"SO"(3)$ 有相同的 Lie 代数, 但 $"SU"(2)$ 是 $"SO"(3)$ 的双覆盖.
 自旋量在 $2 pi$ 转动后变号, 在 $4 pi$ 转动后回到自身. 整数 $J$ 表示也是
@@ -341,14 +341,14 @@ $
 $
 这要求矩阵 $ka^i$ 和 $kb$ 满足
 $
-  ka^i ka^j + ka^j ka^i & = 2 delta^(i j) \
+  ka^i ka^j + ka^j ka^i & = 2 kd^(i j) \
       ka^i kb + kb ka^i & = 0 \
                    kb^2 & = 1
 $
 所以 $ka^i$ 和 $kb$ 不可能只是普通数, 波函数 $psi$ 也不再是单个复函数,
 而是多分量旋量.
 
-== Gamma 矩阵和协变形式
+== $kg$ 矩阵和协变形式
 
 定义
 $
@@ -358,24 +358,24 @@ $
 $
   (i kg^mu partial_mu - m) psi = 0
 $
-其中 gamma 矩阵满足 Clifford 代数
+其中 $kg$ 矩阵满足 Clifford 代数
 $
   kg^mu kg^nu + kg^nu kg^mu = 2 ts(g, +mu, +nu)
 $
 Dirac 表示中可以取
 $
   kg^0 = mat(I, 0; 0, -I)\
-  kg^i = mat(0, sigma_i; -sigma_i, 0)
+  kg^i = mat(0, ks_i; -ks_i, 0)
 $
-其中 $sigma_i$ 是 Pauli 矩阵. 由于 gamma 矩阵必须至少是 $4 times 4$ 矩阵, 自由
-Dirac 粒子的波函数是四分量旋量. 粗略地说, 两个分量对应自旋自由度,
+其中 $ks_i$ 是 Pauli 矩阵. 由于 $kg$ 矩阵必须至少是 $4 times 4$ 矩阵, 自由 Dirac
+粒子的波函数是四分量旋量. 粗略地说, 两个分量对应自旋自由度,
 另外两个分量对应粒子和反粒子自由度.
 
 协变性的意思是 Lorentz 变换下旋量按某个矩阵 $S(kL)$ 变换:
 $
   psi'(x') = S(kL) psi(x)
 $
-而 gamma 矩阵满足
+而 $kg$ 矩阵满足
 $
   S(kL)^(-1) kg^mu S(kL) = ts(kL, +mu, -nu) kg^nu
 $
@@ -461,7 +461,7 @@ $
 对应一个 Fermion, 一个反 Fermion 和一个光子. 它只耦合电荷, 不改变味道.
 耦合强度通常写成
 $
-  alpha = e^2 / (4 pi) approx 1 / 137
+  ka = e^2 / (4 pi) approx 1 / 137
 $
 
 QCD 的基本顶点是 $q mac(q) g$. 它耦合色荷, 可以改变夸克颜色, 但不改变夸克味道.
@@ -474,39 +474,39 @@ QCD 的基本顶点是 $q mac(q) g$. 它耦合色荷, 可以改变夸克颜色, 
 
 == 宽度, 截面和黄金规则
 
-Feynman 图给出的是振幅 $M$, 实验测到的是宽度 $Gamma$ 或截面 $sigma$.
+Feynman 图给出的是振幅 $M$, 实验测到的是宽度 $kG$ 或截面 $ks$.
 衰变寿命和总宽度满足
 $
-  Gamma = 1 / tau
+  kG = 1 / tau
 $
 若有多个衰变道,
 $
-  "BR"_i = Gamma_i / Gamma_"tot"
+  "BR"_i = kG_i / kG_"tot"
 $
-其中 $Gamma_i$ 是第 $i$ 个部分宽度, $Gamma_"tot"$ 是总宽度.
+其中 $kG_i$ 是第 $i$ 个部分宽度, $kG_"tot"$ 是总宽度.
 
 黄金规则的核心形式是
 $
-  dif Gamma = abs(M)^2 dif Phi
+  dif kG = abs(M)^2 dif Phi
 $
 其中 $dif Phi$ 是末态相空间. 因此一个过程是否显著, 同时取决于顶点给出的
 $abs(M)^2$ 和运动学给出的相空间.
 
 两体衰变在母粒子静止系中可记为
 $
-  Gamma = (S abs(vb(p))) / (8 pi m_1^2) abs(M)^2
+  kG = (S abs(vb(p))) / (8 pi m_1^2) abs(M)^2
 $
 其中 $S$ 是全同粒子因子, $abs(vb(p))$ 是末态粒子动量大小.
 两体散射的微分截面有结构
 $
-  dv(sigma, Omega) prop abs(M)^2
+  dv(ks, kO) prop abs(M)^2
   (abs(vb(p)_f))/(abs(vb(p)_i))
 $
 其中初末态动量因子来自相空间.
 
 对撞机中常用亮度 $cal(L)$ 表示束流强度, 事件率为
 $
-  R = sigma cal(L)
+  R = ks cal(L)
 $
 
 == OZI 规则
@@ -530,15 +530,15 @@ $
 $
 若令相位依赖时空,
 $
-  psi -> e^(i theta(x)) psi
+  psi -> e^(i kt(x)) psi
 $
-普通导数会多出 $partial_mu theta(x)$ 项. 为了恢复不变性, 引入协变导数
+普通导数会多出 $partial_mu kt(x)$ 项. 为了恢复不变性, 引入协变导数
 $
   cal(D)_mu = partial_mu + i e A_mu
 $
 并令
 $
-  A_mu -> A_mu - (1 / e) partial_mu theta
+  A_mu -> A_mu - (1 / e) partial_mu kt
 $
 于是
 $
@@ -617,8 +617,8 @@ $
 $
 以及
 $
-  A_mu & = sin theta_W A_mu^3 + cos theta_W B_mu \
-  Z_mu & = cos theta_W A_mu^3 - sin theta_W B_mu
+  A_mu & = sin kt_W A_mu^3 + cos kt_W B_mu \
+  Z_mu & = cos kt_W A_mu^3 - sin kt_W B_mu
 $
 其中 $A_mu$ 是光子, $Z_mu$ 是中性弱 Boson.
 
@@ -643,11 +643,11 @@ $
 $
 其中
 $
-  V(Phi) = - mu^2 Phi^dagger Phi + lambda (Phi^dagger Phi)^2
+  V(Phi) = - mu^2 Phi^dagger Phi + kl (Phi^dagger Phi)^2
 $
 当 $mu^2 > 0$ 时, 势能最低点不在 $Phi=0$, 而满足
 $
-  Phi^dagger Phi = v^2 / 2, v = mu / sqrt(lambda)
+  Phi^dagger Phi = v^2 / 2, v = mu / sqrt(kl)
 $
 选单位规范后可写
 $
@@ -738,9 +738,8 @@ $
     0, 0, 1
   )
 $
-这里 $c_(i j)=cos theta_(i j)$, $s_(i j)=sin theta_(i j)$.
-$theta_12, theta_23, theta_13$ 是三个混合角, $kd$ 是 Dirac CP 相位. 若中微子是
-Majorana 粒子, 还可以有
+这里 $c_(i j)=cos kt_(i j)$, $s_(i j)=sin kt_(i j)$. $kt_12, kt_23, kt_13$
+是三个混合角, $kd$ 是 Dirac CP 相位. 若中微子是 Majorana 粒子, 还可以有
 $
   P_"Maj" = dmat(1, e^(i ka_21 / 2), e^(i ka_31 / 2))
 $

@@ -1613,14 +1613,14 @@
   设粒子质量为 $m$, 电荷为 $q$, 在静磁场中运动.
   将速度分解为平行和垂直磁力线的两部分, $v^2=v_parallel^2+v_perp^2$.
   若磁场在一个回旋半径和一个回旋周期内变化很小, 即
-  $(rho_L abs(nabla B))/B << 1$, $rho_L=v_perp/Omega_c$, $Omega_c=(abs(q) B)/m$,
+  $(rho_L abs(nabla B))/B << 1$, $rho_L=v_perp/kO_c$, $kO_c=(abs(q) B)/m$,
   则粒子作快速回旋运动, 导引中心沿磁力线缓慢漂移. 回旋电流
-  $I=(abs(q) Omega_c)/(2 pi)$, 回旋面积 $S=pi rho_L^2$, 故
+  $I=(abs(q) kO_c)/(2 pi)$, 回旋面积 $S=pi rho_L^2$, 故
 
   $
     mu
     = I S
-    = (abs(q) Omega_c rho_L^2) / 2
+    = (abs(q) kO_c rho_L^2) / 2
     = (m v_perp^2) / (2 B)
     = E_perp / B
   $
@@ -1629,7 +1629,7 @@
 
   $
     J_perp
-    = integral p_perp dd(l)
+    = int p_perp dd(l)
     = 2 pi m v_perp rho_L
     = (2 pi m^2 v_perp^2) / (abs(q) B)
     = (4 pi m mu) / abs(q)

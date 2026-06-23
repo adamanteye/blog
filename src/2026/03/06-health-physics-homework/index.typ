@@ -38,9 +38,9 @@
 
   = 第二次作业
 
-  == $isotope("Na", a: 24)$ 和 $isotope("P", a: 32)$ 混合物何时活度相同
+  == $istp("Na", a: 24)$ 和 $istp("P", a: 32)$ 混合物何时活度相同
 
-  设 1 为 $isotope("Na", a: 24)$, 2 为 $isotope("P", a: 32)$. 活度满足
+  设 1 为 $istp("Na", a: 24)$, 2 为 $istp("P", a: 32)$. 活度满足
   $A_i(t)=A_(i,0)e^(-kl_i t)$, 初始活度比 $(A_(1,0))/(A_(2,0))=(98)/(2)=49$. 令
   $A_1(t)=A_2(t)$ 得
   $
@@ -52,12 +52,12 @@
 
   == 推导氡的平衡当量浓度公式
 
-  记 $C_1=C(isotope("Po", a: 218))$, $C_2=C(isotope("Pb", a: 214))$,
-  $C_3=C(isotope("Bi", a: 214))$. 对 alpha 潜能, $isotope("Po", a: 218)$
-  后续还包含 $isotope("Po", a: 214)$ 的 alpha 衰变, 故
-  $ke_1=6.00+7.69=qty("13.69", "MeV")$; 对 $isotope("Pb", a: 214)$ 和
-  $isotope("Bi", a: 214)$, $ke_2=ke_3=qty("7.69", "MeV")$. 因 $C_i=kl_i N_i$,
-  alpha 潜能浓度为 $S=sum_i (ke_i C_i)/(kl_i)$. 平衡等效氡浓度 $C_"eq"$ 满足
+  记 $C_1=C(istp("Po", a: 218))$, $C_2=C(istp("Pb", a: 214))$,
+  $C_3=C(istp("Bi", a: 214))$. 对 $ka$ 潜能, $istp("Po", a: 218)$ 后续还包含
+  $istp("Po", a: 214)$ 的 $ka$ 衰变, 故 $ke_1=6.00+7.69=qty("13.69", "MeV")$; 对
+  $istp("Pb", a: 214)$ 和 $istp("Bi", a: 214)$, $ke_2=ke_3=qty("7.69", "MeV")$.
+  因 $C_i=kl_i N_i$, $ka$ 潜能浓度为 $S=sum_i (ke_i C_i)/(kl_i)$. 平衡等效氡浓度
+  $C_"eq"$ 满足
   $
     C_"eq" =
     ((ke_1 C_1)/(kl_1) + (ke_2 C_2)/(kl_2) + (ke_3 C_3)/(kl_3))
@@ -67,9 +67,9 @@
   用 $kl_i=(ln 2)/(T_i)$, $T_1=qty("3.05", "min")$, $T_2=qty("26.8", "min")$,
   $T_3=qty("19.9", "min")$ 得
   $
-    C_"eq" = 0.104 C(isotope("Po", a: 218))
-    + 0.514 C(isotope("Pb", a: 214))
-    + 0.382 C(isotope("Bi", a: 214)).
+    C_"eq" = 0.104 C(istp("Po", a: 218))
+    + 0.514 C(istp("Pb", a: 214))
+    + 0.382 C(istp("Bi", a: 214)).
   $
 
   == 100 g 硝酸钾样品中的放射性强度
@@ -78,15 +78,15 @@
   $M approx 39.1+14.0+3 times 16.0 = qty("101.1", "g/mol")$, 故
   $n=(100)/(101.1) approx qty("0.989", "mol")$, 钾原子数
   $N_K approx 0.989 N_A approx 5.95 times 10^23$. 天然丰度
-  $f(isotope("K", a: 40))=0.0118%=1.18 times 10^(-4)$, 所以
+  $f(istp("K", a: 40))=0.0118%=1.18 times 10^(-4)$, 所以
   $N_40 approx 7.02 times 10^19$. 取 $T_(1/2)=qty("1.248e9", "a")$,
   $A=kl N_40=((ln 2)/(T_(1/2))) N_40$, 换算秒后得
   $A approx qty("1.24e3", "Bq") = qty("1.24", "kBq")$.
 
-  == 与 1 g $isotope("Ra", a: 226)$ 平衡的 $isotope("Rn", a: 222)$ 体积
+  == 与 1 g $istp("Ra", a: 226)$ 平衡的 $istp("Rn", a: 222)$ 体积
 
-  1 g $isotope("Ra", a: 226)$ 近似为 $qty("3.7e10", "Bq")$. 平衡时
-  $A_"Rn"=A_"Ra"$. 取 $T_(1/2)(isotope("Rn", a: 222))=qty("3.82", "d")$, 则
+  1 g $istp("Ra", a: 226)$ 近似为 $qty("3.7e10", "Bq")$. 平衡时 $A_"Rn"=A_"Ra"$.
+  取 $T_(1/2)(istp("Rn", a: 222))=qty("3.82", "d")$, 则
   $
     N_"Rn" = (A_"Rn" T_(1/2)) / (ln 2) approx 1.76 times 10^16.
   $
@@ -94,10 +94,10 @@
   $qty("0", "dC")$, 760 mmHg 下, $V=n_"Rn" times qty("22.4", "L")
   approx qty("6.56e-7", "L") = qty("0.656", "uL")$.
 
-  == $isotope("Mo", a: 99)$-$isotope("Tc", a: 99m)$ 发生器再次淋洗的时间
+  == $istp("Mo", a: 99)$-$istp("Tc", a: 99m)$ 发生器再次淋洗的时间
 
-  一次淋洗后取 $A_2(0)=0$. 母体 $isotope("Mo", a: 99)$ 活度
-  $A_1=A_((1,0)) e^(-kl_1 t)$, 子体 $isotope("Tc", a: 99m)$ 活度由 Bateman
+  一次淋洗后取 $A_2(0)=0$. 母体 $istp("Mo", a: 99)$ 活度
+  $A_1=A_((1,0)) e^(-kl_1 t)$, 子体 $istp("Tc", a: 99m)$ 活度由 Bateman
   公式给出, 因而
   $
     (A_2)/(A_1) = (kl_2)/(kl_2-kl_1) (1 - e^(-(kl_2-kl_1)t)).
@@ -118,10 +118,10 @@
   $ln R=ln R_0-kl t$, 斜率给出 $kl approx qty("0.0493", "d^-1")$. 因此
   $T_(1/2)=(ln 2)/(kl) approx qty("14.1", "d")$,
   $kl approx (0.0493)/(24 times 3600)=qty("5.70e-7", "s^-1")$.
-  半衰期最接近常见纯 $kb$ 核素 $isotope("P", a: 32)$ 的 $qty("14.3", "d")$,
-  故该核素判断为 $isotope("P", a: 32)$.
+  半衰期最接近常见纯 $kb$ 核素 $istp("P", a: 32)$ 的 $qty("14.3", "d")$,
+  故该核素判断为 $istp("P", a: 32)$.
 
-  == 5 mg $isotope("Pb", a: 210)$ 样品 10 年后的活度
+  == 5 mg $istp("Pb", a: 210)$ 样品 10 年后的活度
 
   $m=qty("5e-3", "g")$, $M=qty("210", "g/mol")$, 初始原子数
   $N_0=(m N_A)/(M) approx 1.43 times 10^19$. 取 $T_(1/2)=qty("22.3", "a")$,
@@ -129,14 +129,14 @@
   $A=A_0 2^((-10)/(22.3)) approx qty("1.03e10", "Bq")$, 即约
   $qty("10.3", "GBq")$.
 
-  == 1 吨 $chem("U")_3 chem("O")_8$ 含量为 10% 的铀矿中 $isotope("U", a: 234)$ 的比活度
+  == 1 吨 $chem("U")_3 chem("O")_8$ 含量为 10% 的铀矿中 $istp("U", a: 234)$ 的比活度
 
   1 吨矿石含 $chem("U")_3 chem("O")_8$ 约 $qty("100", "kg")$.
   $chem("U")_3 chem("O")_8$ 中铀质量分数
   $w_U=(3 times 238)/(3 times 238+8 times 16) approx 0.848$, 故总铀
-  $m_U approx qty("84.8", "kg")$. 天然铀中 $isotope("U", a: 234)$ 质量分数取
+  $m_U approx qty("84.8", "kg")$. 天然铀中 $istp("U", a: 234)$ 质量分数取
   $5.3 times 10^(-5)$, 得 $m_234 approx qty("4.50", "g")$. 取
-  $T_(1/2)=qty("2.455e5", "a")$, 纯 $isotope("U", a: 234)$ 比活度
+  $T_(1/2)=qty("2.455e5", "a")$, 纯 $istp("U", a: 234)$ 比活度
   $a_234^*=((ln 2) N_A)/(M T_(1/2)) approx qty("2.30e8", "Bq/g")$. 总活度
   $A_234 approx 2.30 times 10^8 times 4.50 = qty("1.04e9", "Bq")$.
   按矿石质量定义, $a=(A_234)/(qty("1000", "kg")) approx qty("1.04", "MBq/kg")$.
@@ -148,7 +148,7 @@
   approx qty("8.01e-14", "J")$. 粒子注量率
   $dot(Phi)=(dot(Psi))/(E_kg) approx qty("6.24e13", "m^-2 s^-1")$.
 
-  == $isotope("Cs", a: 137)$ 点源在 0.5 m 处的粒子注量率和能量注量率
+  == $istp("Cs", a: 137)$ 点源在 0.5 m 处的粒子注量率和能量注量率
 
   点源活度 $A=qty("3.7e10", "s^-1")$, 取 $Y_kg=0.851$,
   $E_kg=qty("661.7", "keV")$, $r=qty("0.5", "m")$. 各向同性发射给出
@@ -211,7 +211,7 @@
   $
   即组织吸收剂量率约 $qty("0.965", "mGy/h")$.
 
-  == $isotope("Am", a: 241)$-Be 中子源照射下眼晶体年当量剂量
+  == $istp("Am", a: 241)$-Be 中子源照射下眼晶体年当量剂量
 
   中子注量率 $dot(Phi)=qty("1e6", "m^-2 s^-1")=qty("100", "cm^-2 s^-1")$,
   年工作时间 $t=15.0 times 12=qty("180", "h")=qty("6.48e5", "s")$, 年注量
@@ -258,10 +258,10 @@
 
   = 第六次作业
 
-  == 4 MeV alpha 粒子在石墨中的剂量率
+  == 4 MeV $ka$ 粒子在石墨中的剂量率
 
   注量率 $dot(Phi)=qty("1.0e3", "m^-2 s^-1")=qty("0.10", "cm^-2 s^-1")$.
-  对带电粒子, $dot(D)=dot(Phi)((S_"col")/(rho))$. 查 ASTAR 取 4 MeV alpha
+  对带电粒子, $dot(D)=dot(Phi)((S_"col")/(rho))$. 查 ASTAR 取 4 MeV $ka$
   在石墨中 $(S_"col")/(rho) approx qty("6.5e2", "MeV cm^2/g")$, 得
   $dot(D)=0.10 times 6.5 times 10^2=qty("65", "MeV/g/s")$. 用
   $1 " MeV/g"=1.602 times 10^(-10) " Gy"$, 得
@@ -275,34 +275,34 @@
   $R("Pb") approx (R_m)/(rho_"Pb")=(1.22)/(11.35) " cm" approx qty("1.08", "mm")$.
   因而可记为约 $qty("1", "mm")$.
 
-  == 含 $isotope("Co", a: 60)$ 溶液直管的照射量率和空气比释动能率
+  == 含 $istp("Co", a: 60)$ 溶液直管的照射量率和空气比释动能率
 
   管长 $L=qty("2", "m")=qty("200", "cm")$, 截面积 $S=qty("1", "cm^2")$, 体积
   $V=qty("200", "cm^3")$. 活度浓度 $C_A=qty("2.1e9", "Bq/cm^3")$, 总活度
-  $A=C_A V=qty("4.2e11", "Bq")$. 取 $isotope("Co", a: 60)$. 对长 $L$ 的线源,
+  $A=C_A V=qty("4.2e11", "Bq")$. 取 $istp("Co", a: 60)$. 对长 $L$ 的线源,
   距管轴中点垂直距离 $r=qty("2", "m")$ 处
   $
-    dot(X)=Gamma A (2)/(L) arctan((L)/(2 r)).
+    dot(X)=kG A (2)/(L) arctan((L)/(2 r)).
   $
   代入 $L=qty("2", "m")$, $r=qty("2", "m")$ 得
   $dot(X) approx qty("3.47", "R/h")$. 用 $1 " R" approx 8.76 " mGy"$, 得
   $dot(K)_"air" approx qty("30.4", "mGy/h")$.
 
-  == $isotope("Sr", a: 90)$ 点源容器的有机玻璃和铅屏蔽
+  == $istp("Sr", a: 90)$ 点源容器的有机玻璃和铅屏蔽
 
-  $isotope("Sr", a: 90)$-$isotope("Y", a: 90)$ 中 $isotope("Y", a: 90)$ 的
-  $E_"max" approx qty("2.28", "MeV")$ 决定 beta 屏蔽. 经验式
+  $istp("Sr", a: 90)$-$istp("Y", a: 90)$ 中 $istp("Y", a: 90)$ 的
+  $E_"max" approx qty("2.28", "MeV")$ 决定 $kb$ 屏蔽. 经验式
   $R_m=0.542E_"max"-0.133$ 给出 $R_m approx qty("1.10", "g/cm^2")$. 取有机玻璃
   $rho_"PMMA"=qty("1.18", "g/cm^3")$, 厚度
   $d_"PMMA"=(R_m)/(rho_"PMMA") approx qty("0.94", "cm")$, 即内层可取约 1 cm.
 
-  对外层铅, 点源活度 $A=qty("3.7e12", "Bq")$. 平衡链 beta 平均能量取
-  $overline(E)_beta approx 0.196+0.934=qty("1.13", "MeV")$, beta 功率
-  $P_beta=A overline(E)_beta times 1.602 times 10^(-13) approx qty("0.67", "W")$.
-  低 $Z$ 材料轫致辐射份额取 $f approx 3.5 times 10^(-4) Z E_"max"$, 对 PMMA 取
+  对外层铅, 点源活度 $A=qty("3.7e12", "Bq")$. 平衡链 $kb$ 平均能量取
+  $ol(E)_kb approx 0.196+0.934=qty("1.13", "MeV")$, $kb$ 功率
+  $P_kb=A ol(E)_kb times 1.602 times 10^(-13) approx qty("0.67", "W")$. 低 $Z$
+  材料轫致辐射份额取 $f approx 3.5 times 10^(-4) Z E_"max"$, 对 PMMA 取
   $Z_"eff" approx 6$, 得 $f approx 4.8 times 10^(-3)$,
-  $P_gamma approx qty("3.2e-3", "W")$. 在 $r=qty("2", "m")$ 处
-  $dot(Psi) approx (P_gamma)/(4 pi r^2) approx qty("6.4e-5", "J/(m^2 s)")$. 取
+  $P_kg approx qty("3.2e-3", "W")$. 在 $r=qty("2", "m")$ 处
+  $dot(Psi) approx (P_kg)/(4 pi r^2) approx qty("6.4e-5", "J/(m^2 s)")$. 取
   $((mu_"en")/(rho))_"air" approx qty("3.0e-3", "m^2/kg")$, 得未屏蔽
   $dot(D)_0 approx qty("6.9e-4", "Gy/h")$. 要求 $dot(D)<=qty("5", "uGy/h")$,
   衰减倍数 $B approx (0.69 " mGy/h")/(5 " uGy/h") approx 1.4 times 10^2$. 对 MeV
@@ -318,10 +318,10 @@
   $h_Phi=qty("3.55e-14", "Sv m^2")$, 故
   $dot(H)_0=dot(Phi)_0 h_Phi approx qty("509", "uSv/h")$. 要求
   $dot(H)<=qty("7.5", "uSv/h")$, 衰减倍数 $B=(509)/(7.5) approx 67.8$.
-  取石蜡去除截面 $Sigma_R=qty("0.12", "cm^-1")$, 指数衰减给出
-  $x=(ln B)/(Sigma_R) approx qty("35", "cm")$.
+  取石蜡去除截面 $kS_R=qty("0.12", "cm^-1")$, 指数衰减给出
+  $x=(ln B)/(kS_R) approx qty("35", "cm")$.
 
-  == $isotope("Cs", a: 137)$ 污染阀门维修所需铅屏蔽
+  == $istp("Cs", a: 137)$ 污染阀门维修所需铅屏蔽
 
   距阀门 $qty("30", "cm")$ 处 $dot(X)=qty("0.13", "C/kg/h")$. 维修距离
   $qty("2", "m")$ 时按反平方关系 $dot(X)_2=0.13 ((0.30)/(2.0))^2$. 对 662 keV
@@ -333,24 +333,24 @@
 
   = 第七次作业
 
-  == $isotope("Po", a: 210)$ 沉积于肝时的 50 年待积当量剂量
+  == $istp("Po", a: 210)$ 沉积于肝时的 50 年待积当量剂量
 
   初始肝沉积 $q_0=qty("1", "Bq")$. 取物理半衰期 $T_p=qty("138.4", "d")$,
   肝中生物半排期 $T_b=qty("50", "d")$, 有效半衰期
   $T_"eff"=((1)/(T_p)+(1)/(T_b))^(-1) approx qty("36.7", "d")$. 50 年远大于
   $T_"eff"$, 故累积活度
-  $tilde(A) approx (q_0)/(lambda_"eff") approx qty("4.58e6", "Bq s")$. 题给
+  $tilde(A) approx (q_0)/(kl_"eff") approx qty("4.58e6", "Bq s")$. 题给
   $S_w=qty("0.06", "MeV/g")$, 所以
   $D=tilde(A)S_w times 1.602 times 10^(-10) approx qty("4.4e-5", "Gy")$.
-  $isotope("Po", a: 210)$ 为 alpha 发射体, 取 $w_R=20$, 得
+  $istp("Po", a: 210)$ 为 $ka$ 发射体, 取 $w_R=20$, 得
   $H_50("肝" <- "肝")=w_R D approx qty("8.8e-4", "Sv")=qty("0.88", "mSv")$.
 
-  == 吸入微量 $isotope("I", a: 131)$ 的年内照射剂量判断
+  == 吸入微量 $istp("I", a: 131)$ 的年内照射剂量判断
 
   空气浓度 $C=qty("0.45", "Bq/m^3")$, 年工作时间 $50 times 40=2000$ h, 吸入率
   $qty("0.02", "m^3/min")$, 年吸入体积
   $V=0.02 times 2000 times 60=qty("2400", "m^3")$. 年摄入活度
-  $I=C V approx qty("1.08e3", "Bq")$. 对职业人员吸入 $isotope("I", a: 131)$
+  $I=C V approx qty("1.08e3", "Bq")$. 对职业人员吸入 $istp("I", a: 131)$
   取剂量系数 $e(50) approx qty("1.1e-8", "Sv/Bq")$, 则
   $E(50)=I e(50) approx qty("1.2e-5", "Sv")=qty("0.012", "mSv")$.
   该值远低于职业照射有效剂量限值, 但实际防护仍应关注通风,
@@ -360,29 +360,29 @@
 
   一根香蕉取 $qty("150", "g")$, 含钾 $qty("2.56", "mg/g")$, 即
   $m_K=qty("0.384", "g")$. 天然钾比活度约 $qty("31.1", "Bq/g")$, 故每根香蕉
-  $isotope("K", a: 40)$ 活度 $A_K=0.384 times 31.1 approx qty("11.9", "Bq")$.
-  每天 1 根, 年摄入 $I approx 11.9 times 365 = qty("4.35e3", "Bq")$. 成人摄入
-  $isotope("K", a: 40)$ 取 $e(50) approx qty("6.2e-9", "Sv/Bq")$, 得
+  $istp("K", a: 40)$ 活度 $A_K=0.384 times 31.1 approx qty("11.9", "Bq")$. 每天
+  1 根, 年摄入 $I approx 11.9 times 365 = qty("4.35e3", "Bq")$. 成人摄入
+  $istp("K", a: 40)$ 取 $e(50) approx qty("6.2e-9", "Sv/Bq")$, 得
   $E(50) approx qty("2.7e-5", "Sv")=qty("27", "uSv")$, 即单根约
   $qty("0.074", "uSv")$. 由于人体维持钾稳态, 该数值主要用于说明天然本底量级.
 
   == 隔室模型的生物动力学方程组
 
-  设第 $i$ 个隔室核素量为 $q_i(t)$, 生物廓清速率为 $lambda_i$, 物理衰变常数为
-  $lambda_r$, 外部摄入速率为 $I$. 路径比例为 $a_12=1$, $a_23=0.30$, $a_24=0.70$,
+  设第 $i$ 个隔室核素量为 $q_i(t)$, 生物廓清速率为 $kl_i$, 物理衰变常数为
+  $kl_r$, 外部摄入速率为 $I$. 路径比例为 $a_12=1$, $a_23=0.30$, $a_24=0.70$,
   $a_32=0.50$, $a_34=0.50$. 因而
   $
-    (d q_1)/(d t) = I - (lambda_1 + lambda_r) q_1,
+    (d q_1)/(d t) = I - (kl_1 + kl_r) q_1,
   $
   $
-    (d q_2)/(d t) = lambda_1 q_1 + 0.50 lambda_3 q_3
-    - (lambda_2 + lambda_r) q_2,
+    (d q_2)/(d t) = kl_1 q_1 + 0.50 kl_3 q_3
+    - (kl_2 + kl_r) q_2,
   $
   $
-    (d q_3)/(d t) = 0.30 lambda_2 q_2 - (lambda_3 + lambda_r) q_3,
+    (d q_3)/(d t) = 0.30 kl_2 q_2 - (kl_3 + kl_r) q_3,
   $
   $
-    (d q_4)/(d t) = 0.70 lambda_2 q_2 + 0.50 lambda_3 q_3 - lambda_r q_4.
+    (d q_4)/(d t) = 0.70 kl_2 q_2 + 0.50 kl_3 q_3 - kl_r q_4.
   $
   该模型本质上是多隔室一阶转移动力学: 输入来自摄入或上游转移,
   输出来自生物廓清和物理衰变; 隔室 4 是生物滞留终端, 只受物理衰变减少.
@@ -394,14 +394,14 @@
   设气体空腔足够小, 不明显扰动介质中带电粒子的能谱和注量.
   这是布拉格-戈瑞空腔理论的基本条件. 记被测介质为 $m$, 空腔气体为 $g$.
   对同一带电粒子能量注量谱 $Phi_E$, 介质中的吸收剂量可写为
-  $D_m = integral Phi_E ((S_"col")/(rho))_m dif E$, 而空腔气体中的吸收剂量为
-  $D_g = integral Phi_E ((S_"col")/(rho))_g dif E$.
+  $D_m = int Phi_E ((S_"col")/(rho))_m dif E$, 而空腔气体中的吸收剂量为
+  $D_g = int Phi_E ((S_"col")/(rho))_g dif E$.
   定义介质对气体的平均质量碰撞阻止本领比:
   $
     s_(m,g) =
-    (integral Phi_E ((S_"col")/(rho))_m dif E)
+    (int Phi_E ((S_"col")/(rho))_m dif E)
     /
-    (integral Phi_E ((S_"col")/(rho))_g dif E)
+    (int Phi_E ((S_"col")/(rho))_g dif E)
   $
   于是得到布拉格-戈瑞关系:
 
@@ -412,9 +412,9 @@
   对气体正比计数器, 设收集到的总电荷为 $Q$, 气体放大倍数为 $G$, 气体质量为
   $m_g = rho_g V$, 气体平均电离能为 $W_g$. 由于正比计数器的收集电荷包含气体放大,
   原初电离电荷应为 $(Q)/(G)$. 原初电离产生的离子对数为 $N_i = (Q)/(G e)$.
-  气体中对应的能量沉积为 $epsilon_g = N_i W_g = (Q W_g)/(G e)$,
-  所以气体吸收剂量为 $D_g = (epsilon_g)/(m_g) = (Q W_g)/(G e m_g)$.
-  代回布拉格-戈瑞关系, 得到适用于气体正比计数器的形式:
+  气体中对应的能量沉积为 $ke_g = N_i W_g = (Q W_g)/(G e)$, 所以气体吸收剂量为
+  $D_g = (ke_g)/(m_g) = (Q W_g)/(G e m_g)$. 代回布拉格-戈瑞关系,
+  得到适用于气体正比计数器的形式:
   $
     D_m = (s_(m,g) Q W_g) / (G e rho_g V)
   $
@@ -562,7 +562,7 @@
   == 擦拭样测量系统的 MDA
 
   空白擦拭样品测量 $qty("10", "min")$ 得到本底计数 $N_b=400$. 样品测量时间也为
-  $qty("10", "min")$, 总探测效率为 $epsilon=10%=0.10$.
+  $qty("10", "min")$, 总探测效率为 $ke=10%=0.10$.
 
   先用上一题的 95% 置信水平探测限公式:
 
@@ -576,7 +576,7 @@
   测量活时间 $t=qty("10", "min")=qty("600", "s")$, 故:
 
   $
-    "MDA" = (L_D)/(epsilon t)
+    "MDA" = (L_D)/(ke t)
     = (95.7)/(0.10 times 600)
     approx qty("1.60", "Bq")
   $
