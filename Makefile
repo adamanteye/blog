@@ -30,11 +30,9 @@ FIND    := find
 TEMPLATE_INDEX := tmpl/index.typ
 TEMPLATE_MAIN  := tmpl/main.typ
 TEMPLATE_META  := tmpl/meta.typ
-NAV_SRC        := build/nav.typ
 MAGIC_TITLE    := 0x8964
 
-MINIFY ?= n
-
+MINIFY    ?= n
 TITLE     ?= no-title
 TODAY     ?= $(shell date +%Y/%m/%d)
 TODAY_DIR := src/$(TODAY)-$(TITLE)
@@ -60,8 +58,8 @@ endif
 
 include mk/typst.mk
 
-build: assets .WAIT $(NAV_SRC) build/index.html $(TARGET_POSTS)
-pdf: assets $(NAV_SRC) .WAIT $(TARGET_PDFS)
+build: assets .WAIT build/nav.typ build/index.html $(TARGET_POSTS)
+pdf: assets build/nav.typ .WAIT $(TARGET_PDFS)
 
 assets: css raw-fonts build/favicon.webp $(OBJS)
 
@@ -91,7 +89,7 @@ $(TODAY_DIR)/meta.typ:
 	$(Q)$(INSTALL) $(TEMPLATE_META) $@
 	$(Q)sed -i "s/$(MAGIC_TITLE)/$(TITLE)/g" $@
 
-$(NAV_SRC): bin/nav.sh $(SRC_META) src/
+build/nav.typ: bin/nav.sh $(SRC_META)
 	$(call log,NAV,$@)
 	$(Q)$(MKDIR_P) build
 	$(Q)bin/nav.sh src > $@
@@ -104,7 +102,7 @@ ifeq ($(MINIFY), y)
 	$(Q)$(MINIFY_CMD) -a -i $@
 endif
 
-build/index.html: index.typ meta.typ $(NAV_SRC) $(TARGET_POSTS) $(LIVE_ASSET)
+build/index.html: index.typ meta.typ build/nav.typ $(TARGET_POSTS) $(LIVE_ASSET)
 	$(call log,TYP,$<)
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
@@ -117,12 +115,12 @@ ifeq ($(MINIFY), y)
 	$(Q)$(MINIFY_CMD) -a -i $@
 endif
 
-build/%/index.typ: src/%/index.typ src/%
+build/%/index.typ: src/%/index.typ src/% build/nav.typ
 	$(call log,COPY,$(@D))
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(CP_R) $(<D)/. $(@D)/
 
-build/%/main.typ: src/%/main.typ src/%
+build/%/main.typ: src/%/main.typ src/% build/nav.typ
 	$(call log,COPY,$(@D))
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(CP_R) $(<D)/. $(@D)/
@@ -130,7 +128,7 @@ build/%/main.typ: src/%/main.typ src/%
 clean:
 	$(call log,RM,$(TRASH_COUNT) intermediates)
 	$(Q)$(FIND) build \( -name '*.bib' -o -name '*.typ' \) -delete
-	$(Q)$(RM_RF) $(NAV_SRC)
+	$(Q)$(RM_RF) build/nav.typ
 
 build/atom.xml: bin/atom.sh build/index.html
 	$(call log,FEED,$@)
