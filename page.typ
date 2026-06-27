@@ -24,6 +24,7 @@
 #import "@preview/physica:0.9.8": *
 #import "@preview/unify:0.8.1": *
 #import "@preview/lilaq:0.6.0" as lq
+#import "@preview/finite:0.5.1" as finite: automaton
 
 #let isotope(element, a: none, z: none) = {
   let a-content = if type(a) == int { [#a] } else { a }
