@@ -9,9 +9,6 @@ endif
 LILY_SRCS := $(shell find src/ -name '*.ly')
 LILY_OBJS := $(patsubst src/%.ly,build/%.ly.svg,$(LILY_SRCS))
 
-.NOTINTERMEDIATE: $(LILY_OBJS)
-
-
 build/%.ly.svg: src/%.ly
 	$(call log,LILY,$@)
 	$(Q)$(MKDIR_P) "$(@D)"

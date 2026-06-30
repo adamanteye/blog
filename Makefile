@@ -1,7 +1,6 @@
 MAKEFLAGS += --no-builtin-rules
 SHELL     := /bin/bash
 .DELETE_ON_ERROR:
-.SECONDARY:
 
 .PHONY: DUMMY build pdf clean assets css raw-fonts fonts seo atom post slide full optipng jpegoptim
 .DEFAULT_GOAL := build

@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   /* Keep the measure tied to glyph width so long-form text stays readable. */
   --bg: #fff;
   --text: #111;
@@ -8,6 +9,9 @@
   --border: #ccc;
   --code-bg: #f4f4f4;
   --code-border: #d7d7d7;
+  --table-border: #000;
+  --selection-bg: #fde68a;
+  --selection-text: #111;
   --font-main: "Iosevka", "LXGW WenKai TC CJK", "LXGW WenKai SC CJK", monospace;
   --font-math: "TeX Gyre Pagella Math", math, serif;
   --font-code: "Iosevka", "LXGW WenKai TC CJK", "LXGW WenKai SC CJK", monospace;
@@ -18,11 +22,33 @@
   --radius: 0.25rem;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #141414;
+    --text: #c9c9c9;
+    --link: #d08949;
+    --link-hover: #ebc587;
+    --link-visited: #ac9166;
+    --border: #464444;
+    --code-bg: #191918;
+    --code-border: #464444;
+    --table-border: #ac9166;
+    --selection-bg: #d08949;
+    --selection-text: #141414;
+  }
+}
+
 *,
 *::before,
 *::after {
   /* Make width constraints include padding and borders for predictable layout. */
   box-sizing: border-box;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 body {
@@ -193,14 +219,14 @@ td {
 
 th {
   text-align: left;
-  border-top: 2px solid #000;
-  border-bottom: 2px solid #000;
+  border-top: 2px solid var(--table-border);
+  border-bottom: 2px solid var(--table-border);
   /* Avoid compressed multi-line headers in narrow table columns. */
   white-space: nowrap;
 }
 
 tr:last-child td {
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid var(--table-border);
 }
 
 @font-face {
