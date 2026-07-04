@@ -36,16 +36,19 @@ TITLE     ?= no-title
 TODAY     ?= $(shell date +%Y/%m/%d)
 TODAY_DIR := src/$(TODAY)-$(TITLE)
 
-SRC_PAGES      := $(shell find src -mindepth 4 -maxdepth 4 -type f -name index.typ | sort -r)
-SRC_SLIDES     := $(shell find src -mindepth 4 -maxdepth 4 -type f -name main.typ | sort -r)
-SRC_SECTIONS   := $(patsubst src/%/index.typ,%,$(SRC_PAGES))
-TARGET_POSTS   := $(addprefix build/,$(addsuffix /index.html,$(SRC_SECTIONS)))
-TARGET_PDFS    := $(addprefix build/,$(addsuffix /index.pdf,$(SRC_SECTIONS)))
-SRC_SEC_SLIDES := $(patsubst src/%/main.typ,%,$(SRC_SLIDES))
-SRC_SECTIONS   += $(SRC_SEC_SLIDES)
-TARGET_PDFS    += $(addprefix build/,$(addsuffix /main.pdf,$(SRC_SEC_SLIDES)))
-SRC_META       := $(patsubst %,src/%/meta.typ,$(SRC_SECTIONS))
-TRASH_COUNT    = $(words $(shell find build \( -name '*.bib' -o -name '*.typ' \) 2>/dev/null))
+SRC_PAGES        := $(shell find src -mindepth 4 -maxdepth 4 -type f -name index.typ | sort -r)
+SRC_SLIDES       := $(shell find src -mindepth 4 -maxdepth 4 -type f -name main.typ | sort -r)
+SRC_PDF_FILES    := $(shell find src -mindepth 4 -maxdepth 4 -type f -name '*.pdf.typ' | sort -r)
+SRC_SECTIONS     := $(patsubst src/%/index.typ,%,$(SRC_PAGES))
+TARGET_POSTS     := $(addprefix build/,$(addsuffix /index.html,$(SRC_SECTIONS)))
+TARGET_PDFS      := $(addprefix build/,$(addsuffix /index.pdf,$(SRC_SECTIONS)))
+TARGET_PDF_FILES := $(addprefix build/,$(addsuffix .pdf,$(patsubst src/%.pdf.typ,%,$(SRC_PDF_FILES))))
+SRC_SEC_SLIDES   := $(patsubst src/%/main.typ,%,$(SRC_SLIDES))
+SRC_SECTIONS     += $(SRC_SEC_SLIDES)
+TARGET_PDFS      += $(addprefix build/,$(addsuffix /main.pdf,$(SRC_SEC_SLIDES)))
+TARGET_PDFS      += $(TARGET_PDF_FILES)
+SRC_META         := $(patsubst %,src/%/meta.typ,$(SRC_SECTIONS))
+TRASH_COUNT      = $(words $(shell find build \( -name '*.bib' -o -name '*.typ' \) 2>/dev/null))
 
 include mk/assets.mk
 
@@ -57,7 +60,7 @@ endif
 
 include mk/typst.mk
 
-build: assets .WAIT build/nav.typ build/index.html $(TARGET_POSTS)
+build: assets .WAIT build/nav.typ build/index.html $(TARGET_POSTS) $(TARGET_PDF_FILES)
 pdf: assets build/nav.typ .WAIT $(TARGET_PDFS)
 
 assets: css raw-fonts build/favicon.webp $(OBJS)

@@ -298,7 +298,7 @@ $ [C P, H]!=0 $
 
 $
   K_L & -> pi^+ + e^- + mac(nu_e) \
-  K_L & -> pi^- + e^- + nu_e
+  K_L & -> pi^- + e^+ + nu_e
 $
 
 倘若 CP 守恒, 这两种模式出现的概率应当一样多, 但是人们发现后者比前者多出
@@ -367,8 +367,11 @@ $
 $
 Dirac 表示中可以取
 $
-  kg^0 = mat(I, 0; 0, -I)\
-  kg^i = mat(0, ks_i; -ks_i, 0)
+           kg^0 & = mat(I, 0; 0, -I) \
+           kg^i & = mat(0, ks_i; -ks_i, 0) \
+           kg^5 & = i kg^0 kg^1 kg^2 kg^3 = mat(0, 1; 1, 0) \
+  {kg^ka,kg^kb} & = 2 g^(ka kb) \
+   {kg^ka,kg^5} & = 0
 $
 其中 $ks_i$ 是 Pauli 矩阵. 由于 $kg$ 矩阵必须至少是 $4 times 4$ 矩阵, 自由 Dirac
 粒子的波函数是四分量旋量. 粗略地说, 两个分量对应自旋自由度,
@@ -677,6 +680,12 @@ $
 
 = 中微子振荡
 
+== 性质
+
+中微子都是左手的, 反中微子都是右手的@zuber_neutrino_2020.
+
+== 振荡的发现
+
 太阳模型的中微子消失问题 (主要来自 $istp("B", a: 8)$, 因为 $istp("B", a: 8)$
 的能量较高, 且通量比 hep 高), 让物理学家开始做大型的中微子实验.
 结论是太阳模型预测的中微子通量并没有错, 只是因为中微子到达地球的途中发生了振荡,
@@ -703,18 +712,18 @@ $ istp("B", a: 8) -> istp("Be", a: 8) + e^+ + nu_e $
 
 参考@sno, 太阳中微子问题得到了很好的说明.
 
-同时, CKM 矩阵描述夸克在带电弱流中的味混合. 中微子的对应物是 PMNS 矩阵.
-二者物理角色类似: 弱相互作用按味本征态产生和探测粒子,
-但自由传播按质量本征态演化.
+同时, CKM 矩阵描述夸克在带电弱流中的味混合. 中微子的对应物是 PMNS 矩阵
+$U_(ka i)$ (不一定是酉矩阵@an_neutrino_2015).
 
 对中微子, 味本征态和质量本征态的关系写成
 $
-  mat(nu_e; nu_mu; nu_tau)
-  =
-  U_(ka i) mat(nu_1; nu_2; nu_3)
+  mat(nu_e; nu_mu; nu_tau)&=
+  U_(ka i) mat(nu_1; nu_2; nu_3)\
+  mat(mac(nu_e); mac(nu_mu); mac(nu_tau))&=
+  U_(ka i)^* mat(mac(nu_1); mac(nu_2); mac(nu_3))
 $
-其中 $ka = e, mu, tau$, 而 $i = 1, 2, 3$. 常用参数化把 PMNS 矩阵写成三个混合角
-和若干相位的乘积:
+其中 $ka = e, mu, tau$, 而 $i = 1, 2, 3$. 常用参数化把 PMNS
+矩阵写成三个混合角和若干相位的乘积:
 $
   U_"PMNS"
   =
@@ -752,5 +761,71 @@ $kb$ 衰变等过程.
 普通双 $kb$ 衰变为 $(A, Z) -> (A, Z + 2) + 2 e^- + 2 mac(nu)_e$ (轻子数守恒).
 无中微子双 $kb$ 衰变为$(A, Z) -> (A, Z + 2) + 2 e^-$. 末态没有反中微子.
 若观测到, 则说明轻子数不守恒, 中微子是 Majorana 粒子.
+
+== 探测
+
+=== JUNO
+
+$ mac(nu)_e + p -> e^++n $
+
+$e^+$ 快速湮灭, 产生两个 $qty("0.511", "MeV")$ 的光. 在大概 $qty("200", "us")$
+之后, 又产生 $qty("2.2", "MeV")$ 的光子作为延迟信号@noauthor_juno_2022.
+
+#figure(
+  table(
+    columns: 4,
+    table.hline(),
+    table.header(
+      [Research], [Expected signal], [Energy segion], [Major backgroundds]
+    ),
+    table.hline(),
+    [Reactor antineutrino],
+    [60 IBDs/day],
+    [0-12 MeV],
+    [Radioactivity, cosmic Muon],
+
+    [Supernova burst],
+    [5000 IBDs at 10 kpc],
+    [0-80 MeV],
+    [Negligible],
+
+    [DSNB (w/o PSD)],
+    [2-4 IBDs/year],
+    [10-40 MeV],
+    [Atmospheric $nu$],
+
+    [Solar neutrino],
+    [hundreds per year for $istp("B", a: 8)$],
+    [0-16 MeV],
+    [Radioactivity],
+
+    [Geoneutrino],
+    [\~400 per year for $istp("B", a: 8)$],
+    [0-3 MeV],
+    [Reactor $nu$],
+    table.hline(),
+  ),
+  caption: [JUNO 可探测目标及本底@noauthor_juno_2022],
+)
+
+=== Super-K
+
+Super-K (Super-Kamiokande) 在地下 1000 米深. 历史追溯到 1982 年 Koshiba
+等人为了测量质子衰变而建造的 Kamiokande. 运行了几个月后, 他们发现 Kamiokande
+能看到缪子衰变的电子 ($qty("15", "MeV")$), 意识到对探测器再做改造,
+就能观测太阳中微子. 在跟美国同行开会之后, 他们决定建一个 $qty("22.5", "kt")$
+的探测器. 1987 年, Kamiokande-II 就诞生了, 成功地看到了低能中微子, 并且观测到
+SN1987A 的中微子暴. 1991 年, Super-K 的建设获准. 1996 年, Super-K 建成,
+研究目标不限于太阳中微子, 超新星中微子, 质子衰变,
+还增加了大气中微子@suzuki_super-kamiokande_2019.
+
+== DUNE
+
+Deep Underground Neutrino Experiment (DUNE) 是美国计划的实验, 使用 LArTPC
+(Liquid Argon Time Profile Chamber).
+
+= 大一统理论
+
+$ G supset "SU"(3) times.o "SU"(2) times.o "U"(1) $
 
 #bibliography("main.bib")

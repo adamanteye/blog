@@ -14,6 +14,11 @@ build/%/main.pdf: build/%/main.typ slide.typ page.typ meta.typ
 	$(call log,TYP,$@)
 	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
 
+build/%.pdf: src/%.pdf.typ page.typ meta.typ
+	$(call log,TYP,$@)
+	$(Q)$(MKDIR_P) $(@D)
+	$(Q)$(TYPST) $< $@ $(TYPST_SILENT)
+
 build/%/index.html: build/%/index.typ page.typ meta.typ $(LIVE_ASSET)
 	$(call log,TYP,$<)
 	$(Q)$(TYPST) --input src=src/$*/index.typ $< $@ $(TYPST_SILENT)
