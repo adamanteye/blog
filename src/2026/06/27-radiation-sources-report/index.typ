@@ -359,7 +359,7 @@ $qty(290, "photons/nm^2")$, 13.5 nm EUV 只有约 $qty(20, "photons/nm^2")$.
 
 High-NA EUV 并不改变曝光波长, 仍使用 13.5 nm EUV,
 而是把投影光学系统的数值孔径从现有 EUV 平台的 0.33 提高到 0.55. ASML 的 EXE:5000
-平台即面向 High-NA EUV, 用于支持更小特征尺寸和更高图形密度 @asml_exe5000. 按
+平台即面向 High-NA EUV, 用于支持更小特征尺寸和更高图形密度@asml_exe5000. 按
 Rayleigh 关系, 在 $lambda$ 不变时提高 $"NA"$ 可以直接改善分辨率, 但焦深近似随
 $lambda / "NA"^2$ 缩小, 因此 High-NA 同时提高了晶圆平坦度, 光刻胶厚度, 掩模 3D
 效应, 照明优化和计量控制的难度.
