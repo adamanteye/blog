@@ -93,7 +93,7 @@ build/nav.typ: bin/nav.sh $(SRC_META)
 	$(Q)$(MKDIR_P) build
 	$(Q)bin/nav.sh src > $@
 
-build/sitemap.xml: build/index.html
+build/sitemap.xml: build/index.html bin/sitemap.sh
 	$(call log,MAP,$@)
 	$(Q)bin/sitemap.sh $(@D) > $@
 ifeq ($(MINIFY), y)
