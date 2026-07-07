@@ -103,6 +103,34 @@
   let alt = fields.at("alt")
   html.img(src: it.source, alt: if alt == none { "" } else { alt })
 }
+#let giscus = (
+  repo: "adamanteye/blog",
+  repo-id: "R_kgDONil4tA",
+  category: "General",
+  category-id: "DIC_kwDONil4tM4DAqQh",
+)
+#let comments = {
+  if giscus.category-id != "" {
+    html.elem("section", attrs: (class: "comments"))[
+      #html.elem("script", attrs: (
+        src: "https://giscus.app/client.js",
+        "data-repo": giscus.repo,
+        "data-repo-id": giscus.repo-id,
+        "data-category": giscus.category,
+        "data-category-id": giscus.category-id,
+        "data-mapping": "pathname",
+        "data-strict": "1",
+        "data-reactions-enabled": "1",
+        "data-emit-metadata": "0",
+        "data-input-position": "top",
+        "data-theme": "preferred_color_scheme",
+        "data-lang": "en",
+        crossorigin: "anonymous",
+        async: "",
+      ))
+    ]
+  }
+}
 #let conf(
   title: str,
   desc: str,
@@ -154,6 +182,7 @@
           html.article({
             doc
           })
+          comments
         })
         html.footer({
           html.nav([

@@ -195,6 +195,12 @@ footer {
   box-shadow: 0 -0.1em 0 var(--border);
 }
 
+.comments {
+  margin-top: 2em;
+  padding-top: 1em;
+  box-shadow: 0 -0.1em 0 var(--border);
+}
+
 @media (max-width: 600px) {
   body {
     padding: 0.75rem;
