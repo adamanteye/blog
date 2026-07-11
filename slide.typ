@@ -29,7 +29,7 @@
       secondary: blue.lighten(40%),
       tertiary: olive.lighten(10%),
     ),
-    config-methods(cover: utils.semi-transparent-cover),
+    config-methods(cover: utils.alpha-changing-cover.with(alpha: 15%)),
   )
   set text(size: 17pt, font: (
     (name: "Libertinus Serif", covers: "latin-in-cjk"),
