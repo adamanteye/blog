@@ -8,6 +8,7 @@
   --border: #ccc;
   --code-bg: #f4f4f4;
   --code-border: #d7d7d7;
+  /* Prefer traditional glyph forms; keep the simplified font as a fallback. */
   --font-main: "Iosevka", "LXGW WenKai TC CJK", "LXGW WenKai SC CJK", monospace;
   --font-math: "TeX Gyre Pagella Math", math, serif;
   --font-code: "Iosevka", "LXGW WenKai TC CJK", "LXGW WenKai SC CJK", monospace;
@@ -301,20 +302,9 @@ tr:last-child td {
 @font-face {
   font-family: "LXGW WenKai SC CJK";
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-display: swap;
-  src: url("./fonts/lxgw-wenkai-sc-cjk-700-normal.woff2") format("woff2");
-  unicode-range:
-    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+31C0-31EF, U+3400-4DBF,
-    U+4E00-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF;
-}
-
-@font-face {
-  font-family: "LXGW WenKai SC CJK";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("./fonts/lxgw-wenkai-sc-cjk-700-normal.woff2") format("woff2");
+  src: url("./fonts/lxgw-wenkai-sc-cjk-500-normal.woff2") format("woff2");
   unicode-range:
     U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+31C0-31EF, U+3400-4DBF,
     U+4E00-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF;

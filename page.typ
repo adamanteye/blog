@@ -101,7 +101,12 @@
 #let html-image(it) = {
   let fields = it.fields()
   let alt = fields.at("alt")
-  html.img(src: it.source, alt: if alt == none { "" } else { alt })
+  html.img(
+    src: it.source,
+    alt: if alt == none { "" } else { alt },
+    loading: "lazy",
+    decoding: "async",
+  )
 }
 #let giscus = (
   repo: "adamanteye/blog",

@@ -63,7 +63,7 @@ pdf: assets build/nav.typ .WAIT $(TARGET_PDFS)
 assets: css raw-fonts build/favicon.webp $(OBJS)
 
 css: $(addprefix build/,$(ASSET_CSS))
-raw-fonts: $(addprefix assets/,$(ASSET_FONTS))
+raw-fonts: $(addprefix assets/,$(ASSET_FONT_SOURCES))
 fonts: $(addprefix build/,$(ASSET_FONTS))
 
 post: $(TODAY_DIR)/meta.typ $(TODAY_DIR)/index.typ
