@@ -4,6 +4,7 @@
 #let conf(
   title: str,
   desc: str,
+  bib: none,
   doc,
 ) = context {
   show figure.where(kind: table): set block(breakable: true)
@@ -30,6 +31,7 @@
       tertiary: olive.lighten(10%),
     ),
     config-methods(cover: utils.alpha-changing-cover.with(alpha: 15%)),
+    config-common(show-bibliography-as-footnote: bib),
   )
   set text(size: 17pt, font: (
     (name: "Libertinus Serif", covers: "latin-in-cjk"),
