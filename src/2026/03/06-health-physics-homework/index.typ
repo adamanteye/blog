@@ -541,7 +541,9 @@
 
   #table(
     columns: 4,
+    table.hline(),
     table.header([项目], [计数率], [标准偏差], [标准偏差]),
+    table.hline(),
 
     [总计数率],
     [$qty("56.0", "min^-1")$],
@@ -557,6 +559,7 @@
     [$qty("30.0", "min^-1")$],
     [$qty("2.71", "min^-1")$],
     [$qty("0.0451", "s^-1")$],
+    table.hline(),
   )
 
   == 擦拭样测量系统的 MDA

@@ -58,13 +58,16 @@ JUNO 实验对 PMT 的性能要求是:
 #figure(
   table(
     columns: 3,
+    table.hline(),
     table.header([参数], [滨松], [北方夜视]),
+    table.hline(),
     [QE], [30.3% (> 27%)], [28.5% (> 26.5%)],
     [CE], [95.6], [98% (> 96%)],
     [Gain], [10^7], [10^7],
     [TTS], [2.7 ns (< 3.5 ns)], [12 ns (< 15ns)],
     [HV(for a 10^7 gain)], [2000 V (< 2500 V)], [2500 V (< 2800 V)],
     [Lifetime], [> 20 yrs], [> 25 yrs],
+    table.hline(),
   ),
   caption: [JUNO PMT 性能判据@abusleme_mass_2022],
 )

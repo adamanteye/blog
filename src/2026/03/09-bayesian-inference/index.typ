@@ -24,7 +24,9 @@ $
 #figure(
   table(
     columns: 5,
+    table.hline(),
     table.header([Name], [PDF/PMF], [Mean], [Variance], [Mode]),
+    table.hline(),
     [$"Beta" (y|ka,kb)$],
     [$kG(ka+kb)/(kG(ka)kG(kb)) y^(ka-1) (1-y)^(kb-1)$],
     [$ka/(ka+kb)$],
@@ -90,6 +92,7 @@ $
     [$0$],
 
     [$"Uniform" (y|a,b)$], [$1/(b-a)$], [$(a+b)/2$], [$(b-a)^2/12$], [],
+    table.hline(),
   ),
   caption: [Single Variate Distributions],
 )

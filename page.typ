@@ -143,6 +143,7 @@
   doc,
 ) = context {
   show figure.where(kind: table): set block(breakable: true)
+  set table(stroke: none)
   set bibliography(style: "/styles/aps-with-doi.csl")
   show bibliography: set text(lang: "en")
   show: hep

@@ -53,11 +53,14 @@ $
 
 #figure(caption: "重要的群的记号", table(
   columns: 2,
+  table.hline(),
   table.header([记号], [矩阵]),
+  table.hline(),
   [U(n)], [幺正 ($U^(TT *) U=1$)],
   [O(n)], [正交 ($O^TT O=1$)],
   [SU(n)], [幺正并且行列式为 $1$],
   [SO(n)], [正交并且行列式为 $1$],
+  table.hline(),
 )) <uos>
 
 @uos 提到的矩阵都是 $n times n$ 的, 虽然说实际上任意维度 (最平凡的例子是
