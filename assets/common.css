@@ -13,6 +13,7 @@
   --font-math: "TeX Gyre Pagella Math", math, serif;
   --font-code: "Iosevka", "LXGW WenKai TC CJK", "LXGW WenKai SC CJK", monospace;
   --size-body: 14pt;
+  --rsize-table: 0.9rem;
   --line-body: 1.55;
   --content-max: 80ch;
   --space-body: 1rem;
@@ -195,6 +196,7 @@ table {
 th,
 td {
   padding: 0.2rem 0.55rem;
+  font-size: var(--rsize-table);
   vertical-align: top;
 }
 
