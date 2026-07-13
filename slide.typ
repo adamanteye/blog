@@ -8,6 +8,7 @@
   doc,
 ) = context {
   show figure.where(kind: table): set block(breakable: true)
+  set table(stroke: none)
   show: hep
   set math.equation(numbering: "(1)")
   set text(font: (
