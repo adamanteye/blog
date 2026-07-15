@@ -12,10 +12,6 @@
   show table: set text(size: 0.9em)
   show: hep
   set math.equation(numbering: "(1)")
-  set text(font: (
-    (name: "Libertinus Serif", covers: "latin-in-cjk"),
-    "Source Han Serif SC",
-  ))
   show link: it => underline(text(fill: olive.lighten(20%), it))
   show heading: set block(below: 1.5em)
   set grid(column-gutter: 2em)
