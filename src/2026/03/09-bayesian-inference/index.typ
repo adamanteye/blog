@@ -5,16 +5,16 @@
 = Bayes Theorem
 
 == Bayes theorem
-$ p(kt|y)=(p(y|kt)p(kt))/p(y)prop p(y|kt)p(kt) $
+$ p(kt|D)=(p(D|kt)p(kt))/p(D)prop p(D|kt)p(kt) $
 
 == Prior predictive distribution
-$ p(y)=int_kT (y|kt)p(kt) dd(kt) $
+$ p(D)=int_kT p(D|kt)p(kt) dd(kt) $
 
 == Posterior predictive distribution
 $
-  p(tilde(y)|y) & =int_kT p(tilde(y),kt|y)dd(kt) \
-                & =int_kT p(tilde(y)|kt,y) p(kt|y) dd(kt) \
-                & =int_kT p(tilde(y)|kt) p(kt|y) dd(kt) \
+  p(tilde(y)|D) & =int_kT p(tilde(y),kt|D)dd(kt) \
+                & =int_kT p(tilde(y)|kt,D) p(kt|D) dd(kt) \
+                & =int_kT p(tilde(y)|kt) p(kt|D) dd(kt) \
 $
 
 = Fundamental Distributions
@@ -109,11 +109,11 @@ Properties:
 - $B(m,n)=((m-1)!(n-1)!)/(m+n-1)! =(m+n)/(m n)\/binom(m+n, m)$
 
 = Conjugate Prior
-The idea of *conjugate prior* is that for a give likelihood we choose a prior
+The idea of a *conjugate prior* is that for a given likelihood we choose a prior
 distribution such that, after observing data and applying Bayes' theorem, the
 posterior distribution belongs to the same family as the prior.
 
-That is, if $p(kt)$ and $p(kt | y)$ have the same distributional form, then the
+That is, if $p(kt)$ and $p(kt | D)$ have the same distributional form, then the
 prior is called a *conjugate prior* for the likelihood model.
 
 This is useful because it makes Bayesian updating analytically tractable.
@@ -126,14 +126,14 @@ Note general exponential family:
 $
   p(y_i|kt)=f(y_i) exp(
     phi(kt)^TT u(y_i)
-    g(kt)
+    - g(kt)
   )
 $
 
-Likelihood of a sequence of i.i.d.samples:
+For the data set $D={y_1, dots, y_n}$ of i.i.d. observations, the likelihood is
 
 $
-  p(y|kt)=product_(i=1)^n (f(y_i)) exp(
+  p(D|kt)=product_(i=1)^n (f(y_i)) exp(
     phi(kt)^TT sum_(i=1)^n u(y_i)
     - n g(kt)
   )
@@ -143,7 +143,7 @@ So conjugate prior for that likelihood is
 $ p(kt)prop exp(phi(kt)^TT nu-n_0 g(kt)) $
 
 Posterior is
-$ p(kt|y)prop exp(phi(kt)^TT (nu+t(y))-(n_0+n) g(kt)) $
+$ p(kt|D)prop exp(phi(kt)^TT (nu+sum_(i=1)^n u(y_i))-(n_0+n) g(kt)) $
 
 = Proper and Improper Prior Distributions
 A prior is called *proper* if it is a valid probability distribution:
@@ -208,5 +208,76 @@ in $[0,1]$.
 Via induction, this can be seen to be equivalent to the requirement that
 $etc(1, n, kl va(x)) in A$ for all vectors $etc(1, n, va(x))in A$, and for all
 scalars $etc(1, n, kl)>=0$ such that $sum k_i=1$.
+
+= Reversible Jump MCMC
+
+Reversible Jump Markov chain Monte Carlo (RJMCMC) samples jointly over a family
+of candidate models $cal(M)={M_k: k in K}$ and their parameters. Under model
+$M_k$, let $va(kt)_k in kT_k subset.eq RR^(n_k)$. For a fixed observed data set
+$D$, the joint posterior is the product of the likelihood and the joint prior,
+$p(k,va(kt)_k)=p(va(kt)_k|k)p(k)$@brooks_handbook_2011:
+
+$
+  pi(k, va(kt)_k|D)
+  = (cal(L)(D|k, va(kt)_k)p(va(kt)_k|k)p(k))
+  /(sum_(m in K) int_(kT_m) cal(L)(D|m, va(kt)_m)
+  p(va(kt)_m|m)p(m) dd(va(kt)_m)).
+$
+
+Unlike ordinary MCMC, the state space is the disjoint union
+$union.dot_(k in K) ({k} times kT_k)$, so a jump between $M_k$ and $M_(k')$ may
+change the dimension of the parameter vector.
+
+== Sampler Configuration
+
+An RJMCMC sampler is specified by the following components:
+
+- a within-model kernel $K_k$ that leaves $pi(va(kt)_k|k, D)$ invariant
+- jump-selection probabilities $r(k'|k)$ for $k' != k$, satisfying
+  $sum_(k' != k) r(k'|k) <= 1$
+- auxiliary proposal densities $q_(k,k')(va(u)|va(kt)_k)$
+- a differentiable bijection $T_(k,k')$ paired with its reverse $T_(k',k)$
+  $T_(k,k'): kT_k times cal(U)_(k,k') arrow.r
+  kT_(k') times cal(U)_(k',k)$, with the dimension-matching condition
+  $n_k+d_(k,k')=n_(k')+d_(k',k)$, where $d_(k,k')=dim cal(U)_(k,k')$.
+
+Starting from $(k,va(kt)_k)$, select a destination model $k'$ with probability
+$r(k'|k)$, draw $va(u) ~ q_(k,k')(dot|va(kt)_k)$, and apply
+
+$
+  (va(kt)_(k'),va(u)')=T_(k,k')(va(kt)_k,va(u))
+$
+
+The corresponding Jacobian factor is:
+
+$
+  J_(k,k')(va(kt)_k,va(u))
+  = abs(
+    det(
+      partial (va(kt)_(k'),va(u)')
+      / partial (va(kt)_k,va(u))
+    )
+  )
+$
+
+Accept the proposed state $(k',va(kt)_(k'))$ with probability:
+
+$
+  ka((k,va(kt)_k), (k',va(kt)_(k')))
+  = min(
+    1,
+    (pi(k', va(kt)_(k')|D) r(k|k')
+    q_(k',k)(va(u)'|va(kt)_(k')))
+    /(pi(k, va(kt)_k|D) r(k'|k)
+    q_(k,k')(va(u)|va(kt)_k))
+    J_(k,k')(va(kt)_k,va(u))
+  )
+$
+
+The posterior's normalizing constant cancels from this ratio. If the proposal is
+rejected, retain $(k,va(kt)_k)$. With the remaining probability
+$1-sum_(k' != k) r(k'|k)$, apply $K_k$ to update the parameters within the
+current model. Together, these updates preserve $pi(k, va(kt)_k|D)$ as the
+stationary distribution.
 
 #bibliography("main.bib")
