@@ -1,6 +1,7 @@
 #import "page.typ": *
 #import "@preview/touying:0.7.4": *
-#import themes.university: *
+#import "@preview/numbly:0.1.0": numbly
+#import themes.dewdrop: *
 #let conf(
   title: str,
   desc: str,
@@ -12,10 +13,10 @@
   show table: set text(size: 0.9em)
   show: hep
   set math.equation(numbering: "(1)")
-  show link: it => underline(text(fill: olive.lighten(20%), it))
-  show heading: set block(below: 1.5em)
-  set grid(column-gutter: 2em)
-  show: university-theme.with(
+  set heading(numbering: numbly("{1}.", default: "1.1"))
+  set grid(gutter: 2em)
+  show: dewdrop-theme.with(
+    navigation: none,
     config-info(
       title: title,
       subtitle: desc,
@@ -24,9 +25,10 @@
       institution: "Tsinghua University",
     ),
     config-colors(
-      primary: black.lighten(40%),
-      secondary: blue.lighten(40%),
-      tertiary: olive.lighten(10%),
+      neutral: rgb("7f7f89"),
+      primary: rgb("0033a0"),
+      secondary: rgb("61c5d3"),
+      tertiary: rgb("e15e32"),
     ),
     config-methods(cover: utils.alpha-changing-cover.with(alpha: 15%)),
     config-common(show-bibliography-as-footnote: bib),
