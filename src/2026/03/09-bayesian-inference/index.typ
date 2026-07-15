@@ -39,6 +39,13 @@ $
     [$n p(1-p)$],
     [],
 
+    [$"Dirichlet" (va(y)|va(ka))$],
+    [$(kG(ka_0))/(product_(i=1)^K kG(ka_i))
+    product_(i=1)^K y_i^(ka_i-1)$],
+    [$ka_i/ka_0$],
+    [$(ka_i(ka_0-ka_i))/(ka_0^2(ka_0+1))$],
+    [$(ka_i-1)/(ka_0-K), ka_i>1 forall i$],
+
     [$"Exponential" (y|kl)$], [$kl e^(-kl y)$], [$1/kl$], [$(ln 2)/kl$], [$0$],
 
     [$"Erlang" (y|kl,k)$],
@@ -94,7 +101,7 @@ $
     [$"Uniform" (y|a,b)$], [$1/(b-a)$], [$(a+b)/2$], [$(b-a)^2/12$], [],
     table.hline(),
   ),
-  caption: [Single Variate Distributions],
+  caption: [Common Probability Distributions],
 )
 
 = Functions
