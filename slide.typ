@@ -3,15 +3,6 @@
 #import "@preview/numbly:0.1.0": numbly
 #import themes.dewdrop: *
 
-#let cern-neutral = rgb("7f7f89")
-#let cern-primary = rgb("0033a0")
-#let cern-secondary = rgb("61c5d3")
-#let cern-tertiary = rgb("e15e32")
-
-#let cern-background = rgb("f2f2f3")
-#let cern-foreground = rgb("2f2f2f")
-#let cern-border = rgb("bebec8")
-
 #let conf(
   title: str,
   desc: str,

@@ -26,6 +26,15 @@
 #import "@preview/lilaq:0.6.0" as lq
 #import "@preview/finite:0.5.1" as finite: automaton
 
+#let cern-neutral = rgb("7f7f89")
+#let cern-primary = rgb("0033a0")
+#let cern-secondary = rgb("61c5d3")
+#let cern-tertiary = rgb("e15e32")
+
+#let cern-background = rgb("f2f2f3")
+#let cern-foreground = rgb("2f2f2f")
+#let cern-border = rgb("bebec8")
+
 #let isotope(element, a: none, z: none) = {
   let a-content = if type(a) == int { [#a] } else { a }
   let z-content = if type(z) == int { [#z] } else { z }
@@ -222,8 +231,28 @@
       size: 12pt,
     )
     show math.equation: set text(font: "TeX Gyre Pagella Math")
-    show link: it => underline(text(fill: rgb("b91c1c"), it))
-    show ref: it => text(fill: rgb("b91c1c"), it)
+
+    show link: set text(fill: cern-primary)
+    show ref: set text(fill: cern-primary)
+    show strong: set text(fill: cern-tertiary.darken(10%))
+
+    show quote: set block(
+      fill: cern-primary.lighten(92%),
+      stroke: cern-primary.lighten(55%),
+    )
+
+    show raw.where(block: false): set text(
+      fill: cern-primary.darken(25%),
+    )
+    show raw.where(block: true): set block(
+      fill: cern-neutral.lighten(88%),
+      stroke: cern-border,
+    )
+
+    show figure.caption: set text(
+      fill: cern-neutral.darken(20%),
+    )
+
     set par(leading: 1em, spacing: 1.5em, justify: true)
     show heading: set block(below: 1.5em)
     set document(title: title)
