@@ -6,6 +6,7 @@
 #let conf(
   title: str,
   desc: str,
+  author: "Xuelin Yang",
   bib: none,
   doc,
 ) = context {
@@ -24,8 +25,7 @@
       title: title,
       subtitle: desc,
       date: datetime.today(),
-      author: "Xuelin Yang",
-      institution: "Tsinghua University",
+      author: author,
     ),
     config-colors(
       neutral: cern-neutral,
@@ -66,14 +66,6 @@
   show quote: set block(
     fill: cern-primary.lighten(92%),
     stroke: cern-primary.lighten(55%),
-  )
-
-  show raw.where(block: false): set text(
-    fill: cern-primary.darken(25%),
-  )
-  show raw.where(block: true): set block(
-    fill: cern-neutral.lighten(88%),
-    stroke: cern-border,
   )
 
   show figure.caption: set text(
