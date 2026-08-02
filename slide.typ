@@ -77,7 +77,7 @@
     fill: cern-foreground,
     font: (
       (name: "Libertinus Serif", covers: "latin-in-cjk"),
-      "Source Han Serif",
+      "AR PL UKai TW MBE",
     ),
   )
 
