@@ -1,6 +1,5 @@
 #import "page.typ": *
 #import "@preview/touying:0.7.4": *
-#import "@preview/numbly:0.1.0": numbly
 #import themes.dewdrop: *
 
 #let conf(
@@ -14,11 +13,8 @@
   set table(stroke: none)
   show table: set text(size: 0.9em)
   show: hep
-
   set math.equation(numbering: "(1)")
-  set heading(numbering: numbly("{1}.", default: "1.1"))
   set grid(gutter: 2em)
-
   show: dewdrop-theme.with(
     navigation: none,
     config-info(
@@ -76,7 +72,7 @@
     size: 15pt,
     fill: cern-foreground,
     font: (
-      (name: "Libertinus Serif", covers: "latin-in-cjk"),
+      "Libertinus Serif",
       "AR PL UKai TW MBE",
     ),
   )
