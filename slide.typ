@@ -3,15 +3,15 @@
 #import themes.dewdrop: *
 
 #let conf(
-  title: str,
-  desc: str,
+  title: none,
+  desc: none,
   author: "Xuelin Yang",
   bib: none,
   doc,
 ) = context {
   show figure.where(kind: table): set block(breakable: true)
   set table(stroke: none)
-  show table: set text(size: 0.9em)
+  show table: set text(size: 0.8em)
   show: hep
   set math.equation(numbering: "(1)")
   set grid(gutter: 2em)
@@ -36,7 +36,7 @@
       show-bibliography-as-footnote: bib,
     ),
   )
-
+  set par(justify: false)
   show heading.where(level: 1): set text(
     fill: cern-primary,
   )
@@ -46,7 +46,6 @@
   show heading.where(level: 3): set text(
     fill: cern-secondary.darken(35%),
   )
-
   set list(
     marker: (
       text(fill: cern-primary)[•],
@@ -54,29 +53,25 @@
       text(fill: cern-tertiary)[–],
     ),
   )
-
   show link: set text(fill: cern-primary)
   show ref: set text(fill: cern-primary)
   show strong: set text(fill: cern-tertiary.darken(10%))
-
   show quote: set block(
     fill: cern-primary.lighten(92%),
     stroke: cern-primary.lighten(55%),
   )
-
   show figure.caption: set text(
     fill: cern-neutral.darken(20%),
   )
-
   set text(
-    size: 15pt,
+    size: 17pt,
+    weight: "medium",
     fill: cern-foreground,
     font: (
       "Libertinus Serif",
       "AR PL UKai TW MBE",
     ),
   )
-
   show math.equation: set text(
     font: "TeX Gyre Pagella Math",
   )

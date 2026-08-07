@@ -225,8 +225,8 @@
     set grid(column-gutter: 1em, row-gutter: 1em)
     set text(
       font: (
-        (name: "Libertinus Serif", covers: "latin-in-cjk"),
-        "Source Han Serif",
+        "Libertinus Serif",
+        "AR PL UKai TW MBE",
       ),
       size: 12pt,
     )
