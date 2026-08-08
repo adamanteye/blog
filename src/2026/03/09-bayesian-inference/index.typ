@@ -72,7 +72,7 @@ $
     [$kb^2/((ka-1)^2(ka-2))$],
     [$kb/(ka-1)$],
 
-    [$"LogNormal" (y|ka,kb)$],
+    [$"LogNormal" (y|mu,ks^2)$],
     [$1/(y ks sqrt(2 pi)) e^(-(ln y-mu)^2/(2 ks^2))$],
     [$e^(mu+ks^2/2)$],
     [$(e^(ks^2)-1)e^(2mu+ks^2)$],
