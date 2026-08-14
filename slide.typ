@@ -15,6 +15,7 @@
   show: hep
   set math.equation(numbering: "(1)")
   set grid(gutter: 2em)
+  show grid: set align(center)
   show: dewdrop-theme.with(
     navigation: none,
     config-info(
