@@ -146,8 +146,8 @@
   }
 }
 #let conf(
-  title: str,
-  desc: str,
+  title: none,
+  desc: none,
   slide: false,
   doc,
 ) = context {
