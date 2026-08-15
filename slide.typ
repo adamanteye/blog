@@ -16,6 +16,7 @@
   set math.equation(numbering: "(1)")
   set grid(gutter: 2em)
   show grid: set align(center)
+  set bibliography(title: none)
   show: dewdrop-theme.with(
     navigation: none,
     config-info(
