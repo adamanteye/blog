@@ -148,6 +148,7 @@
 #let conf(
   title: none,
   desc: none,
+  author: none,
   slide: false,
   doc,
 ) = context {
@@ -256,9 +257,18 @@
     set par(leading: 1em, spacing: 1.5em, justify: true)
     show heading: set block(below: 1.5em)
     set document(title: title)
+    if author != none {
+      set document(author: author)
+    }
     align(center, text(1.4em)[
       *#title*
     ])
+    if author != none {
+      let author = if type(author) == array {
+        author.join(" ")
+      } else { author }
+      align(center)[#author]
+    }
     [#desc]
     line(length: 100%)
     doc
