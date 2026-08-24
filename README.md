@@ -11,14 +11,14 @@ Each post is plain text with small metadata files.
 make build
 ```
 
-## Writing a Post
+## Writing a post or slide
 
 ```bash
 make TITLE=your-title post
 make TITLE=your-title slide
 ```
 
-## Production Build
+## Production build
 
 ```bash
 make -j$(nproc) MINIFY=y full
