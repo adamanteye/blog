@@ -229,7 +229,7 @@
         "Libertinus Serif",
         "AR PL UKai TW MBE",
       ),
-      size: 12pt,
+      size: 10pt,
     )
     show math.equation: set text(font: "TeX Gyre Pagella Math")
 
