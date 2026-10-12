@@ -91,7 +91,7 @@ $(TODAY_DIR)/meta.typ:
 	$(Q)$(INSTALL) $(TEMPLATE_META) $@
 	$(Q)sed -i "s/$(MAGIC_TITLE)/$(TITLE)/g" $@
 
-build/nav.typ: bin/nav.sh $(SRC_META)
+build/nav.typ: bin/nav.sh bin/excerpt.py $(SRC_META) $(TARGET_POSTS)
 	$(call log,NAV,$@)
 	$(Q)$(MKDIR_P) build
 	$(Q)bin/nav.sh src > $@
@@ -117,12 +117,12 @@ ifeq ($(MINIFY), y)
 	$(Q)$(MINIFY_CMD) -a -i $@
 endif
 
-build/%/index.typ: src/%/index.typ src/% build/nav.typ
+build/%/index.typ: src/%/index.typ src/%/meta.typ src/%
 	$(call log,COPY,$(@D))
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(CP_R) $(<D)/. $(@D)/
 
-build/%/main.typ: src/%/main.typ src/% build/nav.typ
+build/%/main.typ: src/%/main.typ src/%/meta.typ src/%
 	$(call log,COPY,$(@D))
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)$(CP_R) $(<D)/. $(@D)/

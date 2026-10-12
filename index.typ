@@ -32,7 +32,9 @@
         ])
       })
       html.main({
-        html.nav({ include "build/nav.typ" })
+        html.nav({
+          html.ul(class: "posts", { include "build/nav.typ" })
+        })
       })
       html.footer({
         html.nav([

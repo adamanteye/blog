@@ -5,19 +5,21 @@ ASSET_FONT_SUBSETS := \
 	fonts/iosevka-latin-400-normal.woff2 \
 	fonts/iosevka-latin-600-normal.woff2 \
 	fonts/iosevka-latin-700-normal.woff2 \
-	fonts/lxgw-wenkai-sc-cjk-400-normal.woff2 \
-	fonts/lxgw-wenkai-sc-cjk-500-normal.woff2 \
-	fonts/lxgw-wenkai-tc-cjk-400-normal.woff2 \
-	fonts/lxgw-wenkai-tc-cjk-700-normal.woff2
+	fonts/libertinus-serif-latin-400-italic.woff2 \
+	fonts/libertinus-serif-latin-400-normal.woff2 \
+	fonts/libertinus-serif-latin-600-italic.woff2 \
+	fonts/libertinus-serif-latin-600-normal.woff2 \
+	fonts/libertinus-serif-latin-700-italic.woff2 \
+	fonts/libertinus-serif-latin-700-normal.woff2 \
+	fonts/ar-pl-ukai-tw-mbe.woff2
 ASSET_FONT_RAW     := \
-	fonts/texgyrepagella-math.woff2
+	fonts/texgyrepagella-math.woff2 \
+	fonts/libertinus-serif-OFL.txt \
+	fonts/ARPHICPL.TXT
 ASSET_FONTS        := $(ASSET_FONT_SUBSETS) $(ASSET_FONT_RAW)
-ASSET_FONT_SC_SRC  := \
-	fonts/lxgw-wenkai-sc-cjk-400-normal.ttf \
-	fonts/lxgw-wenkai-sc-cjk-500-normal.ttf
 ASSET_FONT_SOURCES := \
-	$(filter-out fonts/lxgw-wenkai-sc-cjk-%.woff2,$(ASSET_FONTS)) \
-	$(ASSET_FONT_SC_SRC)
+	$(filter-out fonts/ar-pl-ukai-tw-mbe.woff2,$(ASSET_FONTS)) \
+	fonts/ukai.ttc
 
 BUILD_FONT_SUBSETS := $(addprefix build/,$(ASSET_FONT_SUBSETS))
 BUILD_FONT_RAW     := $(addprefix build/,$(ASSET_FONT_RAW))
@@ -30,10 +32,10 @@ PYTHON     ?= python3
 PYFTSUBSET ?= pyftsubset
 
 IOSEVKA_TARBALL             := https://registry.npmjs.org/@fontsource/iosevka/-/iosevka-5.2.5.tgz
-LXGW_TC_TARBALL             := https://registry.npmjs.org/@fontsource/lxgw-wenkai-tc/-/lxgw-wenkai-tc-5.2.9.tgz
+LIBERTINUS_TARBALL          := https://registry.npmjs.org/@fontsource/libertinus-serif/-/libertinus-serif-5.3.0.tgz
+UKAI_TARBALL                := https://deb.debian.org/debian/pool/main/f/fonts-arphic-ukai/fonts-arphic-ukai_0.2.20080216.2.orig.tar.bz2
+UKAI_ARCHIVE_DIR            := fonts-arphic-ukai-0.2.20080216.2
 TEX_GYRE_PAGELLA_MATH_WOFF2 := https://mathfonts.github.io/TeXGyrePagella/texgyrepagella-math.woff2
-LXGW_SC_REGULAR_TTF         := https://github.com/lxgw/LxgwWenKai/releases/download/v1.522/LXGWWenKai-Regular.ttf
-LXGW_SC_MEDIUM_TTF          := https://github.com/lxgw/LxgwWenKai/releases/download/v1.522/LXGWWenKai-Medium.ttf
 
 $(FONT_CHARS): bin/font-chars.py $(FONT_HTML)
 	$(call log,CHAR,$@)
@@ -52,11 +54,11 @@ build/fonts/%.woff2: assets/fonts/%.woff2 $(FONT_CHARS)
 	$(Q)$(PYFTSUBSET) $< --text-file=$(FONT_CHARS) --flavor=woff2 --layout-features='*' --output-file="$@.tmp" 2>/dev/null
 	$(Q)mv "$@.tmp" "$@"
 
-build/fonts/lxgw-wenkai-sc-cjk-%.woff2: assets/fonts/lxgw-wenkai-sc-cjk-%.ttf $(FONT_CHARS)
+build/fonts/ar-pl-ukai-tw-mbe.woff2: assets/fonts/ukai.ttc $(FONT_CHARS)
 	$(call log,SUB,$@)
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)rm -f "$@.tmp"
-	$(Q)$(PYFTSUBSET) $< --text-file=$(FONT_CHARS) --flavor=woff2 --layout-features='*' --output-file="$@.tmp" 2>/dev/null
+	$(Q)$(PYFTSUBSET) $< --font-number=3 --text-file=$(FONT_CHARS) --flavor=woff2 --layout-features='*' --name-IDs='*' --output-file="$@.tmp" 2>/dev/null
 	$(Q)mv "$@.tmp" "$@"
 
 build/%: assets/%
@@ -71,19 +73,40 @@ assets/fonts/iosevka-latin-600-normal.woff2: FONT_TARBALL := $(IOSEVKA_TARBALL)
 assets/fonts/iosevka-latin-600-normal.woff2: FONT_MEMBER := package/files/iosevka-latin-600-normal.woff2
 assets/fonts/iosevka-latin-700-normal.woff2: FONT_TARBALL := $(IOSEVKA_TARBALL)
 assets/fonts/iosevka-latin-700-normal.woff2: FONT_MEMBER := package/files/iosevka-latin-700-normal.woff2
-assets/fonts/lxgw-wenkai-tc-cjk-400-normal.woff2: FONT_TARBALL := $(LXGW_TC_TARBALL)
-assets/fonts/lxgw-wenkai-tc-cjk-400-normal.woff2: FONT_MEMBER := package/files/lxgw-wenkai-tc-chinese-traditional-400-normal.woff2
-assets/fonts/lxgw-wenkai-tc-cjk-700-normal.woff2: FONT_TARBALL := $(LXGW_TC_TARBALL)
-assets/fonts/lxgw-wenkai-tc-cjk-700-normal.woff2: FONT_MEMBER := package/files/lxgw-wenkai-tc-chinese-traditional-700-normal.woff2
+assets/fonts/libertinus-serif-latin-400-italic.woff2: FONT_TARBALL := $(LIBERTINUS_TARBALL)
+assets/fonts/libertinus-serif-latin-400-italic.woff2: FONT_MEMBER := package/files/libertinus-serif-latin-400-italic.woff2
+assets/fonts/libertinus-serif-latin-400-normal.woff2: FONT_TARBALL := $(LIBERTINUS_TARBALL)
+assets/fonts/libertinus-serif-latin-400-normal.woff2: FONT_MEMBER := package/files/libertinus-serif-latin-400-normal.woff2
+assets/fonts/libertinus-serif-latin-600-italic.woff2: FONT_TARBALL := $(LIBERTINUS_TARBALL)
+assets/fonts/libertinus-serif-latin-600-italic.woff2: FONT_MEMBER := package/files/libertinus-serif-latin-600-italic.woff2
+assets/fonts/libertinus-serif-latin-600-normal.woff2: FONT_TARBALL := $(LIBERTINUS_TARBALL)
+assets/fonts/libertinus-serif-latin-600-normal.woff2: FONT_MEMBER := package/files/libertinus-serif-latin-600-normal.woff2
+assets/fonts/libertinus-serif-latin-700-italic.woff2: FONT_TARBALL := $(LIBERTINUS_TARBALL)
+assets/fonts/libertinus-serif-latin-700-italic.woff2: FONT_MEMBER := package/files/libertinus-serif-latin-700-italic.woff2
+assets/fonts/libertinus-serif-latin-700-normal.woff2: FONT_TARBALL := $(LIBERTINUS_TARBALL)
+assets/fonts/libertinus-serif-latin-700-normal.woff2: FONT_MEMBER := package/files/libertinus-serif-latin-700-normal.woff2
 
-assets/fonts/lxgw-wenkai-sc-cjk-400-normal.ttf: FONT_URL := $(LXGW_SC_REGULAR_TTF)
-assets/fonts/lxgw-wenkai-sc-cjk-500-normal.ttf: FONT_URL := $(LXGW_SC_MEDIUM_TTF)
-
-assets/fonts/lxgw-wenkai-sc-cjk-%.ttf:
+assets/fonts/ukai.tar.bz2:
 	$(call log,FONT,$@)
 	$(Q)$(MKDIR_P) $(@D)
 	$(Q)rm -f "$@.tmp"
-	$(Q)$(CURL) -fsSL "$(FONT_URL)" > "$@.tmp" && mv "$@.tmp" "$@"
+	$(Q)$(CURL) -fsSL "$(UKAI_TARBALL)" > "$@.tmp" && mv "$@.tmp" "$@"
+
+assets/fonts/ukai.ttc: assets/fonts/ukai.tar.bz2
+	$(call log,FONT,$@)
+	$(Q)rm -f "$@.tmp"
+	$(Q)tar -xjOf $< $(UKAI_ARCHIVE_DIR)/ukai.ttc > "$@.tmp" && mv "$@.tmp" "$@"
+
+assets/fonts/ARPHICPL.TXT: assets/fonts/ukai.tar.bz2
+	$(call log,FONT,$@)
+	$(Q)rm -f "$@.tmp"
+	$(Q)tar -xjOf $< $(UKAI_ARCHIVE_DIR)/license/english/ARPHICPL.TXT > "$@.tmp" && mv "$@.tmp" "$@"
+
+assets/fonts/libertinus-serif-OFL.txt:
+	$(call log,FONT,$@)
+	$(Q)$(MKDIR_P) $(@D)
+	$(Q)rm -f "$@.tmp"
+	$(Q)set -o pipefail; $(CURL) -fsSL "$(LIBERTINUS_TARBALL)" | tar -xzO package/LICENSE > "$@.tmp" && mv "$@.tmp" "$@"
 
 assets/fonts/texgyrepagella-math.woff2:
 	$(call log,FONT,$@)
