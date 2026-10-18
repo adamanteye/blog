@@ -192,6 +192,10 @@ footer {
   body {
     padding: 0.75rem;
   }
+
+  figure {
+    margin-inline: 0;
+  }
 }
 
 table {
@@ -202,6 +206,18 @@ table {
   max-width: 100%;
   overflow-x: auto;
   border-collapse: collapse;
+}
+
+figure > table {
+  /* Preserve the table's natural width; the figure handles horizontal scrolling. */
+  display: table;
+  max-width: none;
+  overflow-x: visible;
+}
+
+figure > table td:first-child,
+figure > table math {
+  white-space: nowrap;
 }
 
 th,
