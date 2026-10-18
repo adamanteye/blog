@@ -1,5 +1,5 @@
 #import "page.typ": *
-#import "@preview/touying:0.7.4": *
+#import "@preview/touying:0.8.0": *
 #import themes.dewdrop: *
 
 #let conf(
@@ -35,7 +35,7 @@
       cover: utils.alpha-changing-cover.with(alpha: 15%),
     ),
     config-common(
-      show-bibliography-as-footnote: bib,
+      show-bibliography-as-footnote: true,
     ),
   )
   set par(justify: false)
@@ -80,4 +80,5 @@
 
   title-slide()
   doc
+  bib
 }
