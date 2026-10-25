@@ -4,4 +4,4 @@
 
 上午上课, 修键盘, 下单了导电银浆.
 
-下午继续编译 gentoo prefix
+下午继续编译 gentoo prefix.

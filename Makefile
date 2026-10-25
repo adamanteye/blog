@@ -1,5 +1,5 @@
 MAKEFLAGS += --no-builtin-rules
-SHELL     := /bin/bash
+SHELL     := bash
 .DELETE_ON_ERROR:
 
 .PHONY: DUMMY build pdf clean assets css raw-fonts fonts seo atom post slide full optipng jpegoptim
