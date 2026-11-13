@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   /* Keep the measure tied to glyph width so long-form text stays readable. */
   --bg: #fff;
   --text: #111;
@@ -8,6 +9,7 @@
   --border: #ccc;
   --code-bg: #f4f4f4;
   --code-border: #d7d7d7;
+  --table-border: #000;
   /* Match the serif and Kai pairing used in PDF output. */
   --font-main: "Libertinus Serif", "AR PL UKai TW MBE", serif;
   --font-math: "TeX Gyre Pagella Math", math, serif;
@@ -18,6 +20,55 @@
   --content-max: 80ch;
   --space-body: 1rem;
   --radius: 0.25rem;
+}
+
+/* Follow the system preference on screen; keep printed pages light. */
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #18181b;
+    --text: #e4e4e7;
+    --link: #fca5a5;
+    --link-hover: #fecaca;
+    --link-visited: #a1a1aa;
+    --border: #52525b;
+    --code-bg: #27272a;
+    --code-border: #52525b;
+    --table-border: #a1a1aa;
+  }
+
+  /* Match Typst's inline colors before and after HTML minification. */
+  code span[style*="#d73948"] {
+    color: #ff8794 !important;
+  }
+
+  code span[style*="#198810"] {
+    color: #98d982 !important;
+  }
+
+  code span[style*="#4b69c6"] {
+    color: #a5b4fc !important;
+  }
+
+  code span[style*="#b60157"] {
+    color: #f9a8d4 !important;
+  }
+
+  code span[style*="#74747c"] {
+    color: #a1a1aa !important;
+  }
+
+  code span[style*="#301414"] {
+    color: #e4e4e7 !important;
+  }
+
+  code span[style*="#8b41b1"] {
+    color: #d8b4fe !important;
+  }
+
+  code span[style*="#1d6c76"] {
+    color: #67e8f9 !important;
+  }
 }
 
 *,
@@ -68,6 +119,13 @@ img {
   max-width: 100%;
   height: auto;
   margin: 1em auto;
+}
+
+img,
+article svg {
+  /* Transparent diagrams and Typst frames often contain fixed black strokes. */
+  background: #fff;
+  color-scheme: light;
 }
 
 header p.header {
@@ -229,14 +287,14 @@ td {
 
 th {
   text-align: left;
-  border-top: 2px solid #000;
-  border-bottom: 2px solid #000;
+  border-top: 2px solid var(--table-border);
+  border-bottom: 2px solid var(--table-border);
   /* Avoid compressed multi-line headers in narrow table columns. */
   white-space: nowrap;
 }
 
 tr:last-child td {
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid var(--table-border);
 }
 
 @font-face {
