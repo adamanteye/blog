@@ -29,6 +29,10 @@
           #home
           \/
           #source
+          \/
+          #link(
+            "./atom.xml",
+          )[Feed]
         ])
       })
       html.main({
@@ -49,6 +53,10 @@
           #link(
             "./atom.xml",
           )[Feed]
+          \/
+          #link(
+            "https://bo.ke/",
+          )[博客大联盟]
         ])
 
         footer
